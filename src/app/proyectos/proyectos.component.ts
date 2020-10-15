@@ -11,6 +11,8 @@ declare var $: any;
 })
 export class ProyectosComponent implements OnInit {
   public proyectos: Proyecto[] = [];
+  public proyectosf: Proyecto[] = [];
+
   @ViewChild('dataTable', { static: false }) table;
 
   dataTable: any;
@@ -27,9 +29,16 @@ export class ProyectosComponent implements OnInit {
   }
 
   obtenerProyectos() {
-    return this.proyectoService
+     this.proyectoService
       .getAll()
       .subscribe((proyectos: Proyecto[]) => this.proyectos = proyectos);
+
+      for (var i=0;i<this.proyectos.length;i++){
+if(this.proyectos[i].activo=true){
+  this.proyectosf.push(this.proyectos[i]);
+}
+
+      }
   }
 
   eliminar(id) {
