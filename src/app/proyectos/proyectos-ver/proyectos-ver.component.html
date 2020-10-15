@@ -1,0 +1,509 @@
+<app-menu></app-menu>
+
+
+<div class="content">
+  <div class="modal" id="success-modal-preview">
+    <div class="modal__content">
+        <div class="p-5 text-center"> <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+            <div class="text-3xl mt-5">Muy bien!</div>
+            <div class="text-gray-600 mt-2">Has editado una empresa!</div>
+        </div>
+        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+</div>
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+             Proyecto
+        </h2>
+    </div>
+
+    <form #formEmpresa="ngForm">
+
+      <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
+      <!--<div class="intro-y box mt-5">-->
+      <div class="p-5" id="horizontal-form">
+
+        <div class="preview">
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Información General
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Proyecto:</div>
+                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.proyecto}} </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-6 mt-5">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Organización:
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.organizacion}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Periodo:</div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.periodo}}</div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Duración:
+                    <div class="text-base font-bold leading-8 mt-6"> Fecha inicio: {{proyectoModel.fechaInicio}} Fecha termino: {{proyectoModel.fechaTermino}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Descripciòn:</div>
+
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.descripcion}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Objetivo:
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.objetivo}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Area:</div>
+
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.area}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Rango:
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.rango}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Poblaciòn:</div>
+
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.poblacion}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Beneficios institucionales:
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.beneficioInstitucional}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Comentarios:</div>
+
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.comentarios}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Horas proyectos:
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.horasProyecto}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Nùmero de vacantes:</div>
+
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.noVacantes}}</div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Recursos econòmicos:</div>
+                  <div *ngIf="proyectoModel.recursosEconomicos; else elseBlock" class="text-base font-bold leading-8 mt-6">Si</div>
+                  <ng-template #elseBlock><div *ngIf="proyectoModel.recursosEconomicos; else elseBlock1" class="text-base font-bold leading-8 mt-6">No</div></ng-template>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Formación/Capacitación para el Alumno
+            </h2>
+          </div>
+          <div class="grid grid-cols-12 gap-6 mt-5">
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Formaciòn:</div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.descripcionFormacion}}</div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Constancia:</div>
+                  <div *ngIf="proyectoModel.constanciaParticipacion; else elseBlock" class="text-base font-bold leading-8 mt-6">Si</div>
+                  <ng-template #elseBlock><div *ngIf="proyectoModel.recursosEconomicos; else elseBlock1" class="text-base font-bold leading-8 mt-6">No</div></ng-template>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Beneficios para el Alumno
+            </h2>
+          </div>
+
+          <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+            <div class="report-box ">
+              <div class="box p-5">
+                <div class="text-base text-gray-600 mt-1">Beneficios alumno:</div>
+                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.descripcionBeneficiosAlumno}}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Impacto social del proyecto
+            </h2>
+          </div>
+          <div class="grid grid-cols-12 gap-6 mt-5">
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Impacto social:</div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.descripcionImpactoSocial}}</div>
+                </div>
+              </div>
+            </div>
+            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Indicadores:</div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.indicadoresImpactoSocial}}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Apoyos a los Prestadores
+            </h2>
+          </div>
+          <div class="grid grid-cols-12 gap-6 mt-5">
+
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div *ngFor="let apoyo of apoyos" class="text-base text-gray-600 mt-1">
+                    <div class="flex items-center">
+                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                      <span>{{apoyo.apoyo}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Línea de Trabajo
+            </h2>
+          </div>
+          <div class="grid grid-cols-12 gap-6 mt-5">
+
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div *ngFor="let lineaTrabajo of lineasTrabajo" class="text-base text-gray-600 mt-1">
+                    <div class="flex items-center">
+                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                      <span>{{lineaTrabajo.lineaTrabajo}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+          <div class="grid grid-cols-12 gap-6 mt-5">
+
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      Actividades
+                    </h2>
+                    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+                      <button [routerLink]="['/proyectos/actividades/',proyectoModel.id]" class="button text-white bg-theme-1 shadow-md mr-2">Agregar actividad</button>
+                    </div>
+                  </div>
+
+                  <!-- BEGIN: Datatable -->
+                  
+  <div class="intro-y datatable-wrapper box p-5 mt-5">
+    <table datatable #dataTable1 id="tablaActividades" class="table table-report table-report--bordered display datatable w-full">
+      <thead>
+        <tr>
+          <th class="border-b-2 whitespace-no-wrap">Actividad</th>
+          <th class="border-b-2 text-center whitespace-no-wrap">Descripción</th>
+          <th class="border-b-2 text-center whitespace-no-wrap">Perfil</th>
+          <th class="border-b-2 text-center whitespace-no-wrap">No. prestadores</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="sucesos?.length != 0">
+
+        <tr *ngFor="let actividad of proyectosActividades">
+          <td class="border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{actividad.actividad}}</div>
+          </td>
+          <td class="w-40 border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{actividad.descripcion}}</div>
+          </td>
+          <td class="border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{actividad.perfil}}</div>
+          </td>
+          <td class="border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{actividad.noPrestadores}}</div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div><!--end datatable-->
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+          <div class="grid grid-cols-12 gap-6 mt-5">
+
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      Alumnos
+                    </h2>
+                    <div class="w-full sm:w-auto flex mt-4 sm:mt-0" *ngIf="alumnos?.length < proyectoModel.noVacantes">
+                      <button [routerLink]="['/proyectos/alumnos/',proyectoModel.id]" class="button text-white bg-theme-1 shadow-md mr-2">Asignar alumno</button>
+                    </div>
+                  </div>
+
+                  <!-- BEGIN: Datatable -->
+                  
+  <div class="intro-y datatable-wrapper box p-5 mt-5">
+    <table datatable #dataTable2 id="tablaAlumnos" class="table table-report table-report--bordered display datatable w-full">
+      <thead>
+        <tr>
+          <th class="border-b-2 text-center whitespace-no-wrap">Alumnos</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="sucesos?.length != 0">
+
+        <tr *ngFor="let alumno of alumnos">
+          <td class="border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{alumno.alumno}}</div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div><!--end datatable-->
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5" id="horizontal-form">
+        <div class="preview">
+          <div class="grid grid-cols-12 gap-6 mt-5">
+
+            <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      Estado del proyecto
+                    </h2>
+                  </div>
+
+                  <div class="grid grid-cols-12 gap-6 mt-5">
+
+                    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                      <div class="report-box ">
+                        <div class="box p-5">
+                          <select class="input  border mr-2 tail-select w-full" [(ngModel)]="proyectoModel.idEstadoProyecto" name="estado">
+                            <option [ngValue]="gi.id" *ngFor="let gi of estadosProyectos">{{gi.estadoProyecto}}</option>
+
+                          </select>
+                          <div class="intro-y flex items-center h-10">
+                            <h2 class="text-lg font-medium truncate mr-5">
+                              Observaciones
+                            </h2>
+                          </div>
+                          <textarea class="mt-3 w-full" style="padding: 5px; background: #fcf8f8;" name="textarea" [(ngModel)]="proyectoModel.observaciones" name="observaciones" rows="10"></textarea>
+                          <button class="button text-white bg-theme-1 shadow-lg " (click)="actualizarestado()" style=" float: right;">Actualizar estado</button>
+                          <br>
+                          <br>
+                          <br>
+                        </div>
+
+
+                      </div>
+
+                    </div>
+
+
+                  </div>
+                  
+                  <!-- BEGIN: Datatable -->
+                  <div class="intro-y flex items-center h-10">
+                    <h2 class="text-lg font-medium truncate mr-5">
+                      Sucesos
+                    </h2>
+                  </div>
+  <div class="intro-y datatable-wrapper box p-5 mt-5">
+    <table datatable #dataTable id="tablaSucesos" class="table table-report table-report--bordered display datatable w-full">
+      <thead>
+        <tr>
+          <th class="border-b-2 whitespace-no-wrap">suceso</th>
+          <th class="border-b-2 text-center whitespace-no-wrap">observación</th>
+          <th class="border-b-2 text-center whitespace-no-wrap">Fecha</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="sucesos?.length != 0">
+
+        <tr *ngFor="let suceso of sucesos">
+          <td class="border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{suceso.suceso}}</div>
+          </td>
+          <td class="w-40 border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{suceso.observaciones}}</div>
+          </td>
+          <td class="border-b">
+            <div class="font-medium flex sm:justify-center items-center">{{suceso.fechaCreacion.substr(0,10) | date:'dd-MM-yyyy'}}</div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div><!--end datatable-->
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!--</div>-->
+    </form>
+    <!-- END: FORM -->
+</div>
+<!-- END: Content -->

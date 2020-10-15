@@ -1,0 +1,627 @@
+<app-menu></app-menu>
+
+<div class="content">
+    <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
+            <!-- BEGIN: General Report -->
+            <div class="col-span-12 mt-8">
+            
+  <div class="modal" id="success-modal-preview">
+    <div class="modal__content">
+        <div class="p-5 text-center"> <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+            <div class="text-base mt-5">Muy bien!</div>
+            <div class="text-basemt-2">Has editado una empresa!</div>
+        </div>
+        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+</div>
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+             Perfil
+        </h2>
+
+    </div>
+
+
+         
+            <div class="preview">
+              <div class="intro-y flex items-center h-10">
+                <h2 class="text-lg font-medium truncate mr-5">
+                  Información General
+                </h2>
+            </div>
+            <div class="grid grid-cols-12 gap-6 mt-5">
+              <div   class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                <div class="report-box ">
+                    <div class="box p-5">
+                      <div class="text-base text-gray-600 mt-1">Empresas</div>
+
+                        <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.organizacion}} </div>
+                    </div>
+                </div>
+            </div>
+         
+          </div>
+              <div class="grid grid-cols-12 gap-6 mt-5">
+          
+                <div   class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y"> 
+                    <div class="report-box ">
+                        <div class="box p-5">
+                          <div class="text-base text-gray-600 mt-1">  Misíon
+
+                            <div class="text-base font-bold leading-8 mt-6"> {{empresaModel.mision}} </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+           
+                <div   class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                    <div class="report-box ">
+                        <div class="box p-5">
+                          <div class="text-base text-gray-600 mt-1">Objetivo</div>
+
+                            <div class="text-base font-bold leading-8 mt-6">{{empresaModel.objetivo}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div  class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                    <div class="report-box ">
+                        <div class="box p-5">
+                          <div class="text-base text-gray-600 mt-1">Logros</div>
+
+                            <div class="text-base font-bold leading-8 mt-6">{{empresaModel.logros}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+              <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                <div class="report-box ">
+                    <div class="box p-5">
+                      <div class="text-base text-gray-600 mt-1">Legionario</div>
+
+                        <div class="text-base font-bold leading-8 mt-6">    <p  *ngIf="empresaModel.legionario==true" > Si</p>
+                          <p  *ngIf="empresaModel.legionario==false" > No</p> </div>
+                    </div>
+                </div>
+            </div>
+          
+         
+              <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                  <div class="report-box ">
+                      <div class="box p-5">
+                        <div class="text-base text-gray-600 mt-1"><div class="col-xs-1-12">
+                          
+                        </div></div>
+                        <div class="text-base text-gray-600 mt-1">Giro</div>
+
+                          <div class="text-base font-bold leading-8 mt-6">   <h1  *ngFor="let gi of giro"    > 
+                            <p  *ngIf="gi.id==empresaModel.idGiroOrganizacion" > {{gi.giro}}</p>
+                              </h1></div>
+                      </div>
+                  </div>
+              </div>
+              <div  class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                  <div class="report-box ">
+                      <div class="box p-5">
+                        <div class="text-base text-gray-600 mt-1">Clasificación</div>
+
+                          <div class="text-base font-bold leading-8 mt-6">    <h1  *ngFor="let gi of clasificacion"    > 
+                            <p  *ngIf="gi.id==empresaModel.idGiroOrganizacion" > {{gi.clasificacion}}</p>
+                              </h1></div>
+                      </div>
+                  </div>
+              </div>
+              <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                <div class="report-box ">
+                    <div class="box p-5">
+                      <div class="text-base text-gray-600 mt-1">  Pagina Web
+
+                        <div class="text-base font-bold leading-8 mt-6">{{empresaModel.web}} </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+
+
+<br>
+<br>
+
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Dirección
+            </h2>
+        </div>
+          <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+            <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+              <div class="report-box ">
+                  <div class="box p-5">
+                    <div class="text-base text-gray-600 mt-1">País</div>
+
+                      <div class="text-base font-bold leading-8 mt-6">   {{empresaModel.pais}} </div>
+                  </div>
+              </div>
+          </div>
+        
+       
+            <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                <div class="report-box ">
+                    <div class="box p-5">
+                      <div class="text-base text-gray-600 mt-1"><div class="col-xs-1-12">
+                        
+                      </div></div>
+                      <div class="text-base text-gray-600 mt-1">Ciudad</div>
+
+                        <div class="text-base font-bold leading-8 mt-6">   {{empresaModel.ciudad}} </div>
+                    </div>
+                </div>
+            </div>
+            <div  class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                <div class="report-box ">
+                    <div class="box p-5">
+                      <div class="text-base text-gray-600 mt-1">Estado</div>
+
+                        <div class="text-base font-bold leading-8 mt-6">   {{empresaModel.estado}}</div>
+                    </div>
+                </div>
+            </div>
+            <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+              <div class="report-box ">
+                  <div class="box p-5">
+                    <div class="text-base text-gray-600 mt-1">  Municipio/Delegación
+
+                      <div class="text-base font-bold leading-8 mt-6">{{empresaModel.municipio}}  </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+          <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">Colonia</div>
+
+                    <div class="text-base font-bold leading-8 mt-6">   {{empresaModel.colonia}} </div>
+                </div>
+            </div>
+        </div>
+      
+     
+          <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+              <div class="report-box ">
+                  <div class="box p-5">
+                    <div class="text-base text-gray-600 mt-1"><div class="col-xs-1-12">
+                      
+                    </div></div>
+                    <div class="text-base text-gray-600 mt-1">Calle</div>
+
+                      <div class="text-base font-bold leading-8 mt-6">   {{empresaModel.calle}} </div>
+                  </div>
+              </div>
+          </div>
+          <div  class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+              <div class="report-box ">
+                  <div class="box p-5">
+                    <div class="text-base text-gray-600 mt-1">Num. Ext.</div>
+
+                      <div class="text-base font-bold leading-8 mt-6">   {{empresaModel.noExt}}</div>
+                  </div>
+              </div>
+          </div>
+
+          <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">  Num. Int.
+
+                    <div class="text-base font-bold leading-8 mt-6">{{empresaModel.noInt}}  </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+                <br><br>
+            
+   
+
+                <div class="intro-y flex items-center h-10">
+                  <h2 class="text-lg font-medium truncate mr-5">
+                    Área de Acción
+                  
+                  </h2>
+              </div>
+              <div class="grid grid-cols-12 gap-6 mt-5">
+                <div   class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+                  <div class="report-box ">
+                      <div class="box p-5">
+  
+                          <div class="text-base font-bold leading-8 mt-6"> 
+                             <h1  *ngFor="let a of areas"    > 
+                            <p   *ngIf="idAreaAccion.indexOf(a.id) >=0" >{{a.areaAccion}}</p>
+                              </h1>
+                            
+                            </div>
+                      </div>
+                  </div>
+              </div>
+           
+            </div>
+          
+<br>
+<br>
+<div class="intro-y flex items-center h-10">
+  <h2 class="text-lg font-medium truncate mr-5">
+    Número de personas que atienden  
+  </h2>
+</div>
+
+<div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+  <div   class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+    <div class="report-box ">
+        <div class="box p-5">
+
+            <div class="text-base font-bold leading-8 mt-6">   Ancianos : {{empresaModel.ancianos}} </div>
+        </div>
+    </div>
+</div>
+
+<div   class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6">                 Indígenas : {{empresaModel.indigenas}}
+          </div>
+      </div>
+  </div>
+</div>
+<div   class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6">                  Discapacitados : {{empresaModel.discapacitados}}
+          </div>
+      </div>
+  </div>
+</div>
+<div   class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6">                       Jóvenes : {{empresaModel.jovenes}}
+          </div>
+      </div>
+  </div>
+</div>
+<div   class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6">                         Mujeres : {{empresaModel.mujeres}}
+          </div>
+      </div>
+  </div>
+</div>
+<div   class="col-span-12 sm:col-span-6 xl:col-span-2 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6">                          Niños : {{empresaModel.ninos}}
+          </div>
+      </div>
+  </div>
+</div>
+
+</div>
+
+<br><br>
+            
+   
+
+<div class="intro-y flex items-center h-10">
+  <h2 class="text-lg font-medium truncate mr-5">
+    Rubro
+  </h2>
+</div>
+<div class="grid grid-cols-12 gap-6 mt-5">
+<div   class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6"> 
+             <h1  *ngFor="let a of rubros"    > 
+            <p   *ngIf="idRubro.indexOf(a.id) >=0"  >{{a.rubro}}</p>
+              </h1>
+            
+            </div>
+      </div>
+  </div>
+</div>
+
+</div>
+
+<br>
+<br>
+                
+    
+<div class="intro-y flex items-center h-10">
+  <h2 class="text-lg font-medium truncate mr-5">
+    Contacto
+  </h2>
+</div>
+<div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+  <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+    <div class="report-box ">
+        <div class="box p-5">
+          <div class="text-base text-gray-600 mt-1">Nombre</div>
+
+            <div class="text-base font-bold leading-8 mt-6">   {{responsablemodel.nombre}} </div>
+        </div>
+    </div>
+</div>
+
+
+  <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+      <div class="report-box ">
+          <div class="box p-5">
+            <div class="text-base text-gray-600 mt-1"><div class="col-xs-1-12">
+              
+            </div></div>
+            <div class="text-base text-gray-600 mt-1">Apellidos</div>
+
+              <div class="text-base font-bold leading-8 mt-6">   {{responsablemodel.apellidos}} </div>
+          </div>
+      </div>
+  </div>
+  <div  class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+      <div class="report-box ">
+          <div class="box p-5">
+            <div class="text-base text-gray-600 mt-1">Departamento</div>
+
+              <div class="text-base font-bold leading-8 mt-6">   {{responsablemodel.departamento}}</div>
+          </div>
+      </div>
+  </div>
+  <div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+    <div class="report-box ">
+        <div class="box p-5">
+          <div class="text-base text-gray-600 mt-1"> Puesto
+
+            <div class="text-base font-bold leading-8 mt-6">{{responsablemodel.puesto}}  </div>
+          </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="grid grid-cols-12 gap-6 mt-5 bg-primary">
+<div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+        <div class="text-base text-gray-600 mt-1">Correo electronico</div>
+
+          <div class="text-base font-bold leading-8 mt-6">   {{responsablemodel.correo}} </div>
+      </div>
+  </div>
+</div>
+
+
+<div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+    <div class="report-box ">
+        <div class="box p-5">
+          <div class="text-base text-gray-600 mt-1"><div class="col-xs-1-12">
+            
+          </div></div>
+          <div class="text-base text-gray-600 mt-1">Telefono</div>
+
+            <div class="text-base font-bold leading-8 mt-6">   {{responsablemodel.telefono}} </div>
+        </div>
+    </div>
+</div>
+<div  class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+    <div class="report-box ">
+        <div class="box p-5">
+          <div class="text-base text-gray-600 mt-1">Usuario</div>
+
+            <div class="text-base font-bold leading-8 mt-6">   {{responsablemodel.usuario}}</div>
+        </div>
+    </div>
+</div>
+
+<div   class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+        <div class="text-base text-gray-600 mt-1"> Contraseña
+
+          <div class="text-base font-bold leading-8 mt-6"><input type="password" style="padding: 5px; background: #ffffff;" disabled name="" id="" value="  {{responsablemodel.contrasena}} " > </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<br><br>
+            
+   
+<div class="intro-y flex items-center h-10">
+  <h2 class="text-lg font-medium truncate mr-5">
+    Disponible
+  </h2>
+</div>
+
+<div class="grid grid-cols-12 gap-6 mt-5">
+<div   class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6"  *ngIf="empresaModel.id==1" > Si
+           
+            </div>
+            <div class="text-base font-bold leading-8 mt-6"  *ngIf="empresaModel.id==0" > No
+           
+            </div>
+      </div>
+  </div>
+</div>
+
+</div>
+
+
+<br><br>
+            
+   
+
+<div class="intro-y flex items-center h-10">
+  <h2 class="text-lg font-medium truncate mr-5">
+    Nodos de jerarquía institucional  
+  </h2>
+</div>
+<div class="grid grid-cols-12 gap-6 mt-5">
+<div   class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+  <div class="report-box ">
+      <div class="box p-5">
+
+          <div class="text-base font-bold leading-8 mt-6"> 
+             <h1  *ngFor="let a of universidades"    > 
+            <p    *ngIf="a.id==empresaModel.id"  >{{a.universidad}}</p>
+              </h1>
+            
+            </div>
+      </div>
+  </div>
+</div>
+
+</div>
+
+<br>
+<br>
+
+  
+
+ 
+<div class="intro-y flex items-center h-10">
+  <h2 class="text-lg font-medium truncate mr-5">
+    Documentos
+  </h2>
+</div>
+
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <table class="table table-report sm:mt-2" >
+          <thead>
+              <tr>
+                  
+                  <th class="whitespace-no-wrap">DOCUMENTO</th>
+                  <th class="whitespace-no-wrap">ADJUNTO</th>
+                  <th class="whitespace-no-wrap">  FECHA ENTREGA</th>
+                  <th class="whitespace-no-wrap">ENTREGADO</th>
+
+              </tr>
+          </thead>
+          <tbody>
+              <tr class="intro-x" *ngFor="let d of documentos" >
+
+                  <td>
+                      <div class="ext-base text-xs whitespace-no-wrap">   {{d.documento}}</div>
+                  </td>
+                  <td>
+                    <div class="ext-base text-xs whitespace-no-wrap"> <a (click)="abrirsubir(d.id)"   ><i data-feather="check-square" class="w-4 h-4 mr-1"></i> Subir archivo</a></div>
+                </td>
+
+           
+
+                <td>
+                  <div class="text-base whitespace-no-wrap"> {{d.fecha}} </div>
+              </td>
+            <td style="padding: 5px; background: #ffffff; " align="center"><input type="checkbox" id="1" onclick="entregadoDocumento(this.id,137994,35);"></td>
+
+            <div class="modal" id="abrirsubir-{{d.id}}">
+              <div class="modal__content">
+                <form #form="ngForm" (ngSubmit)="subeArchivo()" >      <div class="p-5 text-center"> <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                      <div class="text-base mt-5">Subir Archivo</div>
+                      <br>
+                        <input type="file" id="Imagen" name="Imagen" >
+                 
+                  </div>
+                  
+                  <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                     <button type="submit"   data-dismiss="modal"  class="button w-24 bg-theme-1 text-white">Subir</button> </div>
+                    </form>
+            
+                    </div>
+            </div>
+
+              </tr>
+       
+              
+              
+          </tbody>
+      </table>
+  </div>
+
+
+
+
+  <br><br>
+            
+   
+  <div class="intro-y flex items-center h-10">
+    <h2 class="text-lg font-medium truncate mr-5">
+ESTADO
+    </h2>
+  </div>
+  
+  <div class="grid grid-cols-12 gap-6 mt-5">
+
+  <div   class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+    <div class="report-box ">
+        <div class="box p-5">
+          <select class="input  border mr-2 tail-select w-full" [(ngModel)]="empresaModel.idEstadoOrganizacion" name="estado"  disabled>
+            <option [ngValue]="gi.id" *ngFor="let gi of estado">{{gi.estado}}</option>
+      
+          </select>
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Observaciones    </h2>
+          </div>
+          <textarea class="mt-3 w-full" style="padding: 5px; background: #fcf8f8;" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones"   rows="10" ></textarea>
+          <br>
+          <br>
+          <br>
+        </div>
+        
+
+  </div>
+  
+    </div>
+
+
+  </div>
+  
+  </div>
+  
+  
+  <br><br>
+            
+ 
+  
+  <br><br>
+            
+
+
+
+  <br>
+
+             </div>
+     
+        </div>
+
+    <!-- END: FORM -->
+</div>
+<!-- END: Content -->

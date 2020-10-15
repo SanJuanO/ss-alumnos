@@ -1,0 +1,237 @@
+<app-menu></app-menu>
+<div class="content">
+  <div class="modal" id="success-modal-preview">
+    <div class="modal__content">
+      <div class="p-5 text-center">
+        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+        <div class="text-3xl mt-5">Muy bien!</div>
+        <div class="text-gray-600 mt-2">Has agregado una empresa!</div>
+      </div>
+      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+  </div>
+
+  <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto">
+      Agregar Proyecto
+    </h2>
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+      <a routerLink="/dashboard" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+      <button (click)="create()" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
+    </div>
+  </div>
+
+  <form (ngSubmit)="create()" #form="ngForm">
+    <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
+    <div class="intro-y box mt-5">
+      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+        <h2 class="font-medium text-base mr-auto">
+          Información General
+        </h2>
+      </div>
+      <div class="p-5" id="horizontal-form">
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Nombre del proyecto:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.proyecto" [ngModelOptions]="{standalone: true}" ng-reflect-required="ejemplo nombre" required>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Descripcion:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.descripcion" [ngModelOptions]="{standalone: true}" value="ejemplo descripcion" required>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Objetivo:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.objetivo" [ngModelOptions]="{standalone: true}" value="objetivo ejemplo" required>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Organizaciòn:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idOrganizacion" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="idempresa">{{empresa}} </option>
+          </select>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Area:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idArea" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="proyectoArea.id" *ngFor="let proyectoArea of proyectosAreas">{{proyectoArea.area}} </option>
+          </select>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Rangos:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idRango" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="proyectosRango.id" *ngFor="let proyectosRango of proyectosRangos">{{proyectosRango.rango}} </option>
+          </select>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Poblaciones:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idPoblacion" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="proyectoPoblacion.id" *ngFor="let proyectoPoblacion of proyectosPoblaciones">{{proyectoPoblacion.poblacion}} </option>
+          </select>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Beneficio institucional:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.beneficioInstitucional" [ngModelOptions]="{standalone: true}" required>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Comentarios:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.comentarios" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">¿Recursos económicos?  </label>
+          <div class="controls">
+            <br>
+            Sí&nbsp;<input type="radio" checked [value]='true' [(ngModel)]="proyectoModel.recursosEconomicos" name="recursosEconomicos" class="input-xlarge focused">   No&nbsp;<input type="radio" [value]='false' [(ngModel)]="proyectoModel.recursosEconomicos" name="recursosEconomicos" checked="checked" class="input-xlarge focused">
+          </div>
+        </div>
+
+
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Horas de proyecto:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.horasProyecto" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="240">240 </option>
+            <option [ngValue]="480">480 </option>
+          </select>
+        </div>
+
+
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Descripcion de formaciòn:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.descripcionFormacion" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">¿Recibe constancia de participación?  </label>
+          <div class="controls">
+            <br>
+            Sí&nbsp;<input type="radio" checked [value]="true" [(ngModel)]="proyectoModel.constanciaParticipacion" name="constanciaParticipacion" class="input-xlarge focused" [ngModelOptions]="{standalone: true}">
+            No&nbsp;<input type="radio" [value]='false' [(ngModel)]="proyectoModel.constanciaParticipacion" name="constanciaParticipacion" checked="checked" class="input-xlarge focused" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+
+
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Descripcion de beneficios del alumno:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.descripcionBeneficiosAlumno" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Descripcion del impacto social:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.descripcionImpactoSocial" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Indicadores del impacto social:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.indicadoresImpactoSocial" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Nùmero de vacantes:</label>
+          <input type="number" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.noVacantes" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Fecha de inicio:</label>
+          <input type="date" class="input border sm:w-64" placeholder="2020-09-08" [(ngModel)]="proyectoModel.fechaInicio" [ngModelOptions]="{standalone: true}" required>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Fecha de termino:</label>
+          <input type="date" class="input border sm:w-64" placeholder="2020-09-09" [(ngModel)]="proyectoModel.fechaTermino" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Periodos:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idPeriodo" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="periodo.id" *ngFor="let periodo of periodos">{{periodo.periodo}} {{periodo.descripcion}}</option>
+          </select>
+        </div>
+
+
+        <div class="flex flex-col sm:flex-row items-center mt-3" style="display: none">
+          <label class="sm:w-32 sm:text-right sm:mr-5">¿Disponible?  </label>
+          <div class="controls">
+            <br>
+            Sí&nbsp;<input type="radio" checked [value]="true" [(ngModel)]="proyectoModel.disponible" name="disponible" class="input-xlarge focused">
+            No&nbsp;<input type="radio" [value]='false' [(ngModel)]="proyectoModel.disponible" name="disponible" checked="checked" class="input-xlarge focused">
+          </div>
+        </div>
+
+        <!--
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Universidad:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idUniversidad" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="universidad.id" *ngFor="let universidad of universidades">{{universidad.universidad}}</option>
+          </select>
+        </div>-->
+
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Universidad:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idUniversidad" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="universidad.id" *ngFor="let universidad of universidades">{{universidad.universidad}}</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center mt-3" style="display: none">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Estado:</label>
+          <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="proyectoModel.idEstadoProyecto" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="2"></option>
+          </select>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Observaciones:</label>
+          <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="proyectoModel.observaciones" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+          <h2 class="font-medium text-base mr-auto">
+            Apoyos
+          </h2>
+        </div>
+        <div class="well">
+          <table style="padding: 15px; margin-left: 25px;">
+            <tbody>
+              <tr *ngFor="let apoyo of apoyos">
+
+                <td style="padding:5px;">
+                  <label>
+                    <input type="checkbox" id="{{apoyo.id}}" (change)="toggleApoyos($event.target.checked, apoyo.id)">
+                    {{apoyo.apoyo}}
+                  </label>
+                </td>                
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+          <h2 class="font-medium text-base mr-auto">
+            Lineas de trabajo
+          </h2>
+        </div>
+        <div class="well">
+          <table style="padding: 15px; margin-left: 25px;">
+            <tbody>
+              <tr *ngFor="let lineaTrabajo of lineasTrabajo">
+
+                <td style="padding:5px;">
+                  <label>
+                    <input type="checkbox" id="{{lineaTrabajo.id}}" (change)="toggleLineasTrabajo($event.target.checked, lineaTrabajo.id)">
+                    {{lineaTrabajo.lineaTrabajo}}
+                  </label>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+      </div>
+    </div>
+  </form>
+
+    <!-- END: FORM -->
+</div>
+<!-- END: Content -->

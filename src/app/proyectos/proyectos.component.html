@@ -1,0 +1,64 @@
+<app-menu></app-menu>
+
+<!-- BEGIN: Content -->
+<div class="content">
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            Proyectos
+        </h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <button routerLink="/proyectos/add" class="button text-white bg-theme-1 shadow-md mr-2">Agregar proyecto</button>
+            <!--<div class="dropdown relative ml-auto sm:ml-0">
+                <button class="dropdown-toggle button px-2 box text-gray-700 dark:text-gray-300">
+                    <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-feather="plus"></i> </span>
+                </button>
+                <div class="dropdown-box mt-10 absolute w-40 top-0 right-0 z-20">
+                    <div class="dropdown-box__content box dark:bg-dark-1 p-2">
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file-plus" class="w-4 h-4 mr-2"></i> New Category </a>
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="users" class="w-4 h-4 mr-2"></i> New Group </a>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+
+    <!-- BEGIN: Datatable -->
+    <div class="intro-y datatable-wrapper box p-5 mt-5">
+        <table datatable  class="table table-report table-report--bordered display datatable w-full">
+            <thead>
+                <tr>
+                  <th class="border-b-2 whitespace-no-wrap">proyecto</th>
+                  <th class="border-b-2 text-center whitespace-no-wrap">organizacion</th>
+                  <th class="border-b-2 text-center whitespace-no-wrap">Universidades</th>
+                  <th class="border-b-2 text-center whitespace-no-wrap">Periodo</th>
+                  <th class="border-b-2 text-center whitespace-no-wrap">Estado</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="proyectos?.length != 0">
+                <tr *ngFor="let proyecto of proyectos">
+                  <td class="border-b">
+                    <a [routerLink]="['/proyectos/ver', proyecto.id]">    <div class="font-medium flex sm:justify-center items-center"> {{proyecto.proyecto}}</div></a>
+                  </td>
+                    <td class="border-b">
+                        <div class="font-medium flex sm:justify-center items-center">{{proyecto.organizacion}}</div>
+                    </td>
+               
+                    <td class="w-40 border-b">
+                      <div class="font-medium flex sm:justify-center items-center"> {{proyecto.universidad}}</div>
+                    </td>
+                    <td class="w-40 border-b">
+                      <div class="font-medium flex sm:justify-center items-center"> {{proyecto.periodo}}</div>
+                    </td>
+                    <td class="border-b">
+                      <div class="font-medium flex sm:justify-center items-center">{{proyecto.estadoProyecto}}</div>
+                    </td>
+                   
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <!-- END: Datatable -->
+</div>
+<!-- END: Content -->

@@ -1,0 +1,394 @@
+<app-menu></app-menu>
+
+
+<div class="content">
+  <div class="modal" id="success-modal-preview">
+    <div class="modal__content">
+        <div class="p-5 text-center"> <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+            <div class="text-3xl mt-5">Muy bien!</div>
+            <div class="text-gray-600 mt-2">Has editado una empresa!</div>
+        </div>
+        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+</div>
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">
+            Editar Empresa
+        </h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <a  routerLink="/empresas" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+            <button (click)="onSubmit()" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
+        </div>
+    </div>
+
+    <form #formEmpresa="ngForm" >
+
+    <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
+   
+    <div class="intro-y box mt-5">
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+            <h2 class="font-medium text-base mr-auto">
+                Información General
+            </h2>
+        </div>
+        <div class="p-5" id="horizontal-form">
+
+          
+          <!-- <div class="col-lg-12 col-md-12">
+            <div class="view_all_dt">
+               <div class="view_img_left">
+                  <div class="view__img">	
+                    <img id="blah" src="#" alt="your image" class="rounded-circle"  style="width: 192px; height: 192px;"/>
+                  </div>
+               </div>
+               <div class="view_img_right">
+                  <div class="upload__input">
+                     <div class="input-group">
+                        <div class="custom-file">
+                          <input type='file' class="custom-file-input" accept=".jpg, .jpeg, .gif, .png">
+                           <label class="custom-file-label" for="inputGroupFile04">Selecciona la imagen</label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div> -->
+            <div class="preview">
+
+              
+            
+
+                <div class="flex flex-col sm:flex-row items-center">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">Organización:</label>
+                    <input type="text"  class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.organizacion" [ngModelOptions]="{standalone: true}" required>
+                </div>
+             
+   
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">Misión:</label>
+                    <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.mision" [ngModelOptions]="{standalone: true}" required>
+
+                </div>
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                  <label class="sm:w-32 sm:text-right sm:mr-5">Ciudad:</label>
+                  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.ciudad" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">Objetivo:</label>
+                    <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.objetivo" [ngModelOptions]="{standalone: true}" required>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                  <label class="sm:w-32 sm:text-right sm:mr-5">Logros:</label>
+                  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.logros" [ngModelOptions]="{standalone: true}" required>
+              </div>
+
+                 <!-- <div class="flex flex-col sm:flex-row items-center mt-3">
+                  <label class="sm:w-32 sm:text-right sm:mr-5">¿Legionario?  </label>
+                  <div class="controls"><br>
+                    
+                    Sí&nbsp;<input type="radio"  value="ture" name="legionario" class="input-xlarge " [(ngModel)]="checkmodel.jerarquia" [ngModelOptions]="{standalone: true}" checked="checked" aria-checked="true">	 
+                     No&nbsp;<input type="radio" value=false  name="legionario" class="input-xlarge " [(ngModel)]="checkmodel.jerarquia" [ngModelOptions]="{standalone: true}">
+  </div>              </div> -->
+     
+ <div class="flex flex-col sm:flex-row items-center mt-3">
+    <label class="sm:w-32 sm:text-right sm:mr-5">¿Legionario? </label>
+    <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.legionario" [ngModelOptions]="{standalone: true}" >
+      <option [ngValue]="true"  >Si </option>
+
+      <option [ngValue]="false" >No </option>
+
+    </select>
+</div> 
+           
+  <!-- <div class="flex flex-col sm:flex-row items-center mt-3">
+    <label class="sm:w-32 sm:text-right sm:mr-5">Descripción:</label>
+    <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.descripcion" [ngModelOptions]="{standalone: true}" required>
+</div> -->
+
+
+                  
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                  <label class="sm:w-32 sm:text-right sm:mr-5">Descripción:</label>
+                  <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.idTipoOrganizacion" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="ti.id" *ngFor="let ti of tipo">{{ti.tipo}} </option>
+
+              
+                  </select>
+              </div>
+
+                
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">Giro:</label>
+                    <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.idGiroOrganizacion" [ngModelOptions]="{standalone: true}">
+                      <option [ngValue]="gi.id" *ngFor="let gi of giro">{{gi.giro}} </option>
+
+                
+                    </select>
+                </div>
+
+                
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">Clacificación:</label>
+                    <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.idClasificacionOrganizacion" [ngModelOptions]="{standalone: true}">
+                      <option [ngValue]="cl.id" *ngFor="let cl of clasificacion">{{cl.clasificacion}}</option>
+
+                    </select>
+                </div>
+
+
+
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">Web:</label>
+                    <input type="text" class="input border sm:w-64" placeholder=""  [(ngModel)]="empresaModel.web" [ngModelOptions]="{standalone: true}" required>
+                </div>
+
+
+                <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                    <h2 class="font-medium text-base mr-auto">
+                     2. Domocilio
+                    </h2>
+                </div>
+
+
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">CP:</label>
+                    <input type="text" class="input border sm:w-64" placeholder=""  [(ngModel)]="empresaModel.cp" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                    <label class="sm:w-32 sm:text-right sm:mr-5">Pais:</label>
+                    <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.pais" [ngModelOptions]="{standalone: true}">
+                </div>
+
+
+                <div class="flex flex-col sm:flex-row items-center mt-3">
+                  <label class="sm:w-32 sm:text-right sm:mr-5">Estado:</label>
+                  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.estado" [ngModelOptions]="{standalone: true}">
+                </div>
+
+              <div class="flex flex-col sm:flex-row items-center mt-3">
+                  <label class="sm:w-32 sm:text-right sm:mr-5">Municipio/Delegación:</label>
+                  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.municipio" [ngModelOptions]="{standalone: true}">
+                </div>
+
+
+    
+
+            <div class="flex flex-col sm:flex-row items-center mt-3">
+              <label class="sm:w-32 sm:text-right sm:mr-5">Colonia:</label>
+                    <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.colonia" [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center mt-3">
+            <label class="sm:w-32 sm:text-right sm:mr-5">Calle:</label>
+            <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="empresaModel.calle" [ngModelOptions]="{standalone: true}">
+          </div>
+
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+          <label class="sm:w-32 sm:text-right sm:mr-5">Num. Ext.:</label>
+          <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.noExt" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="flex flex-col sm:flex-row items-center mt-3">
+        <label class="sm:w-32 sm:text-right sm:mr-5">Num. Int.:</label>
+        <input type="text" class="input border" placeholder="" [(ngModel)]="empresaModel.noInt" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+      <h2 class="font-medium text-base mr-auto">
+       3. Área de Acción
+      </h2>
+  </div>
+
+
+  <div class="well">
+    <table style="padding: 15px; margin-left: 25px;">				
+      <tbody>
+        <tr *ngFor="let area of areas">
+
+      <td style="padding:5px;"> <input type="checkbox" (change)="toggleArea(($event.target.checked), area.id)"  [checked]="idAreaAccion.indexOf(area.id) >=0"  ></td>
+             <td>{{area.areaAccion}}</td>
+      
+    </tr></tbody></table> 
+   </div>
+
+   <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+    <h2 class="font-medium text-base mr-auto">
+      4. Número de personas que atienden
+        </h2>
+</div>
+
+
+                
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <input type="number" class="input border" placeholder=""  [(ngModel)]="empresaModel.ancianos" [ngModelOptions]="{standalone: true}">
+
+  <label class="sm:w-32 sm:text-right sm:mr-5">Ancianos.</label>
+</div>
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <input type="number" class="input border" placeholder=""  [(ngModel)]="empresaModel.discapacitados" [ngModelOptions]="{standalone: true}">
+
+  <label class="sm:w-32 sm:text-right sm:mr-5">Discapacitados.  </label>
+</div>
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <input type="number" class="input border" placeholder=""  [(ngModel)]="empresaModel.indigenas" [ngModelOptions]="{standalone: true}">
+
+  <label class="sm:w-32 sm:text-right sm:mr-5">Indígenas.</label>
+</div>
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <input type="number" class="input border" placeholder=""  [(ngModel)]="empresaModel.jovenes" [ngModelOptions]="{standalone: true}" >
+
+  <label class="sm:w-32 sm:text-right sm:mr-5">Jóvenes.</label>
+</div>
+
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <input type="number" class="input border" placeholder=""  [(ngModel)]="empresaModel.mujeres" [ngModelOptions]="{standalone: true}">
+
+  <label class="sm:w-32 sm:text-right sm:mr-5">Mujeres.</label>
+</div>
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <input type="number" class="input border" placeholder=""  [(ngModel)]="empresaModel.ninos" [ngModelOptions]="{standalone: true}">
+
+  <label class="sm:w-32 sm:text-right sm:mr-5">Niños.</label>
+</div>
+<!-- <div class="flex flex-col sm:flex-row items-center mt-3">
+  <input type="number" class="input border" placeholder="" >
+
+  <label class="sm:w-32 sm:text-right sm:mr-5">Público General.</label>
+</div> -->
+
+
+
+<div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+  <h2 class="font-medium text-base mr-auto">
+   3. Rubro
+  </h2>
+</div>
+
+
+<div class="well">
+<table style="padding: 15px; margin-left: 25px;">				
+  <tbody>
+    <tr *ngFor="let rubro of rubros">
+      
+      <td style="padding:5px;"> 
+        <input type="checkbox" id="{{rubro.id}}"   (change)="togleRubros($event.target.checked, rubro.id)"  [checked]="idRubro.indexOf(rubro.id) >=0"  ></td>
+         <td>{{rubro.rubro}}</td>
+
+   
+
+</tr></tbody></table>
+</div>
+
+<div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+  <h2 class="font-medium text-base mr-auto">
+   2. Contacto
+  </h2>
+  <br>
+</div>
+        <div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Nombre:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.nombre" [ngModelOptions]="{standalone: true}">
+</div>
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Apellidos:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.apellidos" [ngModelOptions]="{standalone: true}">
+</div>
+
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Departamento:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.departamento" [ngModelOptions]="{standalone: true}">
+</div>
+
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Puesto:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.puesto" [ngModelOptions]="{standalone: true}">
+</div>
+
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Correo electronico:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.correo" [ngModelOptions]="{standalone: true}">
+</div>
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Telefono:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.telefono" [ngModelOptions]="{standalone: true}">
+</div>
+
+
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Usuario:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.usuario" [ngModelOptions]="{standalone: true}">
+</div>
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">Contraseña:</label>
+  <input type="text" class="input border sm:w-64" placeholder="" [(ngModel)]="responsablemodel.contrasena" [ngModelOptions]="{standalone: true}">
+</div>
+
+  <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+    <h2 class="font-medium text-base mr-auto">
+     7. Disponibilidad
+    </h2>
+  </div>
+  <!-- <div class="flex flex-col sm:flex-row items-center mt-3">
+    <label class="sm:w-32 sm:text-right sm:mr-5">¿Disponible?  </label>
+    <div class="controls"><br>
+      
+      Sí&nbsp;<input type="radio"  checked value='TRUE' [(ngModel)]="empresaModel.disponible" name="disponible" class="input-xlarge focused">	  No&nbsp;<input type="radio" value='FALSE' [(ngModel)]="empresaModel.disponible" name="disponible" checked="checked" class="input-xlarge focused">
+</div>              </div> -->
+     
+<div class="flex flex-col sm:flex-row items-center mt-3">
+  <label class="sm:w-32 sm:text-right sm:mr-5">¿Disponible? </label>
+  <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.disponible" [ngModelOptions]="{standalone: true}" >
+    <option [ngValue]="true"  >Si </option>
+
+    <option [ngValue]="false" >No </option>
+
+  </select>
+</div> 
+       
+
+<div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+  <h2 class="font-medium text-base mr-auto">
+    8. Nodos de jerarquía institucional
+  </h2>
+</div>
+<div class="well">
+  <table style="padding: 15px; margin-left: 25px;">				
+    <tbody>
+      <tr *ngFor="let uni of universidades">
+        <td style="padding:5px;"> <input type="checkbox" id="uni{{uni.id}}" [(ngModel)]="empresaModel.idUniversidad" [ngModelOptions]="{standalone: true}" value="10"></td>
+           <td>{{uni.universidad}}</td>
+
+  </tr></tbody></table>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+    <h2 class="font-medium text-base mr-auto">
+      9. Sucesos en el sistema
+    </h2>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center mt-3">
+    <label class="sm:w-32 sm:text-right sm:mr-5">Estado:</label>
+    <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="empresaModel.idEstadoOrganizacion" name="estado" >
+      <option [ngValue]="gi.id" *ngFor="let gi of estado">{{gi.estado}}</option>
+
+    </select>
+</div>
+
+<div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+  <h2 class="font-medium text-base mr-auto">
+     Observaciones
+  </h2>
+</div>
+
+<textarea class="mt-3" name="textarea" [(ngModel)]="empresaModel.observaciones" name="observaciones"   rows="10" cols="100"></textarea>
+
+            </div>
+          
+        </div>
+    </div>
+  </form>
+    <!-- END: FORM -->
+</div>
+<!-- END: Content -->

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\alumnos",
+    "\\src\\app\\alumnos\\alumnos-edit",
+    "\\src\\app\\empresas",
+    "\\src\\app\\empresas\\empresas-add",
+    "\\src\\app\\models",
+    "\\src\\app\\proyectos",
+    "\\src\\app\\proyectos\\proyectos-add"
+  ],
+  "SelectedNode": "\\src\\app\\proyectos\\proyectos-add\\proyectos-add.component.ts",
+  "PreviewInSolutionExplorer": false
+}
