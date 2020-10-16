@@ -6,7 +6,9 @@ import { Empresa } from "../../models/empresa";
 import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
+import { SessionService } from '../../services/session.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 declare var $: any;
 
@@ -37,20 +39,22 @@ export class ProyectosVerComponent implements OnInit {
   public proyectosActividades: ProyectosActividadesModel[] = [];
   public alumnos: AlumnosProyectosAsignadosModel[] = [];
 
-  @ViewChild('dataTable', { static: false }) table;
-  @ViewChild('dataTable1', { static: false }) table1;
-  @ViewChild('dataTable2', { static: false }) table2;
-  public dataTable: any;
-  public dataTable1: any;
-  public dataTable2: any;
+  public idproyecto:string;
+  public proyecto: string;
+  public alumnosAsignar: any;
 
+
+  @ViewChild('dataTable1', { static: false }) table1;
+  public dataTable1: any;
+  
 
   //public alumno: Alumnos[] = [];
 
 
   constructor(private proyectoService: ProyectoService, private organizacionService: OrganizationService,
-    private universidadService: UniversidadService,private router: Router,private activatedRoute: ActivatedRoute) {
-  }
+    private universidadService: UniversidadService, private router: Router, private activatedRoute: ActivatedRoute, public session: SessionService)
+    {
+    }
 
   ngOnInit(): void {
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
@@ -68,14 +72,12 @@ export class ProyectosVerComponent implements OnInit {
     this.obtenerSucesos();
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
+    this.obtenerProyectos();
 
-    this.dataTable = $(this.table.nativeElement);
-    this.dataTable.DataTable();
+
     this.dataTable1 = $(this.table1.nativeElement);
     this.dataTable1.DataTable();
-    this.dataTable2 = $(this.table2.nativeElement);
-    this.dataTable2.DataTable();
-
+    
   }
  
   ngAfterViewInit() {
@@ -229,4 +231,44 @@ export class ProyectosVerComponent implements OnInit {
 
   }
 
+  obtenerProyectos() {
+    var id = this.session.getToken();
+    console.log("Id sesion ="+id);
+    this.proyectoService.getProyectoalumno(id).subscribe((res: any[]) => {
+      //console.log("Proyectos: " +res);
+      this.idproyecto = res["idProyecto"];
+      this.proyecto = res["proyectoNombre"];
+      console.log("IdProyectos: " + this.idproyecto);
+
+    });
+  }
+
+  inscribir() {
+    var id = this.session.getToken();
+    var valor = { "idAlumno": Number(id), "idProyecto": Number(this.idobtenido), "activo": true };
+    this.alumnosAsignar = valor;
+    let model = this.alumnosAsignar;
+    console.log(this.alumnosAsignar);
+
+    this.proyectoService.asignarAlumnosProyectos(this.alumnosAsignar).subscribe((res: any) => {
+      //console.log(res.message);
+      if (res) {
+        this.validar = true;
+        this.router.navigate(['/proyectos/ver/' + this.idobtenido]).then();
+      }
+
+    }, error => {
+      alert(error.error)
+    })
+
+    if (this.validar) {
+      $('#success-modal-preview').modal('show');
+
+      this.router.navigate(['/proyectos/ver/' + this.idobtenido]);
+    }
+
+  }
+
+
 }
+

@@ -34,7 +34,7 @@ export class ProyectosComponent implements OnInit {
        .subscribe((proyectos: Proyecto[]) => {
          this.proyectos = proyectos;
          for (var i = 0; i < this.proyectos.length; i++) {
-           if (this.proyectos[i].activo = true) {
+           if (this.proyectos[i].idEstadoProyecto == 3) {//3 -> aprobado
              this.proyectosf.push(this.proyectos[i]);
            }
          }

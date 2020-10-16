@@ -16,7 +16,7 @@ public apellidos="";
     if(this.session.getToken()==""){
       this.router.navigate(['/'])    
     }
-    this.id=Number(this.session.getnombre());
+    this.id=Number(this.session.getToken());
 
     this.nombre=this.session.getnombre();
     this.apellidos=this.session.getapellidos();
