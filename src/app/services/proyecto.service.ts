@@ -12,7 +12,8 @@ export class ProyectoService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get(`${this.api}/Proyectos`);
+     return this.http.get(`${this.api}/Proyectos`);
+
   }
   getProyecto(id: string | number) {
     const uri = `${this.api}/Proyectos/${id}`;

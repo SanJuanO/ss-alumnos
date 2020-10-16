@@ -28,7 +28,7 @@ if(res['resultado']==1){
   this.session.setToken(datosvalue['id']);
  
   this.session.setnombre(datosvalue['nombre']);
-  this.session.setapellidos(datosvalue['apellidos']);
+  this.session.setapellidos(datosvalue['paterno']+datosvalue['materno']);
 
     this.router.navigate(['/dashboard']);
 

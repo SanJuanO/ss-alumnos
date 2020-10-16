@@ -35,7 +35,7 @@
                   <th class="border-b-2 text-center whitespace-no-wrap">Estado</th>
                 </tr>
             </thead>
-            <tbody *ngIf="proyectos?.length != 0">
+            <tbody *ngIf="proyectosf?.length != 0">
                 <tr *ngFor="let proyecto of proyectosf">
                   <td class="border-b" >
                     <a [routerLink]="['/proyectos/ver', proyecto.id]">    <div class="font-medium flex sm:justify-center items-center"> {{proyecto.proyecto}}</div></a>
