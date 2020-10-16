@@ -20,9 +20,11 @@ public mensaje="";
   }
 
   onSubmit(data) {
-console.log(data);
-    
-    this.loginservice.login(data.value).subscribe((res: any)=>{
+    var user=$('#email').val();
+    var pass=$('#contraseña').val();
+    console.log(user);
+
+    this.loginservice.login(user,pass).subscribe((res: any)=>{
 if(res['resultado']==1){
   var datosvalue=res['datos'];
   this.session.setToken(datosvalue['id']);
