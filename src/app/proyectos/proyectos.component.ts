@@ -31,14 +31,16 @@ export class ProyectosComponent implements OnInit {
   obtenerProyectos() {
      this.proyectoService
       .getAll()
-      .subscribe((proyectos: Proyecto[]) => this.proyectos = proyectos);
-
-      for (var i=0;i<this.proyectos.length;i++){
-if(this.proyectos[i].activo=true){
-  this.proyectosf.push(this.proyectos[i]);
-}
-
-      }
+       .subscribe((proyectos: Proyecto[]) => {
+         this.proyectos = proyectos;
+         for (var i = 0; i < this.proyectos.length; i++) {
+           if (this.proyectos[i].activo = true) {
+             this.proyectosf.push(this.proyectos[i]);
+           }
+         }
+       });
+    
+      
   }
 
   eliminar(id) {
