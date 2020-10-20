@@ -19,6 +19,7 @@ import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.co
 
 import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { EmpresaevaluarComponent } from './empresa-evaluar/empresa-evaluar.component';
 
 EmpresasverComponent
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path:'empresas/add',component:EmpresasAddComponent},
   {path:'empresas/ver/:id',component:EmpresasverComponent},
   {path:'empresas/Edit/:id',component:EmpresasEditComponent},
+  {path:'empresas/evaluar/:id',component:EmpresaevaluarComponent},
 
 
 ];

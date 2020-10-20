@@ -30,9 +30,9 @@ export class DashboardComponent implements OnInit {
   public convocatoriasalumnosf:Convocatoria [] = [ ];
 
   public idproyecto:string;
-  public proyecto:string;
+  public proyecto:string="";
  
-  constructor( private organizacionService: OrganizationService, private convocatoriaService: ConvocatoriaServices,private proyectoService: ProyectoService,public session: SessionService) { 
+  constructor(private convocatoriaService: ConvocatoriaServices,private proyectoService: ProyectoService,public session: SessionService) { 
   
   }
 
@@ -88,14 +88,21 @@ console.log(this.convocatoriasalumnosf);
   obtenerProyectos() {
     var id=this.session.getToken();
 console.log(id);
-     this.proyectoService.getProyectoalumno(id).subscribe((res: any[])=>{        
+
+     this.proyectoService.getProyectoalumno(id).subscribe((res: any[])=>{   
+  
 this.idproyecto=res["idProyecto"];
 this.proyecto=res["proyectoNombre"];
 
+
+
 });
+
 }
 
+subeArchivoreporte(){
   
+}
 
 
 }

@@ -25,6 +25,7 @@ import { EmpresasAddComponent } from './empresas/empresas-add/empresas-add.compo
 import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.component';
 import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { EmpresaevaluarComponent } from './empresa-evaluar/empresa-evaluar.component';
 
 
 import { CookieService } from 'ngx-cookie-service';
@@ -40,6 +41,7 @@ import { CookieService } from 'ngx-cookie-service';
     ProyectosComponent,
     ProyectosAddComponent,
     ProyectosEditComponent,
+    EmpresaevaluarComponent,
     ProyectosVerComponent,
     ProyectosActividadesAddComponent,
     ProyectosAlumnosAddComponent,

@@ -7,6 +7,11 @@ import { OrganizationService } from '../../services/organization.service';
 import { Universidad } from "../../models/universidad";
 import { UniversidadService } from '../../services/universidad.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SessionService } from '../../services/session.service';
+import {  AlumnosProyectosAsignadosAddModel, AlumnosModel} from "../../models/proyectos";
+import {Location} from '@angular/common';
+import { Alumno,AlumnoProyecto } from '../../models/alumno';
+import { AlumnoService } from '../../services/alumno.service';
 
 declare var $: any;
 
@@ -36,6 +41,13 @@ export class ProyectosVerComponent implements OnInit {
   public sucesos: ProyectosSucesosModel[] = [];
   public proyectosActividades: ProyectosActividadesModel[] = [];
   public alumnos: AlumnosProyectosAsignadosModel[] = [];
+  public idproyectoalumno:number;
+  public proyectoalumno:string="";
+  public idempresa:string;
+  public alumnosAsignar : any;
+
+  public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0,0);
+
 
   @ViewChild('dataTable', { static: false }) table;
   @ViewChild('dataTable1', { static: false }) table1;
@@ -48,9 +60,29 @@ export class ProyectosVerComponent implements OnInit {
   //public alumno: Alumnos[] = [];
 
 
-  constructor(private proyectoService: ProyectoService, private organizacionService: OrganizationService,
-    private universidadService: UniversidadService,private router: Router,private activatedRoute: ActivatedRoute) {
+  constructor( private alumnoService: AlumnoService,private proyectoService: ProyectoService, private organizacionService: OrganizationService,
+    private universidadService: UniversidadService,private router: Router,private activatedRoute: ActivatedRoute,public session: SessionService
+    ,private _location: Location) {
   }
+
+
+
+  obtenerproyectoalumno() {
+     var iduser=Number(this.session.getToken());
+console.log(iduser);
+    this.alumnoService.getProyectoAlumno(iduser).subscribe((res: any) => {
+      console.log(res);
+
+      this.proyectoalumno= res['proyectoNombre'];
+      this.idproyectoalumno= res['idProyecto'];
+
+
+    }, error => {
+    })
+
+
+ }
+
 
   ngOnInit(): void {
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
@@ -68,7 +100,7 @@ export class ProyectosVerComponent implements OnInit {
     this.obtenerSucesos();
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
-
+this.obtenerproyectoalumno();
     this.dataTable = $(this.table.nativeElement);
     this.dataTable.DataTable();
     this.dataTable1 = $(this.table1.nativeElement);
@@ -81,6 +113,7 @@ export class ProyectosVerComponent implements OnInit {
   ngAfterViewInit() {
     Feather.replace();
   }
+  
   
   getProyecto(id) {
 
@@ -227,6 +260,29 @@ export class ProyectosVerComponent implements OnInit {
     })
 
 
+  }
+  inscribircurso(){
+
+    this.router.navigate(['/dashboard']);
+
+  }
+  inscribir() {
+    var id = this.session.getToken();
+    var valor = { "idAlumno": Number(id), "idProyecto": Number(this.idobtenido), "activo": true ,"IdEstado":1};
+    this.alumnosAsignar = valor;
+    let model = this.alumnosAsignar;
+    console.log(this.alumnosAsignar);
+
+    this.proyectoService.asignarAlumnosProyectos(this.alumnosAsignar).subscribe((res: any) => {
+      //console.log(res.message);
+      if (res) {
+        this.router.navigate(['/dashboard']);
+      }
+
+    }, error => {
+    })
+
+ 
   }
 
 }

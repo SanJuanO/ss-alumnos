@@ -24,7 +24,49 @@
 
 
     <!-- BEGIN: Datatable -->
-    <div class="intro-y datatable-wrapper box p-5 mt-5">
+    <div class="intro-y datatable-wrapper  p-5 mt-5">
+        <form (ngSubmit)="buscar()" #form="ngForm">
+
+            <div class="grid grid-cols-12 gap-2"> 
+
+        <div class="input w-full  col-span-3" >
+            <label class="sm:w-32 sm:text-right sm:mr-5">Giro:</label>
+            <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="filtrobusqueda.idGiro" [ngModelOptions]="{standalone: true}" id="giro">
+                <option [ngValue]="0"  ></option>
+
+              <option [ngValue]="gi.id" *ngFor="let gi of giro" >{{gi.giro}} </option>
+
+        
+            </select>
+        </div>
+        <div class="input w-full  col-span-3" >
+            <label class="sm:w-32 sm:text-right sm:mr-5">Area:</label>
+            <select class="input input--sm border mr-2 sm:w-64"  [(ngModel)]="filtrobusqueda.idAreaAccion" [ngModelOptions]="{standalone: true}" id="area">
+                <option [ngValue]="0"  ></option>
+
+              <option [ngValue]="ar.id" *ngFor="let ar of areas">{{ar.areaAccion}} </option>
+
+        
+            </select>
+        </div>
+        <div class="input w-full  col-span-3" >
+            <label class="sm:w-32 sm:text-right sm:mr-5">Rubro:</label>
+            <select class="input input--sm border mr-2 sm:w-64" [(ngModel)]="filtrobusqueda.idRubro" [ngModelOptions]="{standalone: true}" id="rubro">
+                <option [ngValue]="0"  ></option>
+
+              <option [ngValue]="ru.id" *ngFor="let ru of rubros">{{ru.rubro}} </option>
+
+        
+            </select>
+        </div>
+        <div class="input w-full  col-span-3" >
+            <button type="submit" class="button text-white bg-theme-1 border col-6">Filtrar </button>
+            <!-- <button (click)="limpiar() " class="button text-white bg-theme-9 border col-6">limpiar </button> -->
+
+        </div>
+    </div>
+</form>
+
         <table datatable  class="table table-report table-report--bordered display datatable w-full">
             <thead>
                 <tr>

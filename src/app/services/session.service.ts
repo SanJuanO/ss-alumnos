@@ -20,6 +20,8 @@ export class SessionService {
   setToken(token) {
     this.cookies.set("sesionid", token);
   }
+ 
+
   setnombre(token) {
     this.cookies.set("nombre", token);
   }
@@ -36,6 +38,8 @@ export class SessionService {
   getToken() {
     return this.cookies.get("sesionid");
   }
+ 
+
   Signoff() {
     this.cookies.delete("sesionid");
     this.cookies.delete("apellidos");

@@ -54,6 +54,25 @@ export class AlumnoService {
     alumno.activo = true;
     return this.http.put(`${this.baseUrl}/Alumnos/${id}`, alumno);
   }
-
-
+  subirdocumentos(model) {
+    const uri = `${this.baseUrl}/DocumentosAlumnos/UploadFile`
+    return this.http.post(uri, model);
+  }
+  subirdocumentoscadena(model) {
+    const uri = `${this.baseUrl}/DocumentosAlumnos/saveDocuments`
+    return this.http.post(uri, model);
+  }
+  getdocumentosRequeridos() {
+    const uri = `${this.baseUrl}/DocumentosRequeridosAlumnos`;
+    return this.http.get(uri);
+  }
+ 
+  getrespuesta(id: string | number) {
+    return this.http.get(`${this.baseUrl}/RespuestasEvaluacionAlumno/getByIdAlumno?IdAlumno=${id}`);
+  }
+  respuestapreguntas(model){
+    const uri = `${this.baseUrl}/RespuestasEvaluacionAlumnoOrganizacion`;
+         console.log(uri);
+    return this.http.post(uri,model);
+  }
 }

@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as Feather from 'feather-icons';
-import { Proyecto } from "../models/proyectos"
+import { Proyecto,filtro } from "../models/proyectos"
 import { ProyectoService } from '../services/proyecto.service';
 declare var $: any;
+import { Empresa } from "../models/empresa"
+import { OrganizationService } from '../services/organization.service';
+import { GiroEmpresa } from "../models/giroempresa"
+import { RubroEmpresa } from "../models/rubrosempresa"
+import { AreaAccion } from "../models/areaaccion"
 
 @Component({
   selector: 'app-proyectos',
@@ -12,6 +17,11 @@ declare var $: any;
 export class ProyectosComponent implements OnInit {
   public proyectos: Proyecto[] = [];
   public proyectosf: Proyecto[] = [];
+  public empresaModel = new Empresa("","","","","","","","","","","","","","","","","","","",true,0,"",0,false,true,1,1,1,1,1,0,0,0,0,0,0,undefined,undefined,undefined)
+  public areas: AreaAccion[] = [];
+  public rubros: RubroEmpresa[] = [];
+  public giro: GiroEmpresa[] = [];
+  public filtrobusqueda = new filtro("0","0","0");
 
   @ViewChild('dataTable', { static: false }) table;
 
@@ -19,30 +29,54 @@ export class ProyectosComponent implements OnInit {
   public validar = false;
 
 
-  constructor(private proyectoService: ProyectoService) { }
+  constructor(private organizacionService: OrganizationService,private proyectoService: ProyectoService) { }
 
   ngOnInit(): void {
     this.obtenerProyectos();
-    this.dataTable = $(this.table.nativeElement);
-    this.dataTable.DataTable();
+    this.obtenerGiro();
+    this.obtenerRubros();
+    this.obtenerAreas();
+        this.dataTable.DataTable();
     console.log(this.proyectos);
+ 
+
+
   }
 
   obtenerProyectos() {
-     this.proyectoService
-      .getAll()
-       .subscribe((proyectos: Proyecto[]) => {
-         this.proyectos = proyectos;
-         for (var i = 0; i < this.proyectos.length; i++) {
-           if (this.proyectos[i].activo = true) {
-             this.proyectosf.push(this.proyectos[i]);
-           }
+    var idgiro=this.filtrobusqueda.idGiro;
+    var idarea=this.filtrobusqueda.idAreaAccion;
+
+    var idrubro=this.filtrobusqueda.idRubro;
+
+    this.proyectoService
+    .buscarfiltro(idgiro,idarea,idrubro)
+     .subscribe((proyectos: Proyecto[]) => {
+       this.proyectos = proyectos;
+       for (var i = 0; i < this.proyectos.length; i++) {
+         if (this.proyectos[i].activo = true) {
+           this.proyectosf.push(this.proyectos[i]);
          }
-       });
+       }
+     });
     
       
   }
-
+  obtenerGiro() {
+    return this.organizacionService
+      .getGiro()
+      .subscribe((giro: GiroEmpresa[]) => this.giro = giro );
+  }
+  obtenerAreas() {
+    return this.organizacionService
+      .getAreas()
+      .subscribe((areas: AreaAccion[]) => this.areas = areas );
+  }
+  obtenerRubros() {
+    return this.organizacionService
+      .getRubros()
+      .subscribe((rubros: RubroEmpresa[]) => this.rubros = rubros );
+  }
   eliminar(id) {
     this.proyectoService.eliminar(id).subscribe((res: any) => {
       
@@ -65,6 +99,44 @@ export class ProyectosComponent implements OnInit {
   ngAfterViewInit() {
     Feather.replace();
   }
+  limpiar(){
+  
+    this.proyectoService
+    .getAll()
+     .subscribe((proyectos: Proyecto[]) => {
+       this.proyectos = proyectos;
+       for (var i = 0; i < this.proyectos.length; i++) {
+         if (this.proyectos[i].activo = true) {
+           this.proyectosf.push(this.proyectos[i]);
+         }
+       }
+     });
 
+  }
+  buscar(){
+this.proyectos=[];
+
+this.proyectosf=[];
+
+    var idgiro=this.filtrobusqueda.idGiro;
+    var idarea=this.filtrobusqueda.idAreaAccion;
+
+    var idrubro=this.filtrobusqueda.idRubro;
+
+    this.proyectoService
+    .buscarfiltro(idgiro,idarea,idrubro)
+     .subscribe((proyectos: Proyecto[]) => {
+       this.proyectos = proyectos;
+       for (var i = 0; i < this.proyectos.length; i++) {
+         if (this.proyectos[i].activo = true) {
+           this.proyectosf.push(this.proyectos[i]);
+         }
+       }
+     });
+     console.log(this.proyectos);
+
+console.log(this.proyectosf);
+
+    }
 
 }

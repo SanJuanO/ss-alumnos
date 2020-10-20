@@ -223,3 +223,12 @@ export class AlumnosModel{
   constructor(
   ) { }
 }
+export class filtro{
+
+
+  constructor(
+    public idGiro: string,
+    public idAreaAccion: string,
+    public idRubro: string
+  ) { }
+}

@@ -115,4 +115,55 @@ export class ProyectoService {
     const uri = `${this.api}/AlumnosProyectosAsignados`
     return this.http.post(uri, model);
   }
+
+
+  buscarfiltro(idgiro:string,idarea:string,idrubro:string) {
+ 
+
+    var uri = ``;
+
+if(idgiro==="0" && idarea==="0" && idrubro!="0"){
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros?idRubro=${idrubro}`
+   console.log(uri);
+    return this.http.get(uri);
+}
+else if(idgiro==="0" && idarea!="0" && idrubro==="0"){
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros?idAreaAccion=${idarea}`
+   console.log(uri);
+    return this.http.get(uri);
+}
+else if(idgiro==="0" && idarea!="0" && idrubro!="0"){
+
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros?idAreaAccion=${idarea}&idRubro=${idrubro}`
+   console.log(uri);
+    return this.http.get(uri);
+}
+else if(idgiro!="0" && idarea==="0" && idrubro==="0"){
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros?idGiro=${idgiro}`
+   console.log(uri);
+    return this.http.get(uri);
+}
+else if(idgiro!="0" && idarea==="0" && idrubro!="0"){
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros?idGiro=${idgiro}&idRubro=${idrubro}`
+   console.log(uri);
+    return this.http.get(uri);
+}
+else if(idgiro!="0" && idarea!="0" && idrubro==="0"){
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros?idGiro=${idgiro}&idAreaAccion=${idarea}`
+   console.log(uri);
+    return this.http.get(uri);
+}
+else if(idgiro!="0" && idarea!="0" && idrubro!="0"){
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros?idGiro=${idgiro}&idAreaAccion=${idarea}&idRubro=${idrubro}`
+   console.log(uri);
+   return this.http.get(uri);
+  }
+
+else {
+   uri = `${this.api}/Proyectos/obtenerProyectosFiltros`
+   console.log(uri);
+   return this.http.get(uri);
+}
+
+  }
 }

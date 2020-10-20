@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute   } from '@angular/router';
 import { LoginServices } from '../services/login.service';
 import { SessionService } from '../services/session.service';
 
@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
 public mensaje="";
-  constructor(public session: SessionService,private router: Router,private loginservice: LoginServices){ }
+  constructor(public session: SessionService,private activatedRoute: ActivatedRoute,private router: Router,private loginservice: LoginServices){ }
 
   ngOnInit(): void {
     this.session.Signoff();
@@ -22,7 +22,6 @@ public mensaje="";
   onSubmit(data) {
     var user=$('#email').val();
     var pass=$('#contraseña').val();
-    console.log(user);
 
     this.loginservice.login(user,pass).subscribe((res: any)=>{
 if(res['resultado']==1){
@@ -31,8 +30,17 @@ if(res['resultado']==1){
  
   this.session.setnombre(datosvalue['nombre']);
   this.session.setapellidos(datosvalue['paterno']+datosvalue['materno']);
+  var idobtenido=this.activatedRoute.snapshot.paramMap.get("idProyecto");
+if(idobtenido==null){
+  this.router.navigate(['/dashboard']);
+  console.log(user);
 
-    this.router.navigate(['/dashboard']);
+}else{
+
+  console.log("aLIU");
+
+    this.router.navigate(['/proyectos/ver',idobtenido]);
+}
 
 }else{
   this.mensaje=res['mensaje'];

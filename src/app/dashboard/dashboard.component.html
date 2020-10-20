@@ -14,7 +14,7 @@
                     </h2>
                     <button class="ml-auto flex text-theme-1 dark:text-theme-10" (click)="ngOnInit()" > <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i>  Recargar </button>
                 </div>
-                <div class="grid grid-cols-12 gap-6 mt-5">
+                <!-- <div class="grid grid-cols-12 gap-6 mt-5"  >
                 
              
                     <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
@@ -23,7 +23,6 @@
                                 <div class="flex">
                                     <i data-feather="layout" class="report-box__icon text-theme-12"></i> 
                                     <div class="ml-auto">
-                                        <!-- <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="12% Higher than last month">  {{ ((proyectosactivos.length * 100 )/proyectos.length).toFixed(2)}} % <i data-feather="chevron-up" class="w-4 h-4"></i> </div> -->
                                     </div>
                                 </div>
                                 <div class="text-3xl font-bold leading-8 mt-6"> </div>
@@ -37,7 +36,6 @@
                                 <div class="flex">
                                     <i data-feather="layout" class="report-box__icon text-theme-9"></i> 
                                     <div class="ml-auto">
-                                        <!-- <div class="report-box__indicator bg-theme-6 tooltip cursor-pointer" title="22% Higher than last month">  {{ ((proyectosrechazados.length * 100 )/proyectos.length).toFixed(2)}} % <i data-feather="chevron-down" class="w-4 h-4"></i> </div> -->
                                     </div>
                                 </div>
                                 <div class="text-3xl font-bold leading-8 mt-6"></div>
@@ -46,10 +44,10 @@
                         </div>
                     </div>
                 </div>
-
+ -->
 
                  <!-- BEGIN: Convocatorias Abiertas -->
-               <div class="col-span-12 mt-6">
+               <div class="col-span-12 mt-6" *ngIf="proyecto ==''">
                 <div class="intro-y block sm:flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">
                        Convocatorias
@@ -111,7 +109,7 @@
 
 
                <!-- BEGIN: Weekly Top Products -->
-               <div class="col-span-12 mt-6">
+               <div class="col-span-12 mt-6" *ngIf="proyecto !=''">
                 <div class="intro-y block sm:flex items-center h-10">
                     <h2 class="text-lg font-medium truncate mr-5">
                        Proyectos 
@@ -155,8 +153,51 @@
                 
             </div>
             <!-- END: Weekly Top Products -->
+            <br>
+            <br>
+            <div class="col-span-12 mt-6" *ngIf="proyecto !=''">
 
+            <div class="intro-y flex items-center h-10">
+              <h2 class="text-lg font-medium truncate mr-5">
+                Reportes
+              </h2>
             </div>
+
+
+            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+              <div class="box p-5">
+
+                <table class="table table-report sm:mt-2">
+                  <thead>
+                    <tr>
+
+                      <th class="whitespace-no-wrap">Reporte</th>
+                    
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="intro-x">
+
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">  </div>
+                      </td>
+                     
+                    
+                    </tr>
+
+
+
+                  </tbody>
+                </table>
+                <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirreporte" class="button inline-block bg-theme-1 text-white">Agregar reporte</a> </div>
+
+                </div>
+
+              </div>
+            </div>
+        </div>
+
             <!-- END: General Report -->
 
 
@@ -166,7 +207,27 @@
 
            
         </div>
+        <div class="modal" id="subirreporte">
 
+
+            <div class="modal__content">
+              <form #form="ngForm" (ngSubmit)="subeArchivoreporte()">
+                <div class="p-5 text-center">
+                  <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                  <div class="text-base mt-5">Subir Archivo</div>
+                  <br>
+                  <input type="file" id="Imagen" name="Imagen">
+  
+                </div>
+  
+                <div class="px-5 pb-8 text-center">
+                  <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                  <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
+                </div>
+              </form>
+  
+            </div>
+          </div>
 
 
         
