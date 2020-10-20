@@ -14,6 +14,6 @@ export class CarreraService {
 
 
   getCarreras() {
-    return this.http.get(`${this.baseUrl}/Carreras`);
+    return this.http.get(`${this.baseUrl}/Carreras`, { withCredentials: false });
   }
 }
