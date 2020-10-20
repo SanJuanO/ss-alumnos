@@ -39,7 +39,7 @@ export class AlumnoService {
   getProyectoAlumno(id: string | number) {
     let idalumno=Number(id);
     console.log(idalumno);
-    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/getByIdAlumno?idAlumno=${idalumno}`);
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/getByIdAlumno?idAlumno=${idalumno}`,{ withCredentials: false });
   }
   addAlumno(alumno: Alumno) {
     return this.http.post(`${this.baseUrl}/Alumnos`, alumno);
