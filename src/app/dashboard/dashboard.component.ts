@@ -8,6 +8,9 @@ import { Convocatoria,Tipo } from "../models/convocatoria"
 import { ProyectoService } from '../services/proyecto.service';
 import { AlumnosProyectos } from "../models/proyectos"
 import { SessionService } from '../services/session.service';
+import { AlumnoService } from '../services/alumno.service';
+import { Alumno, AlumnoProyecto } from '../models/alumno';
+import { DocumentosRequeridosAlumnos, DocumentosAlumno, Documentosfile } from "../models/documentosalumnos";
 
 declare var $: any;
 @Component({
@@ -31,8 +34,13 @@ export class DashboardComponent implements OnInit {
 
   public idproyecto:string;
   public proyecto:string;
- 
-  constructor( private organizacionService: OrganizationService, private convocatoriaService: ConvocatoriaServices,private proyectoService: ProyectoService,public session: SessionService) { 
+
+  public documentos: DocumentosRequeridosAlumnos[] = [];
+  public documentoscadena = new DocumentosAlumno();
+  public documentosfile = new Documentosfile()
+
+
+  constructor(private organizacionService: OrganizationService, private convocatoriaService: ConvocatoriaServices, private proyectoService: ProyectoService, public session: SessionService, private alumnoService: AlumnoService,) { 
   
   }
 
@@ -49,6 +57,7 @@ export class DashboardComponent implements OnInit {
      this.obtenerProyectos();
 
     this.obtenerConvocatoria2();
+    this.obtenerdocumentosRequeridos();
 
 
 
@@ -95,7 +104,93 @@ this.proyecto=res["proyectoNombre"];
 });
 }
 
-  
+  obtenerdocumentosRequeridos() {
+    return this.alumnoService
+      .getdocumentosRequeridos()
+      .subscribe((documentos: DocumentosRequeridosAlumnos[]) => this.documentos = documentos);
+  }
+  abrirsubir(id) {
+
+    console.log("dfdsfdsfds" + id);
+    $('#abrirsubir-' + id).modal('show');
+
+  }
+  abrirsubirr() {
+
+
+    $('#abrirsubirr').modal('show');
+
+  }
+
+  subirarchivo() {
+    console.log("subir");
+
+    this.documentosfile.file = this.documentoscadena.file;
+    console.log(this.documentosfile);
+
+    this.alumnoService.subirdocumentos(this.documentosfile).subscribe((res: any) => {
+      console.log(res);
+
+      this.documentoscadena.ruta = res.ruta;
+
+      this.subirarchivoconcadena();
+
+    }, error => {
+      alert(error.error)
+    })
+
+
+  }
+
+  subirarchivoconcadena() {
+
+    this.alumnoService.subirdocumentoscadena(this.documentoscadena).subscribe((res: any) => {
+      console.log(res);
+
+
+    }, error => {
+      alert(error.error)
+    })
+
+
+  }
+  subeArchivoreporte() {
+
+
+  }
+
+  subeArchivo() {
+
+    var selecttedFile = ($("#Imagen"))[0].files[0];
+    var dataString = new FormData();
+    dataString.append("file", selecttedFile);
+
+    $.ajax({
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:4200,https://serviciosocial.gesdesapplication.com/api/DocumentosOrganizaciones/UploadFile',https://localhost:4200",
+        "Access-Control-Allow-Headers": "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method",
+        "Access-Control-Allow-Methods": " POST",
+        "Allow": " POST"
+      },
+      url: "https://serviciosocial.gesdesapplication.com/api/DocumentosAlumnos/UploadFile",
+      type: "POST",
+      data: dataString,
+      contentType: false,
+      processData: false,
+      async: true,
+
+      success: function (data) {
+        if (parseInt(data.resultado)) {
+
+          alert("archivo agregado " + data);
+        }
+      },
+      error: function (data) {
+        alert("Error al agregado archivo" + data);
+      }
+
+    });
+  }
 
 
 }

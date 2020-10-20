@@ -55,5 +55,18 @@ export class AlumnoService {
     return this.http.put(`${this.baseUrl}/Alumnos/${id}`, alumno);
   }
 
+  getdocumentosRequeridos() {
+    const uri = `${this.baseUrl}/DocumentosRequeridosAlumnos`;
+    return this.http.get(uri);
+  }
+
+  subirdocumentos(model) {
+    const uri = `${this.baseUrl}/DocumentosAlumnos/UploadFile`
+    return this.http.post(uri, model);
+  }
+  subirdocumentoscadena(model) {
+    const uri = `${this.baseUrl}/DocumentosAlumnos/saveDocuments`
+    return this.http.post(uri, model);
+  }
 
 }

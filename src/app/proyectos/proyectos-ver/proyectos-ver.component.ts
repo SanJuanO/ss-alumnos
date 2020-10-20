@@ -254,7 +254,7 @@ export class ProyectosVerComponent implements OnInit {
       //console.log(res.message);
       if (res) {
         this.validar = true;
-        this.router.navigate(['/proyectos/ver/' + this.idobtenido]).then();
+        this.router.navigate(['/proyectos/ver/' + this.idobtenido]);
       }
 
     }, error => {
@@ -269,6 +269,18 @@ export class ProyectosVerComponent implements OnInit {
 
   }
 
+
+  abrirsubirr() {
+
+
+    $('#abrirsubirr').modal('show');
+
+  }
+
+  subeArchivoreporte() {
+
+
+  }
 
 }
 
