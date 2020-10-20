@@ -13,6 +13,6 @@ export class FacultadService {
   constructor(private http:HttpClient) { }
 
   getFacultades() {
-    return this.http.get(`${this.baseUrl}/Facultades`);
+    return this.http.get(`${this.baseUrl}/Facultades`, { withCredentials: false });
   }
 }

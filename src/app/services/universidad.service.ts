@@ -14,7 +14,7 @@ export class UniversidadService {
 
 
   getUniversidades() {
-    return this.http.get(`${this.baseUrl}/Universidades`);
+    return this.http.get(`${this.baseUrl}/Universidades`, { withCredentials: false });
   }
 
 

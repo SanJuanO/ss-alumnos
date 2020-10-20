@@ -16,29 +16,29 @@ export class UsuarioServices {
   getUsuarios() {
     const uri = `${this.api}/Usuarios`;
     console.log(uri);
-    return this.http.get(uri);
+    return this.http.get(uri, { withCredentials: false });
  
   } 
    create(model){
     const uri = `${this.api}/Usuarios`
-    return this.http.post(uri, model);
+     return this.http.post(uri, model, { withCredentials: false });
   }
   eliminar(id : string | number){
     const uri = `${this.api}/Usuarios/${id}`;
-    return this.http.delete(uri);
+    return this.http.delete(uri, { withCredentials: false });
   }
   getUniversidad(){
     const uri = `${this.api}/Universidades`;
     console.log(uri);
-    return this.http.get(uri);
+    return this.http.get(uri, { withCredentials: false });
   }
   getUsuarioid(id){
     const uri = `${this.api}/Usuarios/${id}`;
          console.log(uri);
-    return this.http.get(uri);
+    return this.http.get(uri, { withCredentials: false });
   }
   updateusuarios(id: string | number,usuario: Usuario) {
     usuario.id = Number(id);
-    return this.http.put(`${this.api}/Usuarios/${id}`, usuario);
+    return this.http.put(`${this.api}/Usuarios/${id}`, usuario, { withCredentials: false });
   }
 }

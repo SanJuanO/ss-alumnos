@@ -17,7 +17,7 @@ export class LoginServices {
   login(user,pass) {
 
     const uri = `${this.api}/Alumnos/login?email=${user}&contrase%C3%B1a=${pass}`;
-    return this.http.get(uri,user);
+    return this.http.get(uri, { withCredentials: false });
  
   } 
   

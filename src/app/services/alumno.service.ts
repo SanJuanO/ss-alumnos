@@ -39,34 +39,34 @@ export class AlumnoService {
   getProyectoAlumno(id: string | number) {
     let idalumno=Number(id);
     console.log(idalumno);
-    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/getByIdAlumno?idAlumno=${idalumno}`);
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/getByIdAlumno?idAlumno=${idalumno}`, { withCredentials: false });
   }
   addAlumno(alumno: Alumno) {
-    return this.http.post(`${this.baseUrl}/Alumnos`, alumno);
+    return this.http.post(`${this.baseUrl}/Alumnos`, alumno, { withCredentials: false });
   }
 
   deleteAlumno(alumno: Alumno) {
-    return this.http.delete(`${this.baseUrl}/delete.php?idAlumno=${alumno.id}`);
+    return this.http.delete(`${this.baseUrl}/delete.php?idAlumno=${alumno.id}`, { withCredentials: false });
   }
 
   updateAlumno(id: string | number,alumno: Alumno) {
     alumno.id = Number(id);
     alumno.activo = true;
-    return this.http.put(`${this.baseUrl}/Alumnos/${id}`, alumno);
+    return this.http.put(`${this.baseUrl}/Alumnos/${id}`, alumno, { withCredentials: false });
   }
 
   getdocumentosRequeridos() {
     const uri = `${this.baseUrl}/DocumentosRequeridosAlumnos`;
-    return this.http.get(uri);
+    return this.http.get(uri, { withCredentials: false });
   }
 
   subirdocumentos(model) {
     const uri = `${this.baseUrl}/DocumentosAlumnos/UploadFile`
-    return this.http.post(uri, model);
+    return this.http.post(uri, model, { withCredentials: false });
   }
   subirdocumentoscadena(model) {
     const uri = `${this.baseUrl}/DocumentosAlumnos/saveDocuments`
-    return this.http.post(uri, model);
+    return this.http.post(uri, model, { withCredentials: false });
   }
 
 }

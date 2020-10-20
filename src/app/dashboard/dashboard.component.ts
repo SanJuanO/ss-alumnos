@@ -166,18 +166,13 @@ this.proyecto=res["proyectoNombre"];
     dataString.append("file", selecttedFile);
 
     $.ajax({
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:4200,https://serviciosocial.gesdesapplication.com/api/DocumentosOrganizaciones/UploadFile',https://localhost:4200",
-        "Access-Control-Allow-Headers": "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method",
-        "Access-Control-Allow-Methods": " POST",
-        "Allow": " POST"
-      },
       url: "https://serviciosocial.gesdesapplication.com/api/DocumentosAlumnos/UploadFile",
       type: "POST",
       data: dataString,
       contentType: false,
       processData: false,
       async: true,
+      withcredential:false,
 
       success: function (data) {
         if (parseInt(data.resultado)) {
