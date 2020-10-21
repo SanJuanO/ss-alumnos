@@ -101,11 +101,8 @@ console.log(iduser);
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
 this.obtenerproyectoalumno();
-    this.dataTable = $(this.table.nativeElement);
     this.dataTable.DataTable();
-    this.dataTable1 = $(this.table1.nativeElement);
     this.dataTable1.DataTable();
-    this.dataTable2 = $(this.table2.nativeElement);
     this.dataTable2.DataTable();
 
   }
