@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ss-admin": {
+    "ss-alumnos": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ss-admin",
+            "outputPath": "dist/ss-alumnos",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,12 +54,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumError": "10mb"
                 }
               ]
             }
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ss-admin:build"
+            "browserTarget": "ss-alumnos:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ss-admin:build:production"
+              "browserTarget": "ss-alumnos:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ss-admin:build"
+            "browserTarget": "ss-alumnos:build"
           }
         },
         "test": {
@@ -116,18 +116,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ss-admin:serve"
+            "devServerTarget": "ss-alumnos:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ss-admin:serve:production"
+              "devServerTarget": "ss-alumnos:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "ss-admin",
+  "defaultProject": "ss-alumnos",
   "cli": {
     "analytics": "2b53fbe3-dc42-4b58-8969-f4a4be9b9f87"
   }
