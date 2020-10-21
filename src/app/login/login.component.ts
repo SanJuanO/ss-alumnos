@@ -11,11 +11,18 @@ declare var $: any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-public mensaje="";
-  constructor(public session: SessionService,private activatedRoute: ActivatedRoute,private router: Router,private loginservice: LoginServices){ }
+  public idobtenido:string;
+
+  constructor(public session: SessionService,private activatedRoute: ActivatedRoute,private router: Router,private loginservice: LoginServices) {
+    this.activatedRoute.queryParams.subscribe(params => {
+          this.idobtenido = params['idProyecto'];
+      });
+  }
+
+
 
   ngOnInit(): void {
-    this.session.Signoff();
+      this.session.Signoff();
 
   }
 
@@ -30,8 +37,7 @@ if(res['resultado']==1){
  
   this.session.setnombre(datosvalue['nombre']);
   this.session.setapellidos(datosvalue['paterno']+datosvalue['materno']);
-  var idobtenido=this.activatedRoute.snapshot.paramMap.get("idProyecto");
-if(idobtenido==null){
+if(this.idobtenido==null){
   this.router.navigate(['/dashboard']);
   console.log(user);
 
@@ -39,7 +45,7 @@ if(idobtenido==null){
 
   console.log("aLIU");
 
-    this.router.navigate(['/proyectos/ver',idobtenido]);
+    this.router.navigate(['/proyectos/ver',this.idobtenido]);
 }
 
 }else{
