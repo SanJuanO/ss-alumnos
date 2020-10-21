@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
   public idobtenido:string;
+  public mensaje:string="";
 
   constructor(public session: SessionService,private activatedRoute: ActivatedRoute,private router: Router,private loginservice: LoginServices) {
     this.activatedRoute.queryParams.subscribe(params => {
