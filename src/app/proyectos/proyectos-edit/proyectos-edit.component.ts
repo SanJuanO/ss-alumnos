@@ -163,9 +163,6 @@ export class ProyectosEditComponent implements OnInit {
   onSubmit() {
     let model = this.proyectoModel;
    
-    model.listaApoyos = this.listaApoyos;
-    model.listaLineasTrabajo = this.listaLineasTrabajo;
-
     model.activo = true;
 
     console.log(this.listaApoyos);

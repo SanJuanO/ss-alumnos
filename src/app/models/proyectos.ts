@@ -1,41 +1,50 @@
 
 export class Proyecto {
+  
   public proyecto: string;
   public descripcion: string;
   public objetivo: string;
   public idOrganizacion: number;
   public organizacion: string;
-  public idArea: number;
+  public modalidadDistancia: string;
+  public nombreResponsable: string;
+  public puesto: string;
   public area: string;
-  public idRango: number;
-  public rango: string;
-  public idPoblacion: number;
-  public poblacion: string;
-  public beneficioInstitucional: string;
-  public comentarios: string;
-  public recursosEconomicos: boolean;
-  public horasProyecto: number;
-  public descripcionFormacion: string;
-  public constanciaParticipacion: boolean;
-  public descripcionBeneficiosAlumno: string;
-  public descripcionImpactoSocial: string;
-  public indicadoresImpactoSocial: string;
-  public noVacantes: number;
+  public correoResponsable: string;
+  public telefono: string;
+  public justificacionImpactoSocial: string;
+  public plazas480: number;
+  public plazas240: number;
+  public rolPrestador: string;
+  public responsabilidades: string;
   public fechaInicio: string;
   public fechaTermino: string;
+  public lunes: boolean;
+  public martes: boolean;
+  public miercoles: boolean;
+  public jueves: boolean;
+  public viernes: boolean;
+  public sabado: boolean;
+  public domingo: boolean;
+  public horaEntrada: string;
+  public horaSalida: string;
+  public capacitacion: string;
+  public idObjetivoOnu: number;
+  public objetivoOnu: string;
   public idPeriodo: number;
   public periodo: string;
-  public disponible: boolean;
   public idUniversidad: number;
   public universidad: string;
   public idEstadoProyecto: number;
   public estadoProyecto: string;
   public observaciones: string;
+  public organizacionDireccion: string;
   public activo: boolean;
-  public listaApoyos: Array<listaApoyosModel>;
-  public listaLineasTrabajo: Array<listaLineasTrabajoModel>;
-  public id: number
+  public id: number;
+  public competenciasList?: Array<ProyectosCompetencias>;
+  public carrerasList?: Array<ProyectosCarreras>;
   constructor(
+  
   ) { }
 
 }
@@ -230,5 +239,33 @@ export class filtro{
     public idGiro: string,
     public idAreaAccion: string,
     public idRubro: string
+  ) { }
+}
+
+export class ProyectosCompetencias {
+  constructor(
+    public idCompetencia: number,
+    public activo: boolean,
+    public idProyecto?: number,
+    public proyecto?: string,
+    public competencia?: string,
+  ) { }
+}
+export class ProyectosCarreras {
+  constructor(
+    public idCarrera: number,
+    public activo: boolean,
+    public idProyecto?: number,
+    public proyecto?: string,
+    public carrera?: string,
+  ) { }
+}
+
+export class ODS {
+  constructor(
+    public id: number,
+    public ods: string,
+    public activo: boolean,
+    public proyecto?: string,
   ) { }
 }

@@ -29,40 +29,47 @@ export class LoginComponent implements OnInit {
 
   onSubmit(data) {
     var user=$('#email').val();
-    var pass=$('#contraseña').val();
+    var pass = $('#contraseña').val();
 
-    this.loginservice.login(user,pass).subscribe((res: any)=>{
-if(res['resultado']==1){
-  var datosvalue=res['datos'];
-  this.session.setToken(datosvalue['id']);
- 
-  this.session.setnombre(datosvalue['nombre']);
-  this.session.setapellidos(datosvalue['paterno']+datosvalue['materno']);
-if(this.idobtenido==null){
-  this.router.navigate(['/dashboard']);
-  console.log(user);
+    
+    this.loginservice.login(user, pass).subscribe((res: any) => {
+      if (res['resultado'] == 1) {
+        var datosvalue = res['datos'];
+        this.session.setToken(datosvalue['id']);
 
-}else{
+        this.session.setnombre(datosvalue['nombre']);
+        this.session.setapellidos(datosvalue['paterno'] + datosvalue['materno']);
+        if (this.idobtenido == null) {
+          this.router.navigate(['/dashboard']);
+          console.log(user);
 
-  console.log("aLIU");
+        } else {
 
-    this.router.navigate(['/proyectos/ver',this.idobtenido]);
-}
+          console.log("aLIU");
 
-}else{
-  this.mensaje=res['mensaje'];
-  $('#success-modal-preview').modal('show');
+          this.router.navigate(['/proyectos/ver', this.idobtenido]);
+        }
 
-}
+      } else {
+        this.mensaje = res['mensaje'];
+        $('#success-modal-preview').modal('show');
 
-    }, error=>{
+      }
+
+    }, error => {
       alert(error.error)
     })
     
-    
 
-  
+    /*
+    this.loginservice.callSoap2().subscribe((res: any) => {
+      console.log(res);
+    }, error => {
+      console.log(error);
+      //alert(error.error)
+    })*/
 
   }
+
 
 }
