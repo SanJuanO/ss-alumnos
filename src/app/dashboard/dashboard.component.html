@@ -4,233 +4,240 @@
 <!-- BEGIN: Content -->
 
 <div class="content">
-    <div class="grid grid-cols-12 gap-6">
-        <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
-            <!-- BEGIN: General Report -->
-            <div class="col-span-12 mt-8">
-                <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                        Reporte General
-                    </h2>
-                    <button class="ml-auto flex text-theme-1 dark:text-theme-10" (click)="ngOnInit()" > <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i>  Recargar </button>
-                </div>
-                <!-- <div class="grid grid-cols-12 gap-6 mt-5"  >
-                
-             
-                    <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box zoom-in">
-                            <div class="box p-5">
-                                <div class="flex">
-                                    <i data-feather="layout" class="report-box__icon text-theme-12"></i> 
-                                    <div class="ml-auto">
-                                    </div>
-                                </div>
-                                <div class="text-3xl font-bold leading-8 mt-6"> </div>
-                                <div class="text-base text-gray-600 mt-1">Proyectos Activos</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                        <div class="report-box zoom-in">
-                            <div class="box p-5">
-                                <div class="flex">
-                                    <i data-feather="layout" class="report-box__icon text-theme-9"></i> 
-                                    <div class="ml-auto">
-                                    </div>
-                                </div>
-                                <div class="text-3xl font-bold leading-8 mt-6"></div>
-                                <div class="text-base text-gray-600 mt-1">Proyectos Pendientes</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
- -->
-
-                 <!-- BEGIN: Convocatorias Abiertas -->
-               <div class="col-span-12 mt-6" *ngIf="proyecto ==''">
-                <div class="intro-y block sm:flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                       Convocatorias
-                    </h2>
-                </div>
-                <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="convocatoriasalumnosf.length>0; else elseBlock">
-                    <table class="table table-report sm:mt-2">
-                        <thead>
-                            <tr>
-                                
-                                <th class="whitespace-no-wrap">CONVOCATORIAS ALUMNOS</th>
-                                <th class="text-center whitespace-no-wrap">INICIA</th>
-                                <th class="text-center whitespace-no-wrap">TERMINA</th>
-                                <th class="text-center whitespace-no-wrap">STATUS</th>
-                                <th class="text-center whitespace-no-wrap">ACCIÓN</th>
-                            </tr>
-                        </thead>
-                        <tbody *ngFor="let convocatoria of convocatoriasalumnosf">
-                            <tr class="intro-x">
-                                <td >
-                                    <a  class="font-medium whitespace-no-wrap">{{  convocatoria.convocatoria}} </a> 
-                                    <div class="text-gray-600 text-xs whitespace-no-wrap">Descripción {{convocatoria.descripcion}}</div>
-                                </td>
-                                <td class="W-56">
-                                    <div class="flex items-center justify-center text-theme-6"  >
-                                 {{convocatoria.fechaInicio.substr(0,10) }}
-                                    </div>
-                                </td>
-                                <td class="W-56">
-                                    <div class="flex items-center justify-center text-theme-6">
-                                        {{convocatoria.fechaTermino.substr(0,10)}}
-                                    </div>
-                                </td>
-                                <td class="w-40">
-                                   
-                                    <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium" *ngIf="convocatoria.activo==true" >ACTIVA</div>
-                                    <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium" *ngIf="convocatoria.activo==false" >DESACTIVA</div>
-                                    
-                                </td>
-                                <td class="table-report__action w-56">
-                                    <div class="flex justify-center items-center">
-                                        <a class="flex items-center mr-3" [routerLink]="['/proyectos/' ]" > <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Ver Proyectos </a>
-                                        
-                                    </div>
-                                </td>
-                           
-                            </tr>
-                     
-                            
-                            
-                        </tbody>
-                    </table>
-                </div>
-                <ng-template #elseBlock><div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">Sin convocatorias abiertas</div></ng-template>
-              </div>
-            <!-- END: Convocatorias Abiertas -->
-
-
-
-               <!-- BEGIN: Weekly Top Products -->
-               <div class="col-span-12 mt-6" *ngIf="project !=null">
-                <div class="intro-y block sm:flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                       Proyectos 
-                    </h2>
-                    
-                </div>
-                <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                    <table class="table table-report sm:mt-2">
-                        <thead>
-                            <tr>
-                                
-                                <th class="whitespace-no-wrap">PROYECTO</th>
-                                <th class="text-center whitespace-no-wrap">STATUS</th>
-                                <th class="text-center whitespace-no-wrap">ACCIÓN</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="intro-x" >
-                                <td>
-                                  <a class="font-medium whitespace-no-wrap"> {{project.proyectoNombre}}</a> 
-                                </td>
-                     
-                                <td class="w-40">
-                                  <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-12 text-white cursor-pointer font-medium">{{project.estado}}</div>
-     
-                                </td>
-                                <td class="table-report__action w-56">
-                                    <div class="flex justify-center items-center">
-                                        <a class="flex items-center mr-3" [routerLink]="['/proyectos/ver', idproyecto  ]" > <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Ver </a>
-                                        
-                                    </div>
-                                </td>
-                            </tr>
-
-                       
-                            
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
-            </div>
-            <!-- END: Weekly Top Products -->
-            <br>
-            <br>
-            <div class="col-span-12 mt-6" *ngIf="proyecto !=''">
-
-            <div class="intro-y flex items-center h-10">
-              <h2 class="text-lg font-medium truncate mr-5">
-                Reportes
-              </h2>
-            </div>
-
-
-            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-              <div class="box p-5">
-
-                <table class="table table-report sm:mt-2">
-                  <thead>
-                    <tr>
-
-                      <th class="whitespace-no-wrap">Reporte</th>
-                    
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="intro-x">
-
-                      <td>
-                        <div class="ext-base text-xs whitespace-no-wrap">  </div>
-                      </td>
-                     
-                    
-                    </tr>
-
-
-
-                  </tbody>
-                </table>
-                <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirreporte" class="button inline-block bg-theme-1 text-white">Agregar reporte</a> </div>
-
-                </div>
-
-              </div>
-            </div>
+  <div class="modal" id="success-modal-preview-file">
+    <div class="modal__content">
+      <div class="p-5 text-center">
+        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+        <div class="text-base mt-5">Muy bien!</div>
+        <div class="text-basemt-2">¡Se subió el reporte!</div>
+      </div>
+      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-12 gap-6">
+    <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
+      <!-- BEGIN: General Report -->
+      <div class="col-span-12 mt-8">
+        <div class="intro-y flex items-center h-10">
+          <h2 class="text-lg font-medium truncate mr-5">
+            Reporte General
+          </h2>
+          <button class="ml-auto flex text-theme-1 dark:text-theme-10" (click)="ngOnInit()"> <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i>  Recargar </button>
         </div>
+        <!-- <div class="grid grid-cols-12 gap-6 mt-5"  >
 
-            <!-- END: General Report -->
+
+                           <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+                               <div class="report-box zoom-in">
+                                   <div class="box p-5">
+                                       <div class="flex">
+                                           <i data-feather="layout" class="report-box__icon text-theme-12"></i>
+                                           <div class="ml-auto">
+                                           </div>
+                                       </div>
+                                       <div class="text-3xl font-bold leading-8 mt-6"> </div>
+                                       <div class="text-base text-gray-600 mt-1">Proyectos Activos</div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+                               <div class="report-box zoom-in">
+                                   <div class="box p-5">
+                                       <div class="flex">
+                                           <i data-feather="layout" class="report-box__icon text-theme-9"></i>
+                                           <div class="ml-auto">
+                                           </div>
+                                       </div>
+                                       <div class="text-3xl font-bold leading-8 mt-6"></div>
+                                       <div class="text-base text-gray-600 mt-1">Proyectos Pendientes</div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+        -->
+        <!-- BEGIN: Convocatorias Abiertas -->
+        <div class="col-span-12 mt-6" *ngIf="project ==null">
+          <div class="intro-y block sm:flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Convocatorias
+            </h2>
+          </div>
+          <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="convocatoriasalumnosf.length>0; else elseBlock">
+            <table class="table table-report sm:mt-2">
+              <thead>
+                <tr>
+
+                  <th class="whitespace-no-wrap">CONVOCATORIAS ALUMNOS</th>
+                  <th class="text-center whitespace-no-wrap">INICIA</th>
+                  <th class="text-center whitespace-no-wrap">TERMINA</th>
+                  <th class="text-center whitespace-no-wrap">STATUS</th>
+                  <th class="text-center whitespace-no-wrap">ACCIÓN</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let convocatoria of convocatoriasalumnosf">
+                <tr class="intro-x">
+                  <td>
+                    <a class="font-medium whitespace-no-wrap">{{  convocatoria.convocatoria}} </a>
+                    <div class="text-gray-600 text-xs whitespace-no-wrap">Descripción {{convocatoria.descripcion}}</div>
+                  </td>
+                  <td class="W-56">
+                    <div class="flex items-center justify-center text-theme-6">
+                      {{convocatoria.fechaInicio.substr(0,10) }}
+                    </div>
+                  </td>
+                  <td class="W-56">
+                    <div class="flex items-center justify-center text-theme-6">
+                      {{convocatoria.fechaTermino.substr(0,10)}}
+                    </div>
+                  </td>
+                  <td class="w-40">
+
+                    <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium" *ngIf="convocatoria.activo==true">ACTIVA</div>
+                    <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium" *ngIf="convocatoria.activo==false">DESACTIVA</div>
+
+                  </td>
+                  <td class="table-report__action w-56">
+                    <div class="flex justify-center items-center">
+                      <a class="flex items-center mr-3" [routerLink]="['/proyectos/' ]"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Ver Proyectos </a>
+
+                    </div>
+                  </td>
+
+                </tr>
 
 
-           
-              
-            
 
-           
+              </tbody>
+            </table>
+          </div>
+          <ng-template #elseBlock><div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">Sin convocatorias abiertas</div></ng-template>
         </div>
-        <div class="modal" id="subirreporte">
+        <!-- END: Convocatorias Abiertas -->
+        <!-- BEGIN: Weekly Top Products -->
+        <div class="col-span-12 mt-6" *ngIf="projectArray !=null">
+          <div class="intro-y block sm:flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Proyectos
+            </h2>
+
+          </div>
+          <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+            <table class="table table-report sm:mt-2">
+              <thead>
+                <tr>
+
+                  <th class="whitespace-no-wrap">PROYECTO</th>
+                  <th class="text-center whitespace-no-wrap">STATUS</th>
+                  <th class="text-center whitespace-no-wrap">ACCIÓN</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="intro-x" *ngFor="let proyecto of projectArray">
+                  <td>
+                    <a class="font-medium whitespace-no-wrap"> {{proyecto.proyectoNombre}}</a>
+                  </td>
+
+                  <td class="w-40">
+                    <!--1 preregistro,2 Aprobado por empresa, 3 Inscrito,4	Terminado,5	Cancelado,6	Rechazado-->
+                    <div *ngIf="proyecto.idEstado==1" class="py-1 px-2 rounded-full text-center text-xs bg-theme-12 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==2" class="py-1 px-2 rounded-full text-center text-xs bg-theme-11 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==3" class="py-1 px-2 rounded-full text-center text-xs bg-theme-10 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==4" class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==5" class="py-1 px-2 rounded-full text-center text-xs bg-theme-8 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==6" class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                  </td>
+                  <td class="table-report__action w-56">
+                    <div class="flex justify-center items-center">
+                      <a class="flex items-center mr-3" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Ver </a>
+
+                    </div>
+                  </td>
+                </tr>
 
 
-            <div class="modal__content">
-              <form #form="ngForm" (ngSubmit)="subeArchivoreporte()">
-                <div class="p-5 text-center">
-                  <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                  <div class="text-base mt-5">Subir Archivo</div>
-                  <br>
-                  <input type="file" id="Imagen" name="Imagen">
-  
-                </div>
-  
-                <div class="px-5 pb-8 text-center">
-                  <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-                  <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
-                </div>
-              </form>
-  
-            </div>
+
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <!-- END: Weekly Top Products -->
+        <br>
+        <br>
+        <div class="col-span-12 mt-6" *ngIf="project!=null">
+
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
+              Reportes
+            </h2>
           </div>
 
 
-        
+          <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+            <div class="box p-5">
+
+              <table class="table table-report sm:mt-2">
+                <thead>
+                  <tr>
+                    <th class="whitespace-no-wrap">Reporte</th>
+                  </tr>
+                  <tr>
+                    <th class="whitespace-no-wrap">Reporte</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr class="intro-x" *ngFor="let reporte of reportes">
+                    <td>
+                      <div class="ext-base text-xs whitespace-no-wrap">{{reporte.descripcion}}</div>
+                    </td>
+                    <td>
+                      <div class="ext-base text-xs whitespace-no-wrap">{{reporte.fechaCreacion}}</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirreporte" class="button inline-block bg-theme-1 text-white">Agregar reporte</a> </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- END: General Report -->
+
+
+
+
+
+
+
     </div>
+    <div class="modal" id="subirreporte">
+
+
+      <div class="modal__content">
+        <form #form="ngForm" (ngSubmit)="subeArchivoreporte()">
+          <div class="p-5 text-center">
+            <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+            <div class="text-base mt-5">Subir Archivo</div>
+            <br>
+            <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
+
+          </div>
+
+          <div class="px-5 pb-8 text-center">
+            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+
+
+  </div>
 </div>
 
 <!-- END: Content -->

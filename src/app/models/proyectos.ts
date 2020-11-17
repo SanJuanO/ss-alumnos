@@ -41,6 +41,7 @@ export class Proyecto {
   public organizacionDireccion: string;
   public activo: boolean;
   public id: number;
+  public plazas?: number;
   public competenciasList?: Array<ProyectosCompetencias>;
   public carrerasList?: Array<ProyectosCarreras>;
   constructor(

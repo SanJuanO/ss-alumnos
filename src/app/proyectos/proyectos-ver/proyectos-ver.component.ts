@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 import {  AlumnosProyectosAsignadosAddModel, AlumnosModel} from "../../models/proyectos";
 import {Location} from '@angular/common';
-import { Alumno,AlumnoProyecto } from '../../models/alumno';
+import { Alumno,AlumnoProyecto, AlumnosProyectosAsignados } from '../../models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 
 declare var $: any;
@@ -45,10 +45,10 @@ export class ProyectosVerComponent implements OnInit {
   public proyectoalumno:string="";
   public idempresa:string;
   public alumnosAsignar : any;
-
+  public estadoInscripcion = 0;
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0,0);
 
-
+  /*
   @ViewChild('dataTable', { static: false }) table;
   @ViewChild('dataTable1', { static: false }) table1;
   @ViewChild('dataTable2', { static: false }) table2;
@@ -56,7 +56,7 @@ export class ProyectosVerComponent implements OnInit {
   public dataTable1: any;
   public dataTable2: any;
 
-
+  */
   //public alumno: Alumnos[] = [];
 
 
@@ -65,62 +65,63 @@ export class ProyectosVerComponent implements OnInit {
     ,private _location: Location) {
   }
 
-
-
-  obtenerproyectoalumno() {
-     var iduser=Number(this.session.getToken());
-console.log(iduser);
-    this.alumnoService.getProyectoAlumno(iduser).subscribe((res: any) => {
-      console.log(res);
-
-      this.proyectoalumno= res['proyectoNombre'];
-      this.idproyectoalumno= res['idProyecto'];
-
-
-    }, error => {
-    })
-
-
- }
-
-
   ngOnInit(): void {
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
     //this.proyectoService.getProyecto(this.idobtenido).subscribe((proyectoModel: Proyecto) => this.proyectoModel = proyectoModel);
     this.getProyecto(this.idobtenido);
     this.obtenerOrganizaciones();
     this.obtenerProyectosAreas();
-    this.obtenerProyectosRangos();
-    this.obtenerProyectosPoblaciones();
-    this.obtenerPeriodos();
-    this.obtenerUniversidades();
     this.obtenerEstadosProyectos();
-    this.obtenerApoyos();
-    this.obtenerLineasTrabajo();
     this.obtenerSucesos();
     this.getActividadesByIdProyecto();
     this.obtenerAlumnosInscritos();
-this.obtenerproyectoalumno();
+    this.obtenerProyectosAlumno();
+    /*
     this.dataTable.DataTable();
     this.dataTable1.DataTable();
     this.dataTable2.DataTable();
-
+    */
   }
  
   ngAfterViewInit() {
     Feather.replace();
   }
   
-  
+
+  obtenerProyectosAlumno() {
+    var iduser = Number(this.session.getToken());
+    var ido = this.idobtenido;
+    console.log(iduser);
+    this.alumnoService.getProyectosAlumno(iduser).subscribe((res: Array<AlumnosProyectosAsignados>) => {
+      console.log(res);
+      
+
+      if (res != null && res.length > 0) {
+        var i = 0;
+        for (i = 0; i < res.length; i++) {
+          var proyectoAsignado = res[i];
+          console.log(proyectoAsignado);
+          if (proyectoAsignado.idProyecto == ido) {
+            this.estadoInscripcion = proyectoAsignado.idEstado;
+          }
+        }
+        
+      }
+     //this.proyectoalumno = res['proyectoNombre'];
+      
+    }, error => {
+    })
+  }
+
   getProyecto(id) {
 
     this.proyectoService.getProyecto(id).subscribe((res: any[]) => {
 
     this.proyectoModel = <Proyecto><any>res;
-    this.listaApoyos = res['listaApoyos'];
-    this.listaLineasTrabajo = res['listaLineasTrabajo'];
-    this.idApoyo = this.listaApoyos.map(({ idApoyo }) => idApoyo);
-    this.idLineasTrabajo = this.listaLineasTrabajo.map(({ idLineaTrabajo }) => idLineaTrabajo);
+    //this.listaApoyos = res['listaApoyos'];
+    //this.listaLineasTrabajo = res['listaLineasTrabajo'];
+    //this.idApoyo = this.listaApoyos.map(({ idApoyo }) => idApoyo);
+    //this.idLineasTrabajo = this.listaLineasTrabajo.map(({ idLineaTrabajo }) => idLineaTrabajo);
     //console.log(this.idApoyo);
     //console.log(this.idLineasTrabajo);
     })
@@ -275,7 +276,23 @@ this.obtenerproyectoalumno();
 
     }, error => {
     })
+  }
 
+  confirmainscribir() {
+
+    var id = this.session.getToken();
+    var valor = { "idAlumno": Number(id), "idProyecto": Number(this.idobtenido)};
+    this.alumnosAsignar = valor;
+    let model = this.alumnosAsignar;
+    console.log(this.alumnosAsignar);
+
+    this.proyectoService.confirmaInscripcionAlumnoProyecto(this.alumnosAsignar).subscribe((res: any) => {
+      //console.log(res.message);
+      if (res) {
+        this.router.navigate(['/dashboard']);
+      }
+    }, error => {
+    })
  
   }
 

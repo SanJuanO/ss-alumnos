@@ -88,7 +88,7 @@ public idOrganizacion: string;
   obtenerproyectoalumno() {
     var iduser=Number(this.session.getToken());
 console.log(iduser);
-   this.alumnoService.getProyectoAlumno(iduser).subscribe((res: any) => {
+   this.alumnoService.getProyectosAlumno(iduser).subscribe((res: any) => {
      console.log(res);
 this.alumnoproyecto=res;
      this.proyectoalumno= res['proyectoNombre'];

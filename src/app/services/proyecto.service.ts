@@ -115,7 +115,11 @@ export class ProyectoService {
     const uri = `${this.api}/AlumnosProyectosAsignados`
     return this.http.post(uri, model, { withCredentials: false });
   }
-
+  confirmaInscripcionAlumnoProyecto(model) {
+    const uri = `${this.api}/AlumnosProyectosAsignados/confirmarRegistroProyectoAlumno`
+    return this.http.post(uri + "?idProyecto=" + model.idProyecto + "&idAlumno=" + model.idAlumno );
+    //return this.http.put(uri + "?idProyecto=" + model.idProyecto + "&idAlumno=" + model.idAlumno + "&idEstado=" + model.idEstado + "&observaciones=" + model.observaciones);
+  }
 
   buscarfiltro(idgiro:string,idarea:string,idrubro:string) {
  

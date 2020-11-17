@@ -52,4 +52,35 @@ export class respuesta {
 }
 
 
+export class AlumnosProyectosAsignados {
+  public idAlumno: number;
+  public idProyecto: number;
+  public idEstado: number;
+
+  public proyectoNombre?: string;
+  public matricula?: string;
+
+  public correo?: string;
+  public celular?: string;
+  public carrera?: string;
+  public facultad?: string;
+  public universidad?: string;
+  public idOrganizacion?: string;
+  public organizacion?: string;
+  public estado?: string;
+  public alumno?: string;
+  constructor() { }
+}
+
+export class ReportesAlumnos {
+  public idAlumno: number;
+  public idProyecto: number;
+  public ruta?: string;
+  public descripcion?: string;
+  public id?: number;
+  public fechaCreacion?: string;
+  public activo?: boolean;
+  constructor() { }
+}
+
 

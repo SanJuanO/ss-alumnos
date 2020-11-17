@@ -46,8 +46,8 @@
                 <div class=" p-5">
                   <div class="text-base text-gray-600 mt-1">
                     ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?
-                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.modalidadDistancia}}</div>
                   </div>
+                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.modalidadDistancia}}</div>
                 </div>
               </div>
 
@@ -55,8 +55,8 @@
                 <div class=" p-5">
                   <div class="text-base text-gray-600 mt-1">
                     Empresa:
-                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.organizacion}}</div>
                   </div>
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.organizacion}}</div>
                 </div>
               </div>
 
@@ -117,8 +117,8 @@
                 <div class=" p-5">
                   <div class="text-base text-gray-600 mt-1">
                     Objetivo:
-                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.objetivo}}</div>
                   </div>
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.objetivo}}</div>
                 </div>
               </div>
 
@@ -126,28 +126,20 @@
                 <div class=" p-5">
                   <div class="text-base text-gray-600 mt-1">
                     Justifica el impacto social del proyecto:
+                  </div>
                     <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.justificacionImpactoSocial}}</div>
-                  </div>
                 </div>
               </div>
 
               <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
                 <div class=" p-5">
                   <div class="text-base text-gray-600 mt-1">
-                    Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 480 hrs.
-                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas480}}</div>
+                    Plazas de Servicio Social disponibles para el proyecto
                   </div>
+                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas}}</div>
                 </div>
               </div>
 
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base text-gray-600 mt-1">
-                    Plazas de Servicio Social disponibles para el proyecto | Perfil de alumno de 240 hrs.
-                    <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas240}}</div>
-                  </div>
-                </div>
-              </div>
 
             </div>
 
@@ -358,7 +350,7 @@
 
 
       <br>
-      <div class="p-5" id="horizontal-form" *ngIf="proyectoalumno==''">
+      <div class="p-5" id="horizontal-form">
         <div class="preview">
           <div class="intro-y flex items-center h-10">
             <h2 class="text-lg font-medium truncate mr-5">
@@ -373,14 +365,34 @@
                   <div class="px-5 pb-8 text-center">
 
 
-                    <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#inscribirmemodal" class="button  button--lg w-24 inline-block bg-theme-1 text-white">Incribirme</a> </div>
+                    <div class="text-center">
+                      <!--1 preregistro,2 Aprobado por empresa, 3 Inscrito,4	Terminado,5	Cancelado,6	Rechazado-->
+                      <a *ngIf="estadoInscripcion==0" href="javascript:;" data-toggle="modal" data-target="#inscribirmemodal" class="button  button--lg w-24 inline-block bg-theme-1 text-white">Incribirme</a>
+                      <p *ngIf="estadoInscripcion==1" class="button  button--lg inline-block bg-theme-12 text-white"> Te haz postulado a este proyecto </p>
+                      <div *ngIf="estadoInscripcion==2"><p>Te han aceptado a este proyecto confirma tu inscripciòn</p><a href="javascript:;" data-toggle="modal" data-target="#confirmainscribirmemodal" class="button  button--lg inline-block bg-theme-1 text-white mt-5">Confirmar tu inscripciòn</a></div>
+                      <!--<p *ngIf="estadoInscripcion==2" class="button  button--lg inline-block bg-theme-11 text-white"> Te han aceptado a este proyecto confirma tu inscripciòn</p>-->
+                      <p *ngIf="estadoInscripcion==3" class="button  button--lg inline-block bg-theme-10 text-white"> Estàs inscrito a este proyecto </p>
+                      <p *ngIf="estadoInscripcion==4" class="button  button--lg inline-block bg-theme-9 text-white"> Proyecto terminado </p>
+                      <p *ngIf="estadoInscripcion==5" class="button  button--lg inline-block bg-theme-8 text-white"> Cancelado </p>
+                      <p *ngIf="estadoInscripcion==6" class="button  button--lg inline-block bg-theme-6 text-white"> Te han rechazado de este proyecto </p>
+                    </div>
                     <div class="modal" id="inscribirmemodal">
                       <div class="modal__content">
                         <div class="p-5 text-center">
-                          <div class="text-3xl mt-5">Estas seguro de inscribirte a este proyecto?</div>
+                          <div class="text-3xl mt-5">Estas seguro de postularte a este proyecto?</div>
+                          <!--<div class="text-gray-600 mt-2">No podras incribirte a otro proyecto.</div>-->
+                        </div>
+                        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button> <button type="button" data-dismiss="modal" (click)="inscribir()" class="button w-24 bg-theme-1 text-white">Postularme</button> </div>
+                      </div>
+                    </div>
+                    <div class="modal" id="confirmainscribirmemodal">
+                      <div class="modal__content">
+                        <div class="p-5 text-center">
+                          <div class="text-3xl mt-5">¿Estas seguro de confirmar tu inscripción a este proyecto?</div>
                           <div class="text-gray-600 mt-2">No podras incribirte a otro proyecto.</div>
                         </div>
-                        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button> <button type="button" data-dismiss="modal" (click)="inscribir()" class="button w-24 bg-theme-1 text-white">Incribirme</button> </div>
+                        <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+                        <button type="button" data-dismiss="modal" (click)="confirmainscribir()" class="button w-24 bg-theme-1 text-white">Confirmar</button> </div>
                       </div>
                     </div>
                   </div>

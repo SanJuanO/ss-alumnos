@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Alumno } from '../models/alumno';
 import { environment } from "../../environments/environment";
-
+import { Observable } from 'rxjs/Observable';
 
 class DataTablesResponse {
   data: any[];
@@ -36,9 +36,9 @@ export class AlumnoService {
   getAlumno(id: string | number) {
     return this.http.get(`${this.baseUrl}/Alumnos/${id}`);
   }
-  getProyectoAlumno(id: string | number) {
+  getProyectosAlumno(id: string | number) {
     let idalumno=Number(id);
-    console.log(idalumno);
+    //console.log(idalumno);
     return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/getByIdAlumno?idAlumno=${idalumno}`,{ withCredentials: false });
   }
   addAlumno(alumno: Alumno) {
@@ -65,6 +65,21 @@ export class AlumnoService {
   getdocumentosRequeridos() {
     const uri = `${this.baseUrl}/DocumentosRequeridosAlumnos`;
     return this.http.get(uri);
+  }
+  postFile(fileToUpload: File, idAlumno: string, idProyecto: string): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data; charset=utf-8');
+    const endpoint = `${this.baseUrl}/ReportesAlumnos/UploadFile2`;
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('idAlumno', idAlumno);
+    formData.append('idProyecto', idProyecto);
+    return this.http.post(endpoint, formData);
+  }
+
+  getReportsByIdAlumno(idAlumno: string): Observable<any> {
+    const uri = `${this.baseUrl}/ReportesAlumnos/getByIdAlumno`;
+    return this.http.get(uri + "?idAlumno" + idAlumno);
   }
  
   getrespuesta(id: string | number) {

@@ -8,6 +8,8 @@ import { Convocatoria,Tipo } from "../models/convocatoria"
 import { ProyectoService } from '../services/proyecto.service';
 import { AlumnosProyectos } from "../models/proyectos"
 import { SessionService } from '../services/session.service';
+import { AlumnosProyectosAsignados, ReportesAlumnos } from '../models/alumno';
+import { AlumnoService } from '../services/alumno.service';
 
 declare var $: any;
 @Component({
@@ -24,16 +26,20 @@ export class DashboardComponent implements OnInit {
   public tipoModel = new Tipo(1);
   public convocatorias: Convocatoria[] = [];
   public convocatoriasalumnos: Convocatoria[] = [];
-  public project: AlumnosProyectos[] = [];
+  public project: AlumnosProyectosAsignados = null;
+  public projectArray: Array<AlumnosProyectosAsignados> = null;
 
   public convocatoriasf: Convocatoria[] = [];
   public convocatoriasalumnosf: Convocatoria[] = [];
 
   public idproyecto: string;
   public proyecto: string = "";
-  
+  public estadoInscripcion = 0;
+  public fileToUpload: File;
+  public reportes: Array<ReportesAlumnos> = [];
 
-  constructor(private convocatoriaService: ConvocatoriaServices, private proyectoService: ProyectoService, public session: SessionService) {
+
+  constructor(private convocatoriaService: ConvocatoriaServices, private proyectoService: ProyectoService,private alumnoService: AlumnoService, public session: SessionService) {
 
   }
 
@@ -43,7 +49,10 @@ export class DashboardComponent implements OnInit {
     this.convocatoriasf = [];
     this.convocatoriasalumnosf = [];
     this.obtenerProyectos();
-    this.obtenerConvocatoria2();
+    if (this.project == null) {
+      this.obtenerConvocatoria2();
+      this.getReportes();
+    }
   }
 
   ngAfterViewInit() {
@@ -73,17 +82,79 @@ export class DashboardComponent implements OnInit {
     var id = this.session.getToken();
     console.log(id);
 
-    this.proyectoService.getProyectoalumno(id).subscribe((res: any[]) => {
-      this.project = res;
-      this.idproyecto = res["idProyecto"];
-      this.proyecto = res["proyectoNombre"];
+    this.proyectoService.getProyectoalumno(id).subscribe((res: AlumnosProyectosAsignados[]) => {
+      this.projectArray = res;
+
+      if (res != null && res.length > 0) {
+        var i = 0;
+        for (i = 0; i < res.length; i++) {
+          var proyectoAsignado = res[i];
+          console.log(proyectoAsignado);
+          if (proyectoAsignado.idEstado == 3) {
+            this.project = proyectoAsignado;
+            this.estadoInscripcion = proyectoAsignado.idEstado;
+            this.idproyecto = ""+proyectoAsignado.idProyecto;
+            this.proyecto = proyectoAsignado.proyectoNombre;
+          }
+        }
+      }
       console.log(res);
       
     });
 
   }
 
+  
+  //TODO SERGIO
+  abrirsubir() {
+
+    //console.log("dfdsfdsfds" + id);
+    //this.idDocumento = id;
+    $('#subirreporte').modal('show');
+
+  }
+  descargar(id) {
+    var i = 0;
+    var doc = null;
+    for (i = 0; i < this.reportes.length; i++) {
+      if (this.reportes[i].id == id) {
+        doc = this.reportes[i];
+      }
+    }
+    if (doc != null) {
+      let pdfWindow = window.open("")
+      pdfWindow.document.write(
+        "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
+        encodeURI(doc.archivo) + "'></iframe>"
+      )
+    }
+  }
+
+  uploadFile(files: FileList) {
+    this.fileToUpload = files.item(0);
+  }
+
   subeArchivoreporte() {
+    var id = this.session.getToken();
+    this.alumnoService.postFile(this.fileToUpload, id,this.idproyecto).subscribe(data => {
+      if (data.resultado == 1) {
+        $('#subirreporte').modal('hide');
+        $('#success-modal-preview-file').modal('show');
+        location.reload();
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getReportes() {
+    var id = this.session.getToken();
+    this.alumnoService.getReportsByIdAlumno(id).subscribe(data => {
+      this.reportes = data;
+      console.log(this.reportes);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
