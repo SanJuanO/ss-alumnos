@@ -90,4 +90,9 @@ export class AlumnoService {
          console.log(uri);
     return this.http.post(uri,model);
   }
+  aceptaTerminosCondiciones(id) {
+    const uri = `${this.baseUrl}/Alumnos/aceptaTerminosCondiciones`;
+         //console.log(uri);
+    return this.http.post(uri+"?id="+id,id);
+  }
 }

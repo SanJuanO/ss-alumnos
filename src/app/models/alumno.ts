@@ -18,8 +18,10 @@ export class Alumno {
         public numExt: string,
         public numInt: string,
         public activo: boolean,
-        public porcentaje: number,
-        public id?: number,
+      public porcentaje: number,
+      public id?: number,
+      public terminosCondiciones?: boolean,
+
         
     ) { }
 

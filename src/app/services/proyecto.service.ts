@@ -117,7 +117,7 @@ export class ProyectoService {
   }
   confirmaInscripcionAlumnoProyecto(model) {
     const uri = `${this.api}/AlumnosProyectosAsignados/confirmarRegistroProyectoAlumno`
-    return this.http.post(uri + "?idProyecto=" + model.idProyecto + "&idAlumno=" + model.idAlumno );
+    return this.http.post(uri + "?idProyecto=" + model.idProyecto + "&idAlumno=" + model.idAlumno,model );
     //return this.http.put(uri + "?idProyecto=" + model.idProyecto + "&idAlumno=" + model.idAlumno + "&idEstado=" + model.idEstado + "&observaciones=" + model.observaciones);
   }
 

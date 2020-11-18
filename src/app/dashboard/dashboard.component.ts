@@ -6,7 +6,7 @@ import { ConvocatoriaServices } from '../services/convocatoria.service';
 import { Convocatoria,Tipo } from "../models/convocatoria"
 
 import { ProyectoService } from '../services/proyecto.service';
-import { AlumnosProyectos } from "../models/proyectos"
+import { AlumnosProyectos, AlumnosModel } from "../models/proyectos"
 import { SessionService } from '../services/session.service';
 import { AlumnosProyectosAsignados, ReportesAlumnos } from '../models/alumno';
 import { AlumnoService } from '../services/alumno.service';
@@ -37,13 +37,14 @@ export class DashboardComponent implements OnInit {
   public estadoInscripcion = 0;
   public fileToUpload: File;
   public reportes: Array<ReportesAlumnos> = [];
-
+  public alumno: AlumnosModel=null;
 
   constructor(private convocatoriaService: ConvocatoriaServices, private proyectoService: ProyectoService,private alumnoService: AlumnoService, public session: SessionService) {
 
   }
 
   ngOnInit(): void {
+    this.obtenerPerfil();
     this.convocatorias = [];
     this.convocatoriasalumnos = [];
     this.convocatoriasf = [];
@@ -65,14 +66,13 @@ export class DashboardComponent implements OnInit {
       this.convocatoriasalumnos = res;
       console.log(this.convocatoriasalumnos);
       for (var i = 0; i < this.convocatoriasalumnos.length; i++) {
-        /*
-        var fech = Date.parse(this.convocatoriasalumnos[i].fechaTermino.toString());
+        /*var fech = Date.parse(this.convocatoriasalumnos[i].fechaTermino.toString());
         if (fech < Date.now()) {
           this.convocatoriasalumnosf.push(this.convocatoriasalumnos[i]);
         }
         */
         this.convocatoriasalumnosf.push(this.convocatoriasalumnos[i]);
-
+        
       }
 
     })
@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
 
   obtenerProyectos() {
     var id = this.session.getToken();
-    console.log(id);
+    //console.log(id);
 
     this.proyectoService.getProyectoalumno(id).subscribe((res: AlumnosProyectosAsignados[]) => {
       this.projectArray = res;
@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
         var i = 0;
         for (i = 0; i < res.length; i++) {
           var proyectoAsignado = res[i];
-          console.log(proyectoAsignado);
+          //console.log(proyectoAsignado);
           if (proyectoAsignado.idEstado == 3) {
             this.project = proyectoAsignado;
             this.estadoInscripcion = proyectoAsignado.idEstado;
@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
           }
         }
       }
-      console.log(res);
+      //console.log(res);
       
     });
 
@@ -151,10 +151,39 @@ export class DashboardComponent implements OnInit {
     var id = this.session.getToken();
     this.alumnoService.getReportsByIdAlumno(id).subscribe(data => {
       this.reportes = data;
-      console.log(this.reportes);
+      //console.log(this.reportes);
     }, error => {
       console.log(error);
     });
   }
 
+
+  obtenerPerfil() {
+    var id = this.session.getToken();
+    //console.log(id);
+
+    this.alumnoService.getAlumno(id).subscribe((res: AlumnosModel) => {
+      this.alumno = res;
+
+      console.log(res);
+
+    });
+
+  }
+
+  aceptaTerminos() {
+    var id = this.session.getToken();
+    this.alumnoService.aceptaTerminosCondiciones(id).subscribe(data => {
+      console.log(data);
+      if (data["resultado"] == 1) {
+        location.reload();
+      }
+    }, error => {
+      console.log(error);
+    });
+
+  }
+
 }
+
+

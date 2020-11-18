@@ -230,6 +230,7 @@ export class AlumnosModel{
   public porcentaje: number;
   public fechaCreacion: string;
   public activo: boolean;
+  public terminosCondiciones?: boolean;
   constructor(
   ) { }
 }
