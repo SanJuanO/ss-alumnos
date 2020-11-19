@@ -179,38 +179,6 @@
               </div>
             </div>
 
-            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-              <div class="report-box ">
-                <div class="box p-5">
-                  <div class="text-base text-gray-600 mt-1">
-                    Inicio de la prestación de servicio social
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">Fecha inicio: {{proyectoModel.fechaInicio}} Fecha termino: {{proyectoModel.fechaTermino}}</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-              <div class="report-box ">
-                <div class="box p-5">
-                  <div class="text-base text-gray-600 mt-1">
-                    Días hábiles para la prestación de servicio social
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">Fecha inicio: {{proyectoModel.fechaInicio}} Fecha termino: {{proyectoModel.fechaTermino}}</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-              <div class="report-box ">
-                <div class="box p-5">
-                  <div class="text-base text-gray-600 mt-1">
-                    Horarios disponibles para la prestación de servicio social
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">Fecha inicio: {{proyectoModel.fechaInicio}} Fecha termino: {{proyectoModel.fechaTermino}}</div>
-                </div>
-              </div>
-            </div>
 
             <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
               <div class="report-box ">
@@ -234,6 +202,96 @@
                 </div>
               </div>
             </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    ¿Cantidad de horas totales del proyecto?
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.horas}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Inicio de la prestación de servicio social
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">Fecha inicio: {{proyectoModel.fechaInicio}} Fecha termino: {{proyectoModel.fechaTermino}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Horarios disponibles para la prestación de servicio social
+                  </div>
+                  <div class="text-base font-bold leading-8 mt-6">Hora entrada: {{proyectoModel.horaEntrada}} Hora salida: {{proyectoModel.horaSalida}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+              <div class="report-box ">
+                <div class="box p-5">
+                  <div class="text-base text-gray-600 mt-1">
+                    Días hábiles para la prestación de servicio social
+                  </div>
+
+                  <div class="text-base font-bold leading-8 mt-6">
+                    <div *ngIf="proyectoModel.lunes" class="text-base text-gray-600 mt-1">
+                      <div class="flex items-center">
+                        <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                        <span>Lunes</span>
+                      </div>
+                    </div>
+                    <div *ngIf="proyectoModel.martes" class="text-base text-gray-600 mt-1">
+                      <div class="flex items-center">
+                        <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                        <span>Martes</span>
+                      </div>
+                    </div>
+                    <div *ngIf="proyectoModel.miercoles" class="text-base text-gray-600 mt-1">
+                      <div class="flex items-center">
+                        <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                        <span>Miercoles</span>
+                      </div>
+                    </div>
+                    <div *ngIf="proyectoModel.jueves" class="text-base text-gray-600 mt-1">
+                      <div class="flex items-center">
+                        <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                        <span>Jueves</span>
+                      </div>
+                    </div>
+                    <div *ngIf="proyectoModel.viernes" class="text-base text-gray-600 mt-1">
+                      <div class="flex items-center">
+                        <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                        <span>Viernes</span>
+                      </div>
+                    </div>
+                    <div *ngIf="proyectoModel.sabado" class="text-base text-gray-600 mt-1">
+                      <div class="flex items-center">
+                        <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                        <span>Sabado</span>
+                      </div>
+                    </div>
+                    <div *ngIf="proyectoModel.domingo" class="text-base text-gray-600 mt-1">
+                      <div class="flex items-center">
+                        <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                        <span>Domingo</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
 
           </div>
         </div>

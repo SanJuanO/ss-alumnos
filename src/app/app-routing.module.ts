@@ -20,6 +20,8 @@ import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.co
 import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { EmpresaevaluarComponent } from './empresa-evaluar/empresa-evaluar.component';
+import { InfoAlumnoComponent } from './informacionalumno/infoalumno.component';
+import { TerminosCondicionesComponent } from './terminoscondiciones/terminoscondiciones.component';
 
 EmpresasverComponent
 const routes: Routes = [
@@ -44,11 +46,14 @@ const routes: Routes = [
   {path:'empresas/Edit/:id',component:EmpresasEditComponent},
   {path:'empresas/evaluar/:id',component:EmpresaevaluarComponent},
 
+  { path: 'informacionalumno', component: InfoAlumnoComponent },
+  { path: 'terminoscondiciones', component: TerminosCondicionesComponent },
+  
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

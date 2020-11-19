@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Alumno } from '../models/alumno';
+import { Alumno, AlumnoEdit } from '../models/alumno';
 import { environment } from "../../environments/environment";
 import { Observable } from 'rxjs/Observable';
 
@@ -50,6 +50,11 @@ export class AlumnoService {
   }
 
   updateAlumno(id: string | number,alumno: Alumno) {
+    alumno.id = Number(id);
+    alumno.activo = true;
+    return this.http.put(`${this.baseUrl}/Alumnos/${id}`, alumno);
+  }
+  updateAlumno0(id: string | number,alumno: AlumnoEdit) {
     alumno.id = Number(id);
     alumno.activo = true;
     return this.http.put(`${this.baseUrl}/Alumnos/${id}`, alumno);

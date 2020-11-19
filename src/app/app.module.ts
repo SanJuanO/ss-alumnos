@@ -26,7 +26,8 @@ import { EmpresasEditComponent } from './empresas/empresas-edit/empresas-edit.co
 import { EmpresasverComponent } from './empresas/empresas-ver/empresas-ver.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { EmpresaevaluarComponent } from './empresa-evaluar/empresa-evaluar.component';
-
+import { InfoAlumnoComponent } from './informacionalumno/infoalumno.component';
+import { TerminosCondicionesComponent } from './terminoscondiciones/terminoscondiciones.component';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -51,6 +52,8 @@ import { CookieService } from 'ngx-cookie-service';
     EmpresasAddComponent,
     EmpresasEditComponent,
     EmpresasverComponent,
+    InfoAlumnoComponent,
+    TerminosCondicionesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales } from "./alumno";
 
 export class Proyecto {
   
@@ -44,6 +45,7 @@ export class Proyecto {
   public plazas?: number;
   public competenciasList?: Array<ProyectosCompetencias>;
   public carrerasList?: Array<ProyectosCarreras>;
+  public horas?: number;
   constructor(
   
   ) { }
@@ -210,14 +212,14 @@ export class AlumnosProyectosAsignadosAddModel{
 
 export class AlumnosModel{
   public id: number;
-  public nombre: number;
+  public nombre: string;
   public paterno: string;
-  public materno: number;
+  public materno: string;
   public matricula: string;
   public idUniversidad: number;
   public idFacultad: number;
   public idCarrera: number;
-  public idCelular: string;
+  public celular: string;
   public correo: string;
   public cp: string;
   public pais: string;
@@ -231,6 +233,7 @@ export class AlumnosModel{
   public fechaCreacion: string;
   public activo: boolean;
   public terminosCondiciones?: boolean;
+
   constructor(
   ) { }
 }

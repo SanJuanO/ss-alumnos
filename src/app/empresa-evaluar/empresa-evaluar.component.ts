@@ -66,7 +66,7 @@ public idOrganizacion: string;
   public respuestas13: respuesta = new respuesta(1,1,true,"");
   public idproyectoalumno:number;
   public proyectoalumno:string="";
-  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", true,0 , 0);
+  public alumno: Alumno = new Alumno("", "", "", "", 0, 0, 0, "", "", "", "", "", "", "", "", "", "", true,0 ,"","","");
 
   constructor(private org: OrganizationService,private route: ActivatedRoute, private router: Router, 
     private facultadService: FacultadService, private carreraService: CarreraService,

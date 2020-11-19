@@ -1,0 +1,85 @@
+<!-- BEGIN: Mobile Menu -->
+<div class="mobile-menu md:hidden">
+  <div class="mobile-menu-bar">
+    <a [routerLink]="['/dashboard']" class="flex mr-auto">
+      <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+    </a>
+    <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+  </div>
+</div>
+<!-- END: Mobile Menu -->
+<!-- BEGIN: Top Bar -->
+<div class="border-b border-theme-white -mt-10 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10">
+  <div class="top-bar-boxed flex items-center">
+    <!-- BEGIN: Logo -->
+    <a class="-intro-x hidden md:flex">
+      <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="assets/images/logo.png">
+      <span class="text-white text-lg ml-3"> Universidad<span class="font-medium"> Anáhuac</span> </span>
+    </a>
+    <!-- END: Logo -->
+    <!-- BEGIN: Breadcrumb -->
+    <div class="-intro-x breadcrumb breadcrumb--light mr-auto border-theme-white"> <a class="">Application</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a class="breadcrumb--active">Servicio Social</a> </div>
+    <!-- END: Breadcrumb -->
+    <!-- BEGIN: Search -->
+    <!-- BEGIN: Notifications -->
+    <!-- BEGIN: Account Menu -->
+    <div class="intro-x dropdown w-8 h-8 relative">
+      <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
+        <img alt="Servicio Social" src="assets/images/profile-1.jpg">
+      </div>
+      <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
+        <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
+          <div class="p-4 border-b border-theme-40 dark:border-dark-3">
+            <div class="font-medium">{{nombre}} {{apellidos}}</div>
+            <div class="text-xs text-theme-41 dark:text-gray-600">Alumno</div>
+          </div>
+          <div class="p-2 border-t border-theme-40 dark:border-dark-3">
+            <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END: Account Menu -->
+  </div>
+</div>
+<!-- BEGIN: Content -->
+<div class="content" >
+  <div class="p-5" id="horizontal-form">
+    <div class="preview">
+      <div class="intro-y flex items-center h-10">
+        <h2 class="text-lg font-medium truncate mr-5">
+          Terminos y condiciones
+        </h2>
+      </div>
+      <div class="grid grid-cols-12 gap-6 mt-5">
+
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class="report-box ">
+            <div class="box p-5">
+              <div class="px-5 pb-8 text-center">
+
+                <div>
+                  ¿Por qué son importantes?<br />
+                  La normativa legal exige que el usuario tenga conocimiento de las condiciones de contratación de un producto o servicio, por lo que una redacción incompleta o inadecuada puede dar lugar a la imposición de una sanción por parte de un ente público.
+                  <br />
+                  Su importancia también radica en  la confianza que genera en los clientes, ya que mientras más conocimiento tenga el usuario de las condiciones del producto o servicio que se ofrecen mayor será su confianza para realizar la adquisición a través de dicha página web.
+                  <br />
+                  Por ello, resulta recomendable que se establezcan las condiciones de forma clara, es decir, evitando una redacción ambigua u oscura, ya que el usuario debe conocer y entender las reglas a las que se somete. El contenido de dichas condiciones debe incluir de forma detallada y clara cuestiones como la limitación de responsabilidad, plazos de entrega del producto o garantías, con la finalidad de evitar futuros problemas como podrían ser reclamaciones o pleitos por malos entendidos al no especif
+                </div>
+
+                <div class="text-center">
+                  <a (click)="aceptaTerminos()" href="javascript:;" class="button inline-block bg-theme-1 text-white">Aceptar terminos y condiciones</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- END: Content -->
