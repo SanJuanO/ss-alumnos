@@ -98,7 +98,8 @@
                   </td>
                   <td class="table-report__action w-56">
                     <div class="flex justify-center items-center">
-                      <a class="flex items-center mr-3" [routerLink]="['/proyectos/' ]"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Ver Proyectos </a>
+                      <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/' ]">
+                       Ver Proyectos </a>
 
                     </div>
                   </td>
@@ -148,7 +149,7 @@
                   </td>
                   <td class="table-report__action w-56">
                     <div class="flex justify-center items-center">
-                      <a class="flex items-center mr-3" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Ver </a>
+                      <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]">  Ver </a>
 
                     </div>
                   </td>
@@ -191,7 +192,7 @@
                       <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
                     </td>
                     <td>
-                      <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:void(0)" (click)="descargar(reporte.id)">{{reporte.fechaCreacion}}</a></div>
+                      <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:void(0)" (click)="descargar(reporte.id)" >{{reporte.fechaCreacion}}</a><a class="button bg-theme-10 text-white" (click)="descargar(reporte.id)"></a></div>
                     </td>
                   </tr>
                 </tbody>

@@ -64,14 +64,15 @@ export class DashboardComponent implements OnInit {
     model.tipo = 2;
     this.convocatoriaService.getConvocatoriatipo(model).subscribe((res: any[]) => {
       this.convocatoriasalumnos = res;
-      console.log(this.convocatoriasalumnos);
+      //console.log(this.convocatoriasalumnos);
       for (var i = 0; i < this.convocatoriasalumnos.length; i++) {
-        /*var fech = Date.parse(this.convocatoriasalumnos[i].fechaTermino.toString());
-        if (fech < Date.now()) {
+        var fech = Date.parse(this.convocatoriasalumnos[i].fechaTermino.toString().substr(0, 10));
+        var fechI = Date.parse(this.convocatoriasalumnos[i].fechaInicio.toString().substr(0, 10));
+
+        if (fechI < Date.now() && fech > Date.now()) {
           this.convocatoriasalumnosf.push(this.convocatoriasalumnos[i]);
         }
-        */
-        this.convocatoriasalumnosf.push(this.convocatoriasalumnos[i]);
+        //this.convocatoriasalumnosf.push(this.convocatoriasalumnos[i]);
         
       }
 
@@ -165,7 +166,7 @@ export class DashboardComponent implements OnInit {
     this.alumnoService.getAlumno(id).subscribe((res: AlumnosModel) => {
       this.alumno = res;
 
-      console.log(res);
+      //console.log(res);
 
     });
 
@@ -174,7 +175,7 @@ export class DashboardComponent implements OnInit {
   aceptaTerminos() {
     var id = this.session.getToken();
     this.alumnoService.aceptaTerminosCondiciones(id).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       if (data["resultado"] == 1) {
         location.reload();
       }
