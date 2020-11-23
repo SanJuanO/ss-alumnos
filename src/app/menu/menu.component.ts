@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 public nombre="";
 public id=1;
-
 public apellidos="";
   constructor(private router: Router,public session: SessionService) { 
     if(this.session.getToken()==""){

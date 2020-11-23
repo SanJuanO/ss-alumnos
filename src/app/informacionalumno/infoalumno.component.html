@@ -2,7 +2,7 @@
 <div class="mobile-menu md:hidden">
   <div class="mobile-menu-bar">
     <a [routerLink]="['/dashboard']" class="flex mr-auto">
-      <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+      <!--<img alt="Servicio Social" class="w-6" src="assets/images/logo.png">-->
     </a>
     <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
   </div>
@@ -13,7 +13,7 @@
   <div class="top-bar-boxed flex items-center">
     <!-- BEGIN: Logo -->
     <a class="-intro-x hidden md:flex">
-      <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="assets/images/logo.png">
+      <!--<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="assets/images/logo.png">-->
       <span class="text-white text-lg ml-3"> Universidad<span class="font-medium"> Anáhuac</span> </span>
     </a>
     <!-- END: Logo -->
@@ -25,7 +25,8 @@
     <!-- BEGIN: Account Menu -->
     <div class="intro-x dropdown w-8 h-8 relative">
       <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
-        <img alt="Servicio Social" src="assets/images/profile-1.jpg">
+        <!--<img alt="Servicio Social" src="assets/images/profile-1.jpg">-->
+        <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
       </div>
       <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
         <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
@@ -152,10 +153,10 @@
       <h2 class="text-lg font-medium mr-auto">
         Completar informacion
       </h2>
-      <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <!--<a routerLink="/alumnos" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>-->
-        <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
-      </div>
+      <!--
+    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+      <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
+    </div>-->
     </div>
 
 
@@ -306,14 +307,14 @@
                 </div>
               </div>
               <!--
-              <div class="relative mt-8">
+            <div class="relative mt-8">
+              <div>
                 <div>
-                  <div>
-                    <label>Contraseña*</label>
-                    <input type="password" class="input  w-full border mt-2 " placeholder="" name="password" [(ngModel)]="alumno.password" [ngModelOptions]="{standalone: true}">
-                  </div>
+                  <label>Contraseña*</label>
+                  <input type="password" class="input  w-full border mt-2 " placeholder="" name="password" [(ngModel)]="alumno.password" [ngModelOptions]="{standalone: true}">
                 </div>
-              </div>-->
+              </div>
+            </div>-->
 
               <div class="relative mt-8">
                 <div>
@@ -459,6 +460,15 @@
 
         </div>
 
+      </div>
+    </div>
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+      <h2 class="text-lg font-medium mr-auto">
+        <!--Completar informacion-->
+      </h2>
+      <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <!--<a routerLink="/alumnos" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>-->
+        <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
       </div>
     </div>
   </form>

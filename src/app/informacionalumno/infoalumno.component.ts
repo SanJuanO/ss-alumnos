@@ -12,6 +12,7 @@ import { Facultad } from "../models/facultad";
 import { AreasVidaUniversitaria, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales, ModalidadesTrabajo } from '../models/alumno';
 import { ModalidadesTrabajoService } from '../services/modalidadestrabajo.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AreasVidaUniversitariaService } from '../services/areasvidauniversitaria.service';
 
 declare var $: any;
 
@@ -39,11 +40,12 @@ export class InfoAlumnoComponent implements OnInit {
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
   public listaModalidadesTrabajo: ModalidadesTrabajo[] = [];
-  public idsPasados: any;
-  public idsActuales: any;
+  public idsPasados: any="";
+  public idsActuales: any="";
   public idAlumno: string;
   public idobtenido: string;
   constructor(private alumnoService: AlumnoService, public session: SessionService,
+    private areasVidaUniversitaria: AreasVidaUniversitariaService,
     private facultadService: FacultadService, private carreraService: CarreraService,
     private universidadService: UniversidadService, private modalidadesTrabajoService: ModalidadesTrabajoService,
     private activatedRoute: ActivatedRoute, private router: Router,
@@ -145,11 +147,11 @@ export class InfoAlumnoComponent implements OnInit {
   }
   
   obtenerAreasVidaUniversitaria() {
-    /*
+    
     return this.areasVidaUniversitaria
       .getAreasVidaUniversitaria()
       .subscribe((listaAreasUniversidad: AreasVidaUniversitaria[]) => this.listaAreasUniversidad = listaAreasUniversidad);
-      */
+      
   }
   
   toggleAreasVidaUniversitariaParticipado(checked, id) {

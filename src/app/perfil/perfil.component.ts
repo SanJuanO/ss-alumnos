@@ -8,6 +8,8 @@ import { Usuario } from "../models/usuario"
 import { SessionService } from '../services/session.service';
 
 import { ProyectoService } from '../services/proyecto.service';
+import { AlumnoService } from '../services/alumno.service';
+import { AlumnoEdit, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales } from '../models/alumno';
 
 declare var $: any;
 @Component({
@@ -16,21 +18,50 @@ declare var $: any;
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  public usuarios = new Usuario("","","","","",1,1,false);
+  public alumnosAreasVidaUniviresitariaParticipado: AlumnosAreasVidaUniversitariaParticipado[] = [];
+  public alumnosAreasVidaUniviresitariaActuales: AlumnosAreasVidaUniversitariaActuales[] = [];
 
-  constructor( private usuarioservices: UsuarioServices,public session: SessionService) { 
+  public alumno: AlumnoEdit = new AlumnoEdit("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", false, true, this.alumnosAreasVidaUniviresitariaParticipado, this.alumnosAreasVidaUniviresitariaParticipado,0,"","","");
+  public idsPasados: any = "";
+  public idsActuales: any = "";
+
+
+  constructor(private alumnoService: AlumnoService, public session: SessionService) { 
   
   }
 
 
   ngOnInit(): void {
     var id=this.session.getToken();
-console.log(id);
-    this.usuarioservices.getUsuarioid(id).subscribe((usuarios: Usuario) => this.usuarios = usuarios);
+    this.obtenerPerfil();
 
+  }
+  obtenerPerfil() {
+    var id = this.session.getToken();
 
- 
+    this.alumnoService.getAlumno(id).subscribe((res: AlumnoEdit) => {
+      this.alumno = res;
+      if (res.fechaEstimadaGraduacionString != "0001-01-01") {
+        this.alumno.fechaEstimadaGraduacion = res.fechaEstimadaGraduacionString;
+      } else {
+        this.alumno.fechaEstimadaGraduacion = "";
+      }
+      if (res.fechaNacimientoString != "0001-01-01") {
+        this.alumno.fechaNacimiento = res.fechaNacimientoString;
+      } else {
+        this.alumno.fechaNacimiento = "";
+      }
+      if (res.fechaInicioServicioSocialString != "0001-01-01") {
+        this.alumno.fechaInicioServicioSocial = res.fechaInicioServicioSocialString;
+      } else {
+        this.alumno.fechaInicioServicioSocial = "";
+      }
+      this.idsPasados = this.alumno.listaAreaVidaUniversitariaParticipado.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
+      this.idsActuales = this.alumno.listaAreaVidaUniversitariaActuales.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
 
+      console.log(this.alumno);
+      console.log(res);
+    });
 
   }
 
