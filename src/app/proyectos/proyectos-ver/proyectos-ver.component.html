@@ -114,7 +114,7 @@
                 </div>
               </div>
 
-              <div routerLink="/proyectos" class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+              <div  class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
                 <div class=" p-5">
                   <div class="text-base text-gray-600 mt-1">Descripciòn del proyecto:</div>
 
@@ -182,19 +182,28 @@
             </div>
 
 
-            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+            <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
               <div class="report-box ">
                 <div class="box p-5">
                   <div class="text-base text-gray-600 mt-1">
                     ¿El alumno recibe capacitación/formación por parte de la Institución?
                   </div>
-                  <div *ngIf="proyectoModel.capacitacion; else elseBlock" class="text-base font-bold leading-8 mt-6">Si</div>
-                  <ng-template #elseBlock><div *ngIf="proyectoModel.capacitacion; else elseBlock1" class="text-base font-bold leading-8 mt-6">No</div></ng-template>
+                  <div *ngIf="proyectoModel.capacitacion; else elseBlock" class="text-base font-bold leading-8 mt-6">
+                    Si<br />
+                    Tipo de capacitaciòn:<br>
+                    {{proyectoModel.razonCapacitacion}}
+                  </div>
+                  <ng-template #elseBlock><div *ngIf="proyectoModel.capacitacion; else elseBlock1" class="text-base font-bold leading-8 mt-6">
+                      No<br />
+                      Razòn por la que no ofrece capacitaciòn:<br>
+                      {{proyectoModel.razonCapacitacion}}
+                    </div>
+                  </ng-template>
                 </div>
               </div>
             </div>
 
-            <div routerLink="/proyectos" class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+            <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
               <div class="report-box ">
                 <div class="box p-5">
                   <div class="text-base text-gray-600 mt-1">
