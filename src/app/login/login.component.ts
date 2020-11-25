@@ -87,11 +87,6 @@ export class LoginComponent implements OnInit {
       console.log("false nombre");
       return false;
 
-    } else if (this.alumno.matricula == null || this.alumno.matricula == "") {
-
-      console.log("false matricula");
-      return false;
-
     } else if (this.alumno.paterno == null || this.alumno.paterno == "") {
 
       console.log("false paterno");
@@ -102,15 +97,47 @@ export class LoginComponent implements OnInit {
       console.log("false materno");
       return false;
 
+    } else if (this.alumno.matricula == null || this.alumno.matricula == "") {
+
+      console.log("false matricula");
+      return false;
+
+    } else if (this.alumno.idUniversidad == 0) {
+
+      console.log("false id universidad");
+      return false;
+
+    } else if (this.alumno.idFacultad == 0) {
+
+      console.log("false id facultad");
+      return false;
+
+    } else if (this.alumno.idCarrera== 0) {
+
+      console.log("false id carrera");
+      return false;
+
     }else if (this.alumno.porcentaje == 0) {
 
       console.log("false porcentaje");
       return false;
 
-    }
-    else if (this.alumno.correoPersonal == null || this.alumno.correoPersonal == "") {
+    } else if (this.alumno.noCuatrimestreSemestre == 0) {
 
-      console.log("false porcentaje");
+      console.log("false no semestre cuatrimestre");
+      return false;
+
+    } else if (this.alumno.esquemaPeriodo == null || this.alumno.esquemaPeriodo == "") {
+      console.log("false esquema de periodo");
+      return false;
+
+    }else if (this.alumno.generacion == null || this.alumno.generacion == "") {
+
+      console.log("false generacion");
+      return false;
+    }
+    else if (this.alumno.fechaEstimadaGraduacion == null || this.alumno.fechaEstimadaGraduacion == "") {
+      console.log("false fecha graduacion estimada");
       return false;
 
     }
@@ -119,24 +146,15 @@ export class LoginComponent implements OnInit {
       console.log("false porcentaje");
       return false;
 
-    } else if (this.alumno.esquemaPeriodo == null || this.alumno.esquemaPeriodo == "") {
-      console.log("false esquema de periodo");
+    }else if (this.alumno.correoPersonal == null || this.alumno.correoPersonal == "") {
+
+      console.log("false porcentaje");
       return false;
 
-    } else if (this.alumno.generacion == null || this.alumno.generacion == "") {
-
-      console.log("false generacion");
-      return false;
-    }
-    else if (this.alumno.celular == null || this.alumno.celular == "") {
+    }else if (this.alumno.celular == null || this.alumno.celular == "") {
 
       console.log("false celular");
       return false;
-    }
-    else if (this.alumno.fechaEstimadaGraduacion == null || this.alumno.fechaEstimadaGraduacion == "") {
-      console.log("false fecha graduacion estimada");
-      return false;
-
     }
     else if (this.alumno.fechaNacimiento == null || this.alumno.fechaNacimiento == "") {
       console.log("false fecha nacimiento");

@@ -41,6 +41,9 @@ export class AlumnoService {
     //console.log(idalumno);
     return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/getByIdAlumno?idAlumno=${idalumno}`,{ withCredentials: false });
   }
+  updateHorasACuplirEnProyecto(id: string | number,horas :string|number) {
+    return this.http.put(`${this.baseUrl}/AlumnosProyectosAsignados/actualizaNoHorasACumplirAlumno?id=${id}&horas=${horas}`,{ withCredentials: false });
+  }
   addAlumno(alumno: Alumno) {
     return this.http.post(`${this.baseUrl}/Alumnos`, alumno);
   }
@@ -95,9 +98,9 @@ export class AlumnoService {
          console.log(uri);
     return this.http.post(uri,model);
   }
-  aceptaTerminosCondiciones(id) {
+  aceptaTerminosCondiciones(id,asistio) {
     const uri = `${this.baseUrl}/Alumnos/aceptaTerminosCondiciones`;
-         //console.log(uri);
-    return this.http.post(uri+"?id="+id,id);
+    //console.log(uri);
+    return this.http.post(uri + "?id=" + id + "&asistio=" + asistio, id);
   }
 }

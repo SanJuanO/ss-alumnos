@@ -115,6 +115,7 @@ export class respuesta {
 
 
 export class AlumnosProyectosAsignados {
+  public id: number;
   public idAlumno: number;
   public idProyecto: number;
   public idEstado: number;
@@ -131,6 +132,8 @@ export class AlumnosProyectosAsignados {
   public organizacion?: string;
   public estado?: string;
   public alumno?: string;
+  public noHoras?: number;
+
   constructor() { }
 }
 

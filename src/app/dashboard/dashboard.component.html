@@ -3,7 +3,7 @@
 
 <!-- BEGIN: Content -->
 
-<div class="content" >
+<div class="content">
   <div class="modal" id="success-modal-preview-file">
     <div class="modal__content">
       <div class="p-5 text-center">
@@ -14,6 +14,18 @@
       <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
   </div>
+
+  <div class="modal" id="success-modal-actualizaHoras">
+    <div class="modal__content">
+      <div class="p-5 text-center">
+        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+        <div class="text-base mt-5">¡Muy bien!</div>
+        <div class="text-basemt-2">¡Se actualizo las horas a cumplir en el proyecto!</div>
+      </div>
+      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+  </div>
+
   <div class="grid grid-cols-12 gap-6">
     <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
       <!-- BEGIN: General Report -->
@@ -99,7 +111,8 @@
                   <td class="table-report__action w-56">
                     <div class="flex justify-center items-center">
                       <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/' ]">
-                       Ver Proyectos </a>
+                        Ver Proyectos
+                      </a>
 
                     </div>
                   </td>
@@ -148,7 +161,7 @@
                     <div *ngIf="proyecto.idEstado==6" class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
                   </td>
                   <td class="table-report__action w-56">
-                    <div class="flex justify-center items-center">
+                    <div class="flex justify-center items-center" *ngIf="proyecto.idEstado!=5 && proyecto.idEstado!=6 ">
                       <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]">  Ver </a>
 
                     </div>
@@ -171,6 +184,33 @@
 
           <div class="intro-y flex items-center h-10">
             <h2 class="text-lg font-medium truncate mr-5">
+              Cantidad de horas a cumplir en el proyecto "{{project.proyectoNombre}}"
+            </h2>
+          </div>
+
+
+          <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+            <div class="box p-5">
+
+              <div class="text-center" *ngIf="bandNoHoras && project!=null">
+                <input type="text" class="input  w-64 border mt-2" name="noHoras" [(ngModel)]="noHoras" [ngModelOptions]="{standalone: true}" placeholder="cantidad de horas a cumplir en el proyecto">
+                <br />
+                <a href="javascript:;" (click)="actualizaHoras()" class="button inline-block bg-theme-1 text-white">Confirmar cantidad de horas a cumplir</a>
+              </div>
+              <div class="text-center" *ngIf="!bandNoHoras  && project!=null">
+                <h3><b>{{noHoras}} Horas a cumplir en este proyecto.</b></h3>
+                <br />
+                <label>Si necesitas modificar la cantidad de horas a cumplir en este proyecto solicitalo con el coordinador de servicio social </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-span-12 mt-6" *ngIf="project!=null">
+
+          <div class="intro-y flex items-center h-10">
+            <h2 class="text-lg font-medium truncate mr-5">
               Reportes proyecto "{{project.proyectoNombre}}"
             </h2>
           </div>
@@ -186,13 +226,13 @@
                     <th class="whitespace-no-wrap">Fecha</th>
                   </tr>
                 </thead>
-                <tbody >
+                <tbody>
                   <tr class="intro-x" *ngFor="let reporte of reportes; let i=index">
                     <td>
                       <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
                     </td>
                     <td>
-                      <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:void(0)" (click)="descargar(reporte.id)" >{{reporte.fechaCreacion}}</a><button class="button" (click)="descargar(reporte.id)"><img src="assets/images/download2.png" width="30"/>descargar </button></div>
+                      <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:void(0)" (click)="descargar(reporte.id)">{{reporte.fechaCreacion}}</a><button class="button" (click)="descargar(reporte.id)"><img src="assets/images/download2.png" width="30" />descargar </button></div>
                     </td>
                   </tr>
                 </tbody>

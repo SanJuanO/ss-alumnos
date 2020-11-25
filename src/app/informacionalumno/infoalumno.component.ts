@@ -44,18 +44,22 @@ export class InfoAlumnoComponent implements OnInit {
   public idsActuales: any="";
   public idAlumno: string;
   public idobtenido: string;
+
   constructor(private alumnoService: AlumnoService, public session: SessionService,
     private areasVidaUniversitaria: AreasVidaUniversitariaService,
     private facultadService: FacultadService, private carreraService: CarreraService,
     private universidadService: UniversidadService, private modalidadesTrabajoService: ModalidadesTrabajoService,
     private activatedRoute: ActivatedRoute, private router: Router,
   ) {
+    /*
     this.activatedRoute.queryParams.subscribe(params => {
       this.idobtenido = params['idProyecto'];
-    });
+    });*/
   }
 
   ngOnInit(): void {
+    this.idobtenido = <string><any>(this.activatedRoute.snapshot.paramMap.get("idProyecto"));
+
     this.nombre = this.session.getnombre();
     this.apellidos = this.session.getapellidos();
     this.obtenerPerfil();
@@ -65,6 +69,8 @@ export class InfoAlumnoComponent implements OnInit {
     this.obtenerModalidadesTrabajo()
     this.obtenerAreasVidaUniversitaria();
     //console.log(this.alumno);
+    //console.log("idObtenido: " + this.idobtenido)
+
   }
 
   ngAfterViewInit() {
@@ -98,18 +104,6 @@ export class InfoAlumnoComponent implements OnInit {
       console.log(res);
     });
 
-  }
-
-  aceptaTerminos() {
-    var id = this.session.getToken();
-    this.alumnoService.aceptaTerminosCondiciones(id).subscribe(data => {
-      console.log(data);
-      if (data["resultado"] == 1) {
-        location.reload();
-      }
-    }, error => {
-      console.log(error);
-    });
   }
 
   obtenerUniversidades() {

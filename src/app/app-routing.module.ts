@@ -47,7 +47,9 @@ const routes: Routes = [
   {path:'empresas/evaluar/:id',component:EmpresaevaluarComponent},
 
   { path: 'informacionalumno', component: InfoAlumnoComponent },
+  { path: 'informacionalumno/:idProyecto', component: InfoAlumnoComponent },
   { path: 'terminoscondiciones', component: TerminosCondicionesComponent },
+  { path: 'terminoscondiciones/:idProyecto', component: TerminosCondicionesComponent },
   
 
 ];

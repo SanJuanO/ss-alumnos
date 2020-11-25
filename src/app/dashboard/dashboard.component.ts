@@ -37,7 +37,9 @@ export class DashboardComponent implements OnInit {
   public estadoInscripcion = 0;
   public fileToUpload: File;
   public reportes: Array<ReportesAlumnos> = [];
-  public alumno: AlumnosModel=null;
+  public alumno: AlumnosModel = null;
+  public noHoras: number = 0;
+  public bandNoHoras: boolean = true;
 
   constructor(private convocatoriaService: ConvocatoriaServices, private proyectoService: ProyectoService,private alumnoService: AlumnoService, public session: SessionService) {
 
@@ -85,7 +87,7 @@ export class DashboardComponent implements OnInit {
 
     this.proyectoService.getProyectoalumno(id).subscribe((res: AlumnosProyectosAsignados[]) => {
       this.projectArray = res;
-
+      console.log(this.projectArray);
       if (res != null && res.length > 0) {
         var i = 0;
         for (i = 0; i < res.length; i++) {
@@ -96,6 +98,10 @@ export class DashboardComponent implements OnInit {
             this.estadoInscripcion = proyectoAsignado.idEstado;
             this.idproyecto = ""+proyectoAsignado.idProyecto;
             this.proyecto = proyectoAsignado.proyectoNombre;
+            this.noHoras = proyectoAsignado.noHoras;
+            if (this.noHoras > 0) {
+              this.bandNoHoras = false;
+            }
           }
         }
       }
@@ -172,6 +178,22 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  actualizaHoras() {
+    console.log(this.project.id + " " + this.noHoras)
+    //console.log(id);
+    
+    this.alumnoService.updateHorasACuplirEnProyecto(this.project.id, this.noHoras).subscribe((res) => {
+      
+      if (res) {
+        $('#success-modal-actualizaHoras').modal('show');
+        location.reload();
+      }
+      //console.log(res);
+
+    });
+
+  }
+  /*
   aceptaTerminos() {
     var id = this.session.getToken();
     this.alumnoService.aceptaTerminosCondiciones(id).subscribe(data => {
@@ -184,7 +206,7 @@ export class DashboardComponent implements OnInit {
     });
 
   }
-
+  */
 }
 
 
