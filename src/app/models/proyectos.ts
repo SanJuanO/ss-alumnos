@@ -47,6 +47,8 @@ export class Proyecto {
   public carrerasList?: Array<ProyectosCarreras>;
   public horas?: number;
   public razonCapacitacion?: string;
+  public imagen?: string;
+  public imagenArchivo?: string;
   constructor(
   
   ) { }
