@@ -4,77 +4,286 @@
 <!-- BEGIN: Content -->
 
 <div class="content">
-<br>
-<br>
-<br>
-<div class="intro-y flex items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-Perfil
+  <br>
+  <br>
+  <br>
+  <!--<div class="intro-y flex items-center mt-8">
+    <h2 class="text-lg font-medium mr-auto text-theme-11">
+      Perfil
+    </h2>
+  </div>-->
 
-</h2>
+  <div class="intro-y box mt-5">
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5 sm:grid grid-cols-2 gap-2">
+      <div class="font-medium text-lg">
+        Información Personal
+      </div>
+      <div class="font-medium float-right">
+        <a class="button inline-block bg-theme-1 text-white" [routerLink]="['/informacionalumno']" style="float:right">Editar</a>
+      </div>
+
+    </div>
+    <div class="p-5" id="horizontal-form">
+      <div class="preview">
+
+        
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-3 gap-2">
+
+            <div class="relative mt-8">
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Nombre</div>
+                <div >{{alumno.nombre}}</div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Apellido Paterno</div>
+                <div>{{alumno.paterno}} </div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Apellido Materno</div>
+                <div>{{alumno.materno}} </div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">ID Matrícula</div>
+                <div>{{alumno.matricula}} </div>
+               </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Universidad</div>
+                <div>{{alumno.universidad}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Facultad</div>
+                <div>{{alumno.facultad}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Carrera</div>
+                <div>{{alumno.carrera}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Porcentaje Academico</div>
+                <div>{{alumno.porcentaje}}%</div>
+              </div>
+            </div>
+            
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Número de Semestre/Cuatrimestre
+                </div>
+                <div>{{alumno.noCuatrimestreSemestre}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  ¿Tu carrera es semestral o cuatrimestral?
+                </div>
+                <div>{{alumno.esquemaPeriodo}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Generación*
+                </div>
+                <div>{{alumno.generacion}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Fecha estimada de graduación
+                </div>
+                <div>{{alumno.fechaEstimadaGraduacion}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Correo Institucional
+                </div>
+                <div>{{alumno.correoInstitucional}}</div>
+              </div>
+            </div>
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Correo Personal
+                </div>
+                <div>{{alumno.correoPersonal}}</div>
+              </div>
+            </div>
+            
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Teléfono de Contacto
+                </div>
+                <div>{{alumno.celular}}</div>
+              </div>
+            </div>
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Fecha de Nacimiento
+                </div>
+                <div>{{alumno.fechaNacimiento}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Sexo
+                </div>
+                <div>{{alumno.sexo}}</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <br>
+
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+          <h2 class="font-medium text-base mr-auto">
+            Información Complementaria
+          </h2>
+        </div>
+
+
+        <div class="mt-3">
+          <div class="sm:grid grid-cols-2 gap-2">
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  ¿Has participado en ASUA?:
+                </div>
+                <div *ngIf="alumno.participacionAsua=='si'">Sí</div>
+                <div *ngIf="alumno.participacionAsua=='no'">No</div>
+              </div>
+            </div>
+
+
+            <div class="relative mt-8">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  ¿Actualmente trabajas?:
+                </div>
+                <div *ngIf="alumno.trabajas=='si'">Sí</div>
+                <div *ngIf="alumno.trabajas=='no'">No</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8" *ngIf="alumno.trabajas=='si'">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  ¿Bajo qué modalidad trabajas?
+                </div>
+                <div>{{alumno.modalidadTrabajo}}</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8" *ngIf="alumno.trabajas=='si'">
+              <div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  ¿A partir de qué semestre / cuatrimestre comenzaste a trabajar?
+                </div>
+                <div>{{alumno.cuatrimestreComienzoTrabajo}}</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="sm:grid grid-cols-1 gap-2">
+            <div class="relative mt-8">
+              <div>
+                <label class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  Indica en cuál(es) área(s) de Vida Universitaria has participado
+                </label>
+              </div>
+              <div *ngFor="let areasParticipado of alumno.listaAreaVidaUniversitariaParticipado" class="text-base text-gray-600 mt-1">
+                <div class="flex items-center">
+                  <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                  <span>{{areasParticipado.areaVidaUniversitaria}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+              <div>
+                <label class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                  ¿Actualmente formas parte de alguna área de Vida Universitaria?
+                </label>
+              </div>
+
+              <div *ngFor="let areasActuales of alumno.listaAreaVidaUniversitariaActuales" class="text-base text-gray-600 mt-1">
+                <div class="flex items-center">
+                  <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                  <span>{{areasActuales.areaVidaUniversitaria}}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <br>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="intro-y box px-5 pt-5 mt-5">
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+        <div class=" p-5">
+          <div class="text-base leading-8 mt-1" align="center">
+            <h5 class="text-center text-theme-11">Pasos para liberacion del servicio social </h5>
+            <table>
+              <tr>
+                <td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3"></div></td>
+                <td>No cubierto</td>
+                <td><div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div></td>
+                <td>Cubierto</td>
+              </tr>
+            </table>
+          </div>
+          <div class="text-base text-gray-600 mt-6" align="center">
+            <table>
+              <tr><td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3" *ngIf="!alumno.asistio"></div><div class="w-3 h-2 bg-theme-9 rounded-full mr-3" *ngIf="alumno.asistio"></div></td><td>Junta de induccion</td></tr>
+              <tr><td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3" *ngIf="!alumno.pago"></div><div class="w-3 h-2 bg-theme-9 rounded-full mr-3" *ngIf="alumno.pago"></div></td><td>Pago</td></tr>
+              <tr><td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3" *ngIf="!alumno.pago"></div><div class="w-3 h-2 bg-theme-9 rounded-full mr-3" *ngIf="alumno.pago"></div></td><td>Horas de servicio</td></tr>
+              <tr><td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3" *ngIf="!alumno.pago"></div><div class="w-3 h-2 bg-theme-9 rounded-full mr-3" *ngIf="alumno.pago"></div></td><td>Liberado</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-    <div class="intro-y box px-5 pt-5 mt-5">
-      
-        <div class="flex flex-col lg:flex-row border-b border-gray-200 dark:border-dark-5 pb-5 -mx-5">
-            <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
-                <!--<div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
-                    
-                </div>-->
-                <div class="ml-5">
-                  <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{alumno.nombre}} {{alumno.paterno}} {{alumno.materno}}</div>
-                    <!--<div class="text-gray-600">Administrador</div>-->
-                </div>
-            </div>
-            <div class="flex mt-6 lg:mt-0 items-center lg:items-start flex-1 flex-col justify-center text-gray-600 dark:text-gray-300 px-5 border-l border-r border-gray-200 dark:border-dark-5 border-t lg:border-t-0 pt-5 lg:pt-0">
-              <div class="font-medium text-center lg:text-left lg:mt-5">Correo institucional</div>
-              <div class="truncate sm:whitespace-normal flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail w-4 h-4 mr-2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> {{alumno.correoInstitucional}} </div>
-            </div>
-            <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-gray-200 dark:border-dark-5 pt-5 lg:pt-0">
-                <div class="font-medium text-center lg:text-left lg:mt-5">Universidad</div>
-                <div class="flex items-center justify-center lg:justify-start mt-2">
-                    <div class="mr-2 w-20 flex">{{alumno.universidad}}</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col lg:flex-row border-b border-gray-200 dark:border-dark-5 pb-5 -mx-5">
-          <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
-            <div class="ml-5">
-              <div class="font-medium text-center lg:text-left lg:mt-5">Facultad</div>
-              <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{alumno.facultad}}</div>
-            </div>
-          </div>
-          <div class="flex mt-6 lg:mt-0 items-center lg:items-start flex-1 flex-col justify-center text-gray-600 dark:text-gray-300 px-5 border-l border-r border-gray-200 dark:border-dark-5 border-t lg:border-t-0 pt-5 lg:pt-0">
-            <div class="font-medium text-center lg:text-left lg:mt-5">Correo personal</div>
-            <div class="truncate sm:whitespace-normal flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail w-4 h-4 mr-2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> {{alumno.correoPersonal}} </div>
-          </div>
-          <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-gray-200 dark:border-dark-5 pt-5 lg:pt-0">
-            <div class="font-medium text-center lg:text-left lg:mt-5">Carrera</div>
-            <div class="flex items-center justify-center lg:justify-start mt-2">
-              <div class="mr-2 w-20 flex">{{alumno.carrera}}</div>
-            </div>
-          </div>
-        </div>
-
-      <div class="flex flex-col lg:flex-row border-b border-gray-200 dark:border-dark-5 pb-5 -mx-5">
-          <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
-            <div class="ml-5">
-              <div class="font-medium text-center lg:text-left lg:mt-5">Fecha de nacimiento</div>
-              <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{alumno.fechaNacimiento}}</div>
-            </div>
-          </div>
-          <div class="flex mt-6 lg:mt-0 items-center lg:items-start flex-1 flex-col justify-center text-gray-600 dark:text-gray-300 px-5 border-l border-r border-gray-200 dark:border-dark-5 border-t lg:border-t-0 pt-5 lg:pt-0">
-            <div class="font-medium text-center lg:text-left lg:mt-5">Generacion</div>
-            <div class="truncate sm:whitespace-normal flex items-center"> {{alumno.generacion}} </div>
-          </div>
-          <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-gray-200 dark:border-dark-5 pt-5 lg:pt-0">
-            <div class="font-medium text-center lg:text-left lg:mt-5">Matrìcula</div>
-            <div class="flex items-center justify-center lg:justify-start mt-2">
-              <div class="mr-2 w-20 flex">{{alumno.matricula}}</div>
-            </div>
-          </div>
-        </div>
-
-    </div>
-    </div>

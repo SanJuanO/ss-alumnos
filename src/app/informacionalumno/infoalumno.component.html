@@ -182,7 +182,7 @@
               <div class="relative mt-8">
                 <div>
                   <label>Nombre*</label>
-                  <input type="text" class="input  w-full border mt-2 " name="nombre" [(ngModel)]="alumno.nombre" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="text" class="input  w-full border mt-2 " name="nombre" id="nombre" [(ngModel)]="alumno.nombre" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
                 </div>
 
               </div>
@@ -190,28 +190,28 @@
               <div class="relative mt-8">
                 <div>
                   <label>Apellido Paterno*</label>
-                  <input type="text" class="input  w-full border mt-2 " name="paterno" [(ngModel)]="alumno.paterno" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="text" class="input  w-full border mt-2 " name="paterno" id="paterno" [(ngModel)]="alumno.paterno" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
                   <label>Apellido Materno*</label>
-                  <input type="text" class="input  w-full border mt-2 " name="materno" [(ngModel)]="alumno.materno" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="text" class="input  w-full border mt-2 " name="materno" id="materno" [(ngModel)]="alumno.materno" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>ID Matricula*</label>
-                  <input type="text" class="input  w-full border mt-2 " name="matricula" [(ngModel)]="alumno.matricula" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <label>ID Matrícula*</label>
+                  <input type="text" class="input  w-full border mt-2 " name="matricula" id="matricula" [(ngModel)]="alumno.matricula" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
                   <label>Universidad*</label>
-                  <select class="input  w-full border mt-2 " name="idUniversidad" [(ngModel)]="alumno.idUniversidad" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " name="idUniversidad" id="idUniversidad" [(ngModel)]="alumno.idUniversidad" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let universidad of universidades" [ngValue]="universidad.id">{{ universidad.universidad }}</option>
                   </select>
                 </div>
@@ -238,7 +238,7 @@
               <div class="relative mt-8">
                 <div>
                   <label>Porcentaje Academico*</label>
-                  <input type="number" class="input  w-full border mt-2 " name="porcentaje" [(ngModel)]="alumno.porcentaje" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="number" class="input  w-full border mt-2 " name="porcentaje" id="porcentaje" [(ngModel)]="alumno.porcentaje" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
                 </div>
               </div>
               <!--
@@ -256,7 +256,7 @@
                   <label>
                     Número de Semestre / Cuatrimestre*
                   </label>
-                  <input type="number" class="input  w-full border mt-2 " name="noCuatrimestreSemestre" [(ngModel)]="alumno.noCuatrimestreSemestre" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="number" class="input  w-full border mt-2 " id="noCuatrimestreSemestre" name="noCuatrimestreSemestre" [(ngModel)]="alumno.noCuatrimestreSemestre" [ngModelOptions]="{standalone: true}" max="14" min="0">
                 </div>
               </div>
 
@@ -265,7 +265,7 @@
                   <label>
                     ¿Tu carrera es semestral o cuatrimestral?*
                   </label>
-                  <select class="input  w-full border mt-2 " name="esquemaPeriodo" [(ngModel)]="alumno.esquemaPeriodo" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " id="esquemaPeriodo" name="esquemaPeriodo" [(ngModel)]="alumno.esquemaPeriodo" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="'semestral'">Semestral</option>
                     <option [ngValue]="'cuatrimestral'">Cuatrimestral</option>
                   </select>
@@ -277,7 +277,9 @@
                   <label>
                     Generación*
                   </label>
-                  <input type="text" class="input  w-full border mt-2 " name="generacion" [(ngModel)]="alumno.generacion" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <select class="input w-full border mt-2 " id="generacion" name="generacion" [(ngModel)]="alumno.generacion" [ngModelOptions]="{standalone: true}" placeholder="¿en que año iniciaste la carrera?">
+                    <option *ngFor="let generacionOPC of generaciones" [ngValue]="generacionOPC" >{{ generacionOPC }}</option>
+                  </select>
                 </div>
               </div>
 
@@ -286,7 +288,7 @@
                   <label>
                     Fecha estimada de graduación*
                   </label>
-                  <input type="date" class="input  w-full border mt-2 " name="fechaEstimadaGraduacion" [(ngModel)]="alumno.fechaEstimadaGraduacion" [ngModelOptions]="{standalone: true}" min="2019-12-31" placeholder="">
+                  <input type="date" class="input  w-full border mt-2 " id="fechaEstimadaGraduacion" name="fechaEstimadaGraduacion" [(ngModel)]="alumno.fechaEstimadaGraduacion" [ngModelOptions]="{standalone: true}" min="2019-12-31" placeholder="">
                 </div>
               </div>
 
@@ -295,7 +297,7 @@
                   <label>
                     Correo Institucional*
                   </label>
-                  <input type="email" class="input  w-full border mt-2 " name="correoInstitucional" [(ngModel)]="alumno.correoInstitucional" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="email" class="input  w-full border mt-2 " id="correoInstitucional" name="correoInstitucional" [(ngModel)]="alumno.correoInstitucional" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
               </div>
               <div class="relative mt-8">
@@ -303,7 +305,7 @@
                   <label>
                     Correo Personal*
                   </label>
-                  <input type="email" class="input  w-full border mt-2 " name="correoPersonal" [(ngModel)]="alumno.correoPersonal" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="email" class="input  w-full border mt-2 " id="correoPersonal" name="correoPersonal" [(ngModel)]="alumno.correoPersonal" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
               </div>
               <!--
@@ -329,7 +331,7 @@
                   <label>
                     Fecha de Nacimiento*
                   </label>
-                  <input type="date" class="input  w-full border mt-2 " name="fechaNacimiento" [(ngModel)]="alumno.fechaNacimiento" [ngModelOptions]="{standalone: true}" min="1900-12-31" placeholder="">
+                  <input type="date" class="input  w-full border mt-2 " id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="alumno.fechaNacimiento" [ngModelOptions]="{standalone: true}" min="1900-12-31" placeholder="">
                 </div>
               </div>
 
@@ -338,7 +340,7 @@
                   <label>
                     Sexo*
                   </label>
-                  <select class="input  w-full border mt-2 " name="sexo" [(ngModel)]="alumno.sexo" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " id="sexo" name="sexo" [(ngModel)]="alumno.sexo" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="'Hombre'">Hombre</option>
                     <option [ngValue]="'Mujer'">Mujer</option>
                   </select>
@@ -361,10 +363,10 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    ¿Has participado en ASUA?:
+                    ¿Has participado en ASUA?*
                   </label>
-                  <select class="input  w-full border mt-2 " name="participacionAsua" [(ngModel)]="alumno.participacionAsua" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="'si'">Si</option>
+                  <select class="input  w-full border mt-2 " id="participacionAsua" name="participacionAsua" [(ngModel)]="alumno.participacionAsua" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="'si'">Sí</option>
                     <option [ngValue]="'no'">No</option>
                   </select>
                 </div>
@@ -374,10 +376,10 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    ¿Actualmente trabajas?:
+                    ¿Actualmente trabajas?*
                   </label>
-                  <select class="input  w-full border mt-2 " name="trabajas" [(ngModel)]="alumno.trabajas" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="'si'">Si</option>
+                  <select class="input  w-full border mt-2 " id="trabajas" name="trabajas" [(ngModel)]="alumno.trabajas" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="'si'">Sí</option>
                     <option [ngValue]="'no'">No</option>
                   </select>
                 </div>
@@ -386,9 +388,9 @@
               <div class="relative mt-8">
                 <div>
                   <label>
-                    ¿Bajo qué modalidad trabajas?
+                    ¿Bajo qué modalidad trabajas?*
                   </label>
-                  <select class="input  w-full border mt-2" name="idModalidadTrabajo" [(ngModel)]="alumno.idModalidadTrabajo" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2" id="idModalidadTrabajo" name="idModalidadTrabajo" [(ngModel)]="alumno.idModalidadTrabajo" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let modalidad of listaModalidadesTrabajo" [ngValue]="modalidad.id">{{ modalidad.modalidad }}</option>
                   </select>
                 </div>

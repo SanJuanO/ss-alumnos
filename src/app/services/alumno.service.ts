@@ -44,6 +44,9 @@ export class AlumnoService {
   updateHorasACuplirEnProyecto(id: string | number,horas :string|number) {
     return this.http.put(`${this.baseUrl}/AlumnosProyectosAsignados/actualizaNoHorasACumplirAlumno?id=${id}&horas=${horas}`,{ withCredentials: false });
   }
+  getHorasCuplidasEnProyecto(idAlumnoProyectoAsignado: string | number) {
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignadosHoras/getHorasByIdProyectoAsignado?idAlumnoProyectoAsignado=${idAlumnoProyectoAsignado}`, { withCredentials: false });
+  }
   addAlumno(alumno: Alumno) {
     return this.http.post(`${this.baseUrl}/Alumnos`, alumno);
   }
@@ -103,4 +106,24 @@ export class AlumnoService {
     //console.log(uri);
     return this.http.post(uri + "?id=" + id + "&asistio=" + asistio, id);
   }
+
+  subeCarta(fileToUpload: File, idAlumnoProyectoAsignado: string,opc:number): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data; charset=utf-8');
+    var endpoint = "";
+    if (opc == 0) {
+      endpoint = `${this.baseUrl}/AlumnosProyectosAsignados/actualizaCartaInicioByIdAlumnoProyectoAsignado`;
+    } else {
+      endpoint = `${this.baseUrl}/AlumnosProyectosAsignados/actualizaCartaTerminoByIdAlumnoProyectoAsignado`;
+    }
+    const formData: FormData = new FormData();
+    if (opc == 0) {
+      formData.append('cartaInicio', fileToUpload, fileToUpload.name);
+    } else {
+      formData.append('cartaTermino', fileToUpload, fileToUpload.name);
+    }
+    formData.append('idAlumnoProyectoAsignado', idAlumnoProyectoAsignado);
+    return this.http.post(endpoint, formData);
+  }
+
 }

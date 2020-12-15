@@ -3,13 +3,24 @@
 
 <!-- BEGIN: Content -->
 
-<div class="content">
+<div class="content mt-16">
   <div class="modal" id="success-modal-preview-file">
     <div class="modal__content">
       <div class="p-5 text-center">
         <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
         <div class="text-base mt-5">Muy bien!</div>
         <div class="text-basemt-2">¡Se subió el reporte!</div>
+      </div>
+      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    </div>
+  </div>
+
+  <div class="modal" id="success-modal-preview-carta">
+    <div class="modal__content">
+      <div class="p-5 text-center">
+        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+        <div class="text-base mt-5">Muy bien!</div>
+        <div class="text-basemt-2">¡Se subiò la carta!</div>
       </div>
       <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
@@ -29,7 +40,7 @@
   <div class="grid grid-cols-12 gap-6">
     <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
       <!-- BEGIN: General Report -->
-      <div class="col-span-12 mt-8">
+      <div class="col-span-12 mt-10">
         <div class="intro-y flex items-center h-10">
           <h2 class="text-lg font-medium truncate mr-5">
             Reporte General
@@ -39,34 +50,34 @@
         <!-- <div class="grid grid-cols-12 gap-6 mt-5"  >
 
 
-                           <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                               <div class="report-box zoom-in">
-                                   <div class="box p-5">
-                                       <div class="flex">
-                                           <i data-feather="layout" class="report-box__icon text-theme-12"></i>
-                                           <div class="ml-auto">
-                                           </div>
-                                       </div>
-                                       <div class="text-3xl font-bold leading-8 mt-6"> </div>
-                                       <div class="text-base text-gray-600 mt-1">Proyectos Activos</div>
-                                   </div>
-                               </div>
-                           </div>
-                           <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                               <div class="report-box zoom-in">
-                                   <div class="box p-5">
-                                       <div class="flex">
-                                           <i data-feather="layout" class="report-box__icon text-theme-9"></i>
-                                           <div class="ml-auto">
-                                           </div>
-                                       </div>
-                                       <div class="text-3xl font-bold leading-8 mt-6"></div>
-                                       <div class="text-base text-gray-600 mt-1">Proyectos Pendientes</div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-        -->
+                         <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+                             <div class="report-box zoom-in">
+                                 <div class="box p-5">
+                                     <div class="flex">
+                                         <i data-feather="layout" class="report-box__icon text-theme-12"></i>
+                                         <div class="ml-auto">
+                                         </div>
+                                     </div>
+                                     <div class="text-3xl font-bold leading-8 mt-6"> </div>
+                                     <div class="text-base text-gray-600 mt-1">Proyectos Activos</div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div  class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+                             <div class="report-box zoom-in">
+                                 <div class="box p-5">
+                                     <div class="flex">
+                                         <i data-feather="layout" class="report-box__icon text-theme-9"></i>
+                                         <div class="ml-auto">
+                                         </div>
+                                     </div>
+                                     <div class="text-3xl font-bold leading-8 mt-6"></div>
+                                     <div class="text-base text-gray-600 mt-1">Proyectos Pendientes</div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+      -->
         <!-- BEGIN: Convocatorias Abiertas -->
         <div class="col-span-12 mt-6" *ngIf="project ==null">
           <div class="intro-y block sm:flex items-center h-10">
@@ -94,12 +105,14 @@
                   </td>
                   <td class="W-56">
                     <div class="flex items-center justify-center text-theme-6">
-                      {{convocatoria.fechaInicio.substr(0,10) }}
+                      {{convocatoria.fechaInicioString}}
+                      <!--{{convocatoria.fechaInicio.substr(0,10)| date: 'dd/MM/yyyy' }}-->
                     </div>
                   </td>
                   <td class="W-56">
                     <div class="flex items-center justify-center text-theme-6">
-                      {{convocatoria.fechaTermino.substr(0,10)}}
+                      {{convocatoria.fechaTerminoString}}
+                      <!--{{convocatoria.fechaTermino.substr(0,10)| date: 'dd/MM/yyyy'}}-->
                     </div>
                   </td>
                   <td class="w-40">
@@ -110,7 +123,7 @@
                   </td>
                   <td class="table-report__action w-56">
                     <div class="flex justify-center items-center">
-                      <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/' ]">
+                      <a class="flex items-center mr-3 button bg-theme-10 text-white" href="https://adam.anahuac.mx/serviciosocial/buscar.html"><!--[routerLink]="['/proyectos/' ]"-->
                         Ver Proyectos
                       </a>
 
@@ -119,8 +132,6 @@
 
                 </tr>
 
-
-
               </tbody>
             </table>
           </div>
@@ -128,12 +139,12 @@
         </div>
         <!-- END: Convocatorias Abiertas -->
         <!-- BEGIN: Weekly Top Products -->
-        <div class="col-span-12 mt-6" *ngIf="projectArray !=null">
-          <div class="intro-y block sm:flex items-center h-10">
+        <div class="col-span-12 mt-6" *ngIf="projectArray !=null && projectArray.length>0">
+
+          <div class="intro-y block sm:flex items-center h-10" *ngIf="projectArray.length>0">
             <h2 class="text-lg font-medium truncate mr-5">
               Proyectos
             </h2>
-
           </div>
           <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="projectArray.length>0; else elseBlockP">
             <table class="table table-report sm:mt-2">
@@ -154,16 +165,19 @@
                   <td class="w-40">
                     <!--1 preregistro,2 Aprobado por empresa, 3 Inscrito,4	Terminado,5	Cancelado,6	Rechazado-->
                     <div *ngIf="proyecto.idEstado==1" class="py-1 px-2 rounded-full text-center text-xs bg-theme-12 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==2" class="py-1 px-2 rounded-full text-center text-xs bg-theme-11 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==3" class="py-1 px-2 rounded-full text-center text-xs bg-theme-10 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==4" class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==5" class="py-1 px-2 rounded-full text-center text-xs bg-theme-8 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==6" class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==2" class="py-1 px-2 rounded-full text-center text-xs bg-theme-17 cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==3" class="py-1 px-2 rounded-full text-center text-xs bg-theme-11 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==4" class="py-1 px-2 rounded-full text-center text-xs bg-theme-10 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==5" class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==6" class="py-1 px-2 rounded-full text-center text-xs bg-theme-8 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==7" class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
                   </td>
                   <td class="table-report__action w-56">
-                    <div class="flex justify-center items-center" *ngIf="proyecto.idEstado!=5 && proyecto.idEstado!=6 ">
+                    <div class="flex justify-center items-center" *ngIf="proyecto.idEstado!=3 && proyecto.idEstado!=5 && proyecto.idEstado!=6 ">
                       <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]">  Ver </a>
-
+                    </div>
+                    <div class="flex justify-center items-center" *ngIf="proyecto.idEstado==3 ">
+                      <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]"> Completa tu inscripción</a>
                     </div>
                   </td>
                 </tr>
@@ -174,74 +188,380 @@
               </tbody>
             </table>
           </div>
-          <ng-template #elseBlockP><div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">Sin proyectos inscritos</div></ng-template>
+          <ng-template #elseBlockP>
+            <!--<div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+           Sin proyectos pendientes
+          </div>-->
+          </ng-template>
 
         </div>
         <!-- END: Weekly Top Products -->
         <br>
         <br>
-        <div class="col-span-12 mt-6" *ngIf="project!=null">
+        <!--Proyecto actual start-->
+        <div *ngIf="project!=null" class="box">
+          <div class="col-span-12 mt-6">
 
-          <div class="intro-y flex items-center h-10">
-            <h2 class="text-lg font-medium truncate mr-5">
-              Cantidad de horas a cumplir en el proyecto "{{project.proyectoNombre}}"
-            </h2>
-          </div>
-
-
-          <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-            <div class="box p-5">
-
-              <div class="text-center" *ngIf="bandNoHoras && project!=null">
-                <input type="text" class="input  w-64 border mt-2" name="noHoras" [(ngModel)]="noHoras" [ngModelOptions]="{standalone: true}" placeholder="cantidad de horas a cumplir en el proyecto">
-                <br />
-                <a href="javascript:;" (click)="actualizaHoras()" class="button inline-block bg-theme-1 text-white">Confirmar cantidad de horas a cumplir</a>
+            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+              <div class="box p-5">
+                <div class="text-center">
+                  <h2 class="text-lg font-medium text-theme-11"><b>Proyecto actual</b></h2> <br><h3>{{project.proyectoNombre}}<br>{{project.organizacion}}</h3>
+                </div>
               </div>
-              <div class="text-center" *ngIf="!bandNoHoras  && project!=null">
-                <h3><b>{{noHoras}} Horas a cumplir en este proyecto.</b></h3>
-                <br />
-                <label>Si necesitas modificar la cantidad de horas a cumplir en este proyecto solicitalo con el coordinador de servicio social </label>
+
+            </div>
+
+            <div class="p-5 intro-y flex items-center">
+              <h2 class="text-lg font-medium truncate mr-5  text-theme-11">
+                Cantidad de horas a cumplir en el proyecto "{{project.proyectoNombre}}"
+              </h2>
+            </div>
+
+
+            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+              <div class="box p-5">
+
+                <div class="text-center" *ngIf="bandNoHoras && project!=null">
+                  <select class="input  w-64 border mt-2" [(ngModel)]="noHoras0" [ngModelOptions]="{standalone: true}" >
+                    <option value="240">240</option>
+                    <option value="480">480</option>
+                    <option value="-1">otro</option>
+                  </select>
+                  <br />
+                  <input *ngIf="noHoras0==-1" type="number" class="input  w-64 border mt-2" name="noHoras" [(ngModel)]="noHoras" [ngModelOptions]="{standalone: true}" placeholder="cantidad de horas a cumplir en el proyecto" max="600" min="0">
+                  <br />
+                  <a href="javascript:;" (click)="actualizaHoras()" class="button inline-block bg-theme-1 text-white">Confirmar cantidad de horas a cumplir</a>
+                </div>
+                <div class="text-center" *ngIf="!bandNoHoras  && project!=null">
+                  <h3 *ngIf="project.horasRegistradas == null"><b>0 </b>Horas regitradas de un total de</h3>
+                  <h3 *ngIf="project.horasRegistradas != null"><b>{{project.horasRegistradas}} </b>Horas registradas de un total de</h3>
+                  <h3><b>{{noHoras}} </b>Horas a cumplir en este proyecto.</h3>
+                  <br />
+                  <label>Si necesitas modificar la cantidad de horas a cumplir en este proyecto solicitalo con el coordinador de servicio social </label>
+                </div>
               </div>
+
+            </div>
+
+            <div class="p-5 intro-y flex items-center">
+              <h2 class="text-lg font-medium truncate mr-5  text-theme-11">
+                Reportes mensuales del proyecto "{{project.proyectoNombre}}"
+              </h2>
+            </div>
+
+            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+              <div class="box p-5">
+
+                <table class="table table-report sm:mt-2" *ngIf="actividades!=null && actividades.length>0">
+                  <thead>
+                    <tr>
+                      <th class="whitespace-no-wrap">No</th>
+                      <th class="whitespace-no-wrap">Mes</th>
+                      <th class="whitespace-no-wrap">Reporte</th>
+                      <th class="whitespace-no-wrap">Validado</th>
+                      <th class="whitespace-no-wrap">Fecha</th>
+                      <th class="whitespace-no-wrap">Mostrar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="intro-x" *ngFor="let actividad of actividades; let i=index">
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
+                      </td>
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">{{actividad.titulo}}</div>
+                      </td>
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">{{actividad.actividad.substr(0,50)}}</div>
+                      </td>
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap tooltip top" *ngIf="actividad.validaEmpresa">
+                          sí
+                          <span class="tiptext">Reporte validado por parte de la instituciòn</span>
+                        </div>
+                        <div class="ext-base text-xs whitespace-no-wrap tooltip top" *ngIf="!actividad.validaEmpresa">
+                          no
+                            <span class="tiptext" style="margin-left: -145px !important;">Esperando validaciòn por parte de la instituciòn</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
+                      </td>
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white">mostrar más</a></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar reporte</a> </div>
+              </div>
+
+            </div>
+
+
+            <div class="p-5 intro-y flex items-center">
+              <h2 class="text-lg font-medium truncate mr-5  text-theme-11">
+                Cartas del proyecto "{{project.proyectoNombre}}"
+              </h2>
+            </div>
+
+            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+              <div class="box p-5">
+
+                <table class="table table-report sm:mt-2">
+                  <thead>
+                    <tr>
+                      <th class="whitespace-no-wrap">No</th>
+                      <th class="whitespace-no-wrap">Carta</th>
+                      <th>
+                        <div class="ext-base text-xs whitespace-no-wrap">Archivo</div>
+                      </th>
+
+                      <!--<th class="whitespace-no-wrap">Fecha</th>-->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="intro-x">
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">1</div>
+                      </td>
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">Carta de inicio</div>
+                      </td>
+                      <td>
+                        <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal"  (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>
+                        <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal"  (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-9 text-white">Volver a cargar</a>
+                        <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" (click)="descargarCarta(0)" class="button inline-block bg-theme-1 text-white">Mostar</a>
+                      </td>
+                      <!--<td>
+                      <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+                    </td>-->
+                    </tr>
+                    <tr class="intro-x">
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">2</div>
+                      </td>
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">Carta de termino</div>
+                      </td>
+                      <td>
+                        <a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>
+                        <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-9 text-white">Volver a cargar</a>
+                        <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" (click)="descargarCarta(1)" class="button inline-block bg-theme-1 text-white">Mostrar</a>
+                      </td>
+                      <!--<td>
+                      <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+                    </td>-->
+                    </tr>
+                  </tbody>
+                </table>
+                <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar carta</a> </div>-->
+              </div>
+
             </div>
 
           </div>
         </div>
+        <!--Proyecto actual END-->
 
-        <div class="col-span-12 mt-6" *ngIf="project!=null">
-
-          <div class="intro-y flex items-center h-10">
-            <h2 class="text-lg font-medium truncate mr-5">
-              Reportes proyecto "{{project.proyectoNombre}}"
-            </h2>
-          </div>
-
-
-          <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-            <div class="box p-5">
-
-              <table class="table table-report sm:mt-2">
-                <thead>
-                  <tr>
-                    <th class="whitespace-no-wrap">Reporte</th>
-                    <th class="whitespace-no-wrap">Fecha</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="intro-x" *ngFor="let reporte of reportes; let i=index">
-                    <td>
-                      <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
-                    </td>
-                    <td>
-                      <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:void(0)" (click)="descargar(reporte.id)">{{reporte.fechaCreacion}}</a><button class="button" (click)="descargar(reporte.id)"><img src="assets/images/download2.png" width="30" />descargar </button></div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirreporte" class="button inline-block bg-theme-1 text-white">Agregar reporte</a> </div>
+        <br>
+        <!--Proyectos terminados start-->
+        <div *ngIf="projectArrayTerminados!=null && projectArrayTerminados.length>0" class="box mt-5">
+          
+            <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" (click)="ocultaMuestraTerminados()">
+              <button style="width:100%">
+                <div class="box p-5" style="background-color:#FF8300;">
+                  <div class="text-center">
+                    <h2 class="text-lg font-medium text-white"><b>Proyectos terminados </b></h2>
+                  </div>
+                </div>
+              </button>
             </div>
+          
+          <div *ngIf="!ocultarTerminados">
+            <div class="col-span-12 mt-6" *ngFor="let projectEnded of projectArrayTerminados; let i=index">
 
+              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                <div class="box p-5">
+                  <div class="text-center">
+                    <h2 class="text-lg font-medium text-theme-11"><b>Nombre de proyecto </b></h2> <br><h3>{{projectEnded.proyectoNombre}}<br>{{projectEnded.organizacion}}</h3>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="p-5 intro-y flex items-center">
+                <h2 class="text-lg font-medium truncate mr-5 text-theme-11">
+                  Cantidad de horas a cumplir en el proyecto "{{projectEnded.proyectoNombre}}"
+                </h2>
+              </div>
+
+
+              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                <div class="box p-5">
+
+                  <div class="text-center">
+                    <h3 *ngIf="projectEnded.horasRegistradas == null"><b>0 </b>Horas regitradas de un total de</h3>
+                    <h3 *ngIf="projectEnded.horasRegistradas != null"><b>{{projectEnded.horasRegistradas}} </b>Horas regitradas de un total de</h3>
+                    <h3><b>{{projectEnded.noHoras}} </b>Horas a cumplir en este proyecto.</h3>
+                    <br />
+                    <label>Si necesitas modificar la cantidad de horas a cumplir en este proyecto solicitalo con el coordinador de servicio social </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-5 intro-y flex items-center">
+                <h2 class="text-lg font-medium truncate mr-5  text-theme-11">
+                  Actividades del proyecto "{{projectEnded.proyectoNombre}}"
+                </h2>
+              </div>
+
+              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                <div class="box p-5">
+
+                  <table class="table table-report sm:mt-2" *ngIf="projectEnded.actividades!=null && projectEnded.actividades.length>0">
+                    <thead>
+                      <tr>
+                        <th class="whitespace-no-wrap">No</th>
+                        <th class="whitespace-no-wrap">Reporte</th>
+                        <th class="whitespace-no-wrap">Actividad</th>
+                        <th class="whitespace-no-wrap">Validado</th>
+                        <th class="whitespace-no-wrap">Fecha</th>
+                        <th class="whitespace-no-wrap">Mostrar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="intro-x" *ngFor="let actividad of projectEnded.actividades; let i=index">
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
+                        </td>
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">{{actividad.titulo}}</div>
+                        </td>
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">{{actividad.actividad.substr(0,50)}}</div>
+                        </td>
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap" *ngIf="actividad.validaEmpresa">si</div>
+                          <div class="ext-base text-xs whitespace-no-wrap" *ngIf="!actividad.validaEmpresa">no</div>
+                        </td>
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
+                        </td>
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white">mostrar más</a></div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar actividades</a> </div>-->
+                  <div *ngIf="projectEnded.actividades==null || projectEnded.actividades.length==0">
+                    sin actividades registradas
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="p-5 intro-y flex items-center">
+                <h2 class="text-lg font-medium truncate mr-5 text-theme-11">
+                  Cartas del proyecto "{{projectEnded.proyectoNombre}}"
+                </h2>
+              </div>
+
+              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+                <div class="box p-5">
+
+                  <table class="table table-report sm:mt-2">
+                    <thead>
+                      <tr>
+                        <th class="whitespace-no-wrap">No</th>
+                        <th class="whitespace-no-wrap">Reporte</th>
+                        <th>
+                          <div class="ext-base text-xs whitespace-no-wrap">Archivo</div>
+                        </th>
+
+                        <!--<th class="whitespace-no-wrap">Fecha</th>-->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="intro-x">
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">1</div>
+                        </td>
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">Carta de inicio</div>
+                        </td>
+                        <td>
+                          <!--<a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>-->
+                          <a *ngIf="projectEnded.rutaCartaInicio!=null && projectEnded.rutaCartaInicio!=''" href="javascript:;" (click)="descargarCartaEnded(projectEnded.archivoCartaInicio)" class="button inline-block bg-theme-1 text-white">Descargar</a>
+                        </td>
+                        <!--<td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+            </td>-->
+                      </tr>
+                      <tr class="intro-x">
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">2</div>
+                        </td>
+                        <td>
+                          <div class="ext-base text-xs whitespace-no-wrap">Carta de termino</div>
+                        </td>
+                        <td>
+                          <!--<a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>-->
+                          <a *ngIf="projectEnded.rutaCartaTermino!=null && projectEnded.rutaCartaTermino!=''" href="javascript:;" (click)="descargarCartaEnded(projectEnded.archivoCartaTermino)" class="button inline-block bg-theme-1 text-white">Descargar</a>
+                        </td>
+                        <!--<td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+            </td>-->
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar carta</a> </div>-->
+                </div>
+
+              </div>
+
+            </div>
           </div>
         </div>
+        <!--Proyectos terminados END-->
+        <!--
+      <div class="col-span-12 mt-6" *ngIf="project!=null">
+
+        <div class="intro-y flex items-center h-10">
+          <h2 class="text-lg font-medium truncate mr-5">
+            Reportes proyecto "{{project.proyectoNombre}}"
+          </h2>
+        </div>
+
+
+        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+          <div class="box p-5">
+
+            <table class="table table-report sm:mt-2">
+              <thead>
+                <tr>
+                  <th class="whitespace-no-wrap">Reporte</th>
+                  <th class="whitespace-no-wrap">Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="intro-x" *ngFor="let reporte of reportes; let i=index">
+                  <td>
+                    <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
+                  </td>
+                  <td>
+                    <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:void(0)" (click)="descargar(reporte.id)">{{reporte.fechaCreacion}}</a><button class="button" (click)="descargar(reporte.id)"><img src="assets/images/download2.png" width="30" />descargar </button></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirreporte" class="button inline-block bg-theme-1 text-white">Agregar reporte</a> </div>
+          </div>
+
+        </div>
+      </div>
+      -->
       </div>
 
       <!-- END: General Report -->
@@ -253,27 +573,143 @@
 
 
     </div>
-    <div class="modal" id="subirreporte">
+
+    <div class="modal" id="subirActividad">
 
 
       <div class="modal__content">
-        <form #form="ngForm" (ngSubmit)="subeArchivoreporte()">
+        <form #form="ngForm" (ngSubmit)="agregaActividad()">
           <div class="p-5 text-center">
-            <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-            <div class="text-base mt-5">Subir Archivo</div>
-            <br>
-            <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
+            <div class="text-base mt-5">Mes</div>
+            <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividad.titulo">-->
+            <select class="input  w-64 border mt-2" [(ngModel)]="alumnoActividad.titulo" [ngModelOptions]="{standalone: true}">
+              <option value="'Enero'">Enero</option>
+              <option value="'Febrero'">Febrero</option>
+              <option value="'Marzo'">Marzo</option>
+              <option value="'Abril'">Abril</option>
+              <option value="'Mayo'">Mayo</option>
+              <option value="'Junio'">Junio</option>
+              <option value="'Julio'">Julio</option>
+              <option value="'Agosto'">Agosto</option>
+              <option value="'Septiembre'">Septiembre</option>
+              <option value="'Octubre'">Octubre</option>
+              <option value="'Noviembre'">Noviembre</option>
+              <option value="'Diciembre'">Diciembre</option>
+            </select>
+
+            <div class="text-base mt-5">Actividad</div>
+            <textarea class="input  w-64 border mt-2" type="text" id="actividad" name="actividad" [(ngModel)]="alumnoActividad.actividad"></textarea>
+            <div class="text-base mt-5">Adjunto</div>
+            <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files)">
 
           </div>
-
           <div class="px-5 pb-8 text-center">
             <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
+            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button>
           </div>
         </form>
 
       </div>
     </div>
+
+    <div class="modal" id="mostrarMas">
+
+
+      <div class="modal__content modal__content--lg" style="width:80%">
+        <div class="p-5 text-center">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th>
+                  <div class="text-base text-bold mt-5">Título</div>
+                </th>
+                <th>
+                  <div class="text-base text-bold mt-5">Fecha</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="text-base text-gray-600 mt-5">{{alumnoActividadD.titulo}}</div>
+                </td>
+                <td>
+                  <div class="text-base text-gray-600 mt-5">{{alumnoActividadD.fechaCreacion}}<!--{{alumnoActividadD.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2"><div class="text-base mt-5">Actividad</div></th>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div class="text-base text-gray-600 mt-5 text-justify">{{alumnoActividadD.actividad}}</div>
+                </td>
+              </tr>
+              <tr *ngIf="alumnoActividadD.archivo!=null && alumnoActividadD.archivo!=''">
+                <th colspan="2"><div class="text-base mt-5">adjunto</div></th>
+              </tr>
+              <tr *ngIf="alumnoActividadD.archivo!=null && alumnoActividadD.archivo!=''">
+                <td colspan="2">
+                  <div class="text-base text-gray-600 mt-5">
+                    
+                    <a href="javascript:;" (click)="descargarCartaEnded(alumnoActividadD.archivo)" class="button inline-block bg-theme-1 text-white">Mostar</a>
+
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividadD.titulo" readonly>-->
+          <!--<textarea class="input  w-64 border mt-2" type="text" id="actividad" name="actividad" [(ngModel)]="" readonly></textarea>-->
+        </div>
+        <div class="px-5 pb-8 text-center">
+          <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="subirCarta">
+      <div class="modal__content">
+        <form #form="ngForm" (ngSubmit)="subeArchivoCarta()">
+          <div class="p-5 text-center">
+            <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+            <div class="text-base mt-5" *ngIf="idArchivo==0">Subir carta de inicio</div>
+            <div class="text-base mt-5" *ngIf="idArchivo==1">Subir carta de termino</div>
+            <br>
+            <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
+          </div>
+          <div class="px-5 pb-8 text-center">
+            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--TODO subir reporte
+  <div class="modal" id="subirreporte">
+
+
+    <div class="modal__content">
+      <form #form="ngForm" (ngSubmit)="subeArchivoreporte()">
+        <div class="p-5 text-center">
+          <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+          <div class="text-base mt-5">Subir Archivo</div>
+          <br>
+          <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
+
+        </div>
+
+        <div class="px-5 pb-8 text-center">
+          <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+          <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
+        </div>
+      </form>
+
+    </div>
+  </div>-->
 
   </div>
 </div>

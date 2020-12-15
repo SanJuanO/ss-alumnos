@@ -41,18 +41,23 @@ export class PerfilComponent implements OnInit {
 
     this.alumnoService.getAlumno(id).subscribe((res: AlumnoEdit) => {
       this.alumno = res;
+      //console.log(res);
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
       if (res.fechaEstimadaGraduacionString != "0001-01-01") {
-        this.alumno.fechaEstimadaGraduacion = res.fechaEstimadaGraduacionString;
+        var fecha = new Date(res.fechaEstimadaGraduacion.substr(0, 10));
+        this.alumno.fechaEstimadaGraduacion = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaEstimadaGraduacion = "";
       }
       if (res.fechaNacimientoString != "0001-01-01") {
-        this.alumno.fechaNacimiento = res.fechaNacimientoString;
+        var fecha = new Date(res.fechaNacimientoString.substr(0, 10));
+        this.alumno.fechaNacimiento = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaNacimiento = "";
       }
       if (res.fechaInicioServicioSocialString != "0001-01-01") {
-        this.alumno.fechaInicioServicioSocial = res.fechaInicioServicioSocialString;
+        var fecha = new Date(res.fechaInicioServicioSocialString.substr(0, 10));
+        this.alumno.fechaInicioServicioSocial = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaInicioServicioSocial = "";
       }

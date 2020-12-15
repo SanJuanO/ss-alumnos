@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Feather from 'feather-icons';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlumnoEdit } from "../models/alumno"
 import { SessionService } from '../services/session.service';
 import { AlumnoService } from '../services/alumno.service';
@@ -26,9 +27,9 @@ export class InfoAlumnoComponent implements OnInit {
   public d: Date = new Date();
   public alumnosAreasVidaUniviresitariaParticipado: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public alumnosAreasVidaUniviresitariaActuales: AlumnosAreasVidaUniversitariaActuales[] = [];
-  alumno: AlumnoEdit = new AlumnoEdit("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", false, true, this.alumnosAreasVidaUniviresitariaParticipado, this.alumnosAreasVidaUniviresitariaParticipado,0,"","","");
-  nombre: string="";
-  apellidos: string="";
+  alumno: AlumnoEdit = new AlumnoEdit("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", false, true, this.alumnosAreasVidaUniviresitariaParticipado, this.alumnosAreasVidaUniviresitariaParticipado, 0, "", "", "");
+  nombre: string = "";
+  apellidos: string = "";
   activo = true;
   public mensajevalidacion = "";
   public universidades: Universidad[] = [];
@@ -40,17 +41,29 @@ export class InfoAlumnoComponent implements OnInit {
   public listaAreasUniversidadParticipadoNew: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public listaAreasUniversidadActualesNew: AlumnosAreasVidaUniversitariaActuales[] = [];
   public listaModalidadesTrabajo: ModalidadesTrabajo[] = [];
-  public idsPasados: any="";
-  public idsActuales: any="";
+  public idsPasados: any = "";
+  public idsActuales: any = "";
   public idAlumno: string;
   public idobtenido: string;
+  public generaciones: any = [];
+  myForm: FormGroup;
 
   constructor(private alumnoService: AlumnoService, public session: SessionService,
     private areasVidaUniversitaria: AreasVidaUniversitariaService,
     private facultadService: FacultadService, private carreraService: CarreraService,
     private universidadService: UniversidadService, private modalidadesTrabajoService: ModalidadesTrabajoService,
     private activatedRoute: ActivatedRoute, private router: Router,
+    //public fb: FormBuilder
   ) {
+    /*
+    this.myForm = this.fb.group({
+      nombre: ['', [Validators.required]],
+      paterno: ['', [Validators.required]],
+      materno: ['', [Validators.required]],
+      matricula: ['', [Validators.required]],
+      idUniversidad: ['', [Validators.required]],
+      idFacultad: ['', [Validators.required]],
+    });*/
     /*
     this.activatedRoute.queryParams.subscribe(params => {
       this.idobtenido = params['idProyecto'];
@@ -68,6 +81,7 @@ export class InfoAlumnoComponent implements OnInit {
     this.obtenerFacultades();
     this.obtenerModalidadesTrabajo()
     this.obtenerAreasVidaUniversitaria();
+    this.ComboAno();
     //console.log(this.alumno);
     //console.log("idObtenido: " + this.idobtenido)
 
@@ -76,7 +90,7 @@ export class InfoAlumnoComponent implements OnInit {
   ngAfterViewInit() {
     Feather.replace();
   }
-  
+
   obtenerPerfil() {
     var id = this.session.getToken();
 
@@ -119,7 +133,7 @@ export class InfoAlumnoComponent implements OnInit {
 
     return this.carreraService
       .getCarreras()
-      .subscribe((carreras: Carrera[]) => this.carreras = carreras);
+      .subscribe((carreras: Carrera[]) => { this.carreras = carreras; console.log(carreras); });
 
   }
 
@@ -139,15 +153,15 @@ export class InfoAlumnoComponent implements OnInit {
       .subscribe((listaModalidadesTrabajo: ModalidadesTrabajo[]) => this.listaModalidadesTrabajo = listaModalidadesTrabajo);
 
   }
-  
+
   obtenerAreasVidaUniversitaria() {
-    
+
     return this.areasVidaUniversitaria
       .getAreasVidaUniversitaria()
       .subscribe((listaAreasUniversidad: AreasVidaUniversitaria[]) => this.listaAreasUniversidad = listaAreasUniversidad);
-      
+
   }
-  
+
   toggleAreasVidaUniversitariaParticipado(checked, id) {
     console.log(checked);
     id = Number(id)
@@ -173,6 +187,7 @@ export class InfoAlumnoComponent implements OnInit {
 
 
   onSubmit(data) {
+    //console.log(this.myForm.value);
 
     //var temporal = (data.value);
 
@@ -180,70 +195,182 @@ export class InfoAlumnoComponent implements OnInit {
 
     //console.log(temporal['universidad']);
     //console.log(this.alumno);
-    if (this.alumno.nombre ==null || this.alumno.nombre == "") {
+    if (this.alumno.nombre == null || this.alumno.nombre == "") {
       this.mensajevalidacion = "No puedes dejar el campo de nombre vacío"
       $('#validacion').modal('show');
+      $('#nombre').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#nombre').css("border", "#dee2e6 solid 1px");
 
     }
-    else if (this.alumno.matricula==null || this.alumno.matricula == "") {
+
+    if (this.alumno.matricula == null || this.alumno.matricula == "") {
       this.mensajevalidacion = "No puedes dejar el campo de matricula vacío"
       $('#validacion').modal('show');
+      $('#matricula').css("border", "red solid 1px");
+      return false;
+
+    } else {
+      $('#matricula').css("border", "#dee2e6 solid 1px");
 
     }
 
-    else if (this.alumno.paterno==null || this.alumno.paterno == "") {
+    if (this.alumno.paterno == null || this.alumno.paterno == "") {
       this.mensajevalidacion = "No puedes dejar el campo de paterno vacío"
       $('#validacion').modal('show');
+      $('#paterno').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#paterno').css("border", "#dee2e6 solid 1px");
 
     }
-    else if (this.alumno.materno==null || this.alumno.materno == "") {
+    if (this.alumno.materno == null || this.alumno.materno == "") {
       this.mensajevalidacion = "No puedes dejar el campo de materno vacío"
       $('#validacion').modal('show');
+      $('#materno').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#materno').css("border", "#dee2e6 solid 1px");
 
-    } else if (this.alumno.celular == null || this.alumno.celular == "") {
+    }
+    if (this.alumno.celular == null || this.alumno.celular == "") {
       this.mensajevalidacion = "No puedes dejar el campo de celular vacío"
       $('#validacion').modal('show');
+      $('#celular').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#celular').css("border", "#dee2e6 solid 1px");
 
     }
-    else if (this.alumno.correoPersonal==null || this.alumno.correoPersonal == "") {
-      this.mensajevalidacion = "No puedes dejar el campo de correo personal vacío"
-      $('#validacion').modal('show');
 
-    }
-    else if (this.alumno.porcentaje ==null || this.alumno.porcentaje == 0) {
+    
+    if (this.alumno.porcentaje == null || this.alumno.porcentaje == 0) {
 
       this.mensajevalidacion = "No puedes dejar el campo de porcentaje vacío"
       $('#validacion').modal('show');
+      $('#porcentaje').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#porcentaje').css("border", "#dee2e6 solid 1px");
+
     }
-    else if (this.alumno.esquemaPeriodo == null || this.alumno.esquemaPeriodo =="") {
+    if (this.alumno.noCuatrimestreSemestre == null || this.alumno.noCuatrimestreSemestre < 0 || this.alumno.noCuatrimestreSemestre > 14) {
+
+      this.mensajevalidacion = "Número de Semestre/Cuatrimestre* debe estar en el rango 0 - 14"
+      $('#validacion').modal('show');
+      $('#noCuatrimestreSemestre').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#noCuatrimestreSemestre').css("border", "#dee2e6 solid 1px");
+
+    }
+    if (this.alumno.esquemaPeriodo == null || this.alumno.esquemaPeriodo == "") {
       this.mensajevalidacion = "No puedes dejar el campo de esquema de periodo vacío"
       $('#validacion').modal('show');
 
-    } else if (this.alumno.generacion == null || this.alumno.generacion == "") {
+      $('#esquemaPeriodo').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#esquemaPeriodo').css("border", "#dee2e6 solid 1px");
+
+    }
+
+    if (this.alumno.generacion == null || this.alumno.generacion == "") {
 
       this.mensajevalidacion = "No puedes dejar el campo de generaciòn vacío"
       $('#validacion').modal('show');
-    } else if (this.alumno.fechaEstimadaGraduacion == "") {
+      $('#generacion').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#generacion').css("border", "#dee2e6 solid 1px");
+
+    }
+
+    if (this.alumno.fechaEstimadaGraduacion == "") {
       this.mensajevalidacion = "No puedes dejar el campo de fecha estimada de graduaciòn vacío"
       $('#validacion').modal('show');
+      $('#fechaEstimadaGraduacion').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#fechaEstimadaGraduacion').css("border", "#dee2e6 solid 1px");
 
     }
-    else if (this.alumno.correoInstitucional ==null || this.alumno.correoInstitucional == "") {
+
+    if (this.alumno.correoInstitucional == null || this.alumno.correoInstitucional == "") {
       this.mensajevalidacion = "No puedes dejar el campo de correo institucional vacío"
       $('#validacion').modal('show');
+      $('#correoInstitucional').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#correoInstitucional').css("border", "#dee2e6 solid 1px");
 
     }
-    else if (this.alumno.fechaNacimiento ==null || this.alumno.fechaNacimiento == "") {
+
+    if (!this.validarEmail(this.alumno.correoPersonal)) {
+      this.mensajevalidacion = "Introduce una dirección de correo válido"
+      $('#validacion').modal('show');
+      $('#correoPersonal').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#correoPersonal').css("border", "#dee2e6 solid 1px");
+
+    }
+
+    if (this.alumno.fechaNacimiento == null || this.alumno.fechaNacimiento == "") {
       this.mensajevalidacion = "No puedes dejar el campo de fecha de nacimiento vacío"
       $('#validacion').modal('show');
+      $('#fechaNacimiento').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#fechaNacimiento').css("border", "#dee2e6 solid 1px");
 
     }
-    else if (this.alumno.sexo == null || this.alumno.sexo == "") {
+
+    if (this.alumno.sexo == null || this.alumno.sexo == "") {
 
       this.mensajevalidacion = "No puedes dejar el campo de sexo vacío"
       $('#validacion').modal('show');
+      $('#sexo').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#sexo').css("border", "#dee2e6 solid 1px");
+
     }
-    else {
+
+    if (this.alumno.participacionAsua == null || this.alumno.participacionAsua == "") {
+
+      this.mensajevalidacion = "No puedes dejar el campo de participacion ASUA vacío"
+      $('#validacion').modal('show');
+      $('#participacionAsua').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#participacionAsua').css("border", "#dee2e6 solid 1px");
+
+    }
+
+    if (this.alumno.trabajas == null || this.alumno.trabajas == "") {
+
+      this.mensajevalidacion = "No puedes dejar el campo de trabajas vacío"
+      $('#validacion').modal('show');
+      $('#trabajas').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#trabajas').css("border", "#dee2e6 solid 1px");
+
+    }
+
+    if (this.alumno.trabajas == "si" && (this.alumno.idModalidadTrabajo == null || this.alumno.idModalidadTrabajo == undefined)) {
+
+      this.mensajevalidacion = "No puedes dejar el campo de modalidad de trabajo vacío"
+      $('#validacion').modal('show');
+      $('#idModalidadTrabajo').css("border", "red solid 1px");
+      return false;
+    } else {
+      $('#idModalidadTrabajo').css("border", "#dee2e6 solid 1px");
+
+    }
+
       console.log(JSON.stringify(data.value));
       this.alumnoService.updateAlumno0(this.alumno.id, this.alumno).subscribe(() => {
         $('#success-modal-preview').modal('show');
@@ -256,10 +383,36 @@ export class InfoAlumnoComponent implements OnInit {
           this.router.navigate(['/proyectos/ver', this.idobtenido]);
         }
       })
-    }
+
   }
 
 
-}
+  ComboAno() {
 
+    var d = new Date();
+    var n = d.getFullYear();
+    this.generaciones = new Array();
+    //var select = document.getElementById("generacion");
+    for (var i = n; i >= 2000; i--) {
+      this.generaciones.push(""+i);
+      /*var opc = document.createElement("option");
+      opc.text = i;
+      opc.value = i;
+      select.add(opc);*/
+    }
+
+  }
+  
+
+  validarEmail(valor) {
+    var caract = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+
+    if (caract.test(valor) == false) {
+      return false
+    } else {
+      return true;
+    }
+  }
+
+}
 

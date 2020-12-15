@@ -61,43 +61,43 @@
 
     <div class="preview">
       <div class="intro-y flex items-center h-10">
-        <h1 class="text-lg font-medium truncate mr-5">
+        <h1 class="text-lg font-mediumtru mr-5">
           Proyectos
         </h1>
       </div>
       <div class="intro-y flex items-center h-10">
-        <h5 class="text-base text-gray-600 truncate mr-5">
+        <h5 class="text-base text-gray-600 mr-5">
           {{proyectoModel.proyecto}}
         </h5>
       </div>
       <div class="intro-y flex items-center h-10">
-        <h5 class="text-base text-gray-600 truncate mr-5">
+        <h5 class="text-base text-gray-600 mr-5">
           {{proyectoModel.descripcion}}
         </h5>
       </div>
       <div class="intro-y flex items-center h-10">
-        <h1 class="text-lg font-medium truncate mr-5">
+        <h1 class="text-lg font-medium  mr-5">
           Objetivos
         </h1>
       </div>
-      <div class="intro-y flex items-center h-10">
-        <h5 class="text-base text-gray-600 truncate mr-5">
-          {{proyectoModel.objetivo}}
-        </h5>
+      <div class="intro-y flex items-center" style="width:100%">
+        
+          <textarea rows="10" style="width:100%" disabled> {{proyectoModel.objetivo}}</textarea>
+        
       </div>
       <div class="intro-y flex items-center h-10">
-        <h1 class="text-lg font-medium truncate mr-5">
+        <h1 class="text-lg font-medium  mr-5">
           Role
         </h1>
       </div>
       <div class="intro-y flex items-center h-10">
-        <h5 class="text-base text-gray-600 truncate mr-5">
+        <h5 class="text-base text-gray-600  mr-5">
           {{proyectoModel.rolPrestador}}
         </h5>
       </div>
       <div class="relative mt-8">
         <div class="intro-y flex items-center h-10">
-          <h1 class="text-lg font-medium truncate mr-5">
+          <h1 class="text-lg font-medium  mr-5">
             Días hábiles para la prestación de servicio social:
           </h1>
         </div>
@@ -108,49 +108,49 @@
 
                 <td style="padding:5px;">
                   <label>
-                    <input type="checkbox" id="lunes" [checked]="proyectoModel.lunes" readonly>
+                    <input type="checkbox" id="lunes" [checked]="proyectoModel.lunes" disabled>
                     Lunes
                   </label>
                 </td>
 
                 <td style="padding:5px;">
                   <label>
-                    <input type="checkbox" id="martes" [checked]="proyectoModel.martes" readonly>
+                    <input type="checkbox" id="martes" [checked]="proyectoModel.martes" disabled>
                     Martes
                   </label>
                 </td>
 
                 <td style="padding:5px;">
                   <label>
-                    <input type="checkbox" id="miercoles" [checked]="proyectoModel.miercoles" readonly>
-                    Mièrcoles
+                    <input type="checkbox" id="miercoles" [checked]="proyectoModel.miercoles" disabled>
+                    Miércoles
                   </label>
                 </td>
 
                 <td style="padding:5px;">
                   <label>
-                    <input type="checkbox" id="jueves" [checked]="proyectoModel.lunes" readonly>
+                    <input type="checkbox" id="jueves" [checked]="proyectoModel.lunes" disabled>
                     Jueves
                   </label>
                 </td>
 
                 <td style="padding:5px;">
                   <label>
-                    <input type="checkbox" id="viernes" [checked]="proyectoModel.lunes" readonly>
+                    <input type="checkbox" id="viernes" [checked]="proyectoModel.lunes" disabled>
                     Viernes
                   </label>
                 </td>
 
                 <td style="padding:5px;">
                   <label>
-                    <input type="checkbox" id="sabado" [checked]="proyectoModel.lunes" readonly>
-                    Sàbado
+                    <input type="checkbox" id="sabado" [checked]="proyectoModel.lunes" disabled>
+                    Sábado
                   </label>
                 </td>
 
                 <td style="padding:5px;">
                   <label>
-                    <input type="checkbox" id="domingo" [checked]="proyectoModel.lunes" readonly>
+                    <input type="checkbox" id="domingo" [checked]="proyectoModel.lunes" disabled>
                     Domingo
                   </label>
                 </td>
@@ -162,36 +162,36 @@
       </div>
 
       <div class="intro-y flex items-center h-10">
-        <h1 class="text-lg font-medium truncate mr-5">
+        <h1 class="text-lg font-medium  mr-5">
           Horarios disponibles para la presentación del servicio social
         </h1>
       </div>
       <div class="intro-y flex items-center h-10">
-        <h5 class="text-base text-gray-600 truncate mr-5">
+        <h5 class="text-base text-gray-600  mr-5">
           Hora entrada: {{proyectoModel.horaEntrada}} Hora salida: {{proyectoModel.horaSalida}}
         </h5>
       </div>
 
       <div class="intro-y flex items-center h-10">
-        <h1 class="text-lg font-medium truncate mr-5">
+        <h1 class="text-lg font-medium  mr-5">
           Responsabilidades
         </h1>
       </div>
       <div class="intro-y flex items-center h-10">
-        <h5 class="text-base text-gray-600 truncate mr-5">
+        <h5 class="text-base text-gray-600  mr-5">
           {{proyectoModel.responsabilidades}}
         </h5>
       </div>
 
 
       <div class="intro-y flex items-center h-10">
-        <h1 class="text-lg font-medium truncate mr-5">
+        <h1 class="text-lg font-medium  mr-5">
           Perfil
         </h1>
       </div>
 
       <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
           <div class=" p-5">
             <div class="text-lg font-medium mt-1">
               Carreras Afines
@@ -206,7 +206,7 @@
           </div>
         </div>
 
-        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
           <div class=" p-5">
             <div class="text-lg font-medium mt-1">
               Competencias
@@ -220,7 +220,7 @@
           </div>
         </div>
 
-        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
           <div class=" p-5">
             <div class="text-lg font-medium mt-1">
               Contacto
@@ -234,7 +234,7 @@
           </div>
         </div>
 
-        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
           <div class=" p-5">
             <div class="text-lg font-medium mt-1">
               Ubicación
@@ -368,7 +368,7 @@
   <div class="p-5" id="horizontal-form">
     <div class="preview">
       <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
+        <h2 class="text-lg font-medium  mr-5">
           Información referente al Prestador de Servicio Social (Estudiante)
         </h2>
       </div>
@@ -517,7 +517,7 @@
   <div class="p-5" id="horizontal-form">
     <div class="preview">
       <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
+        <h2 class="text-lg font-medium  mr-5">
           Carreras
         </h2>
       </div>
@@ -543,7 +543,7 @@
   <div class="p-5" id="horizontal-form">
     <div class="preview">
       <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
+        <h2 class="text-lg font-medium  mr-5">
           Competencias
         </h2>
       </div>
@@ -570,7 +570,7 @@
   <div class="p-5" id="horizontal-form">
     <div class="preview">
       <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
+        <h2 class="text-lg font-medium  mr-5">
           Actividades
         </h2>
       </div>
@@ -625,8 +625,8 @@
   <div class="p-5" id="horizontal-form">
     <div class="preview">
       <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
-          Incribirte al proyecto
+        <h2 class="text-lg font-medium  mr-5">
+          Inscribirte al proyecto
         </h2>
       </div>
       <div class="grid grid-cols-12 gap-6 mt-5">
@@ -639,19 +639,20 @@
 
                 <div class="text-center">
                   <!--1 preregistro,2 Aprobado por empresa, 3 Inscrito,4	Terminado,5	Cancelado,6	Rechazado-->
-                  <a *ngIf="estadoInscripcion==0" href="javascript:;" data-toggle="modal" data-target="#inscribirmemodal" class="button  button--lg w-24 inline-block bg-theme-1 text-white">Incribirme</a>
-                  <p *ngIf="estadoInscripcion==1" class="button  button--lg inline-block bg-theme-12 text-white"> Te haz postulado a este proyecto </p>
-                  <div *ngIf="estadoInscripcion==2"><p>Te han aceptado a este proyecto confirma tu inscripciòn</p><a href="javascript:;" data-toggle="modal" data-target="#confirmainscribirmemodal" class="button  button--lg inline-block bg-theme-1 text-white mt-5">Confirmar tu inscripciòn</a></div>
+                  <a *ngIf="estadoInscripcion==0" href="javascript:;" data-toggle="modal" data-target="#inscribirmemodal" class="button  button--lg w-24 inline-block bg-theme-1 text-white">Postularme</a>
+                  <p *ngIf="estadoInscripcion==1" class="button  button--lg inline-block bg-theme-12 text-white"> Te has postulado a este proyecto </p>
+                  <div *ngIf="estadoInscripcion==2"><p class="button  button--lg inline-block bg-theme-17">Te han entrevistado en este proyecto</p></div>
+                  <div *ngIf="estadoInscripcion==3"><p>Te han aceptado a este proyecto confirma tu inscripción</p><a href="javascript:;" data-toggle="modal" data-target="#confirmainscribirmemodal" class="button  button--lg inline-block bg-theme-1 text-white mt-5">Confirmar tu inscripción</a></div>
                   <!--<p *ngIf="estadoInscripcion==2" class="button  button--lg inline-block bg-theme-11 text-white"> Te han aceptado a este proyecto confirma tu inscripciòn</p>-->
-                  <p *ngIf="estadoInscripcion==3" class="button  button--lg inline-block bg-theme-10 text-white"> Estàs inscrito a este proyecto </p>
-                  <p *ngIf="estadoInscripcion==4" class="button  button--lg inline-block bg-theme-9 text-white"> Proyecto terminado </p>
-                  <p *ngIf="estadoInscripcion==5" class="button  button--lg inline-block bg-theme-8 text-white"> Cancelado </p>
-                  <p *ngIf="estadoInscripcion==6" class="button  button--lg inline-block bg-theme-6 text-white"> Te han rechazado de este proyecto </p>
+                  <p *ngIf="estadoInscripcion==4" class="button  button--lg inline-block bg-theme-10 text-white"> Estás inscrito a este proyecto </p>
+                  <p *ngIf="estadoInscripcion==5" class="button  button--lg inline-block bg-theme-9 text-white"> Proyecto terminado </p>
+                  <p *ngIf="estadoInscripcion==6" class="button  button--lg inline-block bg-theme-8 text-white"> Cancelado </p>
+                  <p *ngIf="estadoInscripcion==7" class="button  button--lg inline-block bg-theme-6 text-white"> Te han rechazado de este proyecto </p>
                 </div>
                 <div class="modal" id="inscribirmemodal">
                   <div class="modal__content">
                     <div class="p-5 text-center">
-                      <div class="text-3xl mt-5">Estas seguro de postularte a este proyecto?</div>
+                      <div class="text-3xl mt-5">Estás seguro de postularte a este proyecto?</div>
                       <!--<div class="text-gray-600 mt-2">No podras incribirte a otro proyecto.</div>-->
                     </div>
                     <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button> <button type="button" data-dismiss="modal" (click)="inscribir()" class="button w-24 bg-theme-1 text-white">Postularme</button> </div>
@@ -660,7 +661,7 @@
                 <div class="modal" id="confirmainscribirmemodal">
                   <div class="modal__content">
                     <div class="p-5 text-center">
-                      <div class="text-3xl mt-5">¿Estas seguro de confirmar tu inscripción a este proyecto?</div>
+                      <div class="text-3xl mt-5">¿Estás seguro de confirmar tu inscripción a este proyecto?</div>
                       <div class="text-gray-600 mt-2">No podras incribirte a otro proyecto.</div>
                     </div>
                     <div class="px-5 pb-8 text-center">
@@ -680,7 +681,7 @@
   </div>
 
   <div class="intro-y flex items-center h-10" *ngIf="proyectoalumno!=''">
-    <h2 class="text-lg font-medium truncate mr-5">
+    <h2 class="text-lg font-medium  mr-5">
       Reportes desempeño
     </h2>
   </div>

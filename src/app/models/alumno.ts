@@ -80,7 +80,9 @@ export class AlumnoEdit {
     public carrera?: string,
     public fechaEstimadaGraduacionString?: string,
     public fechaNacimientoString?: string,
-    public fechaInicioServicioSocialString?: string
+    public fechaInicioServicioSocialString?: string,
+    public asistio?: boolean,
+    public pago?: boolean
 
   ) { }
 
@@ -133,6 +135,11 @@ export class AlumnosProyectosAsignados {
   public estado?: string;
   public alumno?: string;
   public noHoras?: number;
+  public horasRegistradas?: number;
+  public rutaCartaInicio?: string;
+  public rutaCartaTermino?: string;
+  public archivoCartaInicio?: string;
+  public archivoCartaTermino?: string;
 
   constructor() { }
 }
@@ -145,6 +152,18 @@ export class ReportesAlumnos {
   public id?: number;
   public fechaCreacion?: string;
   public activo?: boolean;
+  constructor() { }
+}
+
+export class AlumnosActividades {
+  public idAlumnoProyectoAsignado: number;
+  public titulo: string;
+  public actividad: string;
+  public validaEmpresa?: boolean;
+  public id?: number;
+  public fechaCreacion?: string;
+  public activo?: boolean;
+  public archivo?: string;
   constructor() { }
 }
 
