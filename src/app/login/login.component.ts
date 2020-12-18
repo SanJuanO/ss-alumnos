@@ -3,6 +3,7 @@ import { Router,ActivatedRoute   } from '@angular/router';
 import { LoginServices } from '../services/login.service';
 import { SessionService } from '../services/session.service';
 import { AlumnoEdit } from '../models/alumno';
+import { AlumnoService } from '../services/alumno.service';
 
 declare var $: any;
 
@@ -16,15 +17,26 @@ export class LoginComponent implements OnInit {
   public mensaje: string = "";
   public alumno: AlumnoEdit;
 
-  constructor(public session: SessionService,private activatedRoute: ActivatedRoute,private router: Router,private loginservice: LoginServices) {
+  constructor(public session: SessionService,
+    private activatedRoute: ActivatedRoute, private router: Router,
+    private loginservice: LoginServices,
+    private alumnoService: AlumnoService) {
     this.activatedRoute.queryParams.subscribe(params => {
           this.idobtenido = params['idProyecto'];
       });
   }
 
   ngOnInit(): void {
-      //this.session.Signoff();
-
+      
+    var id = this.session.getToken();
+    //console.log("id" + id);
+    
+    if (id != null && id != undefined && id != "") {
+      this.obtenerPerfil();
+    } else {
+      this.session.Signoff();
+    }
+    
   }
 
   onSubmit(data) {
@@ -170,5 +182,43 @@ export class LoginComponent implements OnInit {
     }
     
   }
+
+  obtenerPerfil() {
+    var id = this.session.getToken();
+
+    this.alumnoService.getAlumno(id).subscribe((res: AlumnoEdit) => {
+      this.alumno = res;
+        var datosvalue = res;
+
+      if (datosvalue['terminosCondiciones'] == null || datosvalue['terminosCondiciones'] == false) {
+
+        if (this.idobtenido == null) {
+          this.router.navigate(['/terminoscondiciones']);
+        } else {
+          this.router.navigate(['/terminoscondiciones', this.idobtenido]);
+        }
+
+      } else if (datosvalue['terminosCondiciones'] != null && !this.validaDatosAlumno()) {
+
+        if (this.idobtenido == null) {
+          this.router.navigate(['/informacionalumno']);
+        } else {
+          this.router.navigate(['/informacionalumno', this.idobtenido]);
+        }
+
+      } else if (datosvalue['terminosCondiciones'] != null && this.validaDatosAlumno()) {
+
+        if (this.idobtenido == null) {
+          this.router.navigate(['/dashboard']);
+          //console.log(user);
+
+        } else {
+          this.router.navigate(['/proyectos/ver', this.idobtenido]);
+        }
+      }
+    });
+
+  }
+
 
 }

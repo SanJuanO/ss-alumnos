@@ -24,4 +24,8 @@ public apellidos="";
   ngOnInit(): void {
   }
 
+  logout() {
+    this.session.Signoff();
+  }
+
 }

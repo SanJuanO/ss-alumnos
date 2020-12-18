@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
   public bandNoHoras: boolean = true;
 
   public alumnoActividad: AlumnosActividades = new AlumnosActividades();
+  public alumnoActividadActualiza: AlumnosActividades = new AlumnosActividades();
   public alumnoActividadD: AlumnosActividades = new AlumnosActividades();
   public actividades: Array<AlumnosActividades> = [];
   public idArchivo: number = 0;
@@ -306,9 +307,44 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  actualizaActividad() {
+    this.alumnoActividad.idAlumnoProyectoAsignado = this.project.id;
+    this.alumnoActividad.activo = true;
+    this.alumnoActividad.validaEmpresa = false;
+    if (this.alumnoActividad.titulo == "") {
+      return false;
+    }else if (this.alumnoActividad.actividad== "") {
+      return false;
+    }
+    //console.log(this.alumnoActividad);
+
+    this.alumnosActividadesService.CreateActivityWithFile(this.fileToUpload, this.alumnoActividad).subscribe(data => {
+      if (data.resultado) {
+        this.alumnoActividad = new AlumnosActividades();
+        this.fileToUpload = undefined;
+        $("#adjunto").val("");
+        $('#subirreporte').modal('hide');
+        $('#success-modal-preview-file').modal('show');
+        this.obtenerActividadesByIdAlumnoProyectoAsignado();
+        //location.reload();
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+
   mostarMas(actividad) {
     //console.log("abrir mas");
     this.alumnoActividadD = actividad;
+  }
+
+  editar(actividad) {
+    console.log(actividad);
+    this.alumnoActividadActualiza.id = actividad.id;
+    this.alumnoActividadActualiza.actividad = actividad.actividad;
+    this.alumnoActividadActualiza.titulo = actividad.titulo;
+    this.alumnoActividadActualiza.ruta = actividad.ruta;
+    this.alumnoActividadActualiza.idAlumnoProyectoAsignado = actividad.idAlumnoProyectoAsignado;
   }
 
   abrirSubirCarta(opc) {

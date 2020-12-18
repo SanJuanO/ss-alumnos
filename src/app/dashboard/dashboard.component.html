@@ -260,7 +260,7 @@
                       <th class="whitespace-no-wrap">Reporte</th>
                       <th class="whitespace-no-wrap">Validado</th>
                       <th class="whitespace-no-wrap">Fecha</th>
-                      <th class="whitespace-no-wrap">Mostrar</th>
+                      <th class="whitespace-no-wrap">Opciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -289,6 +289,7 @@
                       </td>
                       <td>
                         <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white">mostrar más</a></div>
+                        <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="editar(actividad)" data-toggle="modal" data-target="#actualizaActividad" class="button inline-block bg-theme-9 text-white">editar</a></div>
                       </td>
                     </tr>
                   </tbody>
@@ -599,6 +600,42 @@
 
             <div class="text-base mt-5">Actividad</div>
             <textarea class="input  w-64 border mt-2" type="text" id="actividad" name="actividad" [(ngModel)]="alumnoActividad.actividad"></textarea>
+            <div class="text-base mt-5">Adjunto</div>
+            <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files)">
+
+          </div>
+          <div class="px-5 pb-8 text-center">
+            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
+            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="modal" id="actualizaActividad">
+      <div class="modal__content">
+        <form #form="ngForm" (ngSubmit)="actualizaActividad()">
+          <div class="p-5 text-center">
+            <div class="text-base mt-5">Mes</div>
+            <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividad.titulo">-->
+            <select class="input  w-64 border mt-2" [(ngModel)]="alumnoActividadActualiza.titulo" [ngModelOptions]="{standalone: true}">
+              <option value="'Enero'">Enero</option>
+              <option value="'Febrero'">Febrero</option>
+              <option value="'Marzo'">Marzo</option>
+              <option value="'Abril'">Abril</option>
+              <option value="'Mayo'">Mayo</option>
+              <option value="'Junio'">Junio</option>
+              <option value="'Julio'">Julio</option>
+              <option value="'Agosto'">Agosto</option>
+              <option value="'Septiembre'">Septiembre</option>
+              <option value="'Octubre'">Octubre</option>
+              <option value="'Noviembre'">Noviembre</option>
+              <option value="'Diciembre'">Diciembre</option>
+            </select>
+
+            <div class="text-base mt-5">Actividad</div>
+            <textarea class="input  w-64 border mt-2" type="text" id="actividad" name="actividad" [(ngModel)]="alumnoActividadActualiza.actividad"></textarea>
             <div class="text-base mt-5">Adjunto</div>
             <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files)">
 

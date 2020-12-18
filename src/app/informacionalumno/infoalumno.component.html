@@ -1,32 +1,60 @@
-<!-- BEGIN: Mobile Menu -->
+<!-- BEGIN: Mobile Menu
 <div class="mobile-menu md:hidden">
   <div class="mobile-menu-bar">
     <a [routerLink]="['/dashboard']" class="flex mr-auto">
-      <!--<img alt="Servicio Social" class="w-6" src="assets/images/logo.png">-->
+
     </a>
     <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
   </div>
 </div>
-<!-- END: Mobile Menu -->
+ END: Mobile Menu -->
 <!-- BEGIN: Top Bar -->
-<div class="border-b border-theme-white -mt-10 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10">
+<div class="border-b border-theme-white -mt-7 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10" style="z-index: 300;
+    background: white;
+    position: fixed;
+    width: 100%;
+    margin-top: -33px;
+    height: 90px;
+    padding: 10px;">
   <div class="top-bar-boxed flex items-center">
     <!-- BEGIN: Logo -->
-    <a class="-intro-x hidden md:flex">
+    <a [routerLink]="['/dashboard']" class="-intro-x hidden md:flex">
       <!--<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="assets/images/logo.png">-->
-      <span class="text-white text-lg ml-3"> Campus*<span class="font-medium"> Anáhuac</span> </span>
+
+      <a class="navbar-brand">
+        <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png" width="300" height="70" alt="">
+      </a>
+      <!--<span class="text-white text-lg ml-3"> Universidad<span class="font-medium"> Anáhuac</span> </span>-->
     </a>
     <!-- END: Logo -->
     <!-- BEGIN: Breadcrumb -->
-    <div class="-intro-x breadcrumb breadcrumb--light mr-auto border-theme-white"> <a class="">Application</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a class="breadcrumb--active">Servicio Social</a> </div>
+    <!--<div class="-intro-x breadcrumb breadcrumb--light mr-auto border-theme-white"> <a [routerLink]="['/dashboard']" class="">Application</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a [routerLink]="['/dashboard']" class="breadcrumb--active">Servicio Social</a> </div>-->
     <!-- END: Breadcrumb -->
     <!-- BEGIN: Search -->
+
+    <nav class="top-nav -intro-x breadcrumb breadcrumb--light mr-auto border-theme-white">
+      <ul>
+        <li>
+          <!--<a routerLink="/dashboard" routerLinkActive="top-menu top-menu--active" class="top-menu">
+            <div class="top-menu__icon"> <i data-feather="home"></i> </div>
+            <div class="top-menu__title"> Dashboard </div>
+          </a>-->
+        </li>
+        <li><!--
+          <a routerLink="/perfil" routerLinkActive="top-menu top-menu--active" class="top-menu">
+            <div class="top-menu__icon"> <i data-feather="user"></i> </div>
+            <div class="top-menu__title"> Perfil </div>
+          </a>-->
+        </li>
+      </ul>
+    </nav>
+
     <!-- BEGIN: Notifications -->
     <!-- BEGIN: Account Menu -->
     <div class="intro-x dropdown w-8 h-8 relative">
       <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
-        <!--<img alt="Servicio Social" src="assets/images/profile-1.jpg">-->
-        <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+        <img alt="Servicio Social" class="w-6" src="assets/images/globo{{nombre.substr(0,1)}}.png">
+
       </div>
       <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
         <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
@@ -67,7 +95,7 @@
                 Por ello, resulta recomendable que se establezcan las condiciones de forma clara, es decir, evitando una redacción ambigua u oscura, ya que el usuario debe conocer y entender las reglas a las que se somete. El contenido de dichas condiciones debe incluir de forma detallada y clara cuestiones como la limitación de responsabilidad, plazos de entrega del producto o garantías, con la finalidad de evitar futuros problemas como podrían ser reclamaciones o pleitos por malos entendidos al no especif
               </div>
 
-              
+
             </div>
 
           </div>
@@ -121,10 +149,9 @@
 
 </div>
 -->
-
 <!--TODO ALUMNOS-->
 <!-- BEGIN: Content -->
-<div class="content">
+<div class="content mt-16">
 
 
   <div class="modal" id="success-modal-preview">
@@ -154,9 +181,9 @@
         Completar informacion
       </h2>
       <!--
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
-    </div>-->
+      <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
+      </div>-->
     </div>
 
 
@@ -278,7 +305,7 @@
                     Generación*
                   </label>
                   <select class="input w-full border mt-2 " id="generacion" name="generacion" [(ngModel)]="alumno.generacion" [ngModelOptions]="{standalone: true}" placeholder="¿en que año iniciaste la carrera?">
-                    <option *ngFor="let generacionOPC of generaciones" [ngValue]="generacionOPC" >{{ generacionOPC }}</option>
+                    <option *ngFor="let generacionOPC of generaciones" [ngValue]="generacionOPC">{{ generacionOPC }}</option>
                   </select>
                 </div>
               </div>
@@ -309,14 +336,14 @@
                 </div>
               </div>
               <!--
-            <div class="relative mt-8">
-              <div>
+              <div class="relative mt-8">
                 <div>
-                  <label>Contraseña*</label>
-                  <input type="password" class="input  w-full border mt-2 " placeholder="" name="password" [(ngModel)]="alumno.password" [ngModelOptions]="{standalone: true}">
+                  <div>
+                    <label>Contraseña*</label>
+                    <input type="password" class="input  w-full border mt-2 " placeholder="" name="password" [(ngModel)]="alumno.password" [ngModelOptions]="{standalone: true}">
+                  </div>
                 </div>
-              </div>
-            </div>-->
+              </div>-->
 
               <div class="relative mt-8">
                 <div>

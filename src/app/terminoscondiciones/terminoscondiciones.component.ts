@@ -48,6 +48,7 @@ export class TerminosCondicionesComponent implements OnInit {
 
     this.alumnoService.getAlumno(id).subscribe((res: AlumnoEdit) => {
       this.alumno = res;
+      this.nombre = this.alumno.nombre;
     });
 
   }

@@ -164,6 +164,7 @@ export class AlumnosActividades {
   public fechaCreacion?: string;
   public activo?: boolean;
   public archivo?: string;
+  public ruta?: string;
   constructor() { }
 }
 
