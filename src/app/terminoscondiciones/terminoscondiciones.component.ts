@@ -4,6 +4,7 @@ import { AlumnoEdit } from "../models/alumno"
 import { SessionService } from '../services/session.service';
 import { AlumnoService } from '../services/alumno.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CookieService } from "ngx-cookie-service";
 
 declare var $: any;
 
@@ -24,7 +25,7 @@ export class TerminosCondicionesComponent implements OnInit {
   public asistio: boolean = false;
 
   constructor(private alumnoService: AlumnoService, public session: SessionService,
-    private activatedRoute: ActivatedRoute, private router: Router,
+    private activatedRoute: ActivatedRoute, private router: Router,private cookies: CookieService
   ) {
     /*
     this.activatedRoute.queryParams.subscribe(params => {
@@ -33,6 +34,8 @@ export class TerminosCondicionesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cookies.set("mostraralumno", "1");
+    this.cookies.set("mostrarproyectos", "1");
     this.idobtenido = <string><any>(this.activatedRoute.snapshot.paramMap.get("idProyecto"));
     this.obtenerPerfil();
     console.log(this.alumno);
@@ -64,6 +67,8 @@ export class TerminosCondicionesComponent implements OnInit {
       if (data["resultado"] == 1) {
         //console.log("idobtenido: " + this.idobtenido);
         if (this.idobtenido != undefined) {
+     
+       
           this.router.navigate(['/informacionalumno',  this.idobtenido]);
         } else {
           this.router.navigate(['/informacionalumno']);
@@ -73,6 +78,22 @@ export class TerminosCondicionesComponent implements OnInit {
       console.log(error);
     });
   }
+  ocultar(){
+    console.log("vista");
+    var menu = document.getElementById("menu");
+if(menu.style.display=="none"){
+    menu.style.display = "block";
+}else{
+  menu.style.display = "none";
+
+}
+  }
+  logout() {
+    this.session.Signoff();
+    this.router.navigate(['/login']);
+
+  }
+
 
 }
 

@@ -1,131 +1,74 @@
-<!-- BEGIN: Mobile Menu 
+
+
+<!-- END: Top Menu -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <div class="mobile-menu md:hidden">
     <div class="mobile-menu-bar">
-        <a [routerLink]="['/dashboard']" class="flex mr-auto">
-            <img alt="Servicio Social" class="w-6" src="assets/images/logo.png">
+        <a [routerLink]="['/dashboard']" class="flex mr-auto ">
+            <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png" width="200" height="60" alt="">
         </a>
-        <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+        <a (click)="ocultar()" id="mobile-menu-toggler" style="color: #FF8800;"> <i data-feather="bar-chart-2" class="w-8 h-8  transform -rotate-90"></i> </a>
     </div>
-    <ul class="border-t border-theme-24 py-5 hidden">
-        <li>
-            <a href="index.html" class="menu">
-                <div class="menu__icon"> <i data-feather="home"></i> </div>
-                <div class="menu__title"> Dashboard s</div>
+    <ul id="menu" style="display: none;">
+
+        <li class="pt-5">
+            <a class="text-black p-5" style="font-size: 20px; font-family:Helvetica; ">
+                <a class=" pt-6" [routerLink]="['/dashboard']">Proyectos <span class="sr-only">(current)</span></a>
             </a>
         </li>
-        <li>
-            <a href="javascript:;" class="menu">
-                <div class="menu__icon"> <i data-feather="box"></i> </div>
-                <div class="menu__title"> Estudiantes <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+   
+        <li class="pt-5">
+            <a class="text-black p-5" style="font-size: 20px; font-family:Helvetica;">
+                <a class=" pt-6 " [routerLink]="['/perfil',id]">Perfil</a>
             </a>
-            
         </li>
-        
-        <li class="menu__devider my-6"></li>
-        
-        <li>
-            <a href="javascript:;" class="menu">
-                <div class="menu__icon"> <i data-feather="sidebar"></i> </div>
-                <div class="menu__title"> Forms <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
-            </a>
-            
+
+        <li class="pt-5">
+            <a class="text-black p-5" style="font-size: 20px; font-family:Helvetica;" (click)="logout()">Salir</a>
+          
         </li>
-        <li>
-            <a href="javascript:;" class="menu">
-                <div class="menu__icon"> <i data-feather="hard-drive"></i> </div>
-                <div class="menu__title"> Widgets <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
-            </a>
-            
-        </li>
+
     </ul>
+    <br>
 </div>
-END: Mobile Menu -->
-
-<!-- BEGIN: Top Bar -->
-<div class="border-b border-theme-white -mt-7 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10" style="z-index: 300;
-    background: white;
-    position: fixed;
-    width: 100%;
-    margin-top: -33px;
-    height: 90px;
-    padding: 10px;">
-  <div class="top-bar-boxed flex items-center">
-    <!-- BEGIN: Logo -->
-    <a [routerLink]="['/dashboard']" class="-intro-x hidden md:flex">
-      <!--<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="assets/images/logo.png">-->
-
-      <a class="navbar-brand">
-        <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png" width="300" height="70" alt="">
-      </a>
-      <!--<span class="text-white text-lg ml-3"> Universidad<span class="font-medium"> Anáhuac</span> </span>-->  
-    </a>
-    <!-- END: Logo -->
-    <!-- BEGIN: Breadcrumb -->
-    <!--<div class="-intro-x breadcrumb breadcrumb--light mr-auto border-theme-white"> <a [routerLink]="['/dashboard']" class="">Application</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a [routerLink]="['/dashboard']" class="breadcrumb--active">Servicio Social</a> </div>-->
-    <!-- END: Breadcrumb -->
-    <!-- BEGIN: Search -->
-
-    <nav class="top-nav -intro-x breadcrumb breadcrumb--light mr-auto border-theme-white">
-      <ul>
-        <li>
-          <a routerLink="/dashboard" routerLinkActive="top-menu top-menu--active" class="top-menu">
-            <div class="top-menu__icon"> <i data-feather="home"></i> </div>
-            <div class="top-menu__title"> Dashboard </div>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/perfil" routerLinkActive="top-menu top-menu--active" class="top-menu">
-            <div class="top-menu__icon"> <i data-feather="user"></i> </div>
-            <div class="top-menu__title"> Perfil </div>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- BEGIN: Notifications -->
-    <!-- BEGIN: Account Menu -->
-    <div class="intro-x dropdown w-8 h-8 relative">
-      <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
-        <img alt="Servicio Social" class="w-6" src="assets/images/globo{{nombre.substr(0,1)}}.png">
-
-      </div>
-      <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
-        <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
-          <div class="p-4 border-b border-theme-40 dark:border-dark-3">
-            <div class="font-medium">{{nombre}} {{apellidos}}</div>
-            <div class="text-xs text-theme-41 dark:text-gray-600">Alumno</div>
-          </div>
-          <div class="p-2">
-            <a [routerLink]="['/perfil']" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Perfil </a>
-            <a [routerLink]="['/dashboard']" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Ayuda </a>
-          </div>
-          <div class="p-2 border-t border-theme-40 dark:border-dark-3">
-            <a href="" (click)="logout()" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- END: Account Menu -->
-  </div>
-</div>
-<!-- END: Top Bar -->
-
-
-<!-- BEGIN: Top Menu -->
-<!--<nav class="top-nav">
+<nav class="top-nav  shadow-lg navbar-expand-md navbar-light fixed-top bg-white " style="top:0;left: 0;  width: 100%;
+position: fixed;
+">
     <ul>
         <li>
-            <a routerLink="/dashboard" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="home"></i> </div>
-                <div class="top-menu__title"> Dashboard </div>
+            <a [routerLink]="['/dashboard']">
+
+                <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png " class="mt-3 mb-3" width="200 " style="margin-left: 100px;" height="60 " alt=" ">
             </a>
         </li>
-        <li>
-            <a routerLink="/perfil" routerLinkActive="top-menu top-menu--active" class="top-menu">
-                <div class="top-menu__icon"> <i data-feather="user"></i> </div>
-                <div class="top-menu__title"> Perfil </div>
+        <li class="pt-5 ">
+            <a class="text-black p-5 " style="font-size: 20px; font-family:Helvetica; ">
+                <a class=" pt-6 " [routerLink]="['/dashboard']">Proyectos <span class="sr-only ">(current)</span></a>
             </a>
         </li>
+ 
+        <li class="pt-5 ">
+            <a class="text-black p-5 " style="font-size: 20px; font-family:Helvetica; ">
+                <a class=" pt-6 " [routerLink]="[ '/perfil'] ">Perfil</a>
+            </a>
+        </li>
+        <div class="intro-x dropdown w-8 h-8 relative ml-auto mt-3">
+            <div class="dropdown-toggle image-fit zoom-in scale-110">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="dropdown-box mt-10 absolute w-64 top-0 right-0 " style="background: #FF8800;">
+                <div class="dropdown-box__content box  text-white" style="background: #FF8800;">
+                    <div class="p-4 border-b border-white dark:border-dark-3">
+                        <div class="font-medium">{{nombre}}</div>
+                    </div>
+                    <div class="p-2">
+                        <a [routerLink]="['/perfil']" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Perfil </a>
+                    </div>
+                    <div class="p-2 border-t border-white dark:border-dark-3">
+                        <a  (click)="logout()"  class="flex items-center block p-2 transition duration-300 ease-in-out hover:-bgtheme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Salir </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ul>
-</nav>-->
-<!-- END: Top Menu -->
+</nav>

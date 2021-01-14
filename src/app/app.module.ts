@@ -31,6 +31,10 @@ import { TerminosCondicionesComponent } from './terminoscondiciones/terminoscond
 
 import { CookieService } from 'ngx-cookie-service';
 
+import { RecaptchaModule } from "ng-recaptcha";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -62,8 +66,12 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     DataTablesModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
+    RecaptchaModule,
+    MatDatepickerModule,
+    BrowserAnimationsModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,MatDatepickerModule,MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

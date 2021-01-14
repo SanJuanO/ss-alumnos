@@ -13,6 +13,7 @@ import {Location} from '@angular/common';
 import { Alumno,AlumnoProyecto, AlumnosProyectosAsignados } from '../../models/alumno';
 import { AlumnoService } from '../../services/alumno.service';
 import { AreaAccion } from '../../models/areaaccion';
+import { CookieService } from "ngx-cookie-service";
 
 declare var $: any;
 
@@ -46,9 +47,11 @@ export class ProyectosVerComponent implements OnInit {
   public proyectoalumno:string="";
   public idempresa:string;
   public alumnosAsignar : any;
-  public estadoInscripcion = 0;
+  public estadoInscripcion:number=0;
   public alumnoproyecto: AlumnoProyecto = new AlumnoProyecto("", "", "", 0, 0, 0, 0);
   public areas = [];
+  public validador=0;
+  public validar2=false;
   public organizacion: Empresa = new Empresa("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", true, 0, "", 0, false, true, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, this.areas,undefined, undefined);
 
   /*
@@ -64,7 +67,7 @@ export class ProyectosVerComponent implements OnInit {
 
 
   constructor( private alumnoService: AlumnoService,private proyectoService: ProyectoService, private organizacionService: OrganizationService,
-    private universidadService: UniversidadService,private router: Router,private activatedRoute: ActivatedRoute,public session: SessionService
+    private universidadService: UniversidadService,private router: Router,private activatedRoute: ActivatedRoute,public session: SessionService,private cookies: CookieService
     ,private _location: Location) {
   }
 
@@ -94,9 +97,35 @@ export class ProyectosVerComponent implements OnInit {
     var iduser = Number(this.session.getToken());
     var ido = this.idobtenido;
     console.log(iduser);
+
+    if(this.validar){
+      if(this.estadoInscripcion==0){
+
+      $('#inscribirmemodal').modal('show');
+      }
+      
+
+    }
+    else if(this.validar2){
+       if(this.estadoInscripcion==1){
+
+        $('#entrevista').modal('show');
+
+      }
+      else if(this.estadoInscripcion==3){
+
+        
+      }else{
+
+      }
+   
+    }
+    else{
     this.alumnoService.getProyectosAlumno(iduser).subscribe((res: Array<AlumnosProyectosAsignados>) => {
       console.log(res);
       
+      document.getElementById("carg").style.display = "none";
+      document.getElementById("OCULTAR").style.display = "block";
 
       if (res != null && res.length > 0) {
         var i = 0;
@@ -105,16 +134,39 @@ export class ProyectosVerComponent implements OnInit {
           console.log(proyectoAsignado);
           if (proyectoAsignado.idProyecto == ido) {
             this.estadoInscripcion = proyectoAsignado.idEstado;
-          }
-        }
+            console.log(this.estadoInscripcion);
+
         
-      }
+          }
+
+     
+
+
+        
+        }
+        this.validar2=true;
+        this.obtenerProyectosAlumno();
+
+      }else{
+        
+this.validar=true;
+this.obtenerProyectosAlumno();
+      } 
      //this.proyectoalumno = res['proyectoNombre'];
       
     }, error => {
     })
   }
 
+
+}
+valid(){
+  console.log(this.estadoInscripcion);
+  if(this.estadoInscripcion=0)
+  $('#inscribirmemodal').modal('show');
+ 
+
+}
   getProyecto(id) {
 
     this.proyectoService.getProyecto(id).subscribe((res: any[]) => {
@@ -277,6 +329,8 @@ export class ProyectosVerComponent implements OnInit {
     this.proyectoService.asignarAlumnosProyectos(this.alumnosAsignar).subscribe((res: any) => {
       //console.log(res.message);
       if (res) {
+        $('#entrevista').modal('show');
+
         this.router.navigate(['/dashboard']);
       }
 
@@ -295,8 +349,14 @@ export class ProyectosVerComponent implements OnInit {
     this.proyectoService.confirmaInscripcionAlumnoProyecto(this.alumnosAsignar).subscribe((res: any) => {
       //console.log(res.message);
       if (res) {
+
         this.router.navigate(['/dashboard']);
-      }
+
+    
+    
+        
+        }
+      
     }, error => {
     })
  

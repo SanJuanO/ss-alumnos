@@ -4,7 +4,8 @@ import { LoginServices } from '../services/login.service';
 import { SessionService } from '../services/session.service';
 import { AlumnoEdit } from '../models/alumno';
 import { AlumnoService } from '../services/alumno.service';
-
+import { RecaptchaModule } from "ng-recaptcha";
+  
 declare var $: any;
 
 @Component({
@@ -16,21 +17,41 @@ export class LoginComponent implements OnInit {
   public idobtenido:string;
   public mensaje: string = "";
   public alumno: AlumnoEdit;
+  public validado=false;
+  public url:string;
 
   constructor(public session: SessionService,
     private activatedRoute: ActivatedRoute, private router: Router,
     private loginservice: LoginServices,
     private alumnoService: AlumnoService) {
-    this.activatedRoute.queryParams.subscribe(params => {
-          this.idobtenido = params['idProyecto'];
-      });
-  }
+    // this.activatedRoute.queryParams.subscribe(params => {
 
-  ngOnInit(): void {
+    
       
+
+        
+    //       this.idobtenido = params['idProyecto'];
+    //       console.log(this.idobtenido);
+    //   });
+  }
+  resolved(captchaResponse: string) {
+    this.validado=true;
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
+  ngOnInit(): void {
+    var URLactual = window.location;
+    this.url=String(URLactual);
+    console.log(this.url);
+    if(this.url.includes("idProyecto")){
+      var t=this.url.split("idProyecto=")
+     this.idobtenido = t[1];
+     console.log(this.idobtenido);
+
+    }
+
     var id = this.session.getToken();
     //console.log("id" + id);
-    
+  
     if (id != null && id != undefined && id != "") {
       this.obtenerPerfil();
     } else {
@@ -42,7 +63,7 @@ export class LoginComponent implements OnInit {
   onSubmit(data) {
     var user=$('#email').val();
     var pass = $('#contraseña').val();
-    
+    if(this.validado){
     this.loginservice.login(user, pass).subscribe((res: any) => {
       if (res['resultado'] == 1) {
         var datosvalue = res['datos'];
@@ -85,11 +106,17 @@ export class LoginComponent implements OnInit {
         $('#success-modal-preview').modal('show');
 
       }
+    
 
     }, error => {
       alert(error.error)
     })
-    
+  }else{
+    this.mensaje=("Falta el captcha");
+    var x = document.getElementById("alerta");
+      x.style.display = "block";
+
+  }
   }
 
   validaDatosAlumno() {
@@ -185,7 +212,6 @@ export class LoginComponent implements OnInit {
 
   obtenerPerfil() {
     var id = this.session.getToken();
-
     this.alumnoService.getAlumno(id).subscribe((res: AlumnoEdit) => {
       this.alumno = res;
         var datosvalue = res;
@@ -199,18 +225,20 @@ export class LoginComponent implements OnInit {
         }
 
       } else if (datosvalue['terminosCondiciones'] != null && !this.validaDatosAlumno()) {
+        
+        console.log(datosvalue['terminosCondiciones']);
 
         if (this.idobtenido == null) {
           this.router.navigate(['/informacionalumno']);
         } else {
-          this.router.navigate(['/informacionalumno', this.idobtenido]);
+          this.router.navigate(['/proyectos/ver', this.idobtenido]);
         }
 
       } else if (datosvalue['terminosCondiciones'] != null && this.validaDatosAlumno()) {
 
         if (this.idobtenido == null) {
           this.router.navigate(['/dashboard']);
-          //console.log(user);
+          console.log("adentro");
 
         } else {
           this.router.navigate(['/proyectos/ver', this.idobtenido]);
@@ -219,6 +247,14 @@ export class LoginComponent implements OnInit {
     });
 
   }
+  ocultar() {
+    var x = document.getElementById("alerta");
+      x.style.display = "none";
 
+    
+
+  
+
+  }
 
 }

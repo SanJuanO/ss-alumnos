@@ -56,7 +56,7 @@ export class PerfilComponent implements OnInit {
         this.alumno.fechaNacimiento = "";
       }
       if (res.fechaInicioServicioSocialString != "0001-01-01") {
-        var fecha = new Date(res.fechaInicioServicioSocialString.substr(0, 10));
+        var fecha = new Date(res.fechaInicioServicioSocialString);
         this.alumno.fechaInicioServicioSocial = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaInicioServicioSocial = "";

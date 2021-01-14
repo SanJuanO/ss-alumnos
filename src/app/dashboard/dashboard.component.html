@@ -3,50 +3,96 @@
 
 <!-- BEGIN: Content -->
 
-<div class="content mt-16">
+<div class=" mt-16"  style="font-family:Helvetica;">
+  <div class="cargador" id="carg" style="display: block;"></div>
+
+  <div class="modal" id="entrevista" style=" display: block; ">
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+  
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Entrevista</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Contacta al Responsable de Servicio Social!</div>
+  
+  
+        <div class=" mt-1 " style="font-size: 20px;">
+          Manda un mail al responsable de servicio social de la institución avisándole que has aplicado al proyecto y que quieres tener una entrevista. El contacto viene en la parte inferior del perfil del proyecto.
+        </div>
+        <br>
+        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+        "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  btn-lg text-white  ">Continuar</a> </div>
+    </div>
+  </div>
+  <div class="modal" id="warning-modal-preview" style=" display: block; ">
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Proyectos</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Busca proyectos!</div>
+
+
+        <div class=" mt-1 " style="font-size: 20px;">En esta sección podrás ver las convocatorias activas para buscar e inscribirte a los proyectos registrados que sean de tu interés para la prestación de tu servicio social.
+        </div>
+        <br>
+        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+        "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  btn-lg text-white  ">Continuar</a> </div>
+    </div>
+</div>
+
+
   <div class="modal" id="success-modal-preview-file">
-    <div class="modal__content">
+    <div class="modal__content modal__content--xl p-10 text-center">
       <div class="p-5 text-center">
         <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-        <div class="text-base mt-5">Muy bien!</div>
-        <div class="text-basemt-2">¡Se subió el reporte!</div>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Muy bien!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Se subió el reporte</div>
+
+
       </div>
-      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-    </div>
+      <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+      "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+          </div>
   </div>
 
   <div class="modal" id="success-modal-preview-carta">
-    <div class="modal__content">
+    <div class="modal__content modal__content--xl p-10 text-center">
       <div class="p-5 text-center">
         <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-        <div class="text-base mt-5">Muy bien!</div>
-        <div class="text-basemt-2">¡Se subiò la carta!</div>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Muy bien!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Se subió la carta</div>
+
+
       </div>
-      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-    </div>
+      <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+      "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+          </div>
   </div>
 
   <div class="modal" id="success-modal-actualizaHoras">
-    <div class="modal__content">
+    <div class="modal__content modal__content--xl p-10 text-center">
       <div class="p-5 text-center">
         <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-        <div class="text-base mt-5">¡Muy bien!</div>
-        <div class="text-basemt-2">¡Se actualizo las horas a cumplir en el proyecto!</div>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Muy bien!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">e actualizo las horas a cumplir en el proyecto</div>
+
       </div>
-      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-    </div>
+      <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+      "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+          </div>    
   </div>
 
   <div class="grid grid-cols-12 gap-6">
     <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
       <!-- BEGIN: General Report -->
       <div class="col-span-12 mt-10">
-        <div class="intro-y flex items-center h-10">
+        <!-- <div class="intro-y flex items-center h-10">
           <h2 class="text-lg font-medium truncate mr-5">
             Reporte General
           </h2>
           <button class="ml-auto flex text-theme-1 dark:text-theme-10" (click)="ngOnInit()"> <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i>  Recargar </button>
-        </div>
+        </div> -->
         <!-- <div class="grid grid-cols-12 gap-6 mt-5"  >
 
 
@@ -79,51 +125,58 @@
                      </div>
       -->
         <!-- BEGIN: Convocatorias Abiertas -->
-        <div class="col-span-12 mt-6" *ngIf="project ==null">
-          <div class="intro-y block sm:flex items-center h-10">
-            <h2 class="text-lg font-medium truncate mr-5">
-              Convocatorias
-            </h2>
+        <div class="col-span-12 mt-6" *ngIf="project ==null" id="convocatorii" style="display: none;">
+        
+    
+          <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+            <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; ">
+              Convocatorias            </h2>
           </div>
-          <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="convocatoriasalumnosf.length>0; else elseBlock">
-            <table class="table table-report sm:mt-2">
-              <thead>
-                <tr>
+              <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0" *ngIf="convocatoriasalumnosf.length>0; else elseBlock">
+                <table class="table table-report sm:mt-2">
 
-                  <th class="whitespace-no-wrap">CONVOCATORIAS ALUMNOS</th>
-                  <th class="text-center whitespace-no-wrap">INICIA</th>
-                  <th class="text-center whitespace-no-wrap">TERMINA</th>
-                  <th class="text-center whitespace-no-wrap">STATUS</th>
-                  <th class="text-center whitespace-no-wrap">ACCIÓN</th>
-                </tr>
+              <thead>
+           
               </thead>
               <tbody *ngFor="let convocatoria of convocatoriasalumnosf">
-                <tr class="intro-x">
-                  <td>
+                <tr class="intro-x" class="w-5 font-weight-bold" style="background: rgb(250, 250, 250);">
+                  <td style="background: rgb(250, 250, 250); font-size:17px;  font-weight: bold; ">
                     <a class="font-medium whitespace-no-wrap">{{  convocatoria.convocatoria}} </a>
-                    <div class="text-gray-600 text-xs whitespace-no-wrap">Descripción {{convocatoria.descripcion}}</div>
                   </td>
-                  <td class="W-56">
-                    <div class="flex items-center justify-center text-theme-6">
-                      {{convocatoria.fechaInicioString}}
-                      <!--{{convocatoria.fechaInicio.substr(0,10)| date: 'dd/MM/yyyy' }}-->
-                    </div>
-                  </td>
-                  <td class="W-56">
-                    <div class="flex items-center justify-center text-theme-6">
-                      {{convocatoria.fechaTerminoString}}
-                      <!--{{convocatoria.fechaTermino.substr(0,10)| date: 'dd/MM/yyyy'}}-->
-                    </div>
-                  </td>
-                  <td class="w-40">
+                  <th class="W-56 " style="background: rgb(250, 250, 250);">
+                    <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;">
+                        <div class="text-center" style="color: #E60505; ">
+                            <div style="font-size: 18px; color: black;  font-weight: bold;">Inicia</div>
+                            <br>                      {{convocatoria.fechaInicioString}}
 
-                    <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium" *ngIf="convocatoria.activo==true">ACTIVA</div>
-                    <div class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium" *ngIf="convocatoria.activo==false">DESACTIVA</div>
+                        </div>
+                    </div>
+                </th>
+                <th class="W-56 " style="background: rgb(250, 250, 250);">
+                    <div class="flex items-center justify-center text-theme-6 mt-3" style="font-size:17px;">
+                        <div class="text-center" style="color: #E60505; ">
+                            <div style="font-size: 18px; color: black;  font-weight: bold;">Termina</div>
+                            <br>                       {{convocatoria.fechaTerminoString}}
 
-                  </td>
-                  <td class="table-report__action w-56">
+                        </div>
+                    </div>
+
+                </th>
+                <th class="w-40 " style="background: rgb(250, 250, 250);">
+                  <div class="text-center">
+                      <div style="font-size: 18px; color: black;  font-weight: bold;">Estatus</div>
+                      <div class="py-1 px-2 rounded-full text-center  bg-theme-9 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" *ngIf="convocatoria.activo==true " style="font-size:17px;">Activa</div>
+                      <div class="py-1 px-2 rounded-full text-center  bg-theme-6 text-white   mt-3 " style="background: #E60505; border-radius: 15px;font-weight: bold;" *ngIf="convocatoria.activo==false " style="font-size:17px;">Desactiva</div>
+                  </div>
+              </th>
+                
+             
+                  <td class="table-report__action w-56" style="background: rgb(250, 250, 250);">
                     <div class="flex justify-center items-center">
-                      <a class="flex items-center mr-3 button bg-theme-10 text-white" href="https://adam.anahuac.mx/serviciosocial/buscar.html"><!--[routerLink]="['/proyectos/' ]"-->
+                      <!-- <a class="flex items-center mr-3 button bg-theme-10 text-white" href="https://adam.anahuac.mx/serviciosocial/buscar.html"> -->
+                        <a   style="border-radius: 15px;font-weight: bold; " class="flex items-center mr-3 button bg-theme-10 text-white text-center" href="https://portal-ss.gesdesapplication.com/buscar.html">
+
+                        
                         Ver Proyectos
                       </a>
 
@@ -135,49 +188,57 @@
               </tbody>
             </table>
           </div>
-          <ng-template #elseBlock><div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">Sin convocatorias abiertas</div></ng-template>
+          <ng-template #elseBlock>
+
+        
+              <div class=" text-center font-italic leading-8 mt-6" style="font-style: italic; text-align:center; font-size:25px; color: rgb(226, 226, 226);">
+                 Sin convocatorias abiertas
+
+              </div>
+
+
+
+              <!-- END: Convocatorias Abiertas -->
+
+
+
+            </ng-template>
         </div>
         <!-- END: Convocatorias Abiertas -->
         <!-- BEGIN: Weekly Top Products -->
-        <div class="col-span-12 mt-6" *ngIf="projectArray !=null && projectArray.length>0">
-
-          <div class="intro-y block sm:flex items-center h-10" *ngIf="projectArray.length>0">
-            <h2 class="text-lg font-medium truncate mr-5">
-              Proyectos
+        <div class="col-span-12 mt-6" *ngIf="projectArray !=null && projectArray.length>0" >
+          <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+            <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; ">
+              Mis Aplicaciones
             </h2>
           </div>
           <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="projectArray.length>0; else elseBlockP">
             <table class="table table-report sm:mt-2">
-              <thead>
-                <tr>
-
-                  <th class="whitespace-no-wrap">PROYECTO</th>
-                  <th class="text-center whitespace-no-wrap">STATUS</th>
-                  <th class="text-center whitespace-no-wrap">ACCIÓN</th>
-                </tr>
-              </thead>
+           
               <tbody>
                 <tr class="intro-x" *ngFor="let proyecto of projectArray">
-                  <td>
+                  <td style="background: rgb(250, 250, 250); font-size:17px;  font-weight: bold; ">
                     <a class="font-medium whitespace-no-wrap"> {{proyecto.proyectoNombre}}</a>
                   </td>
 
-                  <td class="w-40">
+                  <td class="w-40" style="background: rgb(250, 250, 250);">
                     <!--1 preregistro,2 Aprobado por empresa, 3 Inscrito,4	Terminado,5	Cancelado,6	Rechazado-->
-                    <div *ngIf="proyecto.idEstado==1" class="py-1 px-2 rounded-full text-center text-xs bg-theme-12 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==2" class="py-1 px-2 rounded-full text-center text-xs bg-theme-17 cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==3" class="py-1 px-2 rounded-full text-center text-xs bg-theme-11 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==4" class="py-1 px-2 rounded-full text-center text-xs bg-theme-10 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==5" class="py-1 px-2 rounded-full text-center text-xs bg-theme-9 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==6" class="py-1 px-2 rounded-full text-center text-xs bg-theme-8 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==7" class="py-1 px-2 rounded-full text-center text-xs bg-theme-6 text-white cursor-pointer font-medium">{{proyecto.estado}}</div>
+                    <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Estatus</div>
+
+                    <div *ngIf="proyecto.idEstado==1"  class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" >{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==2"  class="py-1 px-2 rounded-full text-center  bg-theme-13 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" >{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==3"  class="py-1 px-2 rounded-full text-center  bg-theme-11 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" >{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==4"  class="py-1 px-2 rounded-full text-center  bg-theme-10 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" >{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==5"  class="py-1 px-2 rounded-full text-center  bg-theme-9 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" >{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==6"  class="py-1 px-2 rounded-full text-center  bg-theme-8 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" >{{proyecto.estado}}</div>
+                    <div *ngIf="proyecto.idEstado==7"  class="py-1 px-2 rounded-full text-center  bg-theme-6 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;;" >{{proyecto.estado}}</div>
                   </td>
-                  <td class="table-report__action w-56">
-                    <div class="flex justify-center items-center" *ngIf="proyecto.idEstado!=3 && proyecto.idEstado!=5 && proyecto.idEstado!=6 ">
-                      <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]">  Ver </a>
+                  <td class="table-report__action w-56" style="background: rgb(250, 250, 250);">
+                    <div class="flex justify-center items-center" *ngIf="proyecto.idEstado!=3 && proyecto.idEstado!=5 && proyecto.idEstado!=6 " >
+                      <a class="flex items-center mr-3 button bg-theme-10 text-white"  style="border-radius: 15px;font-weight: bold;  " [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]">  Ver </a>
                     </div>
                     <div class="flex justify-center items-center" *ngIf="proyecto.idEstado==3 ">
-                      <a class="flex items-center mr-3 button bg-theme-10 text-white" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]"> Completa tu inscripción</a>
+                      <a class="flex items-center mr-3 button bg-theme-10 text-white"  style="border-radius: 15px;font-weight: bold;" [routerLink]="['/proyectos/ver', proyecto.idProyecto  ]"> Completa tu inscripción</a>
                     </div>
                   </td>
                 </tr>
@@ -196,30 +257,36 @@
 
         </div>
         <!-- END: Weekly Top Products -->
-        <br>
-        <br>
+      
         <!--Proyecto actual start-->
-        <div *ngIf="project!=null" class="box">
-          <div class="col-span-12 mt-6">
+        <div *ngIf="project!=null" class="container">
+          <div class="col-span-12 ">
 
+            <div class="flex flex-col sm:flex-row items-centerborder-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+              <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+              Proyecto Actual
+              </h2>
+            </div>
             <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-              <div class="box p-5">
+              <div class=" p-5">
                 <div class="text-center">
-                  <h2 class="text-lg font-medium text-theme-11"><b>Proyecto actual</b></h2> <br><h3>{{project.proyectoNombre}}<br>{{project.organizacion}}</h3>
+                  
+                  
+                  
+                  <br><h3 style="font-size:20px;  font-weight: bold" >{{project.proyectoNombre}}<br>{{project.organizacion}}</h3>
                 </div>
               </div>
 
             </div>
 
-            <div class="p-5 intro-y flex items-center">
-              <h2 class="text-lg font-medium truncate mr-5  text-theme-11">
+         
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+              <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
                 Cantidad de horas a cumplir en el proyecto "{{project.proyectoNombre}}"
               </h2>
             </div>
-
-
             <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-              <div class="box p-5">
+              <div class=" p-5">
 
                 <div class="text-center" *ngIf="bandNoHoras && project!=null">
                   <select class="input  w-64 border mt-2" [(ngModel)]="noHoras0" [ngModelOptions]="{standalone: true}" >
@@ -230,9 +297,13 @@
                   <br />
                   <input *ngIf="noHoras0==-1" type="number" class="input  w-64 border mt-2" name="noHoras" [(ngModel)]="noHoras" [ngModelOptions]="{standalone: true}" placeholder="cantidad de horas a cumplir en el proyecto" max="600" min="0">
                   <br />
-                  <a href="javascript:;" (click)="actualizaHoras()" class="button inline-block bg-theme-1 text-white">Confirmar cantidad de horas a cumplir</a>
+                  <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                  "> <br> <a   style="display: block;" (click)="actualizaHoras()"  style=" border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  btn-lg text-white  ">Continuar</a> </div>
+              </div>
+              
+                  <a href="javascript:;" id="actuali" style="display: block;" (click)="actualizaHoras()" class="button inline-block bg-theme-1 text-white">Confirmar cantidad de horas a cumplir</a>
                 </div>
-                <div class="text-center" *ngIf="!bandNoHoras  && project!=null">
+                <div class="text-center" *ngIf="!bandNoHoras  && project!=null" style="font-size:20px;  font-weight: bold">
                   <h3 *ngIf="project.horasRegistradas == null"><b>0 </b>Horas regitradas de un total de</h3>
                   <h3 *ngIf="project.horasRegistradas != null"><b>{{project.horasRegistradas}} </b>Horas registradas de un total de</h3>
                   <h3><b>{{noHoras}} </b>Horas a cumplir en este proyecto.</h3>
@@ -243,17 +314,17 @@
 
             </div>
 
-            <div class="p-5 intro-y flex items-center">
-              <h2 class="text-lg font-medium truncate mr-5  text-theme-11">
+      
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+              <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
                 Reportes mensuales del proyecto "{{project.proyectoNombre}}"
               </h2>
             </div>
-
             <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-              <div class="box p-5">
+              <div class=" p-5">
 
                 <table class="table table-report sm:mt-2" *ngIf="actividades!=null && actividades.length>0">
-                  <thead>
+                  <!-- <thead>
                     <tr>
                       <th class="whitespace-no-wrap">No</th>
                       <th class="whitespace-no-wrap">Mes</th>
@@ -262,93 +333,112 @@
                       <th class="whitespace-no-wrap">Fecha</th>
                       <th class="whitespace-no-wrap">Opciones</th>
                     </tr>
-                  </thead>
+                  </thead> -->
                   <tbody>
                     <tr class="intro-x" *ngFor="let actividad of actividades; let i=index">
-                      <td>
+                      <!-- <td>
                         <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
-                      </td>
-                      <td>
+                      </td> -->
+                      <td style="background: rgb(250, 250, 250);">
                         <div class="ext-base text-xs whitespace-no-wrap">{{actividad.titulo}}</div>
                       </td>
-                      <td>
+                      <!-- <td>
                         <div class="ext-base text-xs whitespace-no-wrap">{{actividad.actividad.substr(0,50)}}</div>
-                      </td>
-                      <td>
-                        <div class="ext-base text-xs whitespace-no-wrap tooltip top" *ngIf="actividad.validaEmpresa">
-                          sí
-                          <span class="tiptext">Reporte validado por parte de la instituciòn</span>
+                      </td> -->
+                      <td style="background: rgb(250, 250, 250);">
+                        <div style="font-size: 18px; color: black;  font-weight: bold;"  align="center">Estatus</div>
+
+                        <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white   mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top"  *ngIf="actividad.validaEmpresa">
+                          <div class="tooltip top">
+                              <span class="tiptext text-left">Reporte validado por parte de la instituciòn</span>                                                Validado
+
+                          </div>
+                      </div>
+                      <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white   mt-3" data-toggle="tooltip" data-placement="top" title="Tooltip on top"  *ngIf="!actividad.validaEmpresa">
+                        <div class="tooltip top">
+                            <span class="tiptext text-left">Esperando validaciòn por parte de la instituciòn</span>                                                Pendiente
+
                         </div>
-                        <div class="ext-base text-xs whitespace-no-wrap tooltip top" *ngIf="!actividad.validaEmpresa">
-                          no
-                            <span class="tiptext" style="margin-left: -145px !important;">Esperando validaciòn por parte de la instituciòn</span>
-                        </div>
+                    </div>
+                       
                       </td>
-                      <td>
-                        <div class="ext-base text-xs whitespace-no-wrap">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
+                      <td style="background: rgb(250, 250, 250);"> 
+                        <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Fecha</div>
+
+                        <div class="ext-base text-xs whitespace-no-wrap" align="center">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
                       </td>
-                      <td>
-                        <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white">mostrar más</a></div>
-                        <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="editar(actividad)" data-toggle="modal" data-target="#actualizaActividad" class="button inline-block bg-theme-9 text-white">editar</a></div>
+                      <td style="background: rgb(250, 250, 250);">
+
+                        <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">Mostrar más</a></div>
+                      </td>
+                      <td style="background: rgb(250, 250, 250);">
+                        
+                        <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="editar(actividad)" data-toggle="modal" data-target="#actualizaActividad" class="button inline-block bg-theme-9 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">Editar</a></div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
-                <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar reporte</a> </div>
+                <br>
+                <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block  text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold;
+                  ">Agregar reporte</a> </div>
               </div>
 
             </div>
 
-
-            <div class="p-5 intro-y flex items-center">
-              <h2 class="text-lg font-medium truncate mr-5  text-theme-11">
+            <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+              <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
                 Cartas del proyecto "{{project.proyectoNombre}}"
               </h2>
             </div>
-
+      
             <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-              <div class="box p-5">
+              <div class=" p-5">
 
                 <table class="table table-report sm:mt-2">
                   <thead>
-                    <tr>
+                    <!-- <tr>
                       <th class="whitespace-no-wrap">No</th>
                       <th class="whitespace-no-wrap">Carta</th>
                       <th>
                         <div class="ext-base text-xs whitespace-no-wrap">Archivo</div>
                       </th>
 
-                      <!--<th class="whitespace-no-wrap">Fecha</th>-->
-                    </tr>
+                    </tr> -->
                   </thead>
                   <tbody>
                     <tr class="intro-x">
-                      <td>
+                      <td style="background: rgb(250, 250, 250);">
                         <div class="ext-base text-xs whitespace-no-wrap">1</div>
                       </td>
-                      <td>
+                      <td style="background: rgb(250, 250, 250);">
+
                         <div class="ext-base text-xs whitespace-no-wrap">Carta de inicio</div>
                       </td>
-                      <td>
-                        <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal"  (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>
-                        <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal"  (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-9 text-white">Volver a cargar</a>
-                        <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" (click)="descargarCarta(0)" class="button inline-block bg-theme-1 text-white">Mostar</a>
+                      <td style="background: rgb(250, 250, 250);">
+                        <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal"  (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-1 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">Agregar carta</a>
+                        <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal"  (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-9 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;"> Volver a cargar</a>
+                      </td>
+                      <td style="background: rgb(250, 250, 250);" *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''">
+                       <a  href="javascript:;" (click)="descargarCarta(0)" class="button inline-block bg-theme-1 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">Mostar</a>
                       </td>
                       <!--<td>
                       <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
                     </td>-->
                     </tr>
                     <tr class="intro-x">
-                      <td>
+                      <td style="background: rgb(250, 250, 250);">
                         <div class="ext-base text-xs whitespace-no-wrap">2</div>
                       </td>
-                      <td>
+                      <td style="background: rgb(250, 250, 250);">
+
                         <div class="ext-base text-xs whitespace-no-wrap">Carta de termino</div>
                       </td>
-                      <td>
-                        <a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>
-                        <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-9 text-white">Volver a cargar</a>
-                        <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" (click)="descargarCarta(1)" class="button inline-block bg-theme-1 text-white">Mostrar</a>
+                      <td style="background: rgb(250, 250, 250);">
+                        <a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-1 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">Agregar carta</a>
+                        <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-9 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">Volver a cargar</a>
+                      </td>
+                      <td *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" style="background: rgb(250, 250, 250);">
+                      <a  href="javascript:;" (click)="descargarCarta(1)" class="button inline-block bg-theme-1 text-white"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">Mostrar</a>
                       </td>
                       <!--<td>
                       <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
@@ -450,7 +540,7 @@
                           <div class="ext-base text-xs whitespace-no-wrap">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
                         </td>
                         <td>
-                          <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white">mostrar más</a></div>
+                          <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;" class="button inline-block bg-theme-1 text-white">mostrar más</a></div>
                         </td>
                       </tr>
                     </tbody>
@@ -494,7 +584,7 @@
                         </td>
                         <td>
                           <!--<a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>-->
-                          <a *ngIf="projectEnded.rutaCartaInicio!=null && projectEnded.rutaCartaInicio!=''" href="javascript:;" (click)="descargarCartaEnded(projectEnded.archivoCartaInicio)" class="button inline-block bg-theme-1 text-white">Descargar</a>
+                          <a *ngIf="projectEnded.rutaCartaInicio!=null && projectEnded.rutaCartaInicio!=''" href="javascript:;" (click)="descargarCartaEnded(projectEnded.archivoCartaInicio)"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;" class="button inline-block bg-theme-1 text-white">Descargar</a>
                         </td>
                         <!--<td>
               <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
@@ -509,7 +599,7 @@
                         </td>
                         <td>
                           <!--<a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block bg-theme-1 text-white">Agregar carta</a>-->
-                          <a *ngIf="projectEnded.rutaCartaTermino!=null && projectEnded.rutaCartaTermino!=''" href="javascript:;" (click)="descargarCartaEnded(projectEnded.archivoCartaTermino)" class="button inline-block bg-theme-1 text-white">Descargar</a>
+                          <a *ngIf="projectEnded.rutaCartaTermino!=null && projectEnded.rutaCartaTermino!=''" href="javascript:;" (click)="descargarCartaEnded(projectEnded.archivoCartaTermino)"  style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;" class="button inline-block bg-theme-1 text-white">Descargar</a>
                         </td>
                         <!--<td>
               <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
@@ -578,9 +668,11 @@
     <div class="modal" id="subirActividad">
 
 
-      <div class="modal__content">
+      <div class="modal__content modal__content--xl p-10 text-center">
         <form #form="ngForm" (ngSubmit)="agregaActividad()">
           <div class="p-5 text-center">
+            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Nuevo Reporte</div>
+
             <div class="text-base mt-5">Mes</div>
             <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividad.titulo">-->
             <select class="input  w-64 border mt-2" [(ngModel)]="alumnoActividad.titulo" [ngModelOptions]="{standalone: true}">
@@ -605,9 +697,16 @@
 
           </div>
           <div class="px-5 pb-8 text-center">
-            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button>
+            <div class="sm:grid grid-cols-2 gap-2">
+
+
+            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">Cancelar</button>
+            <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">Guardar</button>
           </div>
+        </div>
+
         </form>
 
       </div>
@@ -641,8 +740,8 @@
 
           </div>
           <div class="px-5 pb-8 text-center">
-            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button>
+            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">Cancelar</button>            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button>
           </div>
         </form>
 
@@ -708,18 +807,19 @@
     </div>
 
     <div class="modal" id="subirCarta">
-      <div class="modal__content">
+      <div class="modal__content modal__content--xl p-10 text-center">
         <form #form="ngForm" (ngSubmit)="subeArchivoCarta()">
           <div class="p-5 text-center">
-            <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-            <div class="text-base mt-5" *ngIf="idArchivo==0">Subir carta de inicio</div>
-            <div class="text-base mt-5" *ngIf="idArchivo==1">Subir carta de termino</div>
+            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;"*ngIf="idArchivo==0">Subir carta de inicio</div>
+            <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;" *ngIf="idArchivo==1">Subir carta de termino</div>
+
+    
             <br>
             <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
           </div>
           <div class="px-5 pb-8 text-center">
-            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancelar</button>
-            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Subir</button>
+            <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">Cancelar</button>            <button type="submit" data-dismiss="modal" class="button w-24 text-white" style=" border-radius: 15px; font-size: 17px; background-color: #FF8300;">Subir</button>
           </div>
         </form>
       </div>

@@ -1,201 +1,128 @@
-<!-- BEGIN: Mobile Menu
-<div class="mobile-menu md:hidden">
-  <div class="mobile-menu-bar">
-    <a [routerLink]="['/dashboard']" class="flex mr-auto">
 
-    </a>
-    <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
-  </div>
-</div>
- END: Mobile Menu -->
-<!-- BEGIN: Top Bar -->
-<div class="border-b border-theme-white -mt-7 md:-mt-5 -mx-3 sm:-mx-8 px-3 sm:px-8 pt-3 md:pt-0 mb-10" style="z-index: 300;
-    background: white;
-    position: fixed;
-    width: 100%;
-    margin-top: -33px;
-    height: 90px;
-    padding: 10px;">
-  <div class="top-bar-boxed flex items-center">
-    <!-- BEGIN: Logo -->
-    <a [routerLink]="['/dashboard']" class="-intro-x hidden md:flex">
-      <!--<img alt="Midone Tailwind HTML Admin Template" class="w-6" src="assets/images/logo.png">-->
 
-      <a class="navbar-brand">
-        <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png" width="300" height="70" alt="">
-      </a>
-      <!--<span class="text-white text-lg ml-3"> Universidad<span class="font-medium"> Anáhuac</span> </span>-->
-    </a>
-    <!-- END: Logo -->
-    <!-- BEGIN: Breadcrumb -->
-    <!--<div class="-intro-x breadcrumb breadcrumb--light mr-auto border-theme-white"> <a [routerLink]="['/dashboard']" class="">Application</a> <i data-feather="chevron-right" class="breadcrumb__icon"></i> <a [routerLink]="['/dashboard']" class="breadcrumb--active">Servicio Social</a> </div>-->
-    <!-- END: Breadcrumb -->
-    <!-- BEGIN: Search -->
-
-    <nav class="top-nav -intro-x breadcrumb breadcrumb--light mr-auto border-theme-white">
-      <ul>
-        <li>
-          <!--<a routerLink="/dashboard" routerLinkActive="top-menu top-menu--active" class="top-menu">
-            <div class="top-menu__icon"> <i data-feather="home"></i> </div>
-            <div class="top-menu__title"> Dashboard </div>
-          </a>-->
-        </li>
-        <li><!--
-          <a routerLink="/perfil" routerLinkActive="top-menu top-menu--active" class="top-menu">
-            <div class="top-menu__icon"> <i data-feather="user"></i> </div>
-            <div class="top-menu__title"> Perfil </div>
-          </a>-->
-        </li>
-      </ul>
-    </nav>
-
-    <!-- BEGIN: Notifications -->
-    <!-- BEGIN: Account Menu -->
-    <div class="intro-x dropdown w-8 h-8 relative">
-      <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
-        <img alt="Servicio Social" class="w-6" src="assets/images/globo{{nombre.substr(0,1)}}.png">
-
-      </div>
-      <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
-        <div class="dropdown-box__content box bg-theme-38 dark:bg-dark-6 text-white">
-          <div class="p-4 border-b border-theme-40 dark:border-dark-3">
-            <div class="font-medium">{{nombre}} {{apellidos}}</div>
-            <div class="text-xs text-theme-41 dark:text-gray-600">Alumno</div>
-          </div>
-          <div class="p-2 border-t border-theme-40 dark:border-dark-3">
-            <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- END: Account Menu -->
-  </div>
-</div>
-<!-- END: Top Bar -->
-<!-- BEGIN: Top Menu -->
 <!-- END: Top Menu -->
-<!-- END: Content -->
-<!--
-<div class="modal show" id="success-modal-preview-terminos" >
-  <div class="modal__content modal__content--lg" style="width:80% !important">
-    <div class="p-5 text-center">
-      <i data-feather="check-circle" class="text-theme-9 mx-auto mt-3"></i>
-      <div class="text-3xl mt-5">Terminos y condiciones</div>
-      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-        <div class="report-box ">
-          <div class="box p-5">
-            <div class="px-5 pb-8 text-center">
-
-              <div>
-                ¿Por qué son importantes?<br />
-                La normativa legal exige que el usuario tenga conocimiento de las condiciones de contratación de un producto o servicio, por lo que una redacción incompleta o inadecuada puede dar lugar a la imposición de una sanción por parte de un ente público.
-                <br />
-                Su importancia también radica en  la confianza que genera en los clientes, ya que mientras más conocimiento tenga el usuario de las condiciones del producto o servicio que se ofrecen mayor será su confianza para realizar la adquisición a través de dicha página web.
-                <br />
-                Por ello, resulta recomendable que se establezcan las condiciones de forma clara, es decir, evitando una redacción ambigua u oscura, ya que el usuario debe conocer y entender las reglas a las que se somete. El contenido de dichas condiciones debe incluir de forma detallada y clara cuestiones como la limitación de responsabilidad, plazos de entrega del producto o garantías, con la finalidad de evitar futuros problemas como podrían ser reclamaciones o pleitos por malos entendidos al no especif
-              </div>
-
-
-            </div>
-
-          </div>
-        </div>
-      </div>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<div class="mobile-menu md:hidden">
+    <div class="mobile-menu-bar">
+        <a [routerLink]="['/dashboard']" class="flex mr-auto ">
+            <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png" width="200" height="60" alt="">
+        </a>
+        <a (click)="ocultar()" id="mobile-menu-toggler" style="color: #FF8800;"> <i data-feather="bar-chart-2" class="w-8 h-8  transform -rotate-90"></i> </a>
     </div>
-    <div class="px-5 pb-8 text-center">
-      <div class="text-center">
-        <a (click)="aceptaTerminos()" href="javascript:;" class="button inline-block bg-theme-1 text-white">Aceptar terminos y condiciones</a>
-      </div>
-    </div>
-  </div>
-</div>-->
-<!--
-<div class="content" *ngIf="alumno==null || alumno.terminosCondiciones==null || alumno.terminosCondiciones==false">
-  <div class="p-5" id="horizontal-form">
-    <div class="preview">
-      <div class="intro-y flex items-center h-10">
-        <h2 class="text-lg font-medium truncate mr-5">
-          Terminos y condiciones
-        </h2>
-      </div>
-      <div class="grid grid-cols-12 gap-6 mt-5">
+    <ul id="menu" style="display: none;">
 
-        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-          <div class="report-box ">
-            <div class="box p-5">
-              <div class="px-5 pb-8 text-center">
+    
+        <li class="pt-5">
+            <a class="text-black p-5" style="font-size: 20px; font-family:Helvetica;">
+                <a class=" pt-6 "  (click)="logout()">Salir</a>
+            </a>
+        </li>
 
-                <div>
-                  ¿Por qué son importantes?<br />
-                  La normativa legal exige que el usuario tenga conocimiento de las condiciones de contratación de un producto o servicio, por lo que una redacción incompleta o inadecuada puede dar lugar a la imposición de una sanción por parte de un ente público.
-                  <br />
-                  Su importancia también radica en  la confianza que genera en los clientes, ya que mientras más conocimiento tenga el usuario de las condiciones del producto o servicio que se ofrecen mayor será su confianza para realizar la adquisición a través de dicha página web.
-                  <br />
-                  Por ello, resulta recomendable que se establezcan las condiciones de forma clara, es decir, evitando una redacción ambigua u oscura, ya que el usuario debe conocer y entender las reglas a las que se somete. El contenido de dichas condiciones debe incluir de forma detallada y clara cuestiones como la limitación de responsabilidad, plazos de entrega del producto o garantías, con la finalidad de evitar futuros problemas como podrían ser reclamaciones o pleitos por malos entendidos al no especif
-                </div>
-
-                <div class="text-center">
-                  <a (click)="aceptaTerminos()" href="javascript:;" class="button inline-block bg-theme-1 text-white">Aceptar terminos y condiciones</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+    </ul>
+    <br>
 </div>
--->
-<!--TODO ALUMNOS-->
-<!-- BEGIN: Content -->
-<div class="content mt-16">
+
+<nav class="top-nav  shadow-lg navbar-expand-md navbar-light fixed-top bg-white " style="top:0;left: 0;  width: 100%;
+position: fixed;
+">
+    <ul>
+        <li>
+            <a >
+
+                <img src="https://adam.anahuac.mx/serviciosocial/images/logo-dark.png " class="mt-3 mb-3" width="200 " style="margin-left: 100px;" height="60 " alt=" ">
+            </a>
+        </li>
+       
+        <div class="intro-x dropdown w-8 h-8 relative ml-auto mt-3">
+            <div class="dropdown-toggle image-fit zoom-in scale-110">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="dropdown-box mt-10 absolute w-64 top-0 right-0 " style="background: #FF8800;">
+                <div class="dropdown-box__content box  text-white" style="background: #FF8800;">
+                    <div class="p-4 border-b border-white dark:border-dark-3">
+                        <div class="font-medium">{{nombre}}</div>
+                    </div>
+                
+                    <div class="p-2 border-t border-white dark:border-dark-3">
+                        <a (click)="logout()" class="flex items-center block p-2 transition duration-300 ease-in-out hover:-bgtheme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Salir </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+</nav>
+
+
+<div class="container mt-16">
+
+  <div class="cargador" id="carg" style="display: block;"></div>
+
 
 
   <div class="modal" id="success-modal-preview">
-    <div class="modal__content">
-      <div class="p-5 text-center">
-        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-        <div class="text-3xl mt-5">Muy bien!</div>
-        <div class="text-gray-600 mt-2">se actualizaron tus datos!</div>
-      </div>
-      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Bienvenid@!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
+
+
+        <div class="mt-1" style="font-size: 20px;" >
+          Este es tu portal desde donde podrás gestionar tus proyectos de servicio social, documentación, reportes mensuales y evaluaciones.
+                </div>
+        
+     
+
+        <div class=" text-center">
+            <br>
+            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            "> <br><a  data-dismiss="modal" style="background: #FF8300; border-radius: 15px; font-size: 17px; cursor:pointer;" class=" text-white  p-2">Continuar</a> </div>
+        </div>
     </div>
-  </div>
+</div>
+
+
+
 
   <div class="modal" id="validacion">
-    <div class="modal__content">
-      <div class="p-5 text-center">
-        <i data-feather="x-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-        <div class="text-gray-600 mt-2">{{mensajevalidacion}}</div>
-      </div>
-      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+
+    <div class="modal__content modal__content--xl p-10 text-center">
+        <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+        <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
+
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Advertencia!</div>
+        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{mensajevalidacion}}</div>
+
+
+
+
+        <div class=" text-center">
+            <br>
+            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            "> <br><a  data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button text-white  p-2">Continuar</a> </div>
+        </div>
     </div>
-  </div>
+
+
+</div>
 
   <form #formAlumno="ngForm" (ngSubmit)="onSubmit(formAlumno)">
-    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+    <!-- <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
       <h2 class="text-lg font-medium mr-auto">
         Completar informacion
       </h2>
-      <!--
-      <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-        <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
-      </div>-->
-    </div>
+ 
+    </div> -->
 
 
-    <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
 
-    <div class="intro-y box mt-5">
-      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-        <h2 class="font-medium text-base mr-auto">
+    <div class="intro-ymt-5">
+      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+        <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; ">
           Información Personal (antes de continuar necesitas completar tu informacion)
         </h2>
       </div>
-      <div class="p-5" id="horizontal-form">
+      <div class="container" id="horizontal-form">
         <div class="preview">
 
           <div class="flex flex-col sm:flex-row items-center mt-3" style="display: none">
@@ -208,7 +135,7 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>Nombre*</label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre*</label>
                   <input type="text" class="input  w-full border mt-2 " name="nombre" id="nombre" [(ngModel)]="alumno.nombre" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
                 </div>
 
@@ -216,28 +143,28 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>Apellido Paterno*</label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Apellido Paterno*</label>
                   <input type="text" class="input  w-full border mt-2 " name="paterno" id="paterno" [(ngModel)]="alumno.paterno" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>Apellido Materno*</label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Apellido Materno*</label>
                   <input type="text" class="input  w-full border mt-2 " name="materno" id="materno" [(ngModel)]="alumno.materno" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>ID Matrícula*</label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">ID Matrícula*</label>
                   <input type="text" class="input  w-full border mt-2 " name="matricula" id="matricula" [(ngModel)]="alumno.matricula" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>Universidad*</label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Universidad*</label>
                   <select class="input  w-full border mt-2 " name="idUniversidad" id="idUniversidad" [(ngModel)]="alumno.idUniversidad" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let universidad of universidades" [ngValue]="universidad.id">{{ universidad.universidad }}</option>
                   </select>
@@ -246,8 +173,8 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>Facultad*</label>
-                  <select class="input  w-full border mt-2 " name="idFacultad" [(ngModel)]="alumno.idFacultad" [ngModelOptions]="{standalone: true}">
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Facultad*</label>
+                  <select class="input  w-full border mt-2 " name="idFacultad" id="idFacultad" [(ngModel)]="alumno.idFacultad" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let facultad of facultades" [ngValue]="facultad.id">{{ facultad.facultad }}</option>
                   </select>
                 </div>
@@ -255,8 +182,8 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>Carrera*</label>
-                  <select class="input  w-full border mt-2 " name="idCarrera" [(ngModel)]="alumno.idCarrera" [ngModelOptions]="{standalone: true}">
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Carrera*</label>
+                  <select class="input  w-full border mt-2 " name="idCarrera" id="idCarrera" [(ngModel)]="alumno.idCarrera" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let carrera of carreras" [ngValue]="carrera.id">{{ carrera.carrera }}</option>
                   </select>
                 </div>
@@ -264,14 +191,14 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>Porcentaje Academico*</label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">Porcentaje Academico*</label>
                   <input type="number" class="input  w-full border mt-2 " name="porcentaje" id="porcentaje" [(ngModel)]="alumno.porcentaje" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
                 </div>
               </div>
               <!--
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Avance en créditos de la carrera*
                   </label>
                   <input type="number" class="input  w-full border mt-2 " name="avanceCreditos" [(ngModel)]="alumno.avanceCreditos" [ngModelOptions]="{standalone: true}" placeholder="">
@@ -280,7 +207,7 @@
                 -->
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Número de Semestre / Cuatrimestre*
                   </label>
                   <input type="number" class="input  w-full border mt-2 " id="noCuatrimestreSemestre" name="noCuatrimestreSemestre" [(ngModel)]="alumno.noCuatrimestreSemestre" [ngModelOptions]="{standalone: true}" max="14" min="0">
@@ -289,7 +216,7 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     ¿Tu carrera es semestral o cuatrimestral?*
                   </label>
                   <select class="input  w-full border mt-2 " id="esquemaPeriodo" name="esquemaPeriodo" [(ngModel)]="alumno.esquemaPeriodo" [ngModelOptions]="{standalone: true}">
@@ -301,7 +228,7 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Generación*
                   </label>
                   <select class="input w-full border mt-2 " id="generacion" name="generacion" [(ngModel)]="alumno.generacion" [ngModelOptions]="{standalone: true}" placeholder="¿en que año iniciaste la carrera?">
@@ -312,16 +239,31 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Fecha estimada de graduación*
                   </label>
-                  <input type="date" class="input  w-full border mt-2 " id="fechaEstimadaGraduacion" name="fechaEstimadaGraduacion" [(ngModel)]="alumno.fechaEstimadaGraduacion" [ngModelOptions]="{standalone: true}" min="2019-12-31" placeholder="">
+                  <div class="sm:grid grid-cols-2 gap-2">
+                    <div class="relative mt-2">
+
+                       <input matInput [matDatepicker]="picker" id="fechaInicio" placeholder="02/01/2021" class="input  w-full border mt-2 " id="fechaEstimadaGraduacion" name="fechaEstimadaGraduacion" [(ngModel)]="alumno.fechaEstimadaGraduacion" [ngModelOptions]="{standalone: true}" >
+                         <mat-datepicker #picker></mat-datepicker>
+                    </div>
+
+                       <div class="relative mt-3">
+                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <a (click)="picker.open()" style=" border-radius: 10px; font-size: 15px;" class="button text-white  p-2">Ver Calendar</a> </div>
+
+
+                    </div>
+
+                   </div>
+
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Correo Institucional*
                   </label>
                   <input type="email" class="input  w-full border mt-2 " id="correoInstitucional" name="correoInstitucional" [(ngModel)]="alumno.correoInstitucional" [ngModelOptions]="{standalone: true}" placeholder="">
@@ -329,7 +271,7 @@
               </div>
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Correo Personal*
                   </label>
                   <input type="email" class="input  w-full border mt-2 " id="correoPersonal" name="correoPersonal" [(ngModel)]="alumno.correoPersonal" [ngModelOptions]="{standalone: true}" placeholder="">
@@ -339,7 +281,7 @@
               <div class="relative mt-8">
                 <div>
                   <div>
-                    <label>Contraseña*</label>
+                    <label style="font-size:19px; color:#FF8800; font-weight: bold;">Contraseña*</label>
                     <input type="password" class="input  w-full border mt-2 " placeholder="" name="password" [(ngModel)]="alumno.password" [ngModelOptions]="{standalone: true}">
                   </div>
                 </div>
@@ -347,24 +289,39 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Teléfono de Contacto*
                   </label>
-                  <input type="tel" class="input  w-full border mt-2 " name="celular" [(ngModel)]="alumno.celular" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="tel" class="input  w-full border mt-2 " name="celular" id="celular" [(ngModel)]="alumno.celular" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
               </div>
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Fecha de Nacimiento*
                   </label>
-                  <input type="date" class="input  w-full border mt-2 " id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="alumno.fechaNacimiento" [ngModelOptions]="{standalone: true}" min="1900-12-31" placeholder="">
+                  <div class="sm:grid grid-cols-2 gap-2">
+                    <div class="relative mt-2">
+
+                       <input matInput class="input  w-full border mt-2 "  [matDatepicker]="picker2" id="fechaInicio" placeholder="02/01/2000" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="alumno.fechaNacimiento" [ngModelOptions]="{standalone: true}"  >
+                         <mat-datepicker #picker2></mat-datepicker>
+                    </div>
+
+                       <div class="relative mt-3">
+                        <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                        "> <a (click)="picker2.open()" style=" border-radius: 10px; font-size: 15px;" class="button text-white  p-2">Ver Calendar</a> </div>
+
+
+                    </div>
+
+                   </div>
+              
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Sexo*
                   </label>
                   <select class="input  w-full border mt-2 " id="sexo" name="sexo" [(ngModel)]="alumno.sexo" [ngModelOptions]="{standalone: true}">
@@ -379,7 +336,7 @@
           <br>
 
           <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-            <h2 class="font-medium text-base mr-auto">
+            <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; ">
               Información Complementaria
             </h2>
           </div>
@@ -389,7 +346,7 @@
             <div class="sm:grid grid-cols-2 gap-2">
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     ¿Has participado en ASUA?*
                   </label>
                   <select class="input  w-full border mt-2 " id="participacionAsua" name="participacionAsua" [(ngModel)]="alumno.participacionAsua" [ngModelOptions]="{standalone: true}">
@@ -402,7 +359,7 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     ¿Actualmente trabajas?*
                   </label>
                   <select class="input  w-full border mt-2 " id="trabajas" name="trabajas" [(ngModel)]="alumno.trabajas" [ngModelOptions]="{standalone: true}">
@@ -414,7 +371,7 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     ¿Bajo qué modalidad trabajas?*
                   </label>
                   <select class="input  w-full border mt-2" id="idModalidadTrabajo" name="idModalidadTrabajo" [(ngModel)]="alumno.idModalidadTrabajo" [ngModelOptions]="{standalone: true}">
@@ -425,10 +382,10 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     ¿A partir de qué semestre / cuatrimestre comenzaste a trabajar?
                   </label>
-                  <select class="input  w-full border mt-2 " name="cuatrimestreComienzoTrabajo" [(ngModel)]="alumno.cuatrimestreComienzoTrabajo" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " name="cuatrimestreComienzoTrabajo" id="cuatrimestreComienzoTrabajo" [(ngModel)]="alumno.cuatrimestreComienzoTrabajo" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="1">1</option>
                     <option [ngValue]="2">2</option>
                     <option [ngValue]="3">3</option>
@@ -448,14 +405,14 @@
             <div class="sm:grid grid-cols-1 gap-2">
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Indica en cuál(es) área(s) de Vida Universitaria has participado
                   </label>
                 </div>
                 <div class="sm:grid grid-cols-3 gap-2">
                   <div *ngFor="let area of listaAreasUniversidad">
 
-                    <label>
+                    <label style="font-size:15px;  font-weight: bold; ">
                       <input type="checkbox" id="{{area.id}}" (change)="toggleAreasVidaUniversitariaParticipado($event.target.checked, area.id)" [checked]="idsPasados.indexOf(area.id) >=0">
                       {{area.areaVidaUniversitaria}}
                     </label>
@@ -466,14 +423,14 @@
 
               <div class="relative mt-8">
                 <div>
-                  <label>
+                  <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     ¿Actualmente formas parte de alguna área de Vida Universitaria?
                   </label>
                 </div>
                 <div class="sm:grid grid-cols-3 gap-2">
                   <div *ngFor="let area of listaAreasUniversidad">
 
-                    <label>
+                    <label style="font-size:15px;  font-weight: bold; ">
                       <input type="checkbox" id="{{area.id}}" (change)="toggleAreasVidaUniversitariaActuales($event.target.checked, area.id)" [checked]="idsActuales.indexOf(area.id) >=0">
                       {{area.areaVidaUniversitaria}}
                     </label>
@@ -497,7 +454,7 @@
       </h2>
       <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
         <!--<a routerLink="/alumnos" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>-->
-        <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
+        <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2" style="background-color:#FF8800;">Guardar</button>
       </div>
     </div>
   </form>

@@ -4,6 +4,8 @@ import { OrganizationService } from '../services/organization.service';
 import { Empresa } from "../models/empresa"
 import { ConvocatoriaServices } from '../services/convocatoria.service';
 import { Convocatoria,Tipo } from "../models/convocatoria"
+import { CookieService } from "ngx-cookie-service";
+import { environment } from "../../environments/environment";
 
 import { ProyectoService } from '../services/proyecto.service';
 import { AlumnosProyectos, AlumnosModel } from "../models/proyectos"
@@ -30,6 +32,7 @@ export class DashboardComponent implements OnInit {
   public project: AlumnosProyectosAsignados = null;
   public projectArray: Array<AlumnosProyectosAsignados> = null;
   public projectArrayTerminados: Array<AlumnosProyectosAsignados> = [];
+public   api = environment.baseUrl;
 
   public convocatoriasf: Convocatoria[] = [];
   public convocatoriasalumnosf: Convocatoria[] = [];
@@ -52,7 +55,9 @@ export class DashboardComponent implements OnInit {
   public ocultarTerminados: boolean = true;
   
 
-  constructor(private convocatoriaService: ConvocatoriaServices, private alumnosActividadesService: AlumnosActividadesServices, private proyectoService: ProyectoService, private alumnoService: AlumnoService, public session: SessionService) {
+  constructor(private convocatoriaService: ConvocatoriaServices, 
+    private alumnosActividadesService: AlumnosActividadesServices, private proyectoService: ProyectoService,
+     private alumnoService: AlumnoService, public session: SessionService,private cookies: CookieService) {
 
   }
 
@@ -63,10 +68,17 @@ export class DashboardComponent implements OnInit {
     this.convocatoriasf = [];
     this.convocatoriasalumnosf = [];
     this.obtenerProyectos();
-    if (this.project == null) {
-      this.obtenerConvocatoria2();
-      //this.getReportes();
+  
+    if(this.cookies.get("mostrarproyectos")){
+      this.cookies.delete("mostrarproyectos");
+    this.mostrarmodal();
+
+
+    
     }
+
+   
+    
   }
 
   ngAfterViewInit() {
@@ -77,6 +89,7 @@ export class DashboardComponent implements OnInit {
     model.tipo = 2;
     this.convocatoriaService.getConvocatoriatipo(model).subscribe((res: any[]) => {
       this.convocatoriasalumnos = res;
+
       //console.log(this.convocatoriasalumnos);
       var options = { year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -105,6 +118,7 @@ export class DashboardComponent implements OnInit {
 
     this.proyectoService.getProyectoalumno(id).subscribe((res: AlumnosProyectosAsignados[]) => {
       this.projectArray = res;
+     
       //console.log(this.projectArray);
       if (res != null && res.length > 0) {
         var i = 0;
@@ -144,6 +158,12 @@ export class DashboardComponent implements OnInit {
         this.obtenerActividadesByIdAlumnoProyectoAsignado();
       }
       //console.log(res);
+      document.getElementById("convocatorii").style.display = "block";
+      document.getElementById("carg").style.display = "none";
+      if (this.project == null) {
+        this.obtenerConvocatoria2();
+        //this.getReportes();
+      }
       
     });
 
@@ -207,10 +227,9 @@ export class DashboardComponent implements OnInit {
     var id = this.session.getToken();
     //console.log(id);
 
+
     this.alumnoService.getAlumno(id).subscribe((res: AlumnosModel) => {
       this.alumno = res;
-
-      //console.log(res);
 
     });
 
@@ -218,6 +237,8 @@ export class DashboardComponent implements OnInit {
 
   actualizaHoras() {
     //console.log(this.project.id + " " + this.noHoras)
+    document.getElementById("actuali").style.display = "none";
+
     if (this.noHoras0 != -1) {
       this.noHoras = this.noHoras0;
     }
@@ -227,10 +248,13 @@ export class DashboardComponent implements OnInit {
     }
     
     this.alumnoService.updateHorasACuplirEnProyecto(this.project.id, this.noHoras).subscribe((res) => {
-      
+
       if (res) {
         $('#success-modal-actualizaHoras').modal('show');
         location.reload();
+      }else{
+        document.getElementById("actuali").style.display = "block";
+
       }
       //console.log(res);
 
@@ -246,6 +270,8 @@ export class DashboardComponent implements OnInit {
         this.actividades = <Array<AlumnosActividades>><any>data;
         var i = 0;
         for (i = 0; i < this.actividades.length; i++) {
+          this.actividades[i]['titulo']=this.actividades[i]['titulo'].slice(1, -1); 
+
           var fech = new Date(this.actividades[i].fechaCreacion);
           this.actividades[i].fechaCreacion = fech.toLocaleDateString("es-ES", options);
         }
@@ -282,6 +308,8 @@ export class DashboardComponent implements OnInit {
   }
 
   agregaActividad() {
+    document.getElementById("carg").style.display = "block";
+
     this.alumnoActividad.idAlumnoProyectoAsignado = this.project.id;
     this.alumnoActividad.activo = true;
     this.alumnoActividad.validaEmpresa = false;
@@ -294,6 +322,8 @@ export class DashboardComponent implements OnInit {
 
     this.alumnosActividadesService.CreateActivityWithFile(this.fileToUpload, this.alumnoActividad).subscribe(data => {
       if (data.resultado) {
+        document.getElementById("carg").style.display = "none";
+
         this.alumnoActividad = new AlumnosActividades();
         this.fileToUpload = undefined;
         $("#adjunto").val("");
@@ -303,6 +333,8 @@ export class DashboardComponent implements OnInit {
         //location.reload();
       }
     }, error => {
+      document.getElementById("carg").style.display = "none";
+
       console.log(error);
     });
   }
@@ -400,7 +432,10 @@ export class DashboardComponent implements OnInit {
   ocultaMuestraTerminados() {
     this.ocultarTerminados = !this.ocultarTerminados;
   }
-
+  mostrarmodal() {
+    console.log("adentro");
+    $('#warning-modal-preview').modal('show');
+  }
 }
 
 

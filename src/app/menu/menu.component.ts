@@ -25,7 +25,22 @@ public apellidos="";
   }
 
   logout() {
-    this.session.Signoff();
-  }
+    console.log("salir");
 
+    this.session.Signoff();
+
+    this.router.navigate(['/login']);
+
+  }
+  ocultar(){
+    console.log("vista");
+    var menu = document.getElementById("menu");
+if(menu.style.display=="none"){
+    menu.style.display = "block";
+}else{
+  menu.style.display = "none";
+
+}
+    
+  }
 }

@@ -3,163 +3,166 @@
 
 <!-- BEGIN: Content -->
 
-<div class="content mt-16">
+<div class="container" style="font-family:Helvetica;"  >
   <br>
   <br>
   <br>
   <!--<div class="intro-y flex items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto text-theme-11">
+    <h2 class="text-lg font-medium mr-auto " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
       Perfil
     </h2>
   </div>-->
+  
+  <div class="flex justify-center text-center items-center  text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+  ">
+  
+       <a  [routerLink]="['/informacionalumno']"  style=" border-radius: 15px; font-size: 17px;" class="m-1  btn-lg text-white  w-35 ">Editar</a> </div>
 
-  <div class="intro-y box mt-5">
-    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5 sm:grid grid-cols-2 gap-2">
-      <div class="font-medium text-lg">
+  <div class="intro-y  ">
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5 sm:grid grid-cols-2 gap-2" >
+      <div class=""  style="font-size:25px;  font-weight: bold; ">
         Información Personal
       </div>
-      <div class="font-medium float-right">
-        <a class="button inline-block bg-theme-1 text-white" [routerLink]="['/informacionalumno']" style="float:right">Editar</a>
-      </div>
+    
 
     </div>
-    <div class="p-5" id="horizontal-form">
+    <div class="" id="horizontal-form">
       <div class="preview">
 
         
-        <div class="mt-3">
+        <div class="container">
           <div class="sm:grid grid-cols-3 gap-2">
 
             <div class="relative mt-8">
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Nombre</div>
-                <div >{{alumno.nombre}}</div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">Nombre</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.nombre}}</div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Apellido Paterno</div>
-                <div>{{alumno.paterno}} </div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">Apellido Paterno</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.paterno}} </div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Apellido Materno</div>
-                <div>{{alumno.materno}} </div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">Apellido Materno</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.materno}} </div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">ID Matrícula</div>
-                <div>{{alumno.matricula}} </div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">ID Matrícula</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.matricula}} </div>
                </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Universidad</div>
-                <div>{{alumno.universidad}}</div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">Universidad</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.universidad}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Facultad</div>
-                <div>{{alumno.facultad}}</div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">Facultad</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.facultad}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Carrera</div>
-                <div>{{alumno.carrera}}</div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">Carrera</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.carrera}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">Porcentaje Academico</div>
-                <div>{{alumno.porcentaje}}%</div>
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">Porcentaje Academico</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.porcentaje}}%</div>
               </div>
             </div>
             
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Número de Semestre/Cuatrimestre
                 </div>
-                <div>{{alumno.noCuatrimestreSemestre}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.noCuatrimestreSemestre}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   ¿Tu carrera es semestral o cuatrimestral?
                 </div>
-                <div>{{alumno.esquemaPeriodo}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.esquemaPeriodo}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Generación*
                 </div>
-                <div>{{alumno.generacion}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.generacion}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Fecha estimada de graduación
                 </div>
-                <div>{{alumno.fechaEstimadaGraduacion}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.fechaEstimadaGraduacion}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Correo Institucional
                 </div>
-                <div>{{alumno.correoInstitucional}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.correoInstitucional}}</div>
               </div>
             </div>
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Correo Personal
                 </div>
-                <div>{{alumno.correoPersonal}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.correoPersonal}}</div>
               </div>
             </div>
             
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Teléfono de Contacto
                 </div>
-                <div>{{alumno.celular}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.celular}}</div>
               </div>
             </div>
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Fecha de Nacimiento
                 </div>
-                <div>{{alumno.fechaNacimiento}}</div>
+                <div style=" text-align:justify; font-size:15px; "> {{alumno.fechaNacimiento}}</div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Sexo
                 </div>
-                <div>{{alumno.sexo}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.sexo}}</div>
               </div>
             </div>
 
@@ -167,18 +170,18 @@
         </div>
         <br>
 
-        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-          <h2 class="font-medium text-base mr-auto">
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5 sm:grid grid-cols-2 gap-2" >
+          <div class=""  style="font-size:25px;  font-weight: bold; ">
             Información Complementaria
-          </h2>
+          </div>
+        
+    
         </div>
-
-
-        <div class="mt-3">
-          <div class="sm:grid grid-cols-2 gap-2">
+        <div class="container">
+          <div class="sm:grid grid-cols-3 gap-2">
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   ¿Has participado en ASUA?:
                 </div>
                 <div *ngIf="alumno.participacionAsua=='si'">Sí</div>
@@ -189,7 +192,7 @@
 
             <div class="relative mt-8">
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   ¿Actualmente trabajas?:
                 </div>
                 <div *ngIf="alumno.trabajas=='si'">Sí</div>
@@ -197,44 +200,51 @@
               </div>
             </div>
 
-            <div class="relative mt-8" *ngIf="alumno.trabajas=='si'">
+            <div class="relative mt-8" >
               <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <div class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   ¿Bajo qué modalidad trabajas?
                 </div>
-                <div>{{alumno.modalidadTrabajo}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.modalidadTrabajo}}</div>
               </div>
             </div>
-
-            <div class="relative mt-8" *ngIf="alumno.trabajas=='si'">
-              <div>
-                <div class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+          </div>
+          <div class="sm:grid grid-cols-3 gap-2">
+            <div class="relative mt-8" >
+       
+            </div>
+            <div class="relative mt-8" >
+              <div class=" text-center">
+                <div class="font-medium text-center  lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;" >
                   ¿A partir de qué semestre / cuatrimestre comenzaste a trabajar?
                 </div>
-                <div>{{alumno.cuatrimestreComienzoTrabajo}}</div>
+                <div style=" text-align:justify; font-size:15px; ">{{alumno.cuatrimestreComienzoTrabajo}}</div>
               </div>
             </div>
-
+            <div class="relative mt-8" >
+            
+            </div>
           </div>
+          <div class="sm:grid grid-cols-2 gap-2">
 
-          <div class="sm:grid grid-cols-1 gap-2">
+
             <div class="relative mt-8">
               <div>
-                <label class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <label class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   Indica en cuál(es) área(s) de Vida Universitaria has participado
                 </label>
               </div>
               <div *ngFor="let areasParticipado of alumno.listaAreaVidaUniversitariaParticipado" class="text-base text-gray-600 mt-1">
                 <div class="flex items-center">
                   <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                  <span>{{areasParticipado.areaVidaUniversitaria}}</span>
+                  <span style=" text-align:justify; font-size:15px; ">{{areasParticipado.areaVidaUniversitaria}}</span>
                 </div>
               </div>
             </div>
 
             <div class="relative mt-8">
               <div>
-                <label class="font-medium text-center lg:text-left lg:mt-5 text-theme-11">
+                <label class="font-medium text-center lg:text-left lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   ¿Actualmente formas parte de alguna área de Vida Universitaria?
                 </label>
               </div>
@@ -242,7 +252,7 @@
               <div *ngFor="let areasActuales of alumno.listaAreaVidaUniversitariaActuales" class="text-base text-gray-600 mt-1">
                 <div class="flex items-center">
                   <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                  <span>{{areasActuales.areaVidaUniversitaria}}</span>
+                  <span style=" text-align:justify; font-size:15px; ">{{areasActuales.areaVidaUniversitaria}}</span>
                 </div>
               </div>
             </div>
@@ -254,27 +264,37 @@
 
       </div>
 
-    </div>
-  </div>
 
-  <div class="intro-y box px-5 pt-5 mt-5">
+      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5 sm:grid grid-cols-2 gap-2" >
+        <div class=""  style="font-size:25px;  font-weight: bold; ">
+          Requisitos para Liberación de Servicio Social
+        </div>
+      
+  
+      </div>
+
+  <div class="intro-y  px-5 pt-5 mt-5">
 
     <div class="grid grid-cols-12 gap-6 mt-5">
       <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-        <div class=" p-5">
-          <div class="text-base leading-8 mt-1" align="center">
-            <h5 class="text-center text-theme-11">Pasos para liberacion del servicio social </h5>
+        <div class="">
+          <div class="text-base leading-8 mt-1" align="center"  style=" font-size:25px; ">
             <table>
               <tr>
                 <td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3"></div></td>
                 <td>No cubierto</td>
+<td></td>
+
+<td></td>
+<td></td>
+
                 <td><div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div></td>
                 <td>Cubierto</td>
               </tr>
             </table>
           </div>
-          <div class="text-base text-gray-600 mt-6" align="center">
-            <table>
+          <div class="text-base text-gray-600 mt-6" align="center"  style=" font-size:25px; ">
+            <table style=" text-align:justify; font-size:15px; ">
               <tr><td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3" *ngIf="!alumno.asistio"></div><div class="w-3 h-2 bg-theme-9 rounded-full mr-3" *ngIf="alumno.asistio"></div></td><td>Junta de induccion</td></tr>
               <tr><td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3" *ngIf="!alumno.pago"></div><div class="w-3 h-2 bg-theme-9 rounded-full mr-3" *ngIf="alumno.pago"></div></td><td>Pago</td></tr>
               <tr><td><div class="w-3 h-2 bg-theme-6 rounded-full mr-3" *ngIf="!alumno.pago"></div><div class="w-3 h-2 bg-theme-9 rounded-full mr-3" *ngIf="alumno.pago"></div></td><td>Horas de servicio</td></tr>
@@ -286,4 +306,10 @@
     </div>
 
   </div>
+
+
+</div>
+</div>
+
+  
 </div>
