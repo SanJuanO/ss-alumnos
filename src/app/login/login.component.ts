@@ -103,7 +103,9 @@ export class LoginComponent implements OnInit {
         
       } else {
         this.mensaje = res['mensaje'];
-        $('#success-modal-preview').modal('show');
+        //$('#success-modal-preview').modal('show');
+        var x = document.getElementById("alerta");
+        x.style.display = "block";
 
       }
     

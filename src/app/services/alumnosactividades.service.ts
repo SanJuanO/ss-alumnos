@@ -44,6 +44,21 @@ export class AlumnosActividadesServices {
     return this.http.post(endpoint, formData);
   }
 
+  UpdateActivityWithFile(fileToUpload: File, alumnoActividad: AlumnosActividades): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data; charset=utf-8');
+    const endpoint = `${this.baseUrl}/AlumnosActividades/UpdateActivityWithFile`;
+    const formData: FormData = new FormData();
+    if (fileToUpload != undefined) {
+      formData.append('file', fileToUpload, fileToUpload.name);
+    }
+    formData.append('id', alumnoActividad.id.toString());
+    formData.append('idAlumnoProyectoAsignado', alumnoActividad.idAlumnoProyectoAsignado.toString());
+    formData.append('titulo', alumnoActividad.titulo);
+    formData.append('actividad', alumnoActividad.actividad);
+    formData.append('validaEmpresa', "false");
+    return this.http.post(endpoint, formData);
+  }
 
   /*
   getByIdAlumnoProyectoAsignado(id: string | number) {

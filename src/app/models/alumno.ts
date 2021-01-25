@@ -103,12 +103,16 @@ export class AlumnoProyecto {
     ) { }
 
 }
-export class respuesta {
+export class RespuestasAlumnosOrganizaciones {
     constructor(
+      public idAlumnoProyectoAsignado:number,
+        public idAlumno:number,
         public idOrganizacion:number,
         public idPregunta: number,
         public activo:boolean= true,
         public respuesta: string,
+        public version: number,
+        public pregunta?: string,
       
         
     ) { }

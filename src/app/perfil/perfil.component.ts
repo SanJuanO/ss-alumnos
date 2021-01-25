@@ -76,7 +76,8 @@ export class PerfilComponent implements OnInit {
   }
 
 
-  
-
+  mostrarmodal() {
+    $('#entrevista').modal('show');
+  }
 
 }

@@ -44,7 +44,7 @@ const routes: Routes = [
   {path:'empresas/add',component:EmpresasAddComponent},
   {path:'empresas/ver/:id',component:EmpresasverComponent},
   {path:'empresas/Edit/:id',component:EmpresasEditComponent},
-  {path:'empresas/evaluar/:id',component:EmpresaevaluarComponent},
+  {path:'empresas/evaluar/:id/:id2',component:EmpresaevaluarComponent},
 
   { path: 'informacionalumno', component: InfoAlumnoComponent },
   { path: 'informacionalumno/:idProyecto', component: InfoAlumnoComponent },

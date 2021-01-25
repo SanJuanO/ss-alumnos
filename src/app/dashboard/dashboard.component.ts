@@ -10,7 +10,7 @@ import { environment } from "../../environments/environment";
 import { ProyectoService } from '../services/proyecto.service';
 import { AlumnosProyectos, AlumnosModel } from "../models/proyectos"
 import { SessionService } from '../services/session.service';
-import { AlumnosProyectosAsignados, ReportesAlumnos, AlumnosActividades } from '../models/alumno';
+import { AlumnosProyectosAsignados, ReportesAlumnos, AlumnosActividades, RespuestasAlumnosOrganizaciones } from '../models/alumno';
 import { AlumnoService } from '../services/alumno.service';
 import { AlumnosActividadesServices } from '../services/alumnosactividades.service';
 
@@ -41,6 +41,8 @@ public   api = environment.baseUrl;
   public proyecto: string = "";
   public estadoInscripcion = 0;
   public fileToUpload: File;
+  public RespuestasEvaluaciones1: any = [];
+  public RespuestasEvaluaciones2: any = [];
   public reportes: Array<ReportesAlumnos> = [];
   public alumno: AlumnosModel = null;
   public noHoras: number = 0;
@@ -53,7 +55,8 @@ public   api = environment.baseUrl;
   public actividades: Array<AlumnosActividades> = [];
   public idArchivo: number = 0;
   public ocultarTerminados: boolean = true;
-  
+  public muestraEvaluacion1 = false;
+  public muestraEvaluacion2 = false;
 
   constructor(private convocatoriaService: ConvocatoriaServices, 
     private alumnosActividadesService: AlumnosActividadesServices, private proyectoService: ProyectoService,
@@ -100,7 +103,7 @@ public   api = environment.baseUrl;
         var fech0 = new Date(this.convocatoriasalumnos[i].fechaTermino.toString().substr(0, 10));
         var fechI0 = new Date(this.convocatoriasalumnos[i].fechaInicio.toString().substr(0, 10));
 
-        if (fechI < Date.now() && fech > Date.now()) {
+        if (fechI <= Date.now() && fech >= Date.now()) {
           this.convocatoriasalumnos[i].fechaInicioString = fechI0.toLocaleString("es-ES", options);
           this.convocatoriasalumnos[i].fechaTerminoString = fech0.toLocaleString("es-ES", options);
           this.convocatoriasalumnosf.push(this.convocatoriasalumnos[i]);
@@ -133,22 +136,23 @@ public   api = environment.baseUrl;
               projectArray2.push(proyectoAsignado);
 
             } else if (proyectoAsignado.idEstado == 4) {
-                this.project = proyectoAsignado;
-                this.estadoInscripcion = proyectoAsignado.idEstado;
-                this.idproyecto = "" + proyectoAsignado.idProyecto;
-                this.proyecto = proyectoAsignado.proyectoNombre;
-                this.noHoras = proyectoAsignado.noHoras;
-                if (this.noHoras > 0) {
-                  this.bandNoHoras = false;
+              this.project = proyectoAsignado;
+              this.estadoInscripcion = proyectoAsignado.idEstado;
+              this.idproyecto = "" + proyectoAsignado.idProyecto;
+              this.proyecto = proyectoAsignado.proyectoNombre;
+              this.noHoras = proyectoAsignado.noHoras;
+              if (this.noHoras > 0) {
+                this.bandNoHoras = false;
               }
+              this.getEvaluacionesProyectoOrganizacion();
               console.log(this.project);
             } else {
-                this.obtenerActividadesByIdAlumnoProyectoAsignado2(proyectoAsignado);
-                this.projectArrayTerminados.push(proyectoAsignado);
+              this.obtenerActividadesByIdAlumnoProyectoAsignado2(proyectoAsignado);
+              this.projectArrayTerminados.push(proyectoAsignado);
               //console.log(proyectoAsignado);
-              }
+            }
           }
-          
+
         }
       }
 
@@ -340,17 +344,17 @@ public   api = environment.baseUrl;
   }
 
   actualizaActividad() {
-    this.alumnoActividad.idAlumnoProyectoAsignado = this.project.id;
-    this.alumnoActividad.activo = true;
-    this.alumnoActividad.validaEmpresa = false;
-    if (this.alumnoActividad.titulo == "") {
+    this.alumnoActividadActualiza.idAlumnoProyectoAsignado = this.project.id;
+    this.alumnoActividadActualiza.activo = true;
+    this.alumnoActividadActualiza.validaEmpresa = false;
+    if (this.alumnoActividadActualiza.titulo == "") {
       return false;
-    }else if (this.alumnoActividad.actividad== "") {
+    } else if (this.alumnoActividadActualiza.actividad== "") {
       return false;
     }
-    //console.log(this.alumnoActividad);
-
-    this.alumnosActividadesService.CreateActivityWithFile(this.fileToUpload, this.alumnoActividad).subscribe(data => {
+    //console.log(this.alumnoActividadActualiza);
+    
+    this.alumnosActividadesService.UpdateActivityWithFile(this.fileToUpload, this.alumnoActividadActualiza).subscribe(data => {
       if (data.resultado) {
         this.alumnoActividad = new AlumnosActividades();
         this.fileToUpload = undefined;
@@ -436,6 +440,38 @@ public   api = environment.baseUrl;
     console.log("adentro");
     $('#warning-modal-preview').modal('show');
   }
+
+
+  getEvaluacionesProyectoOrganizacion() {
+    if (this.project != null && this.project.id > 0) {
+      //si al menos tiene la mitad de horas cumplidas mostramos la primer evaluacion
+      if ((this.project.horasRegistradas * 2) >= this.noHoras) {
+        this.muestraEvaluacion1 = true;
+      }
+      //si ya cumplio o supero las horas a cumplir mostramos la segunda evaluacion
+      if (this.project.horasRegistradas >= this.noHoras) {
+        this.muestraEvaluacion2 = true;
+      }
+
+      //1 al cubrir la mitad de horas a cumplir
+      this.alumnoService.getRespuestasEvaluacion(this.project.id, 1).subscribe(data => {
+        this.RespuestasEvaluaciones1 = data;
+        
+        //console.log(this.reportes);
+      }, error => {
+        console.log(error);
+      });
+
+      //2 al cubrir el total de horas a cumplir
+      this.alumnoService.getRespuestasEvaluacion(this.project.id, 2).subscribe(data => {
+        this.RespuestasEvaluaciones2=data;
+        //console.log(this.reportes);
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
+
 }
 
 

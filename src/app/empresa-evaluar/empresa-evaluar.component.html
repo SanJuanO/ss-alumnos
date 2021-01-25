@@ -1,506 +1,86 @@
 <app-menu></app-menu>
 
 
-<div class="content">
+<div class="mt-16 content">
   <form (ngSubmit)="crearform()" #form="ngForm">
-
-  <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">
-Evaluación
-    </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <a [routerLink]="['/alumnosver', alumno.id]" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
-      <button type="submit"  class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
-    </div>
-  </div>
-
+    
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 xxl:col-span-12 grid grid-cols-12 gap-12">
             <!-- BEGIN: General Report -->
           <div class="col-span-12 mt-8">
 
-
-
             <div class="intro-y flex items-center h-10">
               <h2 class="text-lg font-medium truncate mr-5">
-                Información General
+                Evaluación de la organización
               </h2>
-              
-            </div>
-
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      Nombre
-
-                      <div class="text-base font-bold leading-8 mt-6"> {{alumno.nombre}} </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Apellido Paterno</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.paterno}}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Apellido Materno</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">{{alumno.materno}}</div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-
-
-            </div>
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      Universidad
-
-                      <div class="text-base font-bold leading-8 mt-6">
-                        <h1 *ngFor="let a of universidades">
-                          <p *ngIf="a.id==alumno.idUniversidad">{{a.universidad}}</p>
-                        </h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Facultad</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                      <h1 *ngFor="let a of facultades">
-                        <p *ngIf="a.id==alumno.idFacultad">{{a.facultad}}</p>
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Carrera</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">
-                      <h1 *ngFor="let a of carreras">
-                        <p *ngIf="a.id==alumno.idCarrera">{{a.carrera}}</p>
-                      </h1>
-                    </div>
-                  </div>
-                </div>
+              <div class="px-5 pb-8 text-center">
+                <a [routerLink]="['/dashboard']" class="button text-black bg-theme-2 shadow-md mr-2">Cancelar</a>
+                <button type="submit" class="button text-white bg-theme-1 shadow-md mr-2">Guardar</button>
               </div>
             </div>
 
+            <div class="intro-y overflow-auto lg:overflow-visible mt-8">
+              <div class="box p-5">
 
+                <table class="table table-report sm:mt-2">
+                  <thead>
+                    <tr>
+                      <th class="whitespace-no-wrap">Evaluación</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
+                    <tr class="intro-x" *ngFor="let pregunta of preguntasArray; let i=index">
+                      <td>
+                        <div class="ext-base text-xs whitespace-no-wrap">
+                          <!--1.- El alumno mostro compromiso en tiempo y forma con las actividades y responsabilidades encomendadas.-->
+                          {{pregunta.pregunta}}
+                          <br />
+                          <br />
+                          <!--<input type="checkbox" (change)="onchage()" value="siempe" name="uno[1][]" checked>-->
+                          <p class="clasificacion" *ngIf="pregunta.tipo=='valor'; else elseBlock">
+                            <input id="radio1_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="10">
+                            <label for="radio1_{{pregunta.id}}">★</label>
+                            <input id="radio2_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="9">
+                            <label for="radio2_{{pregunta.id}}">★</label>
+                            <input id="radio3_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="8">
+                            <label for="radio3_{{pregunta.id}}">★</label>
+                            <input id="radio4_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="7">
+                            <label for="radio4_{{pregunta.id}}">★</label>
+                            <input id="radio5_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="6">
+                            <label for="radio5_{{pregunta.id}}">★</label>
+                            <input id="radio6_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="5">
+                            <label for="radio6_{{pregunta.id}}">★</label>
+                            <input id="radio7_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="4">
+                            <label for="radio7_{{pregunta.id}}">★</label>
+                            <input id="radio8_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="3">
+                            <label for="radio8_{{pregunta.id}}">★</label>
+                            <input id="radio9_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="2">
+                            <label for="radio9_{{pregunta.id}}">★</label>
+                            <input id="radio10_{{pregunta.id}}" type="radio" name="estrellas{{pregunta.id}}" value="1">
+                            <label for="radio10_{{pregunta.id}}">★</label>
+                          </p>
+                          <ng-template #elseBlock>
+                            
+                                <input type="text" class="input w-full border mt-2" placeholder="" requerid id="estrellas{{pregunta.id}}">
 
+                            </ng-template>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">
-                      ID. Matricula
-
-                      <div class="text-base font-bold leading-8 mt-6">
-                        {{alumno.matricula}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-                <div class="report-box zoom-in">
-                  <div class="box p-5">
-                    <div class="text-base text-gray-600 mt-1">Porcentaje</div>
-
-                    <div class="text-base font-bold leading-8 mt-6">  {{alumno.porcentaje}} %</div>
-                  </div>
-                </div>
-              </div>
-
-
 
             </div>
-
-
 
             <br>
+            <br>
 
-
-     
-     
-              <br>
-              <br>
-  
-  
-              <div class="intro-y flex items-center h-10">
-                <h2 class="text-lg font-medium truncate mr-5">
-                  Evaluación del alumno 
-                </h2>
-              </div>
-  
-  
-              <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                <div class="box p-5">
-  
-                  <table class="table table-report sm:mt-2">
-                    <thead>
-                      <tr>
-  
-                        <th class="whitespace-no-wrap">Evaluación</th>
-                        <th class="whitespace-no-wrap">Siempre</th>
-                        <th class="whitespace-no-wrap">Casi siempre</th>
-                        <th class="whitespace-no-wrap">Pocas veces</th>
-                        <th class="whitespace-no-wrap">Casi nunca</th>
-                
-                        <th class="whitespace-no-wrap">Nunca</th>
-
-                        <th class="whitespace-no-wrap">No aplica</th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap"> 1.- El alumno mostro compromiso en tiempo y forma con las actividades y responsabilidades encomendadas. </div>
-                        </td>
-                        <td>
-                       <input type="checkbox" (change)="onchage()" value="siempe" name="uno[1][]" checked  >
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="casi siempe" name="uno[1][]" >
-                           </td>
-                           <td>
-                            <input type="checkbox" (change)="onchage()" value="pocas veces" name="uno[1][]" >
-                             </td>
-                             <td>
-                              <input type="checkbox" (change)="onchage()" value="casi nunca" name="uno[1][]" >
-                               </td>
-                               <td>
-                                <input type="checkbox" (change)="onchage()" value="nunca" name="uno[1][]" > 
-                                 </td>
-                                 <td>
-                                  <input type="checkbox" (change)="onchage()" value="no aplica" name="uno[1][]" >
-                                   </td>
-                      </tr>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap">2.- El alumno estableció relaciones interpersonales que favorecieron el trabajo en equipo y el desarrollo de su liderazgo de servicio, <br> de una forma empática y respetuosa en diferentes ambientes sociales y culturales, comprometiéndose en el desarrollo social sustentable <br> y eficiente de su entorno.:</div>
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="siempe" name="dos[1][]"  checked>
-                           </td>
-                           <td>
-                             <input type="checkbox" (change)="onchage()" value="casi siempe" name="dos[1][]" >
-                              </td>
-                              <td>
-                               <input type="checkbox" (change)="onchage()" value="pocas veces" name="dos[1][]" >
-                                </td>
-                                <td>
-                                 <input type="checkbox" (change)="onchage()" value="casi nunca" name="dos[1][]" >
-                                  </td>
-                                  <td>
-                                   <input type="checkbox" (change)="onchage()" value="nunca" name="dos[1][]" > 
-                                    </td>
-                                    <td>
-                                     <input type="checkbox" (change)="onchage()" value="no aplica" name="dos[1][]" >
-                                      </td>
-                      
-                      </tr>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap">3.- El alumno mostro habilidad para hacer frente al cambio y buscar alternativas de acción.</div>
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="siempe" name="tres[1][]"  checked>
-                           </td>
-                           <td>
-                             <input type="checkbox" (change)="onchage()" value="casi siempe" name="tres[1][]" >
-                              </td>
-                              <td>
-                               <input type="checkbox" (change)="onchage()" value="pocas veces" name="tres[1][]" >
-                                </td>
-                                <td>
-                                 <input type="checkbox" (change)="onchage()" value="casi nunca" name="tres[1][]" >
-                                  </td>
-                                  <td>
-                                   <input type="checkbox" (change)="onchage()" value="nunca" name="tres[1][]" > 
-                                    </td>
-                                    <td>
-                                     <input type="checkbox" (change)="onchage()" value="no aplica" name="tres[1][]" >
-                                      </td>
-                      
-                      </tr>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap"> 4.- El alumno resolvió de forma satisfactoria las actividades desarrolladas, aun ante circunstancias totalmente adversas. </div>
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="siempe" name="cuatro[1][]" checked >
-                           </td>
-                           <td>
-                             <input type="checkbox" (change)="onchage()" value="casi siempe" name="cuatro[1][]" >
-                              </td>
-                              <td>
-                               <input type="checkbox" (change)="onchage()" value="pocas veces" name="cuatro[1][]" >
-                                </td>
-                                <td>
-                                 <input type="checkbox" (change)="onchage()" value="casi nunca" name="cuatro[1][]" >
-                                  </td>
-                                  <td>
-                                   <input type="checkbox" (change)="onchage()" value="nunca" name="cuatro[1][]" > 
-                                    </td>
-                                    <td>
-                                     <input type="checkbox" (change)="onchage()" value="no aplica" name="cuatro[1][]" >
-                                      </td>
-                      
-                      </tr>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap"> 5.- El alumno mostro interés y entusiasmo en el trabajo, reaccionó constructivamente a la retroalimentación y mantuvo una actitud positiva. </div>
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="siempe" name="cinco[1][]"  checked>
-                           </td>
-                           <td>
-                             <input type="checkbox" (change)="onchage()" value="casi siempe" name="cinco[1][]" >
-                              </td>
-                              <td>
-                               <input type="checkbox" (change)="onchage()" value="pocas veces" name="cinco[1][]" >
-                                </td>
-                                <td>
-                                 <input type="checkbox" (change)="onchage()" value="casi nunca" name="cinco[1][]" >
-                                  </td>
-                                  <td>
-                                   <input type="checkbox" (change)="onchage()" value="nunca" name="cinco[1][]" > 
-                                    </td>
-                                    <td>
-                                     <input type="checkbox" (change)="onchage()" value="no aplica" name="cinco[1][]" >
-                                      </td>
-                      
-                      </tr>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap"> 6.- El alumno asistió de manera regular y puntual a sus labores.</div>
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="siempe" name="seis[1][]" checked >
-                           </td>
-                           <td>
-                             <input type="checkbox" (change)="onchage()" value="casi siempe" name="seis[1][]" >
-                              </td>
-                              <td>
-                               <input type="checkbox" (change)="onchage()" value="pocas veces" name="seis[1][]" >
-                                </td>
-                                <td>
-                                 <input type="checkbox" (change)="onchage()" value="casi nunca" name="seis[1][]" >
-                                  </td>
-                                  <td>
-                                   <input type="checkbox" (change)="onchage()" value="nunca" name="seis[1][]" > 
-                                    </td>
-                                    <td>
-                                     <input type="checkbox" (change)="onchage()" value="no aplica" name="seis[1][]" >
-                                      </td>
-                      
-                      </tr>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap">7.- El alumno mostro capacidad para generar nuevas ideas. </div>
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="siempe" name="siete[1][]" checked >
-                           </td>
-                           <td>
-                             <input type="checkbox" (change)="onchage()" value="casi siempe" name="siete[1][]" >
-                              </td>
-                              <td>
-                               <input type="checkbox" (change)="onchage()" value="pocas veces" name="siete[1][]" >
-                                </td>
-                                <td>
-                                 <input type="checkbox" (change)="onchage()" value="casi nunca" name="siete[1][]" >
-                                  </td>
-                                  <td>
-                                   <input type="checkbox" (change)="onchage()" value="nunca" name="siete[1][]" > 
-                                    </td>
-                                    <td>
-                                     <input type="checkbox" (change)="onchage()" value="no aplica" name="siete[1][]" >
-                                      </td>
-                      
-                      </tr>
-                      <tr class="intro-x">
-  
-                        <td>
-                          <div class="ext-base text-xs whitespace-no-wrap"> 8.- El alumno mostro apego en actividades de interés social. </div>
-                        </td>
-                        <td>
-                          <input type="checkbox" (change)="onchage()" value="siempe" name="ocho[1][]" checked >
-                           </td>
-                           <td>
-                             <input type="checkbox" (change)="onchage()" value="casi siempe" name="ocho[1][]" >
-                              </td>
-                              <td>
-                               <input type="checkbox" (change)="onchage()" value="pocas veces" name="ocho[1][]" >
-                                </td>
-                                <td>
-                                 <input type="checkbox" (change)="onchage()" value="casi nunca" name="ocho[1][]" >
-                                  </td>
-                                  <td>
-                                   <input type="checkbox" (change)="onchage()" value="nunca" name="ocho[1][]" > 
-                                    </td>
-                                    <td>
-                                     <input type="checkbox" (change)="onchage()" value="no aplica" name="ocho[1][]" >
-                                      </td>
-                      
-                      </tr>
-  
-  
-                    </tbody>
-                  </table>
-
-                  </div>
-
-                </div>
-  
-                <br>
-                <br>
-    
-    
-                <div class="intro-y flex items-center h-10">
-                  <h2 class="text-lg font-medium truncate mr-5">
-                    9.- ¿Cuál fue tu experiencia con el alumno durante su servicio social en tu Institución?                  </h2>
-                </div>
-    
-    
-                <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                  <div class="box p-5">
-    
-                    <input type="text" class="input w-full border mt-2" placeholder="" requerid id="nueve" >
-                  
-                    </div>
-
-                  </div>
-
-
-                  <br>
-                  <br>
-                  <div class="intro-y flex items-center h-10">
-                    <h2 class="text-lg font-medium truncate mr-5">
-                      10.- ¿Te gustaría seguir recibiendo alumnos de la Universidad Anáhuac para la prestación del servicio social en tu Institución?
-                    </h2>
-                  </div>
-      
-      
-                  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                    <div class="box p-5">
-      
-                      <div>
-                        <input type="text" class="input w-full border mt-2" placeholder="" requerid id="diez" >
-
-                     
-                    </div>                    
-                      </div>
-  
-                    </div>
-  
-  
-                    <br>
-                    <br>
-                    <div class="intro-y flex items-center h-10">
-                      <h2 class="text-lg font-medium truncate mr-5">
-                   
-11.- ¿Recomendarías el Programa de Servicio Social de la Universidad Anáhuac a otras Instituciones?            </h2>
-                    </div>
-        
-        
-                    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                      <div class="box p-5">
-        
-                        <div>
-                          <input type="text" class="input w-full border mt-2" placeholder="" requerid id="once" >
-
-                       
-                      </div>                         
-                        </div>
-    
-                      </div>
-    
-    
-                      <br>
-                      <br>
-                      <div class="intro-y flex items-center h-10">
-                        <h2 class="text-lg font-medium truncate mr-5">
-                          12.- Comentarios generales:              </h2>
-                      </div>
-          
-          
-                      <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                        <div class="box p-5">
-          
-                          <input type="text" class="input w-full border mt-2" placeholder="" requerid id="doce" >
-                        
-                          </div>
-      
-                        </div>
-      
-      
-                        <br>
-                        <br>
-                        <div class="intro-y flex items-center h-10">
-                          <h2 class="text-lg font-medium truncate mr-5">
-                            13.- ¿Cuál fue tu experiencia con el alumno durante su servicio social en tu Institución?                  </h2>
-                        </div>
-            
-            
-                        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-                          <div class="box p-5">
-            
-                            <input type="text" class="input w-full border mt-2" placeholder="" requerid id="trece" >
-                          
-                            </div>
-        
-                          </div>
-        
-        
-                          <br>
-                          <br>
-
-            </div>
+          </div>
         </div>
-    
 
     </div>
   </form>
-  
+  </div>

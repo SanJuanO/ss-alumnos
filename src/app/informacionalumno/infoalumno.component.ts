@@ -66,6 +66,9 @@ export class InfoAlumnoComponent implements OnInit {
   nombre: string = "";
   apellidos: string = "";
   activo = true;
+  uniReadOnly = true;
+  facReadOnly = true;
+  carReadOnly = true;
   public mensajevalidacion = "";
   public universidades: Universidad[] = [];
   public carreras: Carrera[] = [];
@@ -119,7 +122,7 @@ export class InfoAlumnoComponent implements OnInit {
     //console.log(this.alumno);
     //console.log("idObtenido: " + this.idobtenido)
     this.obtenerPerfil();
-
+    
   }
 
   ngAfterViewInit() {
@@ -148,6 +151,16 @@ export class InfoAlumnoComponent implements OnInit {
       }
       this.idsPasados = this.alumno.listaAreaVidaUniversitariaParticipado.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
       this.idsActuales = this.alumno.listaAreaVidaUniversitariaActuales.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
+
+      if (this.alumno.idUniversidad == 0) {
+        this.uniReadOnly = false;
+      }
+      if (this.alumno.idFacultad == 0) {
+        this.facReadOnly = false;
+      }
+      if (this.alumno.idCarrera == 0) {
+        this.carReadOnly = false;
+      }
 
       console.log(this.alumno);
       console.log(res);

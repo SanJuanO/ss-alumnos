@@ -22,7 +22,7 @@ export class TerminosCondicionesComponent implements OnInit {
   activo = true;
   public mensajevalidacion = "";
   idobtenido: string = "";
-  public asistio: boolean = false;
+  public asistio: boolean = true;
 
   constructor(private alumnoService: AlumnoService, public session: SessionService,
     private activatedRoute: ActivatedRoute, private router: Router,private cookies: CookieService

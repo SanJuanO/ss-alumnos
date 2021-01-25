@@ -40,7 +40,10 @@ export class Empresa {
         public discapacitados: number,
   public listaAreasAccion:any,
   public listaRubros: any,
-  public responsable:any
+      public responsable: any,
+      public vision?: any,
+      public razon?: any,
+
 
 //   { "nombre": "" ,"apellidos": "","genero": "",
 //   "puesto": "","departamento": "",  "disponible": false,"usuario": "","contrasena": true ,

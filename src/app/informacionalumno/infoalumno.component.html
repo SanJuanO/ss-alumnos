@@ -64,10 +64,10 @@ position: fixed;
         <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
 
         <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Bienvenid@!</div>
-        <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
+        <div class="mt-6 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Gracias por tu registro! </div>
 
 
-        <div class="mt-1" style="font-size: 20px;" >
+        <div class="mt-6" style="font-size: 20px;" >
           Este es tu portal desde donde podrás gestionar tus proyectos de servicio social, documentación, reportes mensuales y evaluaciones.
                 </div>
         
@@ -75,7 +75,7 @@ position: fixed;
 
         <div class=" text-center">
             <br>
-            <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            <div class="flex justify-center text-center items-center mt-6 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
             "> <br><a  data-dismiss="modal" style="background: #FF8300; border-radius: 15px; font-size: 17px; cursor:pointer;" class=" text-white  p-2">Continuar</a> </div>
         </div>
     </div>
@@ -136,7 +136,7 @@ position: fixed;
               <div class="relative mt-8">
                 <div>
                   <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre*</label>
-                  <input type="text" class="input  w-full border mt-2 " name="nombre" id="nombre" [(ngModel)]="alumno.nombre" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
+                  <input type="text" class="input  w-full border mt-2 " name="nombre" id="nombre" [(ngModel)]="alumno.nombre" [ngModelOptions]="{standalone: true}" placeholder="">
                 </div>
 
               </div>
@@ -158,14 +158,14 @@ position: fixed;
               <div class="relative mt-8">
                 <div>
                   <label style="font-size:19px; color:#FF8800; font-weight: bold;">ID Matrícula*</label>
-                  <input type="text" class="input  w-full border mt-2 " name="matricula" id="matricula" [(ngModel)]="alumno.matricula" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
+                  <input type="text" class="input  w-full border mt-2 " name="matricula" id="matricula" [(ngModel)]="alumno.matricula" [ngModelOptions]="{standalone: true}" placeholder="" [disabled]="true">
                 </div>
               </div>
 
               <div class="relative mt-8">
                 <div>
                   <label style="font-size:19px; color:#FF8800; font-weight: bold;">Universidad*</label>
-                  <select class="input  w-full border mt-2 " name="idUniversidad" id="idUniversidad" [(ngModel)]="alumno.idUniversidad" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " name="idUniversidad" id="idUniversidad" [(ngModel)]="alumno.idUniversidad" [ngModelOptions]="{standalone: true}" [disabled]="uniReadOnly">
                     <option *ngFor="let universidad of universidades" [ngValue]="universidad.id">{{ universidad.universidad }}</option>
                   </select>
                 </div>
@@ -174,7 +174,7 @@ position: fixed;
               <div class="relative mt-8">
                 <div>
                   <label style="font-size:19px; color:#FF8800; font-weight: bold;">Facultad*</label>
-                  <select class="input  w-full border mt-2 " name="idFacultad" id="idFacultad" [(ngModel)]="alumno.idFacultad" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " name="idFacultad" id="idFacultad" [(ngModel)]="alumno.idFacultad" [ngModelOptions]="{standalone: true}" [disabled]="facReadOnly">
                     <option *ngFor="let facultad of facultades" [ngValue]="facultad.id">{{ facultad.facultad }}</option>
                   </select>
                 </div>
@@ -183,7 +183,7 @@ position: fixed;
               <div class="relative mt-8">
                 <div>
                   <label style="font-size:19px; color:#FF8800; font-weight: bold;">Carrera*</label>
-                  <select class="input  w-full border mt-2 " name="idCarrera" id="idCarrera" [(ngModel)]="alumno.idCarrera" [ngModelOptions]="{standalone: true}">
+                  <select class="input  w-full border mt-2 " name="idCarrera" id="idCarrera" [(ngModel)]="alumno.idCarrera" [ngModelOptions]="{standalone: true}" [disabled]="carReadOnly">
                     <option *ngFor="let carrera of carreras" [ngValue]="carrera.id">{{ carrera.carrera }}</option>
                   </select>
                 </div>
@@ -192,7 +192,7 @@ position: fixed;
               <div class="relative mt-8">
                 <div>
                   <label style="font-size:19px; color:#FF8800; font-weight: bold;">Porcentaje Academico*</label>
-                  <input type="number" class="input  w-full border mt-2 " name="porcentaje" id="porcentaje" [(ngModel)]="alumno.porcentaje" [ngModelOptions]="{standalone: true}" placeholder="" readonly>
+                  <input type="number" class="input  w-full border mt-2 " name="porcentaje" id="porcentaje" [(ngModel)]="alumno.porcentaje" [ngModelOptions]="{standalone: true}" placeholder="" [disabled]="true">
                 </div>
               </div>
               <!--
@@ -266,7 +266,7 @@ position: fixed;
                   <label style="font-size:19px; color:#FF8800; font-weight: bold;">
                     Correo Institucional*
                   </label>
-                  <input type="email" class="input  w-full border mt-2 " id="correoInstitucional" name="correoInstitucional" [(ngModel)]="alumno.correoInstitucional" [ngModelOptions]="{standalone: true}" placeholder="">
+                  <input type="email" class="input  w-full border mt-2 " id="correoInstitucional" name="correoInstitucional" [(ngModel)]="alumno.correoInstitucional" [ngModelOptions]="{standalone: true}" placeholder="" [disabled]="true">
                 </div>
               </div>
               <div class="relative mt-8">

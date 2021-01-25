@@ -36,6 +36,11 @@ export class AlumnoService {
   getAlumno(id: string | number) {
     return this.http.get(`${this.baseUrl}/Alumnos/${id}`);
   }
+  getAlumnoProyectoAsignadoById(id: string | number) {
+    let idalumno=Number(id);
+    //console.log(idalumno);
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignados/${idalumno}`,{ withCredentials: false });
+  }
   getProyectosAlumno(id: string | number) {
     let idalumno=Number(id);
     //console.log(idalumno);
@@ -93,11 +98,14 @@ export class AlumnoService {
     return this.http.get(uri + "?idAlumno" + idAlumno);
   }
  
-  getrespuesta(id: string | number) {
-    return this.http.get(`${this.baseUrl}/RespuestasEvaluacionAlumno/getByIdAlumno?IdAlumno=${id}`);
+  getPreguntasEvaluacionAlumnoOrganizacion(idAlumnoProyectoAsignado: string | number, configuracion: string | number) {
+    return this.http.get(`${this.baseUrl}/PreguntasEvaluacionAlumnoOrganizacion/GetListWithIdAlumnoProyectoAsignadoAndAnswers?idAlumnoProyectoAsignado=${idAlumnoProyectoAsignado}&configuracion=${configuracion}`);
   }
-  respuestapreguntas(model){
-    const uri = `${this.baseUrl}/RespuestasEvaluacionAlumnoOrganizacion`;
+  getRespuestasEvaluacion(id: string | number,version: string | number) {
+    return this.http.get(`${this.baseUrl}/RespuestasEvaluacionAlumnoOrganizacion/getByIdAlumnoProyectoAsignadoAndVersion?IdAlumnoProyectoAsignado=${id}&version=${version}`);
+  }
+  addRespuestasPreguntas(model){
+    const uri = `${this.baseUrl}/RespuestasEvaluacionAlumnoOrganizacion/addRespuestas`;
          console.log(uri);
     return this.http.post(uri,model);
   }
