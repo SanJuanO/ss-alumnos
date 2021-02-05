@@ -4,9 +4,12 @@
     "\\dist",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\empresas\\empresas-add",
-    "\\src\\app\\models"
+    "\\src\\app\\dashboard",
+    "\\src\\app\\empresa-evaluar",
+    "\\src\\app\\models",
+    "\\src\\app\\proyectos\\proyectos-ver",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\models\\estadoempresa.ts",
+  "SelectedNode": "\\src\\app\\empresa-evaluar\\empresa-evaluar.component.html",
   "PreviewInSolutionExplorer": false
 }

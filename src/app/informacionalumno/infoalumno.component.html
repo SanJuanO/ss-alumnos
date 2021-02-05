@@ -386,6 +386,7 @@ position: fixed;
                     ¿A partir de qué semestre / cuatrimestre comenzaste a trabajar?
                   </label>
                   <select class="input  w-full border mt-2 " name="cuatrimestreComienzoTrabajo" id="cuatrimestreComienzoTrabajo" [(ngModel)]="alumno.cuatrimestreComienzoTrabajo" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="">No aplica</option>
                     <option [ngValue]="1">1</option>
                     <option [ngValue]="2">2</option>
                     <option [ngValue]="3">3</option>

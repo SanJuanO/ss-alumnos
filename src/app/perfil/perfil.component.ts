@@ -9,7 +9,7 @@ import { SessionService } from '../services/session.service';
 
 import { ProyectoService } from '../services/proyecto.service';
 import { AlumnoService } from '../services/alumno.service';
-import { AlumnoEdit, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales } from '../models/alumno';
+import { AlumnoEdit, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales, AlumnoRequisitos } from '../models/alumno';
 
 declare var $: any;
 @Component({
@@ -21,9 +21,11 @@ export class PerfilComponent implements OnInit {
   public alumnosAreasVidaUniviresitariaParticipado: AlumnosAreasVidaUniversitariaParticipado[] = [];
   public alumnosAreasVidaUniviresitariaActuales: AlumnosAreasVidaUniversitariaActuales[] = [];
 
-  public alumno: AlumnoEdit = new AlumnoEdit("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", false, true, this.alumnosAreasVidaUniviresitariaParticipado, this.alumnosAreasVidaUniviresitariaParticipado,0,"","","");
+  public alumno: AlumnoEdit = new AlumnoEdit("", "", "", "", 0, 0, 0, "", "", "", 0, 0, "", "", 0, "", "", "", "", "", "", "", "", "", 0, "", false, true, this.alumnosAreasVidaUniviresitariaParticipado, this.alumnosAreasVidaUniviresitariaParticipado, 0, "", "", "");
+  public alumnoRequisitos: AlumnoRequisitos = new AlumnoRequisitos();
   public idsPasados: any = "";
   public idsActuales: any = "";
+  public cubiertos: boolean = false;
 
 
   constructor(private alumnoService: AlumnoService, public session: SessionService) { 
@@ -34,6 +36,7 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
     var id=this.session.getToken();
     this.obtenerPerfil();
+
 
   }
   obtenerPerfil() {
@@ -64,8 +67,9 @@ export class PerfilComponent implements OnInit {
       this.idsPasados = this.alumno.listaAreaVidaUniversitariaParticipado.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
       this.idsActuales = this.alumno.listaAreaVidaUniversitariaActuales.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
 
-      console.log(this.alumno);
-      console.log(res);
+      //console.log(this.alumno);
+      //console.log(res);
+      this.obtenerRequisitosCubiertos();
     });
 
   }
@@ -80,4 +84,35 @@ export class PerfilComponent implements OnInit {
     $('#entrevista').modal('show');
   }
 
+  obtenerRequisitosCubiertos() {
+    var id = this.session.getToken();
+
+    this.alumnoService.getAlumnoRequisitosLiberacion(id).subscribe((res: AlumnoRequisitos) => {
+      this.alumnoRequisitos = res;
+      if (this.alumnoRequisitos!=null && this.alumnoRequisitos.pago && this.alumnoRequisitos.cartaInicio
+        && this.alumnoRequisitos.reportesMensuales
+        && this.alumnoRequisitos.cartaTermino
+        && this.alumnoRequisitos.evaluacionSS
+        && this.alumnoRequisitos.horasSS && this.alumnoRequisitos.eventoSS
+      ) {
+        this.cubiertos = true;
+      }
+      //console.log(res);
+    });
+
+  }
+
+  solicitaLiberacion() {
+    var id = this.session.getToken();
+
+    this.alumnoService.updateLiberar(id,1).subscribe((res) => {
+      
+      if (res["resultado"] == 1) {
+        $('#solicitaLiberacion').modal('show');
+        this.obtenerPerfil();
+      }
+      //console.log(res);
+    });
+
+  }
 }

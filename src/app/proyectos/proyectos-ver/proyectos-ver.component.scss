@@ -1,0 +1,43 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tiptext {
+  visibility: hidden;
+  width: auto;
+  height: auto;
+  background-color: black;
+  color: #fff;
+  border-radius: 3px;
+  padding: 6px 0;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 5px 10px rgba(119, 111, 111, 0.2);
+}
+
+.tooltip .tiptext::after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  z-index: 1;
+}
+
+.tooltip:hover .tiptext {
+  visibility: visible;
+  z-index: 1;
+}
+
+.tooltip.top .tiptext {
+  margin-left: -455px;
+  /*top: -95px;TODO*/
+  right: 110%;
+  padding: 1.55rem;
+  z-index: 1;
+}
+
+.tooltip.top .tiptext::after {
+  left: 100%;
+  border-color: #2E2E2E transparent transparent transparent;
+  z-index: 1;
+}

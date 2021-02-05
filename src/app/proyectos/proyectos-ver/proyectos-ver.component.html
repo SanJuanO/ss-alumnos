@@ -1,7 +1,8 @@
 <app-menu></app-menu>
 <div class="cargador" id="carg" style="display: block;"></div>
 
-<div class=""  style="font-family:Helvetica; font-size: 15px; font-weight: bold;">
+<!--START Estado del proyecto es menor o igual a 3-->
+<div *ngIf="estadoInscripcion<=3" style="font-family:Helvetica; font-size: 15px; font-weight: bold;">
   <div class="modal" id="success-modal-preview">
     <div class="modal__content">
       <div class="p-5 text-center">
@@ -12,35 +13,16 @@
       <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
     </div>
   </div>
-<br><br>
-  <!-- <div class="w-100" heigth="300px" style="
-    height: 300px;
-    overflow: hidden;
-    margin: 10px;
-    position: relative;
-    background-color: #000;">
-    <img style="position:absolute;
-    left: -100%;
-    right: -100%;
-    top: -100%;
-    bottom: -100%;
-    margin: auto;
-    min-height: 100%;
-    min-width: 100%;
-    opacity:60%;"
-         src="data:image/png;base64,{{proyectoModel.imagenArchivo}}" class="bg-opacity2 bg-half d-table w-100" id="imgempresa">
-  </div> -->
-
+  <br><br>
 
   <div class="flex flex-1 px-5 items-center justify-center " align="center">
     <div class="w-100 h-20 sm:w-24 sm:h-24 flex-none lg:w-48 lg:h-48 image-fit relative">
-        <img alt="" id="blah" class="rounded-full" src="data:image/png;base64,{{proyectoModel.imagenArchivo}}">
+      <img alt="" id="blah" class="rounded-full" src="data:image/png;base64,{{proyectoModel.imagenArchivo}}">
     </div>
 
-
-</div>
-<div class="modal" id="entrevista" style=" display: block; ">
-  <div class="modal__content modal__content--xl p-10 text-center">
+  </div>
+  <div class="modal" id="entrevista" style=" display: block; ">
+    <div class="modal__content modal__content--xl p-10 text-center">
       <a data-dismiss="modal" href="javascript:;" class="absolute right-0 top-0 mt-3 mr-3"> <i data-feather="x" class="w-8 h-8 text-gray-500"></i> </a>
 
       <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;font-weight:bold;">Entrevista</div>
@@ -52,321 +34,312 @@
       </div>
       <br>
       <div class="flex justify-center text-center items-center mt-8 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-      "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  btn-lg text-white  ">Continuar</a> </div>
+        "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  btn-lg text-white  ">Continuar</a> </div>
+    </div>
   </div>
-</div>
 
-<div class="" id="horizontal-form">
+  <div class="" id="horizontal-form">
 
-  <div class="grid grid-cols-12 gap-6 mt-5">
+    <div class="grid grid-cols-12 gap-6 mt-5">
 
-    <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-      <div class="px-5 pb-8 text-center">
-
-
-        <div class="text-center" id="OCULTAR" style="display: none;">
-          <!--1 preregistro,2 Aprobado por empresa, 3 Inscrito,4	Terminado,5	Cancelado,6	Rechazado-->
-          <a *ngIf="estadoInscripcion==0" href="javascript:;" data-toggle="modal" data-target="#inscribirmemodal" style="background: #FF8300; border-radius: 15px; font-size: 17px; cursor:pointer;" class=" text-white  pl-5 pr-5 pt-2 pb-2">Postularme</a>
-          <p *ngIf="estadoInscripcion==1" class="button  button--lg inline-block bg-theme-12 text-white"> Te has postulado a este proyecto </p>
-          <div *ngIf="estadoInscripcion==2"><p class="button  button--lg inline-block bg-theme-17">Te han entrevistado en este proyecto</p></div>
-          <div *ngIf="estadoInscripcion==3"><p>Te han aceptado a este proyecto confirma tu inscripción</p><a href="javascript:;" data-toggle="modal" data-target="#confirmainscribirmemodal" style="border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  button--lg inline-block bg-theme-9 text-white mt-5">Confirmar tu inscripción</a></div>
-          <!--<p *ngIf="estadoInscripcion==2" class="button  button--lg inline-block bg-theme-11 text-white"> Te han aceptado a este proyecto confirma tu inscripciòn</p>-->
-          <p *ngIf="estadoInscripcion==4" class="button  button--lg inline-block bg-theme-10 text-white"> Estás inscrito a este proyecto </p>
-          <p *ngIf="estadoInscripcion==5" class="button  button--lg inline-block bg-theme-9 text-white"> Proyecto terminado </p>
-          <p *ngIf="estadoInscripcion==6" class="button  button--lg inline-block bg-theme-8 text-white"> Cancelado </p>
-          <p *ngIf="estadoInscripcion==7" class="button  button--lg inline-block bg-theme-6 text-white"> Te han rechazado de este proyecto </p>
-        </div>
-
-        <div class="modal" id="inscribirmemodal">
-          <div class="modal__content modal__content--xl p-10 text-center">
-            <div class="p-5 text-center">
-              <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;font-weight: bold;">Aplicación</div>
-              <div class=" mt-8 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Confirma tu aplicación!</div>
+      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+        <div class="px-5 pb-8 text-center">
 
 
-              <div class=" mt-8 " style="font-size: 20px;">
-                ¿Confirmas que quieres aplicar a este proyecto?
+          <div class="text-center" id="OCULTAR" style="display: none;">
+            <!--1 preregistro,2 Aprobado por empresa, 3 Inscrito,4	Terminado,5	Cancelado,6	Rechazado-->
+            <a *ngIf="estadoInscripcion==0" href="javascript:;" data-toggle="modal" data-target="#inscribirmemodal" style="background: #FF8300; border-radius: 15px; font-size: 17px; cursor:pointer;" class=" text-white  pl-5 pr-5 pt-2 pb-2">Postularme</a>
+            <p *ngIf="estadoInscripcion==1" class="button  button--lg inline-block bg-theme-12 text-white"> Te has postulado a este proyecto </p>
+            <div *ngIf="estadoInscripcion==2"><p class="button  button--lg inline-block bg-theme-17">Te han entrevistado en este proyecto</p></div>
+            <div *ngIf="estadoInscripcion==3"><p>Te han aceptado a este proyecto confirma tu inscripción</p><a href="javascript:;" data-toggle="modal" data-target="#confirmainscribirmemodal" style="border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  button--lg inline-block bg-theme-9 text-white mt-5">Confirmar tu inscripción</a></div>
+            <!--<p *ngIf="estadoInscripcion==2" class="button  button--lg inline-block bg-theme-11 text-white"> Te han aceptado a este proyecto confirma tu inscripciòn</p>-->
+            <p *ngIf="estadoInscripcion==4" class="button  button--lg inline-block bg-theme-10 text-white"> Estás inscrito a este proyecto </p>
+            <p *ngIf="estadoInscripcion==5" class="button  button--lg inline-block bg-theme-9 text-white"> Proyecto terminado </p>
+            <p *ngIf="estadoInscripcion==6" class="button  button--lg inline-block bg-theme-8 text-white"> Cancelado </p>
+            <p *ngIf="estadoInscripcion==7" class="button  button--lg inline-block bg-theme-6 text-white"> Te han rechazado de este proyecto </p>
+          </div>
+
+          <div class="modal" id="inscribirmemodal">
+            <div class="modal__content modal__content--xl p-10 text-center">
+              <div class="p-5 text-center">
+                <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;font-weight: bold;">Aplicación</div>
+                <div class=" mt-8 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Confirma tu aplicación!</div>
+
+                <div class=" mt-8 " style="font-size: 20px;">
+                  ¿Confirmas que quieres aplicar a este proyecto?
+                </div>
               </div>
-            </div>
-            <div class="sm:grid grid-cols-4 gap-2">
-              <div class="relative mt-8"></div>
-              <div class="relative mt-8">
-                <a data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+              <div class="sm:grid grid-cols-4 gap-2">
+                <div class="relative mt-8"></div>
+                <div class="relative mt-8">
+                  <a data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
                         " class="button  btn-lg text-white ml-3">Cancelar</a>
-              </div>
-              <div class="relative mt-8">
+                </div>
+                <div class="relative mt-8">
 
-                <a data-dismiss="modal" (click)="inscribir()" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                  <a data-dismiss="modal" (click)="inscribir()" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
                      " class="button  btn-lg text-white mr-3">Continuar</a>
 
-              </div>
-              <div class="relative mt-8"></div>
+                </div>
+                <div class="relative mt-8"></div>
 
+              </div>
             </div>
+
           </div>
 
-        </div>
-
-        <div class="modal" id="confirmainscribirmemodal">
-          <div class="modal__content modal__content--xl p-10 text-center">
-            <div class="p-5 text-center">
-              <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;font-weight:bold;">Inscripciòn</div>
-              <div class=" mt-8 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Confirma tu Inscripción!</div>
+          <div class="modal" id="confirmainscribirmemodal">
+            <div class="modal__content modal__content--xl p-10 text-center">
+              <div class="p-5 text-center">
+                <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;font-weight:bold;">Inscripción</div>
+                <div class=" mt-8 text-red text-center" style="color: #6B3F23; font-size: 25px;">¡Confirma tu Inscripción!</div>
 
 
-              <div class=" mt-8 " style="font-size: 28px;">
-                ¿Confirmas que quieres aplicar a este proyecto?
-              </div>
-              <div class=" mt-6 " style="font-size: 15px;color:red;">
-                *Una vez confirmado no podrás inscribirte a otro proyecto al que hayas aplicado
-              </div>
+                <div class=" mt-8 " style="font-size: 28px;">
+                  ¿Confirmas que quieres aplicar a este proyecto?
+                </div>
+                <div class=" mt-6 " style="font-size: 15px;color:red;">
+                  *Una vez confirmado no podrás inscribirte a otro proyecto al que hayas aplicado
+                </div>
 
-              <div class="px-5 pb-8 text-center">
-                <div class="sm:grid grid-cols-4 gap-2">
-                  <div class="relative mt-8"></div>
-                  <div class="relative mt-8">
+                <div class="px-5 pb-8 text-center">
+                  <div class="sm:grid grid-cols-4 gap-2">
+                    <div class="relative mt-8"></div>
+                    <div class="relative mt-8">
 
-                    <a data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                      <a data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
                         " class="button  btn-lg text-white ml-3">Cancelar</a>
 
-                  </div>
-                  <div class="relative mt-8">
+                    </div>
+                    <div class="relative mt-8">
 
-                    <a data-dismiss="modal" (click)="confirmainscribir()" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+                      <a data-dismiss="modal" (click)="confirmainscribir()" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
                     " class="button w-24 text-white">Confirmar</a>
+                    </div>
+                    <div class="relative mt-8"></div>
+
                   </div>
-                  <div class="relative mt-8"></div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="container " id="horizontal-form">
-
-    <div class="flex flex-col sm:flex-row items-center p-5 pb-1 border-b border-gray-200 dark:border-dark-5">
-      <h2 class="mr-auto" style="font-family: 'Nunito', sans-serif; line-height: 1.5; font-weight: 560;  color: #e43f52;font-size: 2em;">
-        {{proyectoModel.organizacion}}
-      </h2>
-    </div>
-    <div class="flex flex-col sm:flex-row items-center pl-5 border-b border-gray-200 dark:border-dark-5">
-      <div class="mr-auto font-medium" style="font-family:'Nunito', sans-serif;">{{proyectoModel.descripcion}}</div>
-    </div>
-
-    <div class="sm:grid grid-cols-3 gap-3">
-
-      <div class="relative mt-8">
-        <div>
-          <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-            Razón de ser
-          </div>
-          <h3 class="text-base  mr-5 text-justify">
-            {{organizacion.razon}}
-          </h3>
-        </div>
-      </div>
-
-      <div class="relative mt-8">
-        <div>
-          <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">Visión</div>
-          <h3 class="text-base  mr-5 text-justify">
-
-            {{organizacion.vision}}
-          </h3>
-        </div>
-      </div>
-
-      <div class="relative mt-8">
-        <div>
-          <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">Misión</div>
-          <h3 class="text-base  mr-5 text-justify">
-            {{organizacion.mision}}
-          </h3>
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="grid grid-cols-12 gap-6 mt-5">
-      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-        <div class=" p-5">
-          <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-            Contribución a los Objetivos de Desarrollo Sostenible | ONU
-          </div>
-          <div class="text-base  mt-6" align="center">
-            <ul>
-              <li>{{proyectoModel.objetivoOnu}}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-12 gap-6 mt-5">
-      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-        <div class=" p-5">
-          <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-            Redes Sociales
-          </div>
-          <div class="text-base  mt-6" align="center">
-            <div class="sm:grid grid-cols-3 gap-3">
-
-              <div class="relative mt-8">
-                <div class="text-base  mr-5 text-justify">
-                  <table>
-                    <tr>
-                      <td>
-                        <a class="col-4 btn text-center " id="iweb" target="_blank" href="organizacion.web">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        </a>
-                      <td>
-                        <a class="col-4 btn text-center " id="iyoutube" target="_blank" href="organizacion.web">
-                          Abrir pagina web
-                        </a>
-                      </td>
-                    </tr>
-                  </table>
-
-                </div>
-              </div>
-              <div class="relative mt-8">
-                <div class="text-base  mr-5 text-center">
-                  <table>
-                    <tr>
-                      <td>
-                        <a class="col-4 btn text-center " id="ifacebook" target="_blank" href="organizacion.facebook">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                        </a>
-
-                      <td>
-                        <a class="col-4 btn text-center " id="iyoutube" target="_blank" href="organizacion.facebook">
-                          Abrir Facebook
-                        </a>
-                      </td>
-                    </tr>
-                  </table>
-
-                </div>
-              </div>
-              <div class="relative mt-8">
-                <div class="text-base  mr-5 text-justify">
-                  <table>
-                    <tr>
-                      <td>
-                        <a class="col-4 btn text-center " id="iyoutube" target="_blank" href="organizacion.youtube">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-                        </a>
-                      <td>
-                        <a class="col-4 btn text-center " id="iyoutube" target="_blank" href="organizacion.youtube">
-                          Abrir Youtube
-                        </a>
-                      </td>
-                    </tr>
-                  </table>
-
                 </div>
               </div>
             </div>
 
           </div>
+
         </div>
       </div>
     </div>
+    <div class="container " id="horizontal-form">
 
-    <div class="grid grid-cols-12 gap-6 mt-5">
-      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-        <div class=" p-5">
-          <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-            Principales Áreas de Acción
-          </div>
-          <div class="text-base  mt-6" align="left">
-            <ul *ngFor="let area of organizacion.listaAreasAccion">
-              <li class="ml-3">- {{area.areaAccion}}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- BEGIN: FORM  box p-5 mt-5 w-full -->
-    <!--<div class="intro-y box mt-5">-->
-
-
-    <div class="preview">
-
-
-      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
-        <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
-          Proyecto
+      <div class="flex flex-col sm:flex-row items-center p-5 pb-1 border-b border-gray-200 dark:border-dark-5">
+        <h2 class="mr-auto" style="font-family: 'Nunito', sans-serif; line-height: 1.5; font-weight: 560;  color: #e43f52;font-size: 2em;">
+          {{proyectoModel.organizacion}}
         </h2>
       </div>
-      <div class="sm:grid grid-cols-2 gap-2">
+      <div class="flex flex-col sm:flex-row items-center pl-5 border-b border-gray-200 dark:border-dark-5">
+        <div class="mr-auto font-medium" style="font-family:'Nunito', sans-serif;">{{organizacion.descripcion}}</div>
+      </div>
+
+      <div class="sm:grid grid-cols-3 gap-3">
 
         <div class="relative mt-8">
           <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre</label>
-            <h5 class="text-base mr-5">
-              {{proyectoModel.proyecto}}
-            </h5>
+            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+              Razón de ser
+            </div>
+            <h3 class="text-base  mr-5 text-justify">
+              {{organizacion.razon}}
+            </h3>
           </div>
         </div>
 
         <div class="relative mt-8">
           <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción</label>
-            <h3 class="text-base mr-5">
+            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">Visión</div>
+            <h3 class="text-base  mr-5 text-justify">
 
-              {{proyectoModel.descripcion}}
+              {{organizacion.vision}}
             </h3>
           </div>
         </div>
 
-        <div class="relative mt-8 col-span-12">
+        <div class="relative mt-8">
           <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Objetivos</label>
-            <h3 class="text-base text-medium mr-5">
-              <textarea [disabled]="true" rows="10" style="width:100%">
-            {{proyectoModel.objetivo}}
-            </textarea>
-            </h3>
-          </div>
-        </div>
-        <div class="relative mt-8 col-span-12">
-          <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">Role</label>
-            <h3 class="text-base  mr-5">
-              {{proyectoModel.rolPrestador}}
+            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">Misión</div>
+            <h3 class="text-base  mr-5 text-justify">
+              {{organizacion.mision}}
             </h3>
           </div>
         </div>
 
-        <div class="relative mt-8 col-span-12 text-center">
-          <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-              Horarios disponibles para la presentación del servicio social
-            </label>
-            <div class="intro-y items-center h-10 mt-3">
+      </div>
+
+
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+              Contribución a los Objetivos de Desarrollo Sostenible | ONU
+            </div>
+            <div class="text-base  mt-6" align="center">
+              <ul>
+                <li>{{proyectoModel.objetivoOnu}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-12 gap-6 mt-5" *ngIf="(organizacion.web!='https://www' && organizacion.web!='') || (organizacion.facebook!='https://www' && organizacion.facebook!='') || (organizacion.youtube!='https://www'  && organizacion.youtube!='')">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+              Redes Sociales
+            </div>
+            <div class="text-base  mt-6" align="center">
+              <div class="sm:grid grid-cols-3 gap-3">
+
+                <div class="relative mt-8" *ngIf="organizacion.web!='https://www' && organizacion.web!=''">
+                  <div class="text-base  mr-5 text-justify">
+                    <table>
+                      <tr>
+                        <td>
+                          <a class="col-4 btn text-center " id="iweb" target="_blank" href="{{organizacion.web}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                          </a>
+                        <td>
+                          <a class="col-4 btn text-center" id="iyoutube" target="_blank" href="{{organizacion.web}}">
+                            Abrir pagina web
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+                </div>
+                <div class="relative mt-8" *ngIf="organizacion.facebook!='https://www' && organizacion.facebook!=''">
+                  <div class="text-base  mr-5 text-center">
+                    <table>
+                      <tr>
+                        <td>
+                          <a class="col-4 btn text-center " id="ifacebook" target="_blank" href="{{organizacion.facebook}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                          </a>
+
+                        <td>
+                          <a class="col-4 btn text-center " id="iyoutube" target="_blank" href="{{organizacion.facebook}}">
+                            Abrir Facebook
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+                </div>
+                <div class="relative mt-8" *ngIf="organizacion.youtube!='https://www'  && organizacion.youtube!=''">
+                  <div class="text-base  mr-5 text-justify">
+                    <table>
+                      <tr>
+                        <td>
+                          <a class="col-4 btn text-center " id="iyoutube" target="_blank" href="{{organizacion.youtube}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                          </a>
+                        <td>
+                          <a class="col-4 btn text-center " id="iyoutube" target="_blank" href="{{organizacion.youtube}}">
+                            Abrir Youtube
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+          <div class=" p-5">
+            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+              Principales Áreas de Acción
+            </div>
+            <div class="text-base  mt-6" align="left">
+              <ul *ngFor="let area of organizacion.listaAreasAccion">
+                <li class="ml-3">- {{area.areaAccion}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview">
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+          <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+            Proyecto
+          </h2>
+        </div>
+        <div class="sm:grid grid-cols-2 gap-2">
+          <div class="relative mt-8">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">Nombre</label>
+              <h5 class="text-base mr-5">
+                {{proyectoModel.proyecto}}
+              </h5>
+            </div>
+          </div>
+
+          <div class="relative mt-8">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">Descripción</label>
               <h3 class="text-base mr-5">
-                Hora entrada: {{proyectoModel.horaEntrada}} Hora salida: {{proyectoModel.horaSalida}}
+
+                {{proyectoModel.descripcion}}
               </h3>
             </div>
           </div>
-        </div>
 
-        <div class="relative mt-3 text-center col-span-12">
-          <div>
-            <label style="font-size:19px; color:#FF8800; font-weight: bold;">
-              Días hábiles para la prestación de servicio social:
-            </label>
-            <div class="intro-y flex items-center h-10 justify-center">
-              
+          <div class="relative mt-8 col-span-12">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">Objetivos</label>
+              <h3 class="text-base text-medium mr-5">
+                <textarea [disabled]="true" rows="10" style="width:100%">
+            {{proyectoModel.objetivo}}
+            </textarea>
+              </h3>
+            </div>
+          </div>
+          <div class="relative mt-8 col-span-12">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">Role</label>
+              <h3 class="text-base  mr-5">
+                {{proyectoModel.rolPrestador}}
+              </h3>
+            </div>
+          </div>
+
+          <div class="relative mt-8 col-span-12 text-center">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                Horarios disponibles para la presentación del servicio social
+              </label>
+              <div class="intro-y items-center h-10 mt-3">
+                <h3 class="text-base mr-5">
+                  Hora entrada: {{proyectoModel.horaEntrada}} Hora salida: {{proyectoModel.horaSalida}}
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative mt-3 text-center col-span-12">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                Días hábiles para la prestación de servicio social:
+              </label>
+              <div class="intro-y flex items-center h-10 justify-center">
+
                 <table style="padding: 15px; margin-left: 25px;">
                   <tbody>
                     <tr>
@@ -415,7 +388,7 @@
 
                       <td style="padding:5px;">
                         <label>
-                          <input type="checkbox" id="domingo" [checked]="proyectoModel.domingo">
+                          <input type="checkbox" id="domingo" [checked]="proyectoModel.domingo" disabled>
                           Domingo
                         </label>
                       </td>
@@ -423,528 +396,991 @@
                     </tr>
                   </tbody>
                 </table>
-              
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <br>
+
+        <div class="grid grid-cols-12 gap-6 mt-5">
+          <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+            <div class=" p-5">
+              <div class="text-base leading-8 mt-1" align="left">
+                <h5 style="font-size:19px;  font-weight: bold; color: #FF8300;">Responsabilidades</h5>
+              </div>
+              <div class="text-base  mt-6" align="left">
+                <h3 class="text-base   mr-5">
+                  {{proyectoModel.responsabilidades}}
+                </h3>
+              </div>
             </div>
           </div>
         </div>
 
 
 
+
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+          <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300; ">
+            Perfil
+          </h2>
+        </div>
+
+
+
+        <div class="grid grid-cols-12 gap-6 mt-5">
+          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+            <div class=" p-5">
+              <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+                Carreras Afines
+              </div>
+              <div *ngFor="let carrera of proyectoModel.carrerasList" class="text-base  mt-1">
+                <div class="flex items-center">
+                  <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                  <span>{{carrera.carrera}}</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+            <div class=" p-5">
+              <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+
+                Competencias
+              </div>
+              <div *ngFor="let competencia of proyectoModel.competenciasList" class="text-base  mt-1">
+                <div class="flex items-center">
+                  <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
+                  <span>{{competencia.competencia}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+            <div class=" p-5">
+              <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+                Contacto
+              </div>
+              <div class="text-base  mt-6" *ngIf="organizacion.responsable !=undefined"><b style="font-size:17px;  font-weight: bold; color: #FF8300;">Responsable:</b> {{organizacion.responsable.nombreCompletoResponsable}} </div>
+              <div class="text-base  mt-6" *ngIf="organizacion.responsable !=undefined"><b style="font-size:17px;  font-weight: bold; color: #FF8300;">Correo:</b> {{organizacion.responsable.correo}}</div>
+
+            </div>
+          </div>
+
+          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
+            <div class=" p-5">
+              <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
+                Ubicación
+              </div>
+              <div class="text-base  mt-6"> {{proyectoModel.organizacionDireccion}}</div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <!--
+        <div class="intro-y flex items-center h-10" *ngIf="proyectoalumno!=''">
+          <h2 class="text-lg font-medium  mr-5">
+            Reportes desempeño
+          </h2>
+        </div>
+
+
+        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="proyectoalumno!=''">
+          <div class="box p-5">
+
+            <table class="table table-report sm:mt-2">
+              <thead>
+                <tr>
+
+                  <th class="whitespace-no-wrap">Reporte</th>
+                  <th class="whitespace-no-wrap">Fecha registro</th>
+                  <th class="whitespace-no-wrap">Realizado</th>
+
+
+                </tr>
+
+
+              </thead>
+              <tbody>
+                <tr class="intro-x">
+
+                  <td>
+                    <div class="ext-base text-xs whitespace-no-wrap">  </div>
+                  </td>
+                  <td>
+                    <div class="ext-base text-xs whitespace-no-wrap">  </div>
+                  </td>
+                  <td>
+                    <div class="ext-base text-xs whitespace-no-wrap"> No </div>
+                  </td>
+
+
+                </tr>
+
+
+
+              </tbody>
+            </table>
+            <button [routerLink]="['/empresas/evaluar', idobtenido]" class="button text-white bg-theme-1 shadow-md mr-2">Evaluar empresa</button>
+
+          </div>
+
+        </div>-->
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--END Estado del proyecto es menor o igual a 3-->
+<!--Proyecto actual start-->
+<div *ngIf="project!=null && estadoInscripcion==4" class="container" style="margin-top:5em;">
+  <div class="col-span-12 ">
+    <!--
+    <div class="flex flex-col sm:flex-row items-centerborder-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+      <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+        Proyecto Actual
+      </h2>
+    </div>-->
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <div class=" p-5">
+        <div class="text-center">
+
+          <br><div style="font-size:25px;font-weight:bold">{{project.proyectoNombre}}</div><br><div style="font-size:20px;font-weight:bold;color:gray">{{project.organizacion}}</div><br><b *ngIf="project.fechaInicioInstitucion != null" style="font-size:15px;font-weight:bold;color:#FF8300">Fecha de inicio:</b><b style="font-size:15px;font-weight:bold;color:#6B3F23"> {{project.fechaInicioInstitucion}}</b>
+        </div>
       </div>
 
+    </div>
+
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+        <div class=" p-5">
+          <div class="pb-5 mb-5 font-weight-bold" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+            Registro de Horas
+          </div>
+          <hr style="color: #000000;" noshade="noshade" size="3" /><br>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0 mb-8">
+      <div class=" p-5" *ngIf="bandNoHoras && project!=null">
+
+        <div class="text-center">
+          <select class="input  w-64 border mt-2" [(ngModel)]="noHoras0" [ngModelOptions]="{standalone: true}">
+            <option value="240">240</option>
+            <option value="480">480</option>
+            <option value="-1">otro</option>
+          </select>
+          <br />
+          <input *ngIf="noHoras0==-1" type="number" class="input  w-64 border mt-2" name="noHoras" [(ngModel)]="noHoras" [ngModelOptions]="{standalone: true}" placeholder="cantidad de horas a cumplir en el proyecto" max="600" min="0">
+          <br />
+          <div class="flex justify-center text-center items-center mt-3 text-center">
+            <b style="color:red">*Confirmar las horas que liberarás en el proyecto: 480 hrs o 240 hrs</b>
+          </div>
+          <div class="flex justify-center text-center items-center mt-3 text-center">
+            <br>
+            <a href="javascript:;" id="actuali" style="font-size:17px;font-weight:bold;background-color:#FF8300" (click)="actualizaHoras()" class="button inline-block bg-theme-1 text-white">Confirmar horas a cumplir</a>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="text-center" *ngIf="!bandNoHoras  && project!=null" style="font-size:20px;  font-weight: bold">
+        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" style="font-size: 17px;">
+          <div class=" p-5">
+
+            <div class="">
+              <a class="button text-white bg-theme-9 shadow-md mr-2" style="border-radius: 15px; cursor:default">
+                Horas Acumuladas:
+                <b *ngIf="project.horasRegistradas == null">0 </b>
+                <b *ngIf="project.horasRegistradas != null">{{project.horasRegistradas}} </b>
+
+              </a>
+              <a class="button text-white bg-theme-1 shadow-md mr-2" style="border-radius: 15px; cursor:default">
+                Horas a cumplir: {{noHoras}}
+              </a>
+            </div>
+
+            <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0">
+              <table class="table table-report sm:mt-2">
+                <thead>
+                  <tr>
+
+                    <th class="whitespace-no-wrap text-center" style="color:#FF8300">HORAS AGREGADAS</th>
+                    <th class="whitespace-no-wrap text-center" style="color:#FF8300">FECHA</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="intro-x" *ngFor="let h of horasalumno">
+                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap text-center"> {{h.noHoras}}</th>
+                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap text-center"> {{h.fechaCreacion}}</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <label style="color:red;font-size:15px">Si necesitas modificar la cantidad de horas a cumplir en este proyecto, por favor solicítalo con tu coordinación de servicio social </label>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!---->
+  <div *ngIf="mostrarConfirmarProyecto">
+  <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+    <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+      Reportes mensuales
+    </h2>
+  </div>
+  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+    <div class=" p-5">
+
+      <table class="table table-report sm:mt-2" *ngIf="actividades!=null && actividades.length>0">
+        <!-- <thead>
+          <tr>
+            <th class="whitespace-no-wrap">No</th>
+            <th class="whitespace-no-wrap">Mes</th>
+            <th class="whitespace-no-wrap">Reporte</th>
+            <th class="whitespace-no-wrap">Validado</th>
+            <th class="whitespace-no-wrap">Fecha</th>
+            <th class="whitespace-no-wrap">Opciones</th>
+          </tr>
+        </thead> -->
+        <tbody>
+          <tr class="intro-x" *ngFor="let actividad of actividades; let i=index">
+            <!-- <td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
+            </td> -->
+            <td style="background: rgb(250, 250, 250);">
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">{{actividad.titulo}}</div>
+            </td>
+            <!-- <td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{actividad.actividad.substr(0,50)}}</div>
+            </td> -->
+
+            <td style="background: rgb(250, 250, 250);">
+              <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Fecha</div>
+              <div style="font-size:18px" class="ext-base text-xs whitespace-no-wrap" align="center">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+              <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Estatus</div>
+
+              <div class="py-1 px-2 rounded-full text-center bg-theme-9 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="actividad.validaEmpresa">
+                <div class="tooltip top">
+                  <span class="tiptext text-left">Reporte validado por parte de la institución</span>
+                  Validado
+                </div>
+              </div>
+              <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="!actividad.validaEmpresa">
+                <div class="tooltip top">
+                  <span class="tiptext text-left">Esperando validaciòn por parte de la institución</span>
+                  Pendiente
+                </div>
+              </div>
+
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+
+              <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:15px;">Mostrar más</a></div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+
+              <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="editar(actividad)" data-toggle="modal" data-target="#actualizaActividad" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:15px;">Editar</a></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <br>
+      <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block  text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold;font-size:17px;">Agregar reporte</a> </div>
+    </div>
 
-      <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-          <div class=" p-5">
-            <div class="text-base leading-8 mt-1" align="left">
-              <h5 style="font-size:19px;  font-weight: bold; color: #FF8300;">Responsabilidades</h5>
-            </div>
-            <div class="text-base  mt-6" align="left">
-              <h3 class="text-base   mr-5">
-                {{proyectoModel.responsabilidades}}
-              </h3>
-            </div>
-          </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+    <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+      Cartas del proyecto
+    </h2>
+  </div>
+
+  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+    <div class=" p-5">
+
+      <table class="table table-report sm:mt-2">
+        <thead>
+          <!-- <tr>
+            <th class="whitespace-no-wrap">No</th>
+            <th class="whitespace-no-wrap">Carta</th>
+            <th>
+              <div class="ext-base text-xs whitespace-no-wrap">Archivo</div>
+            </th>
+
+          </tr> -->
+        </thead>
+        <tbody>
+          <tr class="intro-x">
+            <td style="background: rgb(250, 250, 250);">
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de inicio</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+              <div>
+                <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
+                <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
+                <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
+                <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+              </div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+              <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+              <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
+            </td>
+            <td style="background: rgb(250, 250, 250);" *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''">
+              <a href="javascript:;" (click)="descargarCarta(project.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostar</a>
+            </td>
+            <!--<td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+            </td>-->
+          </tr>
+          <tr class="intro-x" *ngIf="muestraEvaluacion2">
+            <td style="background: rgb(250, 250, 250);">
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">2</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+
+              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de termino</div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+              <div>
+                <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
+                <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
+                <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
+                <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+              </div>
+            </td>
+            <td style="background: rgb(250, 250, 250);">
+              <a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+              <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Volver a cargar</a>
+            </td>
+            <td *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" style="background: rgb(250, 250, 250);">
+              <a href="javascript:;" (click)="descargarCarta(project.id,1)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Mostrar</a>
+            </td>
+            <!--<td>
+              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+            </td>-->
+          </tr>
+        </tbody>
+      </table>
+      <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar carta</a> </div>-->
+    </div>
+
+  </div>
+
+  <div *ngIf="muestraEvaluacion1 || muestraEvaluacion2">
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+      <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+        Evaluación 
+      </h2>
+    </div>
+
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <div class=" p-5">
+
+        <table class="table table-report sm:mt-2">
+          <thead>
+          </thead>
+          <tbody>
+            <tr class="intro-x" *ngIf="muestraEvaluacion1">
+              <td style="background: rgb(250, 250, 250);">
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
+                  EVALUACIÓN INTERMEDIA
+                </div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <a *ngIf="RespuestasEvaluaciones1.length ==null || RespuestasEvaluaciones1.length == 0" [routerLink]="['/empresas/evaluar/1',project.id]" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>
+                <div *ngIf="RespuestasEvaluaciones1.length !=null && RespuestasEvaluaciones1.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluada</div>
+              </td>
+            </tr>
+            <tr class="intro-x" *ngIf="muestraEvaluacion2">
+              <td style="background: rgb(250, 250, 250);">
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">2</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
+                  EVALUACIÓN FINAL
+                </div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <a *ngIf="RespuestasEvaluaciones2.length ==null || RespuestasEvaluaciones2.length == 0" [routerLink]="['/empresas/evaluar/2',project.id]" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>
+                <div *ngIf="RespuestasEvaluaciones2.length !=null && RespuestasEvaluaciones2.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Evaluada</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!--div21321-->
+</div>
+
+<div class="modal" id="subirActividad">
+  <div class="modal__content modal__content--lg" style="width:80%">
+    <form #form="ngForm" (ngSubmit)="agregaActividad()">
+      <div class="p-5 text-center">
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Nuevo Reporte</div>
+
+        <div class="text-base mt-5">Mes</div>
+        <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividad.titulo">-->
+        <select class="input  w-64 border mt-2" [(ngModel)]="alumnoActividad.titulo" [ngModelOptions]="{standalone: true}">
+          <option value="'Enero'">Enero</option>
+          <option value="'Febrero'">Febrero</option>
+          <option value="'Marzo'">Marzo</option>
+          <option value="'Abril'">Abril</option>
+          <option value="'Mayo'">Mayo</option>
+          <option value="'Junio'">Junio</option>
+          <option value="'Julio'">Julio</option>
+          <option value="'Agosto'">Agosto</option>
+          <option value="'Septiembre'">Septiembre</option>
+          <option value="'Octubre'">Octubre</option>
+          <option value="'Noviembre'">Noviembre</option>
+          <option value="'Diciembre'">Diciembre</option>
+        </select>
+
+        <div class="text-base mt-5">Actividad</div>
+        <textarea class="input  w-64 border mt-2" rows="10" type="text" id="actividad" name="actividad" [(ngModel)]="alumnoActividad.actividad" style="width:80%"></textarea>
+        <div class="text-base mt-5">Adjunto</div>
+        <br />
+        <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files)">
+
+      </div>
+      <div class="px-5 pb-8 text-center">
+        <div class="sm:grid grid-cols-2 gap-2">
+
+          <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">
+            Cancelar
+          </button>
+          <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">
+            Guardar
+          </button>
         </div>
       </div>
 
+    </form>
+
+  </div>
+</div>
 
 
 
-      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
-        <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300; ">
-          Perfil
-        </h2>
+
+<div class="modal" id="actualizaActividad">
+  <div class="modal__content modal__content--lg" style="width:80%">
+    <form #form="ngForm" (ngSubmit)="actualizaActividad()">
+      <div class="p-5 text-center">
+        <div class="text-base mt-5">Mes</div>
+        <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividad.titulo">-->
+        <select class="input  w-64 border mt-2" [(ngModel)]="alumnoActividadActualiza.titulo" [ngModelOptions]="{standalone: true}">
+          <option value="'Enero'">Enero</option>
+          <option value="'Febrero'">Febrero</option>
+          <option value="'Marzo'">Marzo</option>
+          <option value="'Abril'">Abril</option>
+          <option value="'Mayo'">Mayo</option>
+          <option value="'Junio'">Junio</option>
+          <option value="'Julio'">Julio</option>
+          <option value="'Agosto'">Agosto</option>
+          <option value="'Septiembre'">Septiembre</option>
+          <option value="'Octubre'">Octubre</option>
+          <option value="'Noviembre'">Noviembre</option>
+          <option value="'Diciembre'">Diciembre</option>
+        </select>
+
+        <div class="text-base mt-5">Actividad</div>
+        <textarea class="input border mt-2" rows="10" type="text" id="actividad" name="actividad" [(ngModel)]="alumnoActividadActualiza.actividad" style="width:80%"></textarea>
+        <div class="text-base mt-5">Adjunto</div>
+        <br />
+        <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files)">
+
       </div>
-
-
-
-      <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-          <div class=" p-5">
-            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-              Carreras Afines
-            </div>
-            <div *ngFor="let carrera of proyectoModel.carrerasList" class="text-base  mt-1">
-              <div class="flex items-center">
-                <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                <span>{{carrera.carrera}}</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-          <div class=" p-5">
-            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-
-              Competencias
-            </div>
-            <div *ngFor="let competencia of proyectoModel.competenciasList" class="text-base  mt-1">
-              <div class="flex items-center">
-                <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                <span>{{competencia.competencia}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-          <div class=" p-5">
-            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-              Contacto
-            </div>
-            <div class="text-base  mt-6"><b style="font-size:17px;  font-weight: bold; color: #FF8300;">Responsable:ct</b>sp {{proyectoModel.nombreResponsable}} </div>
-            <!--
-  <div class="text-base  mt-6"><b style="font-size:17px;  font-weight: bold; color: #FF8300;">Area:</b> {{proyectoModel.area}}</div>
-  <div class="text-base  mt-6"><b style="font-size:17px;  font-weight: bold; color: #FF8300;">Puesto:</b> {{proyectoModel.puesto}}</div>
-  <div class="text-base  mt-6"><b style="font-size:17px;  font-weight: bold; color: #FF8300;">Teléfono:</b> {{proyectoModel.telefono}}</div>
-    -->
-            <div class="text-base  mt-6"><b style="font-size:17px;  font-weight: bold; color: #FF8300;">Correo:</b> {{proyectoModel.correoResponsable}}</div>
-
-          </div>
-        </div>
-
-        <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-          <div class=" p-5">
-            <div class="text-center" style="font-size:19px; color:#FF8800; font-weight: bold;">
-              Ubicación
-            </div>
-            <div class="text-base  mt-6"> {{proyectoModel.organizacionDireccion}}</div>
-          </div>
-        </div>
+      <div class="px-5 pb-8 text-center">
+        <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="    border-radius: 15px;
+    font-weight: bold;
+    width: 180px;
+    margin: auto;
+  ">
+          Cancelar
+        </button>            <button type="submit" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Guardar</button>
       </div>
+    </form>
 
-      <!--<div class="box">
-            <div class="grid grid-cols-12 gap-6 mt-5">
-              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1" align="center">Nombre del proyecto:</div>
-                  <div class="text-base font-bold leading-8 mt-6" align="center"> {{proyectoModel.proyecto}} </div>
-                </div>
-              </div>
-            </div>
+  </div>
+</div>
 
-            <div class="grid grid-cols-12 gap-6 mt-5">
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    ¿Se puede hacer el servicio social bajo la modalidad a distancia en este proyecto?
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.modalidadDistancia}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Institución / Área:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.organizacion}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Nombre del Responsable del Proyecto:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.nombreResponsable}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Puesto del Responsable del Proyecto:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.puesto}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Área del Responsbale del Proyecto:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.area}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Correo electrónico del responsable del proyecto:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.correoResponsable}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Teléfono de responsable del proyecto:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.telefono}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Plazas de Servicio Social disponibles para el proyecto
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.plazas}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">Descripciòn del proyecto:</div>
-
-                  <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.descripcion}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Objetivo del proyecto:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.objetivo}}</div>
-                </div>
-              </div>
-
-              <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-                <div class=" p-5">
-                  <div class="text-base  mt-1">
-                    Justificaciòn del impacto social del proyecto:
-                  </div>
-                  <div class="text-base font-bold leading-8 mt-6"> {{proyectoModel.justificacionImpactoSocial}}</div>
-                </div>
-              </div>
+<div class="modal" id="mostrarMas">
 
 
+  <div class="modal__content modal__content--xl p-10 text-center" style="width:80%">
 
+    <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">Reporte mensual</div>
+    <br><br>
+    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{alumnoActividadD.titulo}}</div>
+    <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">{{alumnoActividadD.fechaCreacion}}</div>
+    <textarea rows="10" cols="80" disabled style="text-align: justify;">{{alumnoActividadD.actividad}}</textarea>
 
-            </div>
+    <br>
 
-          </div>
+    <div *ngIf="alumnoActividadD.ruta!=null && alumnoActividadD.ruta!=''">
+    </div>
+    <div *ngIf="alumnoActividadD.archivo!=null && alumnoActividadD.archivo!=''">
+      <div>
+        <div class="text-base text-gray-600">
+          <br><br>
 
-        </div>
-      </div>
-
-
-    <div class="p-5" id="horizontal-form">
-      <div class="preview">
-        <div class="intro-y flex items-center h-10">
-          <h2 class="text-lg font-medium  mr-5">
-            Información referente al Prestador de Servicio Social (Estudiante)
-          </h2>
-        </div>
-        <div class="grid grid-cols-12 gap-6 mt-5">
-
-          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div class="text-base  mt-1">
-                  Rol o función del prestador de servicio social (estudiante) dentro del proyecto:
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.rolPrestador}}</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div class="text-base  mt-1">
-                  Responsabilidades del prestador de servicio social:
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.responsabilidades}}</div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div class="text-base  mt-1">
-                  ¿El alumno recibe capacitación/formación por parte de la Institución?
-                </div>
-                <div *ngIf="proyectoModel.capacitacion=='si'; else elseBlock" class="text-base font-bold leading-8 mt-6">
-                  Si<br />
-                  Tipo de capacitaciòn:<br>
-                  {{proyectoModel.razonCapacitacion}}
-                </div>
-                <ng-template #elseBlock>
-                  <div *ngIf="proyectoModel.capacitacion; else elseBlock1" class="text-base font-bold leading-8 mt-6">
-                    No<br />
-                    Razòn por la que no ofrece capacitaciòn:<br>
-                    {{proyectoModel.razonCapacitacion}}
-                  </div>
-                </ng-template>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div class="text-base  mt-1">
-                  Según la naturaleza del proyecto, ¿a cuál de los siguientes objetivos de la ONU contribuye?
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">{{proyectoModel.objetivoOnu}}</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div class="text-base  mt-1">
-                  Inicio de la prestación de servicio social
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">Fecha inicio: {{proyectoModel.fechaInicio}} </div>
-              </div>
-            </div>
-          </div>
-
-          sp
-
-          <div class="col-span-12 sm:col-span-6 xl:col-span-6 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div class="text-base  mt-1">
-                  Horarios disponibles para la prestación de servicio social
-                </div>
-                <div class="text-base font-bold leading-8 mt-6">Hora entrada: {{proyectoModel.horaEntrada}} Hora salida: {{proyectoModel.horaSalida}}</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div class="text-base  mt-1">
-                  Días hábiles para la prestación de servicio social
-                </div>
-
-                <div class="text-base font-bold leading-8 mt-6">
-                  <div *ngIf="proyectoModel.lunes" class="text-base  mt-1">
-                    <div class="flex items-center">
-                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                      <span>Lunes</span>
-                    </div>
-                  </div>
-                  <div *ngIf="proyectoModel.martes" class="text-base  mt-1">
-                    <div class="flex items-center">
-                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                      <span>Martes</span>
-                    </div>
-                  </div>
-                  <div *ngIf="proyectoModel.miercoles" class="text-base  mt-1">
-                    <div class="flex items-center">
-                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                      <span>Mièrcoles</span>
-                    </div>
-                  </div>
-                  <div *ngIf="proyectoModel.jueves" class="text-base  mt-1">
-                    <div class="flex items-center">
-                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                      <span>Jueves</span>
-                    </div>
-                  </div>
-                  <div *ngIf="proyectoModel.viernes" class="text-base  mt-1">
-                    <div class="flex items-center">
-                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                      <span>Viernes</span>
-                    </div>
-                  </div>
-                  <div *ngIf="proyectoModel.sabado" class="text-base  mt-1">
-                    <div class="flex items-center">
-                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                      <span>Sàbado</span>
-                    </div>
-                  </div>
-                  <div *ngIf="proyectoModel.domingo" class="text-base  mt-1">
-                    <div class="flex items-center">
-                      <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                      <span>Domingo</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
+          <a href="javascript:;" (click)="descargarAdjuntoActividad(alumnoActividadD.id)" class="button inline-block bg-theme-12 text-white">Archivo Adjunto</a>
 
         </div>
       </div>
     </div>
+    <br><br>
 
-    <div class="p-5" id="horizontal-form">
-      <div class="preview">
-        <div class="intro-y flex items-center h-10">
-          <h2 class="text-lg font-medium  mr-5">
-            Carreras
-          </h2>
-        </div>
-        <div class="grid grid-cols-12 gap-6 mt-5">
-
-          <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div *ngFor="let carrera of proyectoModel.carrerasList" class="text-base  mt-1">
-                  <div class="flex items-center">
-                    <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                    <span>{{carrera.carrera}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="p-5" id="horizontal-form">
-      <div class="preview">
-        <div class="intro-y flex items-center h-10">
-          <h2 class="text-lg font-medium  mr-5">
-            Competencias
-          </h2>
-        </div>
-        <div class="grid grid-cols-12 gap-6 mt-5">
-
-          <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-                <div *ngFor="let competencia of proyectoModel.competenciasList" class="text-base  mt-1">
-                  <div class="flex items-center">
-                    <div class="w-3 h-2 bg-theme-9 rounded-full mr-3"></div>
-                    <span>{{competencia.competencia}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    <label class="text-center " *ngIf="alumnoActividadD.validaEmpresa">Validado</label>
 
     <!--
-    <div class="p-5" id="horizontal-form">
-      <div class="preview">
-        <div class="intro-y flex items-center h-10">
-          <h2 class="text-lg font-medium  mr-5">
-            Actividades
-          </h2>
-        </div>
-        <div class="grid grid-cols-12 gap-6 mt-5">
+    <div class="p-5 text-center">
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>
+              <div class="text-base text-bold mt-5">Título</div>
+            </th>
+            <th>
+              <div class="text-base text-bold mt-5">Fecha</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="text-base text-gray-600 mt-5">{{alumnoActividadD.titulo}}</div>
+            </td>
+            <td>
+              <div class="text-base text-gray-600 mt-5">{{alumnoActividadD.fechaCreacion}}<--{{alumnoActividadD.fechaCreacion| date: 'dd-MM-yyyy'}}--</div>
+            </td>
+            d>
+            c
+          </tr>
+          d>
+          c
+          <tr>
+            d>
+            c
+            <th colspan="2">
+              <div class="text-base mt-5">
+                t-
+                Actividad
+              </div>
+            </th>
+            t-
+          </tr>
+          t-
+          <tr>
+            <td colspan="2">
+              <div class="text-base text-gray-600 mt-5 text-justify">
+                <textarea readonly rows="5" style="width: 100%;"> {{alumnoActividadD.actividad}}</textarea>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="alumnoActividadD.ruta!=null && alumnoActividadD.ruta!=''">
+            ll
+            ol
+            <th colspan="2"><div class="text-base mt-5">adjunto</div></th>
+          </tr>
+          <tr *ngIf="alumnoActividadD.archivo!=null && alumnoActividadD.archivo!=''">
+            <td colspan="2">
+              <div class="text-base text-gray-600 mt-5">
 
-          <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
-            <div class="report-box ">
-              <div class="box p-5">
-
-
-                <div class="intro-y datatable-wrapper box p-5 mt-5">
-                  <table id="tablaActividades" class="table table-report table-report--bordered display datatable w-full">
-                    <thead>
-                      <tr>
-                        <th class="border-b-2 whitespace-no-wrap">Actividad</th>
-                        <th class="border-b-2 text-center whitespace-no-wrap">Descripción</th>
-                        <th class="border-b-2 text-center whitespace-no-wrap">Perfil</th>
-                        <th class="border-b-2 text-center whitespace-no-wrap">No. prestadores</th>
-                      </tr>
-                    </thead>
-                    <tbody *ngIf="proyectosActividades?.length != 0">
-
-                      <tr *ngFor="let actividad of proyectosActividades">
-                        <td class="border-b">
-                          <div class="font-medium flex sm:justify-center items-center">{{actividad.actividad}}</div>
-                        </td>
-                        <td class="w-40 border-b">
-                          <div class="font-medium flex sm:justify-center items-center">{{actividad.descripcion}}</div>
-                        </td>
-                        <td class="border-b">
-                          <div class="font-medium flex sm:justify-center items-center">{{actividad.perfil}}</div>
-                        </td>
-                        <td class="border-b">
-                          <div class="font-medium flex sm:justify-center items-center">{{actividad.noPrestadores}}</div>
-                        </td>
-                      </tr>
-
-                    </tbody>
-                  </table>
-                </div>
+                <a href="javascript:;" (click)="descargarAdjuntoActividad(alumnoActividadD.id)" class="button inline-block bg-theme-1 text-white">Mostar</a>
 
               </div>
-            </div>
-          </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
+    </div>-->
+
+
+    <div class="px-5 pb-8 text-center">
+      <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="subirCarta">
+  <div class="modal__content modal__content--xl p-10 text-center">
+    <form #form="ngForm" (ngSubmit)="subeArchivoCarta()">
+      <div class="p-5 text-center">
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;" *ngIf="idArchivo==0">Subir carta de inicio</div>
+        <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;" *ngIf="idArchivo==1">Subir carta de termino</div>
+
+
+        <br>
+        <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
+      </div>
+      <div class="px-5 pb-8 text-center">
+        <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+            ">
+          Cancelar
+        </button>            <button type="submit" data-dismiss="modal" class="button w-24 text-white" style=" border-radius: 15px; font-size: 17px; background-color: #FF8300;">Subir</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal" id="success-modal-preview-file">
+  <div class="modal__content modal__content--xl p-10 text-center">
+    <div class="p-5 text-center">
+      <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+
+      <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Muy bien!</div>
+      <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Se subió el reporte</div>
+
+
+    </div>
+    <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+      "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+  </div>
+</div>
+
+<div class="modal" id="success-modal-preview-carta">
+  <div class="modal__content modal__content--xl p-10 text-center">
+    <div class="p-5 text-center">
+      <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+
+      <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Muy bien!</div>
+      <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Se subió la carta</div>
+
+
+    </div>
+    <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+      "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+  </div>
+</div>
+
+<div class="modal" id="success-modal-actualizaHoras">
+  <div class="modal__content modal__content--xl p-10 text-center">
+    <div class="p-5 text-center">
+      <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
+
+      <div class="text-3xl mt-5 text-center" style="color: #FF8300; font-size: 28px;">¡Muy bien!</div>
+      <div class=" mt-2 text-red text-center" style="color: #6B3F23; font-size: 25px;">Se actualizo las horas a cumplir en el proyecto</div>
+
+    </div>
+    <div class="flex justify-center text-center items-center mt-3 text-center" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+      "> <br> <a data-dismiss="modal" style=" border-radius: 15px; font-size: 17px;" class="button  btn-lg text-white  ">Continuar</a> </div>
+  </div>
+</div>
+
+<!--Proyecto actual END-->
+<!--Proyectos terminados start-->
+
+<div *ngIf="project!=null && estadoInscripcion==5" class="container" style="margin-top:5em;">
+  <div class="col-span-12 ">
+    
+    <div class="flex flex-col sm:flex-row items-centerborder-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+      <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+        Proyecto Terminado
+      </h2>
+    </div>
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <div class=" p-5">
+        <div class="text-center">
+
+          <br><div style="font-size:25px;font-weight:bold">{{project.proyectoNombre}}</div><br><div style="font-size:20px;font-weight:bold;color:gray">{{project.organizacion}}</div><br><b *ngIf="project.fechaInicioInstitucion != null" style="font-size:15px;font-weight:bold;color:#FF8300">Fecha de inicio:</b><b style="font-size:15px;font-weight:bold;color:#6B3F23"> {{project.fechaInicioInstitucion}}</b>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-cols-12 gap-6 mt-5">
+      <div class="col-span-12 sm:col-span-12 xl:col-span-12 intro-y">
+        <div class=" p-5">
+          <div class="pb-5 mb-5 font-weight-bold" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+            Registro de Horas
+          </div>
+          <hr style="color: #000000;" noshade="noshade" size="3" /><br>
         </div>
       </div>
     </div>
-    -->
 
-      <br>
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0 mb-8">
+      <!--
+      <div class=" p-5" *ngIf="bandNoHoras && project!=null">
 
+        <div class="text-center">
+          <select class="input  w-64 border mt-2" [(ngModel)]="noHoras0" [ngModelOptions]="{standalone: true}">
+            <option value="240">240</option>
+            <option value="480">480</option>
+            <option value="-1">otro</option>
+          </select>
+          <br />
+          <input *ngIf="noHoras0==-1" type="number" class="input  w-64 border mt-2" name="noHoras" [(ngModel)]="noHoras" [ngModelOptions]="{standalone: true}" placeholder="cantidad de horas a cumplir en el proyecto" max="600" min="0">
+          <br />
+          <div class="flex justify-center text-center items-center mt-3 text-center">
+            <b style="color:red">*Confirmar las horas que liberarás en el proyecto: 480 hrs o 240 hrs</b>
+          </div>
+          <div class="flex justify-center text-center items-center mt-3 text-center">
+            <br>
+            <a href="javascript:;" id="actuali" style="font-size:17px;font-weight:bold;background-color:#FF8300" (click)="actualizaHoras()" class="button inline-block bg-theme-1 text-white">Confirmar horas a cumplir</a>
+          </div>
 
-      <div class="intro-y flex items-center h-10" *ngIf="proyectoalumno!=''">
-        <h2 class="text-lg font-medium  mr-5">
-          Reportes desempeño
+        </div>
+
+      </div>-->
+      <div class="text-center" *ngIf="!bandNoHoras  && project!=null" style="font-size:20px;  font-weight: bold">
+        <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" style="font-size: 17px;">
+          <div class=" p-5">
+
+            <div class="">
+              <a class="button text-white bg-theme-9 shadow-md mr-2" style="border-radius: 15px; cursor:default">
+                Horas Acumuladas:
+                <b *ngIf="project.horasRegistradas == null">0 </b>
+                <b *ngIf="project.horasRegistradas != null">{{project.horasRegistradas}} </b>
+
+              </a>
+              <a class="button text-white bg-theme-1 shadow-md mr-2" style="border-radius: 15px; cursor:default">
+                Horas a cumplir: {{noHoras}}
+              </a>
+            </div>
+
+            <div class="intro-y overflow-auto lg:overflow-visible mt-5 sm:mt-0">
+              <table class="table table-report sm:mt-2">
+                <thead>
+                  <tr>
+
+                    <th class="whitespace-no-wrap text-center" style="color:#FF8300">HORAS AGREGADAS</th>
+                    <th class="whitespace-no-wrap text-center" style="color:#FF8300">FECHA</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="intro-x" *ngFor="let h of horasalumno">
+                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap text-center"> {{h.noHoras}}</th>
+                    <th style="background: rgb(250, 250, 250);" class="whitespace-no-wrap text-center"> {{h.fechaCreacion}}</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <label style="color:red;font-size:15px">Si necesitas modificar la cantidad de horas a cumplir en este proyecto, por favor solicítalo con tu coordinación de servicio social </label>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!---->
+  <div *ngIf="mostrarConfirmarProyecto">
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+      <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+        Reportes mensuales
+      </h2>
+    </div>
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <div class=" p-5">
+
+        <table class="table table-report sm:mt-2" *ngIf="actividades!=null && actividades.length>0">
+          <tbody>
+            <tr class="intro-x" *ngFor="let actividad of actividades; let i=index">
+              <td style="background: rgb(250, 250, 250);">
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">{{actividad.titulo}}</div>
+              </td>
+              
+              <td style="background: rgb(250, 250, 250);">
+                <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Fecha</div>
+                <div style="font-size:18px" class="ext-base text-xs whitespace-no-wrap" align="center">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Estatus</div>
+
+                <div class="py-1 px-2 rounded-full text-center bg-theme-9 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="actividad.validaEmpresa">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Reporte validado por parte de la institución</span>
+                    Validado
+                  </div>
+                </div>
+                <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="!actividad.validaEmpresa">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Esperando validaciòn por parte de la institución</span>
+                    Pendiente
+                  </div>
+                </div>
+
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+
+                <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:15px;">Mostrar más</a></div>
+              </td>
+              <!--<td style="background: rgb(250, 250, 250);">
+
+                <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="editar(actividad)" data-toggle="modal" data-target="#actualizaActividad" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:15px;">Editar</a></div>
+              </td>-->
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <!--
+        <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block  text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold;font-size:17px;">Agregar reporte</a> </div>
+          -->
+      </div>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+      <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+        Cartas del proyecto
+      </h2>
+    </div>
+
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <div class=" p-5">
+
+        <table class="table table-report sm:mt-2">
+          <thead>
+          </thead>
+          <tbody>
+            <tr class="intro-x">
+              <td style="background: rgb(250, 250, 250);">
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de inicio</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <div>
+                  <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
+                  <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
+                  <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
+                  <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+                </div>
+              </td>
+              <!--
+              <td style="background: rgb(250, 250, 250);">
+                <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+                <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
+              </td>-->
+              <td style="background: rgb(250, 250, 250);" *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''">
+                <a href="javascript:;" (click)="descargarCarta(project.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostar</a>
+              </td>
+            </tr>
+            <tr class="intro-x" *ngIf="muestraEvaluacion2">
+              <td style="background: rgb(250, 250, 250);">
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">2</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de termino</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <div>
+                  <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
+                  <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
+                  <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
+                  <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+                </div>
+              </td>
+              <!--
+              <td style="background: rgb(250, 250, 250);">
+                <a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+                <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Volver a cargar</a>
+              </td>
+                -->
+              <td *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" style="background: rgb(250, 250, 250);">
+                <a href="javascript:;" (click)="descargarCarta(project.id,1)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Mostrar</a>
+              </td>
+              <!--<td>
+                <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+              </td>-->
+            </tr>
+          </tbody>
+        </table>
+        <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar carta</a> </div>-->
+      </div>
+
+    </div>
+
+    <div *ngIf="muestraEvaluacion1 || muestraEvaluacion2">
+      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+        <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+          Evaluación
         </h2>
       </div>
 
-
-      <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0" *ngIf="proyectoalumno!=''">
-        <div class="box p-5">
+      <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+        <div class=" p-5">
 
           <table class="table table-report sm:mt-2">
             <thead>
-              <tr>
-
-                <th class="whitespace-no-wrap">Reporte</th>
-                <th class="whitespace-no-wrap">Fecha registro</th>
-                <th class="whitespace-no-wrap">Realizado</th>
-
-
-              </tr>
-
-
             </thead>
             <tbody>
-              <tr class="intro-x">
-
-                <td>
-                  <div class="ext-base text-xs whitespace-no-wrap">  </div>
+              <tr class="intro-x" *ngIf="muestraEvaluacion1">
+                <td style="background: rgb(250, 250, 250);">
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
                 </td>
-                <td>
-                  <div class="ext-base text-xs whitespace-no-wrap">  </div>
+                <td style="background: rgb(250, 250, 250);">
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
+                    EVALUACIÓN INTERMEDIA
+                  </div>
                 </td>
-                <td>
-                  <div class="ext-base text-xs whitespace-no-wrap"> No </div>
+                <td style="background: rgb(250, 250, 250);">
+                  <!--<a *ngIf="RespuestasEvaluaciones1.length ==null || RespuestasEvaluaciones1.length == 0" [routerLink]="['/empresas/evaluar/1',project.id]" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>-->
+                  <div *ngIf="RespuestasEvaluaciones1.length !=null && RespuestasEvaluaciones1.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluada</div>
                 </td>
-
-
               </tr>
+              <tr class="intro-x" *ngIf="muestraEvaluacion2">
+                <td style="background: rgb(250, 250, 250);">
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">2</div>
+                </td>
+                <td style="background: rgb(250, 250, 250);">
 
-
-
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
+                    EVALUACIÓN FINAL
+                  </div>
+                </td>
+                <td style="background: rgb(250, 250, 250);">
+                  <!--<a *ngIf="RespuestasEvaluaciones2.length ==null || RespuestasEvaluaciones2.length == 0" [routerLink]="['/empresas/evaluar/2',project.id]" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>-->
+                  <div *ngIf="RespuestasEvaluaciones2.length !=null && RespuestasEvaluaciones2.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Evaluada</div>
+                </td>
+              </tr>
             </tbody>
           </table>
-          <button [routerLink]="['/empresas/evaluar', idobtenido]" class="button text-white bg-theme-1 shadow-md mr-2">Evaluar empresa</button>
-
         </div>
-
       </div>
-
-
     </div>
+  </div>
+  <!--div21321-->
+</div>
+
+<!--Proyectos terminados END-->

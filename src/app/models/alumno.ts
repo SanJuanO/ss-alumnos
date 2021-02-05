@@ -1,43 +1,43 @@
 export class Alumno {
-    constructor(
-        public matricula: string,
-        public nombre: string,
-        public paterno: string,
-        public materno: string,
-        public idUniversidad: number,
-        public idFacultad: number,
-        public idCarrera: number,
-        public celular: string,
-        public correo: string,
-        public cp: string,
-        public pais: string,
-        public estado: string,
-        public municipio: string,
-        public colonia: string,
-        public calle: string,
-        public numExt: string,
-        public numInt: string,
-        public activo: boolean,
-      public porcentaje: number,
-      public fechaEstimadaGraduacion: string,
-      public fechaNacimiento: string,
-      public fechaInicioServicioSocial: string,
-      public terminosCondiciones?: boolean,
-      public listaAreaVidaUniversitariaParticipado?: AlumnosAreasVidaUniversitariaParticipado[],
-      public listaAreaVidaUniversitariaActuales?: AlumnosAreasVidaUniversitariaActuales[],
-      public id?: number,
-      public fechaEstimadaGraduacionString?: string,
-      public fechaNacimientoString?: string,
-      public fechaInicioServicioSocialString?: string,
-      public avanceCreditos?: number,
-      public noCuatrimestreSemestre?: number,
-      public esquemaPeriodo?: string,
-      public generacion?: string,
-      public correoInstitucional?: string,
+  constructor(
+    public matricula: string,
+    public nombre: string,
+    public paterno: string,
+    public materno: string,
+    public idUniversidad: number,
+    public idFacultad: number,
+    public idCarrera: number,
+    public celular: string,
+    public correo: string,
+    public cp: string,
+    public pais: string,
+    public estado: string,
+    public municipio: string,
+    public colonia: string,
+    public calle: string,
+    public numExt: string,
+    public numInt: string,
+    public activo: boolean,
+    public porcentaje: number,
+    public fechaEstimadaGraduacion: string,
+    public fechaNacimiento: string,
+    public fechaInicioServicioSocial: string,
+    public terminosCondiciones?: boolean,
+    public listaAreaVidaUniversitariaParticipado?: AlumnosAreasVidaUniversitariaParticipado[],
+    public listaAreaVidaUniversitariaActuales?: AlumnosAreasVidaUniversitariaActuales[],
+    public id?: number,
+    public fechaEstimadaGraduacionString?: string,
+    public fechaNacimientoString?: string,
+    public fechaInicioServicioSocialString?: string,
+    public avanceCreditos?: number,
+    public noCuatrimestreSemestre?: number,
+    public esquemaPeriodo?: string,
+    public generacion?: string,
+    public correoInstitucional?: string,
 
 
 
-    ) { }
+  ) { }
 
 }
 
@@ -82,40 +82,42 @@ export class AlumnoEdit {
     public fechaNacimientoString?: string,
     public fechaInicioServicioSocialString?: string,
     public asistio?: boolean,
-    public pago?: boolean
+    public pago?: boolean,
+    public eventoSS?: boolean,
+    public liberar?: number
 
   ) { }
 
 }
 
 export class AlumnoProyecto {
-    constructor(
-        public fechaCreacion:string,
-        public alumno: string,
-        public proyectoNombre: string,
-        public idProyecto: number,
-        public idAlumno: number,
-        public id: number,
-      public idOrganizacion: number,
-      
+  constructor(
+    public fechaCreacion: string,
+    public alumno: string,
+    public proyectoNombre: string,
+    public idProyecto: number,
+    public idAlumno: number,
+    public id: number,
+    public idOrganizacion: number,
 
-        
-    ) { }
+
+
+  ) { }
 
 }
 export class RespuestasAlumnosOrganizaciones {
-    constructor(
-      public idAlumnoProyectoAsignado:number,
-        public idAlumno:number,
-        public idOrganizacion:number,
-        public idPregunta: number,
-        public activo:boolean= true,
-        public respuesta: string,
-        public version: number,
-        public pregunta?: string,
-      
-        
-    ) { }
+  constructor(
+    public idAlumnoProyectoAsignado: number,
+    public idAlumno: number,
+    public idOrganizacion: number,
+    public idPregunta: number,
+    public activo: boolean = true,
+    public respuesta: string,
+    public version: number,
+    public pregunta?: string,
+
+
+  ) { }
 
 }
 
@@ -144,6 +146,11 @@ export class AlumnosProyectosAsignados {
   public rutaCartaTermino?: string;
   public archivoCartaInicio?: string;
   public archivoCartaTermino?: string;
+  public validaCartaInicio?: string;
+  public validaCartaTermino?: string;
+  public estadoValidaCartaInicio?: string;
+  public estadoValidaCartaTermino?: string;
+  public fechaInicioInstitucion?: string;
 
   constructor() { }
 }
@@ -214,4 +221,32 @@ export class ModalidadesTrabajo {
   ) { }
 }
 
+export class AlumnoRequisitos {
+  public pago?: boolean;
+  public junta?: boolean;
+  public cartaInicio?: boolean;
+  public reportesMensuales?: boolean;
+  public cartaTermino?: boolean;
+  public evaluacionSS?: boolean;
+  public horasSS?: boolean;
+  public eventoSS?: boolean;
+
+  constructor() { }
+
+}
+
+export class alumnohoras {
+  public id?: number;
+  public idAlumnosProyectosAsignacion: number;
+  public idProyecto: number;
+
+  public noHoras: number;
+  public activo: boolean = true;
+  public fechaCreacion: string;
+  constructor(
+
+
+  ) { }
+
+}
 

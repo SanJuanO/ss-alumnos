@@ -72,6 +72,7 @@ public idOrganizacion: string;
       this.obtenerPreguntasAlumnoOrganizacion();
     }
     this.obtenerproyectoalumno();
+    this.resetPosition();
   }
   obtenerproyectoalumno() {
     this.alumnoService.getAlumnoProyectoAsignadoById(this.idAlumnosProyectosAsignados).subscribe((res: any) => {
@@ -125,7 +126,7 @@ public idOrganizacion: string;
 
       //this._location.back();
       if (res == true) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/proyectos/ver/', this.idproyectoalumno]);
       } else {
         alert("add respuestas false");
       }
@@ -133,6 +134,19 @@ public idOrganizacion: string;
       alert(error.error)
     })
 
+  }
+
+  resetPosition() {
+    let myDiv = document.getElementById("detail");
+    myDiv.scrollTop = 0;
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 
 }

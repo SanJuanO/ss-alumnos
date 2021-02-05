@@ -133,5 +133,19 @@ export class AlumnoService {
     formData.append('idAlumnoProyectoAsignado', idAlumnoProyectoAsignado);
     return this.http.post(endpoint, formData);
   }
+  getAlumnoRequisitosLiberacion(id: string | number) {
+    return this.http.post(`${this.baseUrl}/Alumnos/requisitosLiberacion?idAlumno=${id}`,id);
+  }
+
+  updateLiberar(id: string | number, liberar: string | number) {
+    return this.http.put(`${this.baseUrl}/Alumnos/actualizaLiberar?id=${id}&liberar=${liberar}`, { withCredentials: false });
+  }
+  horas(id) {
+
+    var i = Number(id);
+    return this.http.get(`${this.baseUrl}/AlumnosProyectosAsignadosHoras/getHorasByIdProyectoAsignado?idAlumnoProyectoAsignado=${i}`);
+
+  }
+
 
 }
