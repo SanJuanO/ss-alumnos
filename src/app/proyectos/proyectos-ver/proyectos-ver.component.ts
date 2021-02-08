@@ -97,7 +97,7 @@ export class ProyectosVerComponent implements OnInit {
     this.idobtenido = <number><any>(this.activatedRoute.snapshot.paramMap.get("id"));
     this.getProyecto(this.idobtenido);
     this.obtenerProyectosAlumno();
-
+    this.resetPosition();
   }
 
   ngAfterViewInit() {
@@ -149,6 +149,8 @@ export class ProyectosVerComponent implements OnInit {
 
               this.getEvaluacionesProyectoOrganizacion();
             }
+              
+            
 
             if (this.project != null) {
               this.obtenerActividadesByIdAlumnoProyectoAsignado();
@@ -415,7 +417,7 @@ export class ProyectosVerComponent implements OnInit {
         this.actividades = <Array<AlumnosActividades>><any>data;
         var i = 0;
         for (i = 0; i < this.actividades.length; i++) {
-          this.actividades[i]['titulo'] = this.actividades[i]['titulo'].slice(1, -1);
+          //this.actividades[i]['titulo'] = this.actividades[i]['titulo'].slice(1, -1);
 
           var fech = new Date(this.actividades[i].fechaCreacion);
           this.actividades[i].fechaCreacion = fech.toLocaleDateString("es-ES", options);
@@ -445,8 +447,8 @@ export class ProyectosVerComponent implements OnInit {
     } else if (this.alumnoActividad.actividad == "") {
       return false;
     }
-    //console.log(this.alumnoActividad);
-
+    console.log(this.alumnoActividad);
+    
     this.alumnosActividadesService.CreateActivityWithFile(this.fileToUpload, this.alumnoActividad).subscribe(data => {
       if (data.resultado) {
         document.getElementById("carg").style.display = "none";
@@ -475,7 +477,7 @@ export class ProyectosVerComponent implements OnInit {
     } else if (this.alumnoActividadActualiza.actividad == "") {
       return false;
     }
-    //console.log(this.alumnoActividadActualiza);
+    console.log(this.alumnoActividadActualiza);
 
     this.alumnosActividadesService.UpdateActivityWithFile(this.fileToUpload, this.alumnoActividadActualiza).subscribe(data => {
       if (data.resultado) {
@@ -499,7 +501,7 @@ export class ProyectosVerComponent implements OnInit {
   }
 
   editar(actividad) {
-    //console.log(actividad);
+    console.log(actividad);
     this.alumnoActividadActualiza.id = actividad.id;
     this.alumnoActividadActualiza.actividad = actividad.actividad;
     this.alumnoActividadActualiza.titulo = actividad.titulo;
@@ -594,8 +596,14 @@ export class ProyectosVerComponent implements OnInit {
     this.ocultarTerminados = !this.ocultarTerminados;
   }
 
-  uploadFile(files: FileList) {
+  uploadFile(files: FileList,id) {
     this.fileToUpload = files.item(0);
+    var fileSize = this.fileToUpload.size;
+    if (fileSize > 2000000) {
+      alert('El archivo no debe superar los 2MB '+id);
+      this.fileToUpload = null;
+      $("#"+id).val("");
+    }
   }
 
   horas() {
@@ -611,4 +619,23 @@ export class ProyectosVerComponent implements OnInit {
     });
   }
 
+  resetPosition() {
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
+  }
+  vistaProyecto() {
+
+    if (this.api == 'https://adam.anahuac.mx/appis-serviciosocial/api') {
+      window.location.href = "https://adam.anahuac.mx/serviciosocial/proyecto.html?id=" + this.idobtenido;
+    } else {
+      window.location.href = "http://portal-ss.gesdesapplication.com/proyecto.html?id=" + this.idobtenido;
+    }
+  }
+  
 }

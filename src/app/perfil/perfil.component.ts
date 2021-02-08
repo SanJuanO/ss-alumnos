@@ -47,13 +47,13 @@ export class PerfilComponent implements OnInit {
       //console.log(res);
       var options = { year: 'numeric', month: 'long', day: 'numeric' };
       if (res.fechaEstimadaGraduacionString != "0001-01-01") {
-        var fecha = new Date(res.fechaEstimadaGraduacion.substr(0, 10));
+        var fecha = new Date(res.fechaEstimadaGraduacion);
         this.alumno.fechaEstimadaGraduacion = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaEstimadaGraduacion = "";
       }
       if (res.fechaNacimientoString != "0001-01-01") {
-        var fecha = new Date(res.fechaNacimientoString.substr(0, 10));
+        var fecha = new Date(res.fechaNacimientoString);
         this.alumno.fechaNacimiento = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaNacimiento = "";

@@ -72,8 +72,9 @@
               <div class="sm:grid grid-cols-4 gap-2">
                 <div class="relative mt-8"></div>
                 <div class="relative mt-8">
-                  <a data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
-                        " class="button  btn-lg text-white ml-3">Cancelar</a>
+                  <a (click)="vistaProyecto()" data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;" class="button btn-lg text-white ml-3" >
+                    Cancelar
+                  </a>
                 </div>
                 <div class="relative mt-8">
 
@@ -577,8 +578,8 @@
 
         <div class="text-center">
           <select class="input  w-64 border mt-2" [(ngModel)]="noHoras0" [ngModelOptions]="{standalone: true}">
-            <option value="240">240</option>
             <option value="480">480</option>
+            <option value="240">240</option>
             <option value="-1">otro</option>
           </select>
           <br />
@@ -740,10 +741,30 @@
             </td>
             <td style="background: rgb(250, 250, 250);">
               <div>
-                <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
-                <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
-                <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
-                <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+                <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                    PENDIENTE
+                  </div>
+                </div>
+                <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
+                    REVISIÓN
+                  </div>
+                </div>
+                <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
+                    RECHAZADO
+                  </div>
+                </div>
+                <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Tu carta ha sido validada</span>
+                    VALIDADO
+                  </div>
+                </div>
               </div>
             </td>
             <td style="background: rgb(250, 250, 250);">
@@ -767,10 +788,30 @@
             </td>
             <td style="background: rgb(250, 250, 250);">
               <div>
-                <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
-                <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
-                <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
-                <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+                <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                    PENDIENTE
+                  </div>
+                </div>
+                <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
+                    REVISIÓN
+                  </div>
+                </div>
+                <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
+                    RECHAZADO
+                  </div>
+                </div>
+                <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Tu carta ha sido validada</span>
+                    VALIDADO
+                  </div>
+                </div>
               </div>
             </td>
             <td style="background: rgb(250, 250, 250);">
@@ -816,7 +857,7 @@
               </td>
               <td style="background: rgb(250, 250, 250);">
                 <a *ngIf="RespuestasEvaluaciones1.length ==null || RespuestasEvaluaciones1.length == 0" [routerLink]="['/empresas/evaluar/1',project.id]" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>
-                <div *ngIf="RespuestasEvaluaciones1.length !=null && RespuestasEvaluaciones1.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluada</div>
+                <div *ngIf="RespuestasEvaluaciones1.length !=null && RespuestasEvaluaciones1.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluación Completada</div>
               </td>
             </tr>
             <tr class="intro-x" *ngIf="muestraEvaluacion2">
@@ -831,7 +872,7 @@
               </td>
               <td style="background: rgb(250, 250, 250);">
                 <a *ngIf="RespuestasEvaluaciones2.length ==null || RespuestasEvaluaciones2.length == 0" [routerLink]="['/empresas/evaluar/2',project.id]" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>
-                <div *ngIf="RespuestasEvaluaciones2.length !=null && RespuestasEvaluaciones2.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Evaluada</div>
+                <div *ngIf="RespuestasEvaluaciones2.length !=null && RespuestasEvaluaciones2.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Evaluación Completada</div>
               </td>
             </tr>
           </tbody>
@@ -852,25 +893,27 @@
         <div class="text-base mt-5">Mes</div>
         <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividad.titulo">-->
         <select class="input  w-64 border mt-2" [(ngModel)]="alumnoActividad.titulo" [ngModelOptions]="{standalone: true}">
-          <option value="'Enero'">Enero</option>
-          <option value="'Febrero'">Febrero</option>
-          <option value="'Marzo'">Marzo</option>
-          <option value="'Abril'">Abril</option>
-          <option value="'Mayo'">Mayo</option>
-          <option value="'Junio'">Junio</option>
-          <option value="'Julio'">Julio</option>
-          <option value="'Agosto'">Agosto</option>
-          <option value="'Septiembre'">Septiembre</option>
-          <option value="'Octubre'">Octubre</option>
-          <option value="'Noviembre'">Noviembre</option>
-          <option value="'Diciembre'">Diciembre</option>
+          <option value="Enero">Enero</option>
+          <option value="Febrero">Febrero</option>
+          <option value="Marzo">Marzo</option>
+          <option value="Abril">Abril</option>
+          <option value="Mayo">Mayo</option>
+          <option value="Junio">Junio</option>
+          <option value="Julio">Julio</option>
+          <option value="Agosto">Agosto</option>
+          <option value="Septiembre">Septiembre</option>
+          <option value="Octubre">Octubre</option>
+          <option value="Noviembre">Noviembre</option>
+          <option value="Diciembre">Diciembre</option>
         </select>
 
         <div class="text-base mt-5">Actividad</div>
         <textarea class="input  w-64 border mt-2" rows="10" type="text" id="actividad" name="actividad" [(ngModel)]="alumnoActividad.actividad" style="width:80%"></textarea>
         <div class="text-base mt-5">Adjunto</div>
         <br />
-        <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files)">
+        <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files,'adjunto')">
+        <br />
+        <b>*Peso máximo 2mb</b>
 
       </div>
       <div class="px-5 pb-8 text-center">
@@ -901,25 +944,27 @@
         <div class="text-base mt-5">Mes</div>
         <!--<input class="input  w-64 border mt-2" type="text" id="titulo" name="titulo" [(ngModel)]="alumnoActividad.titulo">-->
         <select class="input  w-64 border mt-2" [(ngModel)]="alumnoActividadActualiza.titulo" [ngModelOptions]="{standalone: true}">
-          <option value="'Enero'">Enero</option>
-          <option value="'Febrero'">Febrero</option>
-          <option value="'Marzo'">Marzo</option>
-          <option value="'Abril'">Abril</option>
-          <option value="'Mayo'">Mayo</option>
-          <option value="'Junio'">Junio</option>
-          <option value="'Julio'">Julio</option>
-          <option value="'Agosto'">Agosto</option>
-          <option value="'Septiembre'">Septiembre</option>
-          <option value="'Octubre'">Octubre</option>
-          <option value="'Noviembre'">Noviembre</option>
-          <option value="'Diciembre'">Diciembre</option>
+          <option value="Enero">Enero</option>
+          <option value="Febrero">Febrero</option>
+          <option value="Marzo">Marzo</option>
+          <option value="Abril">Abril</option>
+          <option value="Mayo">Mayo</option>
+          <option value="Junio">Junio</option>
+          <option value="Julio">Julio</option>
+          <option value="Agosto">Agosto</option>
+          <option value="Septiembre">Septiembre</option>
+          <option value="Octubre">Octubre</option>
+          <option value="Noviembre">Noviembre</option>
+          <option value="Diciembre">Diciembre</option>
         </select>
 
         <div class="text-base mt-5">Actividad</div>
         <textarea class="input border mt-2" rows="10" type="text" id="actividad" name="actividad" [(ngModel)]="alumnoActividadActualiza.actividad" style="width:80%"></textarea>
         <div class="text-base mt-5">Adjunto</div>
         <br />
-        <input type="file" id="adjunto" name="adjunto" accept="application/pdf" (change)="uploadFile($event.target.files)">
+        <input type="file" id="adjunto2" name="adjunto2" accept="application/pdf" (change)="uploadFile($event.target.files,'adjunto2')">
+        <br />
+        <b>*Peso máximo 2mb</b>
 
       </div>
       <div class="px-5 pb-8 text-center">
@@ -1045,7 +1090,10 @@
 
 
         <br>
-        <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
+        <input type="file" id="file" name="file" accept="application/pdf" (change)="uploadFile($event.target.files,'file')">
+        <br />
+        <b>*Peso máximo 2mb</b>
+
       </div>
       <div class="px-5 pb-8 text-center">
         <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
@@ -1280,17 +1328,37 @@
               </td>
               <td style="background: rgb(250, 250, 250);">
                 <div>
-                  <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
-                  <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
-                  <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
-                  <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+                  <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                      PENDIENTE
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
+                      REVISIÓN
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
+                      RECHAZADO
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido validada</span>
+                      VALIDADO
+                    </div>
+                  </div>
                 </div>
               </td>
               <!--
-              <td style="background: rgb(250, 250, 250);">
-                <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
-                <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
-              </td>-->
+  <td style="background: rgb(250, 250, 250);">
+    <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+    <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
+  </td>-->
               <td style="background: rgb(250, 250, 250);" *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''">
                 <a href="javascript:;" (click)="descargarCarta(project.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostar</a>
               </td>
@@ -1305,10 +1373,30 @@
               </td>
               <td style="background: rgb(250, 250, 250);">
                 <div>
-                  <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Pendiente</div>
-                  <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">Revisión</div>
-                  <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">Rechazado</div>
-                  <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">Validado</div>
+                  <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                      PENDIENTE
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
+                      REVISIÓN
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
+                      RECHAZADO
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido validada</span>
+                      VALIDADO
+                    </div>
+                  </div>
                 </div>
               </td>
               <!--
