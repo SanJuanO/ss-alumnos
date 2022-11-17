@@ -1,19 +1,21 @@
 <app-menu></app-menu>
 <div class="cargador" id="carg" style="display: block;"></div>
 
+<div class="modal" id="success-modal-preview">
+  <div class="modal__content">
+    <div class="p-5 text-center">
+      <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+      <div class="mt-5">¡No puedes inscribirte a proyectos de otro campus!</div>
+      <!--<div class=" mt-2">¡Has editado una empresa!</div>-->
+    </div>
+    <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
+  </div>
+</div>
+<br>
+<br>
+
 <!--START Estado del proyecto es menor o igual a 3-->
 <div *ngIf="estadoInscripcion<=3" style="font-family:Helvetica; font-size: 15px; font-weight: bold;">
-  <div class="modal" id="success-modal-preview">
-    <div class="modal__content">
-      <div class="p-5 text-center">
-        <i data-feather="check-circle" class="w-16 h-16 text-theme-9 mx-auto mt-3"></i>
-        <div class="text-3xl mt-5">¡Muy bien!</div>
-        <div class=" mt-2">¡Has editado una empresa!</div>
-      </div>
-      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 bg-theme-1 text-white">Ok</button> </div>
-    </div>
-  </div>
-  <br><br>
 
   <div class="flex flex-1 px-5 items-center justify-center " align="center">
     <div class="w-100 h-20 sm:w-24 sm:h-24 flex-none lg:w-48 lg:h-48 image-fit relative">
@@ -52,7 +54,7 @@
             <p *ngIf="estadoInscripcion==1" class="button  button--lg inline-block bg-theme-12 text-white"> Te has postulado a este proyecto </p>
             <div *ngIf="estadoInscripcion==2"><p class="button  button--lg inline-block bg-theme-17">Te han entrevistado en este proyecto</p></div>
             <div *ngIf="estadoInscripcion==3"><p>Te han aceptado a este proyecto confirma tu inscripción</p><a href="javascript:;" data-toggle="modal" data-target="#confirmainscribirmemodal" style="border-radius: 15px; font-size: 17px; cursor:pointer;" class="button  button--lg inline-block bg-theme-9 text-white mt-5">Confirmar tu inscripción</a></div>
-            <!--<p *ngIf="estadoInscripcion==2" class="button  button--lg inline-block bg-theme-11 text-white"> Te han aceptado a este proyecto confirma tu inscripciòn</p>-->
+            <!--<p *ngIf="estadoInscripcion==2" class="button  button--lg inline-block bg-theme-11 text-white"> Te han aceptado a este proyecto confirma tu inscripción</p>-->
             <p *ngIf="estadoInscripcion==4" class="button  button--lg inline-block bg-theme-10 text-white"> Estás inscrito a este proyecto </p>
             <p *ngIf="estadoInscripcion==5" class="button  button--lg inline-block bg-theme-9 text-white"> Proyecto terminado </p>
             <p *ngIf="estadoInscripcion==6" class="button  button--lg inline-block bg-theme-8 text-white"> Cancelado </p>
@@ -72,7 +74,7 @@
               <div class="sm:grid grid-cols-4 gap-2">
                 <div class="relative mt-8"></div>
                 <div class="relative mt-8">
-                  <a (click)="vistaProyecto()" data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;" class="button btn-lg text-white ml-3" >
+                  <a (click)="vistaProyecto()" data-dismiss="modal" style="background: gray; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;" class="button btn-lg text-white ml-3">
                     Cancelar
                   </a>
                 </div>
@@ -254,6 +256,43 @@
 
                   </div>
                 </div>
+                <div class="relative mt-8" *ngIf="organizacion.instagram!='https://www'  && organizacion.instagram!=''">
+                  <div class="text-base  mr-5 text-justify">
+                    <table>
+                      <tr>
+                        <td>
+                          <a class="col-4 btn text-center " id="iinstagram" target="_blank" href="{{organizacion.instagram}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                          </a>
+                        <td>
+                          <a class="col-4 btn text-center " id="iinstagram" target="_blank" href="{{organizacion.instagram}}">
+                            Abrir Instagram
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+                </div>
+                <div class="relative mt-8" *ngIf="organizacion.tiktok!='https://www'  && organizacion.tiktok!=''">
+                  <div class="text-base  mr-5 text-justify">
+                    <table>
+                      <tr>
+                        <td>
+                          <!--
+                            <a class="col-4 btn text-center " id="itiktok" target="_blank" href="{{organizacion.tiktok}}">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </a>
+                          <td>-->
+                          <a class="col-4 btn text-center " id="itiktok" target="_blank" href="{{organizacion.tiktok}}">
+                            Abrir tiktok
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -398,6 +437,23 @@
                   </tbody>
                 </table>
 
+              </div>
+            </div>
+          </div>
+
+          <div class="relative mt-3 text-center col-span-12">
+            <div>
+              <label style="font-size:19px; color:#FF8800; font-weight: bold;">
+                Modalidad servicio social:
+              </label>
+              <div *ngIf="proyectoModel.modalidadDistancia=='distancia'" class="intro-y flex items-center h-10 justify-center">
+                Distancia
+              </div>
+              <div *ngIf="proyectoModel.modalidadDistancia=='hibrido'"  class="intro-y flex items-center h-10 justify-center">
+                Híbrido
+              </div>
+              <div *ngIf="proyectoModel.modalidadDistancia=='presencial'"  class="intro-y flex items-center h-10 justify-center">
+                Presencial
               </div>
             </div>
           </div>
@@ -641,201 +697,78 @@
 
   <!---->
   <div *ngIf="mostrarConfirmarProyecto">
-  <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
-    <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
-      Reportes mensuales
-    </h2>
-  </div>
-  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-    <div class=" p-5">
-
-      <table class="table table-report sm:mt-2" *ngIf="actividades!=null && actividades.length>0">
-        <!-- <thead>
-          <tr>
-            <th class="whitespace-no-wrap">No</th>
-            <th class="whitespace-no-wrap">Mes</th>
-            <th class="whitespace-no-wrap">Reporte</th>
-            <th class="whitespace-no-wrap">Validado</th>
-            <th class="whitespace-no-wrap">Fecha</th>
-            <th class="whitespace-no-wrap">Opciones</th>
-          </tr>
-        </thead> -->
-        <tbody>
-          <tr class="intro-x" *ngFor="let actividad of actividades; let i=index">
-            <!-- <td>
-              <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
-            </td> -->
-            <td style="background: rgb(250, 250, 250);">
-              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">{{actividad.titulo}}</div>
-            </td>
-            <!-- <td>
-              <div class="ext-base text-xs whitespace-no-wrap">{{actividad.actividad.substr(0,50)}}</div>
-            </td> -->
-
-            <td style="background: rgb(250, 250, 250);">
-              <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Fecha</div>
-              <div style="font-size:18px" class="ext-base text-xs whitespace-no-wrap" align="center">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-              <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Estatus</div>
-
-              <div class="py-1 px-2 rounded-full text-center bg-theme-9 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="actividad.validaEmpresa">
-                <div class="tooltip top">
-                  <span class="tiptext text-left">Reporte validado por parte de la institución</span>
-                  Validado
-                </div>
-              </div>
-              <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="!actividad.validaEmpresa">
-                <div class="tooltip top">
-                  <span class="tiptext text-left">Esperando validaciòn por parte de la institución</span>
-                  Pendiente
-                </div>
-              </div>
-
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-
-              <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:15px;">Mostrar más</a></div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-
-              <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="editar(actividad)" data-toggle="modal" data-target="#actualizaActividad" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:15px;">Editar</a></div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block  text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold;font-size:17px;">Agregar reporte</a> </div>
-    </div>
-
-  </div>
-
-  <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
-    <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
-      Cartas del proyecto
-    </h2>
-  </div>
-
-  <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
-    <div class=" p-5">
-
-      <table class="table table-report sm:mt-2">
-        <thead>
-          <!-- <tr>
-            <th class="whitespace-no-wrap">No</th>
-            <th class="whitespace-no-wrap">Carta</th>
-            <th>
-              <div class="ext-base text-xs whitespace-no-wrap">Archivo</div>
-            </th>
-
-          </tr> -->
-        </thead>
-        <tbody>
-          <tr class="intro-x">
-            <td style="background: rgb(250, 250, 250);">
-              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-
-              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de inicio</div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-              <div>
-                <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
-                    PENDIENTE
-                  </div>
-                </div>
-                <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
-                    REVISIÓN
-                  </div>
-                </div>
-                <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
-                    RECHAZADO
-                  </div>
-                </div>
-                <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Tu carta ha sido validada</span>
-                    VALIDADO
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-              <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
-              <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
-            </td>
-            <td style="background: rgb(250, 250, 250);" *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''">
-              <a href="javascript:;" (click)="descargarCarta(project.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostar</a>
-            </td>
-            <!--<td>
-              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
-            </td>-->
-          </tr>
-          <tr class="intro-x" *ngIf="muestraEvaluacion2">
-            <td style="background: rgb(250, 250, 250);">
-              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">2</div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-
-              <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de termino</div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-              <div>
-                <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
-                    PENDIENTE
-                  </div>
-                </div>
-                <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
-                    REVISIÓN
-                  </div>
-                </div>
-                <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
-                    RECHAZADO
-                  </div>
-                </div>
-                <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
-                  <div class="tooltip top">
-                    <span class="tiptext text-left">Tu carta ha sido validada</span>
-                    VALIDADO
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td style="background: rgb(250, 250, 250);">
-              <a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
-              <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Volver a cargar</a>
-            </td>
-            <td *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" style="background: rgb(250, 250, 250);">
-              <a href="javascript:;" (click)="descargarCarta(project.id,1)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Mostrar</a>
-            </td>
-            <!--<td>
-              <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
-            </td>-->
-          </tr>
-        </tbody>
-      </table>
-      <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar carta</a> </div>-->
-    </div>
-
-  </div>
-
-  <div *ngIf="muestraEvaluacion1 || muestraEvaluacion2">
     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
       <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
-        Evaluación 
+        Reportes mensuales
+      </h2>
+    </div>
+    <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+      <div class=" p-5">
+
+        <table class="table table-report sm:mt-2" *ngIf="actividades!=null && actividades.length>0">
+          <!-- <thead>
+            <tr>
+              <th class="whitespace-no-wrap">No</th>
+              <th class="whitespace-no-wrap">Mes</th>
+              <th class="whitespace-no-wrap">Reporte</th>
+              <th class="whitespace-no-wrap">Validado</th>
+              <th class="whitespace-no-wrap">Fecha</th>
+              <th class="whitespace-no-wrap">Opciones</th>
+            </tr>
+          </thead> -->
+          <tbody>
+            <tr class="intro-x" *ngFor="let actividad of actividades; let i=index">
+              <!-- <td>
+                <div class="ext-base text-xs whitespace-no-wrap">{{i+1}}</div>
+              </td> -->
+              <td style="background: rgb(250, 250, 250);">
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">{{actividad.titulo}}</div>
+              </td>
+              <!-- <td>
+                <div class="ext-base text-xs whitespace-no-wrap">{{actividad.actividad.substr(0,50)}}</div>
+              </td> -->
+
+              <td style="background: rgb(250, 250, 250);">
+                <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Fecha</div>
+                <div style="font-size:18px" class="ext-base text-xs whitespace-no-wrap" align="center">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Estatus</div>
+
+                <div class="py-1 px-2 rounded-full text-center bg-theme-9 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="actividad.validaEmpresa">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Reporte validado por parte de la institución</span>
+                    Validado
+                  </div>
+                </div>
+                <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="!actividad.validaEmpresa">
+                  <div class="tooltip top">
+                    <span class="tiptext text-left">Esperando validación por parte de la institución</span>
+                    Pendiente
+                  </div>
+                </div>
+
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+
+                <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostrarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:15px;">Mostrar más</a></div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+
+                <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="editar(actividad)" data-toggle="modal" data-target="#actualizaActividad" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:15px;">Editar</a></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block  text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold;font-size:17px;">Agregar reporte</a> </div>
+      </div>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+      <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+        Cartas del proyecto
       </h2>
     </div>
 
@@ -844,21 +777,62 @@
 
         <table class="table table-report sm:mt-2">
           <thead>
+            <!-- <tr>
+              <th class="whitespace-no-wrap">No</th>
+              <th class="whitespace-no-wrap">Carta</th>
+              <th>
+                <div class="ext-base text-xs whitespace-no-wrap">Archivo</div>
+              </th>
+
+            </tr> -->
           </thead>
           <tbody>
-            <tr class="intro-x" *ngIf="muestraEvaluacion1">
+            <tr class="intro-x">
               <td style="background: rgb(250, 250, 250);">
                 <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
               </td>
               <td style="background: rgb(250, 250, 250);">
-                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
-                  EVALUACIÓN INTERMEDIA
+
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de inicio</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <div>
+                  <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirla en hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                      PENDIENTE
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido entregada para su revisión y validación.</span>
+                      REVISIÓN
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contacta a tu Coordinación de Servicio Social.</span>
+                      RECHAZADO
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaInicio==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido validada</span>
+                      VALIDADO
+                    </div>
+                  </div>
                 </div>
               </td>
               <td style="background: rgb(250, 250, 250);">
-                <a *ngIf="RespuestasEvaluaciones1.length ==null || RespuestasEvaluaciones1.length == 0" [routerLink]="['/empresas/evaluar/1',project.id]" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>
-                <div *ngIf="RespuestasEvaluaciones1.length !=null && RespuestasEvaluaciones1.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluación Completada</div>
+                <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+                <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
               </td>
+              <td style="background: rgb(250, 250, 250);" *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''">
+                <a href="javascript:;" (click)="descargarCarta(project.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostrar</a>
+              </td>
+              <!--<td>
+                <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+              </td>-->
             </tr>
             <tr class="intro-x" *ngIf="muestraEvaluacion2">
               <td style="background: rgb(250, 250, 250);">
@@ -866,20 +840,102 @@
               </td>
               <td style="background: rgb(250, 250, 250);">
 
-                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
-                  EVALUACIÓN FINAL
+                <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">Carta de termino</div>
+              </td>
+              <td style="background: rgb(250, 250, 250);">
+                <div>
+                  <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirla en hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                      PENDIENTE
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido entregada para su revisión y validación.</span>
+                      REVISIÓN
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contacta a tu Coordinación de Servicio Social.</span>
+                      RECHAZADO
+                    </div>
+                  </div>
+                  <div *ngIf="project.validaCartaTermino==4" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-9 shadow-md mr-2">
+                    <div class="tooltip top">
+                      <span class="tiptext text-left">Tu carta ha sido validada</span>
+                      VALIDADO
+                    </div>
+                  </div>
                 </div>
               </td>
               <td style="background: rgb(250, 250, 250);">
-                <a *ngIf="RespuestasEvaluaciones2.length ==null || RespuestasEvaluaciones2.length == 0" [routerLink]="['/empresas/evaluar/2',project.id]" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">evaluar</a>
-                <div *ngIf="RespuestasEvaluaciones2.length !=null && RespuestasEvaluaciones2.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Evaluación Completada</div>
+                <a *ngIf="project.rutaCartaTermino==null || project.rutaCartaTermino==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+                <a *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(1)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Volver a cargar</a>
               </td>
+              <td *ngIf="project.rutaCartaTermino!=null && project.rutaCartaTermino!=''" style="background: rgb(250, 250, 250);">
+                <a href="javascript:;" (click)="descargarCarta(project.id,1)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Mostrar</a>
+              </td>
+              <!--<td>
+                <div class="ext-base text-xs whitespace-no-wrap">{{carta.fechaCreacion| date: 'dd-MM-yyyy'}}</div>
+              </td>-->
             </tr>
           </tbody>
         </table>
+        <!--<div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#subirActividad" class="button inline-block bg-theme-1 text-white">Agregar carta</a> </div>-->
+      </div>
+
+    </div>
+
+    <div *ngIf="muestraEvaluacion1 || muestraEvaluacion2">
+      <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
+        <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
+          Evaluación
+        </h2>
+      </div>
+
+      <div class="intro-y overflow-auto lg:overflow-visible mt-8 sm:mt-0">
+        <div class=" p-5">
+
+          <table class="table table-report sm:mt-2">
+            <thead>
+            </thead>
+            <tbody>
+              <tr class="intro-x" *ngIf="muestraEvaluacion1">
+                <td style="background: rgb(250, 250, 250);">
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">1</div>
+                </td>
+                <td style="background: rgb(250, 250, 250);">
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
+                    EVALUACIÓN INTERMEDIA
+                  </div>
+                </td>
+                <td style="background: rgb(250, 250, 250);">
+                  <a *ngIf="RespuestasEvaluaciones1.length ==null || RespuestasEvaluaciones1.length == 0" [routerLink]="['/empresas/evaluar/1',project.id]" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluar</a>
+                  <div *ngIf="RespuestasEvaluaciones1.length !=null && RespuestasEvaluaciones1.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluación Completada</div>
+                </td>
+              </tr>
+              <tr class="intro-x" *ngIf="muestraEvaluacion2">
+                <td style="background: rgb(250, 250, 250);">
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">2</div>
+                </td>
+                <td style="background: rgb(250, 250, 250);">
+
+                  <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">
+                    EVALUACIÓN FINAL
+                  </div>
+                </td>
+                <td style="background: rgb(250, 250, 250);">
+                  <a *ngIf="RespuestasEvaluaciones2.length ==null || RespuestasEvaluaciones2.length == 0" [routerLink]="['/empresas/evaluar/2',project.id]" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Evaluar</a>
+                  <div *ngIf="RespuestasEvaluaciones2.length !=null && RespuestasEvaluaciones2.length > 0" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:18px">Evaluación Completada</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
   </div>
   <!--div21321-->
 </div>
@@ -919,10 +975,10 @@
       <div class="px-5 pb-8 text-center">
         <div class="sm:grid grid-cols-2 gap-2">
 
-          <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">
+          <button id="btnCloseAgregaActividad" type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">
             Cancelar
           </button>
-          <button type="submit" data-dismiss="modal" class="button w-24 text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
+          <button type="submit" class="button w-24 text-white" style="background: #FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto;
             ">
             Guardar
           </button>
@@ -995,8 +1051,10 @@
     <br>
 
     <div *ngIf="alumnoActividadD.ruta!=null && alumnoActividadD.ruta!=''">
+      <!--
     </div>
     <div *ngIf="alumnoActividadD.archivo!=null && alumnoActividadD.archivo!=''">
+        -->
       <div>
         <div class="text-base text-gray-600">
           <br><br>
@@ -1153,7 +1211,7 @@
 
 <div *ngIf="project!=null && estadoInscripcion==5" class="container" style="margin-top:5em;">
   <div class="col-span-12 ">
-    
+
     <div class="flex flex-col sm:flex-row items-centerborder-b border-gray-200 dark:border-dark-5" style="font-size:25px;  font-weight: bold; ">
       <h2 class="font-medium text-base mr-auto" style="font-size:25px;  font-weight: bold; color: #FF8300;">
         Proyecto Terminado
@@ -1264,7 +1322,7 @@
               <td style="background: rgb(250, 250, 250);">
                 <div class="ext-base text-xs whitespace-no-wrap" style="font-size:18px">{{actividad.titulo}}</div>
               </td>
-              
+
               <td style="background: rgb(250, 250, 250);">
                 <div style="font-size: 18px; color: black;  font-weight: bold;" align="center">Fecha</div>
                 <div style="font-size:18px" class="ext-base text-xs whitespace-no-wrap" align="center">{{actividad.fechaCreacion}}<!--{{actividad.fechaCreacion| date: 'dd-MM-yyyy'}}--></div>
@@ -1280,7 +1338,7 @@
                 </div>
                 <div class="py-1 px-2 rounded-full text-center  bg-theme-12 text-white mt-3" style="font-size:18px;" data-toggle="tooltip" data-placement="top" title="Tooltip on top" *ngIf="!actividad.validaEmpresa">
                   <div class="tooltip top">
-                    <span class="tiptext text-left">Esperando validaciòn por parte de la institución</span>
+                    <span class="tiptext text-left">Esperando validación por parte de la institución</span>
                     Pendiente
                   </div>
                 </div>
@@ -1288,7 +1346,7 @@
               </td>
               <td style="background: rgb(250, 250, 250);">
 
-                <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:15px;">Mostrar más</a></div>
+                <div class="ext-base text-xs whitespace-no-wrap"><a href="javascript:;" (click)="mostrarMas(actividad)" data-toggle="modal" data-target="#mostrarMas" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;font-size:15px;">Mostrar más</a></div>
               </td>
               <!--<td style="background: rgb(250, 250, 250);">
 
@@ -1330,19 +1388,19 @@
                 <div>
                   <div *ngIf="project.validaCartaInicio==0 || project.validaCartaInicio==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
                     <div class="tooltip top">
-                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirla en hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
                       PENDIENTE
                     </div>
                   </div>
                   <div *ngIf="project.validaCartaInicio==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
                     <div class="tooltip top">
-                      <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
+                      <span class="tiptext text-left">Tu carta ha sido entregada para su revisión y validación.</span>
                       REVISIÓN
                     </div>
                   </div>
                   <div *ngIf="project.validaCartaInicio==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
                     <div class="tooltip top">
-                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
+                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contacta a tu Coordinación de Servicio Social.</span>
                       RECHAZADO
                     </div>
                   </div>
@@ -1355,12 +1413,12 @@
                 </div>
               </td>
               <!--
-  <td style="background: rgb(250, 250, 250);">
-    <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
-    <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
-  </td>-->
+              <td style="background: rgb(250, 250, 250);">
+                <a *ngIf="project.rutaCartaInicio==null || project.rutaCartaInicio==''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background:#FF8300; border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Agregar carta</a>
+                <a *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''" href="javascript:;" data-toggle="modal" (click)="abrirSubirCarta(0)" class="button inline-block text-white" style="background: #FF8300;border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px"> Volver a cargar</a>
+              </td>-->
               <td style="background: rgb(250, 250, 250);" *ngIf="project.rutaCartaInicio!=null && project.rutaCartaInicio!=''">
-                <a href="javascript:;" (click)="descargarCarta(project.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostar</a>
+                <a href="javascript:;" (click)="descargarCarta(project.id,0)" class="button inline-block bg-theme-1 text-white" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto; font-size:18px">Mostrar</a>
               </td>
             </tr>
             <tr class="intro-x" *ngIf="muestraEvaluacion2">
@@ -1375,19 +1433,19 @@
                 <div>
                   <div *ngIf="project.validaCartaTermino==0 || project.validaCartaTermino==1" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
                     <div class="tooltip top">
-                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirlaen hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
+                      <span class="tiptext text-left">Aún no has subido tu carta para su revisión y validación. Favor de subirla en hoja membretada, firmada tanto por la institución y por ti, en formato PDF.</span>
                       PENDIENTE
                     </div>
                   </div>
                   <div *ngIf="project.validaCartaTermino==2" style="margin-right: auto; border-radius: 25px;  font-size:15px; " class="button text-white bg-theme-1 shadow-md mr-2">
                     <div class="tooltip top">
-                      <span class="tiptext text-left">Tu carta ha sido entregadapara su revisión y validación.</span>
+                      <span class="tiptext text-left">Tu carta ha sido entregada para su revisión y validación.</span>
                       REVISIÓN
                     </div>
                   </div>
                   <div *ngIf="project.validaCartaTermino==3" style="margin-right: auto; border-radius: 25px; font-size:15px; " class="button text-white bg-theme-6 shadow-md mr-2">
                     <div class="tooltip top">
-                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contactaa tu Coordinación de Servicio Social.</span>
+                      <span class="tiptext text-left">Vuelve a subir tu carta para su revisión y validación. Cualquier duda contacta a tu Coordinación de Servicio Social.</span>
                       RECHAZADO
                     </div>
                   </div>

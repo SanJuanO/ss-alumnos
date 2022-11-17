@@ -23,8 +23,8 @@ export class LoginServices {
 
   login(user,pass) {
 
-    const uri = `${this.api}/Alumnos/login?matricula=${user}&contrase%C3%B1a=${pass}`;
-    return this.http.get(uri, { withCredentials: false });
+    const uri = `${this.api}/Alumnos/login`;
+    return this.http.post(uri, { Matricula: user, Password:pass });
  
   }
   

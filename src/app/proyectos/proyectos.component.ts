@@ -8,6 +8,7 @@ import { OrganizationService } from '../services/organization.service';
 import { GiroEmpresa } from "../models/giroempresa"
 import { RubroEmpresa } from "../models/rubrosempresa"
 import { AreaAccion } from "../models/areaaccion"
+import { environment } from "../../environments/environment";
 
 @Component({
   selector: 'app-proyectos',

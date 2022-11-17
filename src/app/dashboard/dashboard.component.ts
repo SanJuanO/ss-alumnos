@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
   public alumnoActividadD: AlumnosActividades = new AlumnosActividades();
   public actividades: Array<AlumnosActividades> = [];
   public idArchivo: number = 0;
+  public idCampus: string= "0";
   
 
   constructor(private convocatoriaService: ConvocatoriaServices, 
@@ -63,6 +64,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.idCampus = this.session.getCampus();
+
     this.obtenerPerfil();
     this.convocatorias = [];
     this.convocatoriasalumnos = [];
@@ -89,7 +92,7 @@ export class DashboardComponent implements OnInit {
   obtenerConvocatoria2() {
     let model = this.tipoModel;
     model.tipo = 2;
-    this.convocatoriaService.getConvocatoriatipo(model).subscribe((res: any[]) => {
+    this.convocatoriaService.getConvocatoriatipo(model, 0, this.session.getCampus()).subscribe((res: any[]) => {
       this.convocatoriasalumnos = res;
       console.log(res);
       //console.log(this.convocatoriasalumnos);
@@ -97,10 +100,10 @@ export class DashboardComponent implements OnInit {
 
       for (var i = 0; i < this.convocatoriasalumnos.length; i++) {
         var fech = Date.parse(this.convocatoriasalumnos[i].fechaTermino.toString().substr(0, 10) + "T23:59:59");
-        var fechI = Date.parse(this.convocatoriasalumnos[i].fechaInicio.toString().substr(0, 10) + "T23:59:59");
+        var fechI = Date.parse(this.convocatoriasalumnos[i].fechaInicio.toString().substr(0, 10) + "T00:00:00");
 
         var fech0 = new Date(this.convocatoriasalumnos[i].fechaTermino.toString().substr(0, 10)+"T23:59:59");
-        var fechI0 = new Date(this.convocatoriasalumnos[i].fechaInicio.toString().substr(0, 10) + "T23:59:59");
+        var fechI0 = new Date(this.convocatoriasalumnos[i].fechaInicio.toString().substr(0, 10) + "T00:00:00");
 
         console.log("fechaINicio: " + fech0 + " FechaTermino" + fechI0);
         if (fechI <= Date.now() && fech >= Date.now()) {
@@ -130,7 +133,7 @@ export class DashboardComponent implements OnInit {
         for (i = 0; i < res.length; i++) {
           var proyectoAsignado = res[i];
           //console.log(proyectoAsignado);
-          if (proyectoAsignado.idEstado == 1 || proyectoAsignado.idEstado == 2 || proyectoAsignado.idEstado == 3 || proyectoAsignado.idEstado == 4 || proyectoAsignado.idEstado == 5) {
+          if (proyectoAsignado.idEstado == 1 || proyectoAsignado.idEstado == 2 || proyectoAsignado.idEstado == 3 || proyectoAsignado.idEstado == 4 || proyectoAsignado.idEstado == 5 || proyectoAsignado.idEstado == 7) {
             projectArray2.push(proyectoAsignado);
             /*
             if (proyectoAsignado.idEstado == 1 || proyectoAsignado.idEstado == 2 || proyectoAsignado.idEstado == 3) {
@@ -253,6 +256,15 @@ export class DashboardComponent implements OnInit {
     $('#warning-modal-preview').modal('show');
   }
 
+
+  vistaBuscarProyecto() {
+
+    if (this.api == 'https://adam.anahuac.mx/appis-serviciosocial/api') {
+      window.location.href = "https://adam.anahuac.mx/serviciosocial/buscar.html?cusmap=" + this.session.getCampus();
+    } else {
+      window.location.href = "https://portal-ss.gesdesapplication.com/buscar.html?cusmap=" + this.session.getCampus();
+    }
+  }
 
   
 }

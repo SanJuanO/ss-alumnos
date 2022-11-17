@@ -216,7 +216,8 @@
                 <div class="font-medium text-center  lg:mt-5 " style="text-align:justify; font-size:19px; color:#FF8800; font-weight: bold;">
                   ¿A partir de qué semestre / cuatrimestre comenzaste a trabajar?
                 </div>
-                <div style=" text-align:justify; font-size:15px; ">{{alumno.cuatrimestreComienzoTrabajo}}</div>
+                <div *ngIf="alumno.cuatrimestreComienzoTrabajo!=null && alumno.cuatrimestreComienzoTrabajo!='0'" style=" text-align:justify; font-size:15px; ">{{alumno.cuatrimestreComienzoTrabajo}}</div>
+                <div *ngIf="alumno.cuatrimestreComienzoTrabajo==null || alumno.cuatrimestreComienzoTrabajo=='0'" style=" text-align:justify; font-size:15px; ">No aplica</div>
               </div>
             </div>
             <div class="relative mt-8">
@@ -311,7 +312,7 @@
                       <div class="flex justify-center text-center items-center  text-center" style="border-radius: 15px;font-weight: bold; width: 180px; margin: auto;">
                         <!--theme-11-->
                         <div *ngIf="(alumno.liberar==null || alumno.liberar== 0) && !cubiertos" style="border-radius: 15px; font-size: 17px; font-weight:bold; background-color:#DE752D" class="m-1  btn-lg text-white  w-35 p-3">Solicitar Liberación</div>
-                        <button *ngIf="(alumno.liberar==null || alumno.liberar== 0) && cubiertos" href="javascript:" (click)="solicitaLiberacion()" style="border-radius: 15px; font-size: 17px; font-weight:bold" class="m-1  btn-lg text-white  w-35 bg-theme-11 p-3">Solicitar Liberaciòn</button>
+                        <button *ngIf="(alumno.liberar==null || alumno.liberar== 0) && cubiertos" href="javascript:" (click)="solicitaLiberacion()" style="border-radius: 15px; font-size: 17px; font-weight:bold" class="m-1  btn-lg text-white  w-35 bg-theme-11 p-3">Solicitar Liberación</button>
                         <div *ngIf="alumno.liberar!=null && alumno.liberar== 1" style="border-radius: 15px; font-size: 17px; font-weight:bold" class="m-1  btn-lg text-white  w-35 bg-theme-11 p-3">Liberación solicitada</div>
                         <div *ngIf="alumno.liberar!=null && alumno.liberar== 2" style="border-radius: 15px; font-size: 17px; font-weight:bold" class="m-1  btn-lg text-white  w-35 bg-theme-9 p-3">Servicio Social Liberado</div>
                       </div>

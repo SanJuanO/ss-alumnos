@@ -42,8 +42,8 @@ export class ConvocatoriaServices {
          console.log(uri);
     return this.http.get(uri, { withCredentials: false });
   }
-  getConvocatoriatipo(model){
-    const uri = `${this.api}/Convocatorias/getConvocatoriaByTipo?tipo=${model.tipo}`;
+  getConvocatoriatipo(model,idPeriodo,idCampus){
+    const uri = `${this.api}/Convocatorias/getConvocatoriaByTipo?tipo=${model.tipo}&idPeriodo=${idPeriodo}&idCampus=${idCampus}`;
          console.log(uri);
     return this.http.post(uri, model, { withCredentials: false });
   }

@@ -14,7 +14,7 @@
     
         <li class="pt-5">
             <a class="text-black p-5" style="font-size: 20px; font-family:Helvetica;">
-                <a class=" pt-6 "  (click)="logout()">Salir</a>
+                <a class=" pt-6 " (click)="logout()">Salir</a>
             </a>
         </li>
 
@@ -245,7 +245,7 @@ position: fixed;
                   <div class="sm:grid grid-cols-2 gap-2">
                     <div class="relative mt-2">
 
-                       <input matInput [matDatepicker]="picker" id="fechaInicio" placeholder="02/01/2021" class="input  w-full border mt-2 " id="fechaEstimadaGraduacion" name="fechaEstimadaGraduacion" [(ngModel)]="alumno.fechaEstimadaGraduacion" [ngModelOptions]="{standalone: true}" >
+                       <input matInput [matDatepicker]="picker" placeholder="02/01/2021" class="input  w-full border mt-2 " id="fechaEstimadaGraduacion" name="fechaEstimadaGraduacion" [(ngModel)]="alumno.fechaEstimadaGraduacion" [ngModelOptions]="{standalone: true}" [readonly]="true">
                          <mat-datepicker #picker></mat-datepicker>
                     </div>
 
@@ -303,7 +303,7 @@ position: fixed;
                   <div class="sm:grid grid-cols-2 gap-2">
                     <div class="relative mt-2">
 
-                       <input matInput class="input  w-full border mt-2 "  [matDatepicker]="picker2" id="fechaInicio" placeholder="02/01/2000" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="alumno.fechaNacimiento" [ngModelOptions]="{standalone: true}"  >
+                       <input matInput class="input  w-full border mt-2 "  [matDatepicker]="picker2" placeholder="02/01/2000" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="alumno.fechaNacimiento" [ngModelOptions]="{standalone: true}" [readonly]="true">
                          <mat-datepicker #picker2></mat-datepicker>
                     </div>
 
@@ -386,7 +386,7 @@ position: fixed;
                     ¿A partir de qué semestre / cuatrimestre comenzaste a trabajar?
                   </label>
                   <select class="input  w-full border mt-2 " name="cuatrimestreComienzoTrabajo" id="cuatrimestreComienzoTrabajo" [(ngModel)]="alumno.cuatrimestreComienzoTrabajo" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="">No aplica</option>
+                    <option [ngValue]="0">No aplica</option>
                     <option [ngValue]="1">1</option>
                     <option [ngValue]="2">2</option>
                     <option [ngValue]="3">3</option>

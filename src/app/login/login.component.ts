@@ -5,7 +5,8 @@ import { SessionService } from '../services/session.service';
 import { AlumnoEdit } from '../models/alumno';
 import { AlumnoService } from '../services/alumno.service';
 import { RecaptchaModule } from "ng-recaptcha";
-  
+import { environment } from "../../environments/environment";
+
 declare var $: any;
 
 @Component({
@@ -25,20 +26,24 @@ export class LoginComponent implements OnInit {
     private loginservice: LoginServices,
     private alumnoService: AlumnoService) {
     // this.activatedRoute.queryParams.subscribe(params => {
-
-    
-      
-
-        
     //       this.idobtenido = params['idProyecto'];
     //       console.log(this.idobtenido);
     //   });
   }
   resolved(captchaResponse: string) {
-    this.validado=true;
+    if (captchaResponse == null) {
+      this.validado = false;
+      console.log('false captcha');
+
+    } else {
+      this.validado = true;
+      console.log('true captcha');
+    }
     console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
   ngOnInit(): void {
+    document.getElementById("carg").style.display = "none"
+
     var URLactual = window.location;
     this.url=String(URLactual);
     console.log(this.url);
@@ -50,7 +55,7 @@ export class LoginComponent implements OnInit {
     }
 
     var id = this.session.getToken();
-    //console.log("id" + id);
+    console.log("id" + id);
   
     if (id != null && id != undefined && id != "") {
       this.obtenerPerfil();
@@ -61,62 +66,76 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(data) {
+    $("#btnLogin").prop("disabled", true)
+    document.getElementById("carg").style.display = "block"
+
     var user=$('#email').val();
     var pass = $('#contraseña').val();
     if(this.validado){
-    this.loginservice.login(user, pass).subscribe((res: any) => {
-      if (res['resultado'] == 1) {
-        var datosvalue = res['datos'];
-        this.alumno = datosvalue;
-        this.session.setToken(datosvalue['id']);
-        this.session.setnombre(datosvalue['nombre']);
-        this.session.setapellidos(datosvalue['paterno'] + datosvalue['materno']);
+      this.loginservice.login(user, pass).subscribe((res: any) => {
+        if (res['resultado'] == 1) {
+          var datosvalue = res['datos'];
+          this.alumno = datosvalue;
+          this.session.setToken(datosvalue['id']);
+          this.session.setnombre(datosvalue['nombre']);
+          this.session.setapellidos(datosvalue['paterno'] + datosvalue['materno']);
+          this.session.setCampus(datosvalue['idUniversidad']);
+          //this.session.setPeriodo(datosvalue['idPeriodo']);
 
-        console.log(datosvalue);
-        if (datosvalue['terminosCondiciones'] == null || datosvalue['terminosCondiciones'] == false) {
+          console.log(datosvalue);
+          if (datosvalue['terminosCondiciones'] == null || datosvalue['terminosCondiciones'] == false) {
           
-          if (this.idobtenido == null) {
-            this.router.navigate(['/terminoscondiciones']);
-          } else {
-            this.router.navigate(['/terminoscondiciones', this.idobtenido]);
-          }
+            if (this.idobtenido == null) {
+              this.router.navigate(['/terminoscondiciones']);
+            } else {
+              this.router.navigate(['/terminoscondiciones', this.idobtenido]);
+            }
 
-        } else if (datosvalue['terminosCondiciones'] != null && datosvalue['terminosCondiciones'] != false && !this.validaDatosAlumno()) {
+          } else if (datosvalue['terminosCondiciones'] != null && datosvalue['terminosCondiciones'] != false && !this.validaDatosAlumno()) {
           
-          if (this.idobtenido == null) {
-            this.router.navigate(['/informacionalumno']);
-          } else {
-            this.router.navigate(['/informacionalumno', this.idobtenido]);
-          }
+            if (this.idobtenido == null) {
+              this.router.navigate(['/informacionalumno']);
+            } else {
+              this.router.navigate(['/informacionalumno', this.idobtenido]);
+            }
 
-        } else if (datosvalue['terminosCondiciones'] != null && datosvalue['terminosCondiciones'] != false && this.validaDatosAlumno()) {
+          } else if (datosvalue['terminosCondiciones'] != null && datosvalue['terminosCondiciones'] != false && this.validaDatosAlumno()) {
 
-          if (this.idobtenido == null) {
-            this.router.navigate(['/dashboard']);
-            //console.log(user);
+            if (this.idobtenido == null) {
+              this.router.navigate(['/dashboard']);
+              //console.log(user);
 
-          } else {
-            this.router.navigate(['/proyectos/ver', this.idobtenido]);
-          }
+            } else {
+              this.router.navigate(['/proyectos/ver', this.idobtenido]);
+            }
           
-        }
+          }
         
-      } else {
-        this.mensaje = res['mensaje'];
-        //$('#success-modal-preview').modal('show');
-        var x = document.getElementById("alerta");
-        x.style.display = "block";
+        } else {
+          this.mensaje = res['mensaje'];
+          //$('#success-modal-preview').modal('show');
+          var x = document.getElementById("alerta");
+          x.style.display = "block";
+          
 
-      }
+        }
     
+        $("#btnLogin").prop("disabled", false)
+        document.getElementById("carg").style.display = "none"
 
-    }, error => {
-      alert(error.error)
-    })
+      }, error => {
+        alert(error.error)
+        $("#btnLogin").prop("disabled", false)
+        document.getElementById("carg").style.display = "none"
+
+      })
   }else{
     this.mensaje=("Falta el captcha");
     var x = document.getElementById("alerta");
       x.style.display = "block";
+      $("#btnLogin").prop("disabled", false)
+      document.getElementById("carg").style.display = "none"
+
 
   }
   }

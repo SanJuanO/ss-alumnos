@@ -38,6 +38,20 @@ export class SessionService {
   getToken() {
     return this.cookies.get("sesionid");
   }
+
+  setPeriodo(periodo) {
+    this.cookies.set("periodo", periodo);
+  }
+  getPeriodo() {
+    return this.cookies.get("periodo");
+  }
+ 
+  setCampus(campus) {
+    this.cookies.set("campus", campus);
+  }
+  getCampus() {
+    return this.cookies.get("campus");
+  }
  
 
   Signoff() {

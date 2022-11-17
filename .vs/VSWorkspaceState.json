@@ -1,15 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dist",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\dashboard",
-    "\\src\\app\\empresa-evaluar",
-    "\\src\\app\\models",
-    "\\src\\app\\proyectos\\proyectos-ver",
+    "\\src\\assets",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\empresa-evaluar\\empresa-evaluar.component.html",
+  "SelectedNode": "\\src\\app\\login",
   "PreviewInSolutionExplorer": false
 }

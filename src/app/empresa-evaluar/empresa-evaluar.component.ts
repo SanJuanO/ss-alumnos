@@ -22,6 +22,8 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { Binary } from '@angular/compiler';
 import { NgModel } from '@angular/forms';
 declare var $: any;
+import { environment } from "../../environments/environment";
+
 
 @Component({
   selector: 'app-empresa-ver',

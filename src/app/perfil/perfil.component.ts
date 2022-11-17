@@ -10,6 +10,7 @@ import { SessionService } from '../services/session.service';
 import { ProyectoService } from '../services/proyecto.service';
 import { AlumnoService } from '../services/alumno.service';
 import { AlumnoEdit, AlumnosAreasVidaUniversitariaParticipado, AlumnosAreasVidaUniversitariaActuales, AlumnoRequisitos } from '../models/alumno';
+import { environment } from "../../environments/environment";
 
 declare var $: any;
 @Component({
@@ -53,13 +54,13 @@ export class PerfilComponent implements OnInit {
         this.alumno.fechaEstimadaGraduacion = "";
       }
       if (res.fechaNacimientoString != "0001-01-01") {
-        var fecha = new Date(res.fechaNacimientoString);
+        var fecha = new Date(res.fechaNacimientoString+"T00:00:00");
         this.alumno.fechaNacimiento = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaNacimiento = "";
       }
       if (res.fechaInicioServicioSocialString != "0001-01-01") {
-        var fecha = new Date(res.fechaInicioServicioSocialString);
+        var fecha = new Date(res.fechaInicioServicioSocialString + "T00:00:00");
         this.alumno.fechaInicioServicioSocial = fecha.toLocaleString("es-ES", options);
       } else {
         this.alumno.fechaInicioServicioSocial = "";
@@ -85,17 +86,20 @@ export class PerfilComponent implements OnInit {
   }
 
   obtenerRequisitosCubiertos() {
+
     var id = this.session.getToken();
 
     this.alumnoService.getAlumnoRequisitosLiberacion(id).subscribe((res: AlumnoRequisitos) => {
       this.alumnoRequisitos = res;
-      if (this.alumnoRequisitos!=null && this.alumnoRequisitos.pago && this.alumnoRequisitos.cartaInicio
+      if (this.alumnoRequisitos != null && this.alumnoRequisitos.pago && this.alumnoRequisitos.cartaInicio
         && this.alumnoRequisitos.reportesMensuales
         && this.alumnoRequisitos.cartaTermino
         && this.alumnoRequisitos.evaluacionSS
         && this.alumnoRequisitos.horasSS && this.alumnoRequisitos.eventoSS
       ) {
         this.cubiertos = true;
+      } else {
+        this.cubiertos = false;
       }
       //console.log(res);
     });

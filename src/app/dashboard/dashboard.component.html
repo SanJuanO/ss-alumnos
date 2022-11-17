@@ -129,7 +129,7 @@
                   <td class="table-report__action w-56" style="background: rgb(250, 250, 250);">
                     <div class="flex justify-center items-center">
                       <!-- <a class="flex items-center mr-3 button bg-theme-10 text-white" href="https://adam.anahuac.mx/serviciosocial/buscar.html"> -->
-                      <a style="border-radius: 15px;font-weight: bold;background: #FF8300;" class="flex items-center mr-3 button text-white text-center" href="https://portal-ss.gesdesapplication.com/buscar.html">
+                      <a (click)="vistaBuscarProyecto()" style="border-radius: 15px;font-weight: bold;background: #FF8300;" class="flex items-center mr-3 button text-white text-center"><!--href="https://portal-ss.gesdesapplication.com/buscar.html">-->
                         Buscar Proyectos
                       </a>
 
@@ -191,7 +191,7 @@
                           <br><br>
                           Te ha entrevistado el responsable del servicio social de la Institución para el proyecto.
                           <br><br>
-                          Ahora debes esperar a que la institución acepte tu aplicación. En caso contrario, este proyecto pasará a un estatus de "No Aprobado".
+                          Ahora debes esperar a que la institución acepte tu aplicación. En caso contrario, este proyecto pasará a un estatus de "No Aprobado" y ya no podrás visualizarlo. Ya sea porque ya no hubo cupo o porque tu perfil no coincidía con el proyecto.
                         </span>
                       </div>
                     </div>
@@ -210,7 +210,19 @@
                     <div *ngIf="proyecto.idEstado==4" class="py-1 px-2 rounded-full text-center  bg-theme-9 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;">{{proyecto.estado}}</div>
                     <div *ngIf="proyecto.idEstado==5" class="py-1 px-2 rounded-full text-center  bg-theme-9 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;">{{proyecto.estado}}</div>
                     <div *ngIf="proyecto.idEstado==6" class="py-1 px-2 rounded-full text-center  bg-theme-8 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;">{{proyecto.estado}}</div>
-                    <div *ngIf="proyecto.idEstado==7" class="py-1 px-2 rounded-full text-center  bg-theme-6 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;">{{proyecto.estado}}</div>
+                    <!--<div *ngIf="proyecto.idEstado==" class="py-1 px-2 rounded-full text-center  bg-theme-6 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;">{{proyecto.estado}}</div>-->
+                    <div *ngIf="proyecto.idEstado==7" class="py-1 px-2 rounded-full text-center  bg-theme-10 text-white  mt-3" style=" border-radius: 15px;font-weight: bold;">
+                      <div class="tooltip top">
+                        {{proyecto.estado}}
+                        <span class="tiptext text-left">
+                          Estatus del proyecto:<a style="font-size: 20px; "> NO APROBADO</a>
+                          <br><br>
+                          No has sido aprobado para continuar con este proyecto debido a que ya no hay cupo, o porque la institución consideró que tu perfil no cumplía con los requerimientos para el proyecto.
+                          <br><br>
+                          En caso de que el proyecto obtenga más plazas disponibles, este estatus cambiará a "Pre registro" para que puedas continuar con el proceso y tener nuevamente la oportunidad de quedar en el proyecto.
+                        </span>
+                      </div>
+                    </div>
                   </td>
                   <td class="table-report__action w-56" style="background: rgb(250, 250, 250);">
                     <div class="flex justify-center items-center" *ngIf="proyecto.idEstado!=3 && proyecto.idEstado!=7 && proyecto.idEstado!=6 ">

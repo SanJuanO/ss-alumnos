@@ -38,7 +38,6 @@ export class TerminosCondicionesComponent implements OnInit {
     this.cookies.set("mostrarproyectos", "1");
     this.idobtenido = <string><any>(this.activatedRoute.snapshot.paramMap.get("idProyecto"));
     this.obtenerPerfil();
-    console.log(this.alumno);
     console.log("idObtenido: " + this.idobtenido)
   }
 
@@ -52,6 +51,7 @@ export class TerminosCondicionesComponent implements OnInit {
     this.alumnoService.getAlumno(id).subscribe((res: AlumnoEdit) => {
       this.alumno = res;
       this.nombre = this.alumno.nombre;
+      console.log(this.alumno);
     });
 
   }

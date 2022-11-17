@@ -20,7 +20,8 @@ import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { environment } from "../../environments/environment";
 
 
 declare var $: any;
@@ -45,7 +46,7 @@ declare var $: any;
   providers: [
     // The locale would typically be provided on the root module of your application. We do it at
     // the component level here, due to limitations of our example generation script.
-    {provide: MAT_DATE_LOCALE, useValue: 'es-MX'},
+    { provide: MAT_DATE_LOCALE, useValue: 'es-MX' },
 
     // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
     // `MatMomentDateModule` in your applications root module. We provide it at the component level
@@ -55,7 +56,7 @@ declare var $: any;
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ]
 })
 export class InfoAlumnoComponent implements OnInit {
@@ -90,7 +91,7 @@ export class InfoAlumnoComponent implements OnInit {
     private areasVidaUniversitaria: AreasVidaUniversitariaService,
     private facultadService: FacultadService, private carreraService: CarreraService,
     private universidadService: UniversidadService, private modalidadesTrabajoService: ModalidadesTrabajoService,
-    private activatedRoute: ActivatedRoute, private router: Router,private cookies: CookieService
+    private activatedRoute: ActivatedRoute, private router: Router, private cookies: CookieService
     //public fb: FormBuilder
   ) {
     /*
@@ -122,7 +123,7 @@ export class InfoAlumnoComponent implements OnInit {
     //console.log(this.alumno);
     //console.log("idObtenido: " + this.idobtenido)
     this.obtenerPerfil();
-    
+
   }
 
   ngAfterViewInit() {
@@ -133,39 +134,43 @@ export class InfoAlumnoComponent implements OnInit {
     var id = this.session.getToken();
 
     this.alumnoService.getAlumno(id).subscribe((res: AlumnoEdit) => {
-      this.alumno = res;
-      if (res.fechaEstimadaGraduacionString != "0001-01-01") {
-        this.alumno.fechaEstimadaGraduacion = res.fechaEstimadaGraduacionString;
-      } else {
-        this.alumno.fechaEstimadaGraduacion = "";
-      }
-      if (res.fechaNacimientoString != "0001-01-01") {
-        this.alumno.fechaNacimiento = res.fechaNacimientoString;
-      } else {
-        this.alumno.fechaNacimiento = "";
-      }
-      if (res.fechaInicioServicioSocialString != "0001-01-01") {
-        this.alumno.fechaInicioServicioSocial = res.fechaInicioServicioSocialString;
-      } else {
-        this.alumno.fechaInicioServicioSocial = "";
-      }
-      this.idsPasados = this.alumno.listaAreaVidaUniversitariaParticipado.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
-      this.idsActuales = this.alumno.listaAreaVidaUniversitariaActuales.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
+      if (res != null) {
+        this.alumno = res;
+        
+        if (res.fechaEstimadaGraduacionString != "0001-01-01") {
+          this.alumno.fechaEstimadaGraduacion = res.fechaEstimadaGraduacionString;
+        } else {
+          this.alumno.fechaEstimadaGraduacion = "";
+        }
+        if (res.fechaNacimientoString != "0001-01-01") {
+          this.alumno.fechaNacimiento = res.fechaNacimientoString;
+        } else {
+          this.alumno.fechaNacimiento = "";
+        }
+        if (res.fechaInicioServicioSocialString != "0001-01-01") {
+          this.alumno.fechaInicioServicioSocial = res.fechaInicioServicioSocialString;
+        } else {
+          this.alumno.fechaInicioServicioSocial = "";
+        }
+        this.idsPasados = this.alumno.listaAreaVidaUniversitariaParticipado.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
+        this.idsActuales = this.alumno.listaAreaVidaUniversitariaActuales.map(({ idAreaVidaUniversitaria }) => idAreaVidaUniversitaria);
 
-      if (this.alumno.idUniversidad == 0) {
-        this.uniReadOnly = false;
-      }
-      if (this.alumno.idFacultad == 0) {
-        this.facReadOnly = false;
-      }
-      if (this.alumno.idCarrera == 0) {
-        this.carReadOnly = false;
-      }
+        if (this.alumno.idUniversidad == 0) {
+          this.uniReadOnly = false;
+        }
+        if (this.alumno.idFacultad == 0) {
+          this.facReadOnly = false;
+        }
+        if (this.alumno.idCarrera == 0) {
+          this.carReadOnly = false;
+        }
 
+      }
+      console.log("Alumno");
       console.log(this.alumno);
+      console.log("Res");
       console.log(res);
       document.getElementById("carg").style.display = "none";
-
     });
 
   }
@@ -261,7 +266,7 @@ export class InfoAlumnoComponent implements OnInit {
     $('#sexo').css("border", "#dee2e6 solid 1px");
     $('#participacionAsua').css("border", "#dee2e6 solid 1px");
     $('#trabajas').css("border", "#dee2e6 solid 1px");
-    
+
 
     $('#idModalidadTrabajo').css("border", "#dee2e6 solid 1px");
     $('#cuatrimestreComienzoTrabajo').css("border", "#dee2e6 solid 1px");
@@ -272,15 +277,15 @@ export class InfoAlumnoComponent implements OnInit {
       this.mensajevalidacion = "No puedes dejar el campo de nombre vacío"
       $('#validacion').modal('show');
       $('#nombre').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
 
     if (this.alumno.matricula == null || this.alumno.matricula == "") {
       this.mensajevalidacion = "No puedes dejar el campo de matricula vacío"
       $('#validacion').modal('show');
       $('#matricula').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
 
     }
@@ -288,7 +293,7 @@ export class InfoAlumnoComponent implements OnInit {
       this.mensajevalidacion = "No puedes dejar el campo de Universidad vació"
       $('#validacion').modal('show');
       $('#idUniversidad').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
 
     }
@@ -296,63 +301,63 @@ export class InfoAlumnoComponent implements OnInit {
       this.mensajevalidacion = "No puedes dejar el campo de paterno vacío"
       $('#validacion').modal('show');
       $('#paterno').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
     if (this.alumno.materno == null || this.alumno.materno == "") {
       this.mensajevalidacion = "No puedes dejar el campo de materno vacío"
       $('#validacion').modal('show');
       $('#materno').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
     }
     if (this.alumno.celular == null || this.alumno.celular == "") {
       this.mensajevalidacion = "No puedes dejar el campo de celular vacío"
       $('#validacion').modal('show');
       $('#celular').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
     }
 
-    
+    /*
     if (this.alumno.porcentaje == null || this.alumno.porcentaje == 0) {
 
       this.mensajevalidacion = "No puedes dejar el campo de porcentaje vacío"
       $('#validacion').modal('show');
       $('#porcentaje').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }*/
     if (this.alumno.noCuatrimestreSemestre == null || this.alumno.noCuatrimestreSemestre < 0 || this.alumno.noCuatrimestreSemestre > 14) {
 
       this.mensajevalidacion = "Número de Semestre/Cuatrimestre* debe estar en el rango 0 - 14"
       $('#validacion').modal('show');
       $('#noCuatrimestreSemestre').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
     if (this.alumno.esquemaPeriodo == null || this.alumno.esquemaPeriodo == "") {
       this.mensajevalidacion = "No puedes dejar el campo de esquema de periodo vacío"
       $('#validacion').modal('show');
 
       $('#esquemaPeriodo').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
     if (this.alumno.generacion == null || this.alumno.generacion == "") {
 
       this.mensajevalidacion = "No puedes dejar el campo de generaciòn vacío"
       $('#validacion').modal('show');
       $('#generacion').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
 
     if (this.alumno.fechaEstimadaGraduacion == "") {
       this.mensajevalidacion = "No puedes dejar el campo de fecha estimada de graduaciòn vacío"
       $('#validacion').modal('show');
       $('#fechaEstimadaGraduacion').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
     } else {
       $('#fechaEstimadaGraduacion').css("border", "#dee2e6 solid 1px");
@@ -363,85 +368,92 @@ export class InfoAlumnoComponent implements OnInit {
       this.mensajevalidacion = "No puedes dejar el campo de correo institucional vacío"
       $('#validacion').modal('show');
       $('#correoInstitucional').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
 
     if (!this.validarEmail(this.alumno.correoPersonal)) {
       this.mensajevalidacion = "Introduce una dirección de correo válido"
       $('#validacion').modal('show');
       $('#correoPersonal').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
 
     if (this.alumno.fechaNacimiento == null || this.alumno.fechaNacimiento == "") {
       this.mensajevalidacion = "No puedes dejar el campo de fecha de nacimiento vacío"
       $('#validacion').modal('show');
       $('#fechaNacimiento').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
 
     if (this.alumno.sexo == null || this.alumno.sexo == "") {
 
       this.mensajevalidacion = "No puedes dejar el campo de sexo vacío"
       $('#validacion').modal('show');
       $('#sexo').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
     if (this.alumno.participacionAsua == null || this.alumno.participacionAsua == "") {
 
       this.mensajevalidacion = "No puedes dejar el campo de participacion ASUA vacío"
       $('#validacion').modal('show');
       $('#participacionAsua').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
 
     if (this.alumno.trabajas == null || this.alumno.trabajas == "") {
 
       this.mensajevalidacion = "No puedes dejar el campo de trabajas vacío"
       $('#validacion').modal('show');
       $('#trabajas').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
     if (this.alumno.trabajas == "si" && (this.alumno.idModalidadTrabajo == null || this.alumno.idModalidadTrabajo == undefined || this.alumno.idModalidadTrabajo == 0)) {
 
       this.mensajevalidacion = "No puedes dejar el campo de modalidad de trabajo vacío"
       $('#validacion').modal('show');
       $('#idModalidadTrabajo').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
+    }
     if (this.alumno.trabajas == "si" && (this.alumno.cuatrimestreComienzoTrabajo == null || this.alumno.cuatrimestreComienzoTrabajo == undefined || this.alumno.cuatrimestreComienzoTrabajo == "0")) {
 
       this.mensajevalidacion = "No puedes dejar el campo de cuando comenzaste a trabajar";
       $('#validacion').modal('show');
       $('#cuatrimestreComienzoTrabajo').css("border", "red solid 1px");
-      document.getElementById("carg").style.display = "none"; return false;        
+      document.getElementById("carg").style.display = "none"; return false;
 
-    } 
-      console.log(JSON.stringify(data.value));
-      this.alumnoService.updateAlumno0(this.alumno.id, this.alumno).subscribe((res) => {
-        if(this.cookies.get("mostraralumno")){
+    }
+    console.log(JSON.stringify(data.value));
+    this.alumnoService.updateAlumno0(this.alumno.id, this.alumno).subscribe((res) => {
+      console.log("res");
+      console.log(res);
+      if (res == true) {
+        if (this.cookies.get("mostraralumno")) {
           this.cookies.delete("mostraralumno");
           $('#success-modal-preview').modal('show');
         }
 
         if (this.idobtenido == null) {
           var id = this.session.getToken();
-      
-         this.router.navigate(['/perfil']);
+
+          this.router.navigate(['/perfil']);
 
         } else {
           this.router.navigate(['/proyectos/ver', this.idobtenido]);
         }
         document.getElementById("carg").style.display = "none";
+      } else {
+        alert("No se pudo registrar la información del alumno: " + res);
+        document.getElementById("carg").style.display = "none";
 
-      })
+      }
+    })
 
   }
 
@@ -453,7 +465,7 @@ export class InfoAlumnoComponent implements OnInit {
     this.generaciones = new Array();
     //var select = document.getElementById("generacion");
     for (var i = n; i >= 2000; i--) {
-      this.generaciones.push(""+i);
+      this.generaciones.push("" + i);
       /*var opc = document.createElement("option");
       opc.text = i;
       opc.value = i;
@@ -461,7 +473,7 @@ export class InfoAlumnoComponent implements OnInit {
     }
 
   }
-  
+
 
   validarEmail(valor) {
     var caract = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
@@ -472,15 +484,15 @@ export class InfoAlumnoComponent implements OnInit {
       return true;
     }
   }
-  ocultar(){
+  ocultar() {
     console.log("vista");
     var menu = document.getElementById("menu");
-if(menu.style.display=="none"){
-    menu.style.display = "block";
-}else{
-  menu.style.display = "none";
+    if (menu.style.display == "none") {
+      menu.style.display = "block";
+    } else {
+      menu.style.display = "none";
 
-}
+    }
   }
   logout() {
     this.session.Signoff();
